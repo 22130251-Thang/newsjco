@@ -1,0 +1,7 @@
+{
+  "name": "newsjco-root",
+  "scripts": {
+    "backend": "npm run start:dev --prefix backend",
+    "frontend": "npm run start --prefix frontend" 
+  }
+}
