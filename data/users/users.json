@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "username": "nguyenvana",
+        "email": "nguyenvana@example.com",
+        "displayName": "Nguyễn Văn A",
+        "avatar": "https://i.pravatar.cc/150?u=nguyenvana",
+        "role": "admin",
+        "status": "active",
+        "bio": "Quản trị viên hệ thống",
+        "createdAt": "2025-01-01T08:00:00+07:00",
+        "updatedAt": "2025-12-09T10:30:00+07:00"
+    },
+    {
+        "id": 2,
+        "username": "tranthib",
+        "email": "tranthib@example.com",
+        "displayName": "Trần Thị B",
+        "avatar": "https://i.pravatar.cc/150?u=tranthib",
+        "role": "moderator",
+        "status": "active",
+        "bio": "Biên tập viên nội dung công nghệ",
+        "createdAt": "2025-01-15T09:00:00+07:00",
+        "updatedAt": "2025-12-08T14:20:00+07:00"
+    },
+    {
+        "id": 3,
+        "username": "levanc",
+        "email": "levanc@example.com",
+        "displayName": "Lê Văn C",
+        "avatar": "https://i.pravatar.cc/150?u=levanc",
+        "role": "user",
+        "status": "active",
+        "bio": "Yêu thích công nghệ và thể thao",
+        "createdAt": "2025-02-10T10:30:00+07:00",
+        "updatedAt": "2025-12-07T16:45:00+07:00"
+    },
+    {
+        "id": 4,
+        "username": "phamthid",
+        "email": "phamthid@example.com",
+        "displayName": "Phạm Thị D",
+        "avatar": "https://i.pravatar.cc/150?u=phamthid",
+        "role": "user",
+        "status": "active",
+        "bio": "Quan tâm đến sức khỏe và đời sống",
+        "createdAt": "2025-03-05T11:00:00+07:00",
+        "updatedAt": "2025-12-06T09:15:00+07:00"
+    },
+    {
+        "id": 5,
+        "username": "hoangvane",
+        "email": "hoangvane@example.com",
+        "displayName": "Hoàng Văn E",
+        "avatar": "https://i.pravatar.cc/150?u=hoangvane",
+        "role": "user",
+        "status": "active",
+        "bio": "Nhà báo tự do về kinh doanh",
+        "createdAt": "2025-03-20T14:00:00+07:00",
+        "updatedAt": "2025-12-05T11:30:00+07:00"
+    },
+    {
+        "id": 6,
+        "username": "vuthif",
+        "email": "vuthif@example.com",
+        "displayName": "Vũ Thị F",
+        "avatar": "https://i.pravatar.cc/150?u=vuthif",
+        "role": "user",
+        "status": "active",
+        "bio": "Giáo viên, quan tâm giáo dục",
+        "createdAt": "2025-04-01T08:30:00+07:00",
+        "updatedAt": "2025-12-04T15:00:00+07:00"
+    },
+    {
+        "id": 7,
+        "username": "dangvang",
+        "email": "dangvang@example.com",
+        "displayName": "Đặng Văn G",
+        "avatar": "https://i.pravatar.cc/150?u=dangvang",
+        "role": "user",
+        "status": "inactive",
+        "bio": "Fan bóng đá cuồng nhiệt",
+        "createdAt": "2025-04-15T16:00:00+07:00",
+        "updatedAt": "2025-11-20T10:00:00+07:00"
+    },
+    {
+        "id": 8,
+        "username": "buithih",
+        "email": "buithih@example.com",
+        "displayName": "Bùi Thị H",
+        "avatar": "https://i.pravatar.cc/150?u=buithih",
+        "role": "moderator",
+        "status": "active",
+        "bio": "Biên tập viên mục giải trí",
+        "createdAt": "2025-05-01T09:00:00+07:00",
+        "updatedAt": "2025-12-08T18:00:00+07:00"
+    },
+    {
+        "id": 9,
+        "username": "dovani",
+        "email": "dovani@example.com",
+        "displayName": "Đỗ Văn I",
+        "avatar": "https://i.pravatar.cc/150?u=dovani",
+        "role": "user",
+        "status": "active",
+        "bio": "Luật sư, theo dõi tin pháp luật",
+        "createdAt": "2025-05-20T13:00:00+07:00",
+        "updatedAt": "2025-12-03T14:30:00+07:00"
+    },
+    {
+        "id": 10,
+        "username": "ngothik",
+        "email": "ngothik@example.com",
+        "displayName": "Ngô Thị K",
+        "avatar": "https://i.pravatar.cc/150?u=ngothik",
+        "role": "user",
+        "status": "active",
+        "bio": "Quan tâm tin tức thế giới",
+        "createdAt": "2025-06-10T10:00:00+07:00",
+        "updatedAt": "2025-12-02T12:00:00+07:00"
+    }
+]

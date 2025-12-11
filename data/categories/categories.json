@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "slug": "cong-nghe",
+        "name": "Công nghệ",
+        "description": "Tin tức về công nghệ, thiết bị điện tử, phần mềm và đổi mới sáng tạo",
+        "createdAt": "2025-01-01T00:00:00+07:00",
+        "updatedAt": "2025-12-09T00:00:00+07:00"
+    },
+    {
+        "id": 2,
+        "slug": "doi-song",
+        "name": "Đời sống",
+        "description": "Tin tức về đời sống, gia đình, xã hội và phong cách sống",
+        "createdAt": "2025-01-01T00:00:00+07:00",
+        "updatedAt": "2025-12-09T00:00:00+07:00"
+    },
+    {
+        "id": 3,
+        "slug": "giai-tri",
+        "name": "Giải trí",
+        "description": "Tin tức về showbiz, phim ảnh, âm nhạc và các sự kiện giải trí",
+        "createdAt": "2025-01-01T00:00:00+07:00",
+        "updatedAt": "2025-12-09T00:00:00+07:00"
+    },
+    {
+        "id": 4,
+        "slug": "giao-duc",
+        "name": "Giáo dục",
+        "description": "Tin tức về giáo dục, trường học, thi cử và đào tạo",
+        "createdAt": "2025-01-01T00:00:00+07:00",
+        "updatedAt": "2025-12-09T00:00:00+07:00"
+    },
+    {
+        "id": 5,
+        "slug": "kinh-doanh",
+        "name": "Kinh doanh",
+        "description": "Tin tức về kinh tế, doanh nghiệp, tài chính và thị trường",
+        "createdAt": "2025-01-01T00:00:00+07:00",
+        "updatedAt": "2025-12-09T00:00:00+07:00"
+    },
+    {
+        "id": 6,
+        "slug": "phap-luat",
+        "name": "Pháp luật",
+        "description": "Tin tức về pháp luật, tòa án và các vụ án",
+        "createdAt": "2025-01-01T00:00:00+07:00",
+        "updatedAt": "2025-12-09T00:00:00+07:00"
+    },
+    {
+        "id": 7,
+        "slug": "suc-khoe",
+        "name": "Sức khỏe",
+        "description": "Tin tức về y tế, chăm sóc sức khỏe và lối sống lành mạnh",
+        "createdAt": "2025-01-01T00:00:00+07:00",
+        "updatedAt": "2025-12-09T00:00:00+07:00"
+    },
+    {
+        "id": 8,
+        "slug": "the-gioi",
+        "name": "Thế giới",
+        "description": "Tin tức quốc tế, sự kiện toàn cầu và quan hệ đối ngoại",
+        "createdAt": "2025-01-01T00:00:00+07:00",
+        "updatedAt": "2025-12-09T00:00:00+07:00"
+    },
+    {
+        "id": 9,
+        "slug": "the-thao",
+        "name": "Thể thao",
+        "description": "Tin tức về bóng đá, các môn thể thao và sự kiện thể thao",
+        "createdAt": "2025-01-01T00:00:00+07:00",
+        "updatedAt": "2025-12-09T00:00:00+07:00"
+    },
+    {
+        "id": 10,
+        "slug": "thoi-su",
+        "name": "Thời sự",
+        "description": "Tin tức thời sự trong nước, chính trị và các sự kiện nổi bật",
+        "createdAt": "2025-01-01T00:00:00+07:00",
+        "updatedAt": "2025-12-09T00:00:00+07:00"
+    }
+]

@@ -1,0 +1,222 @@
+[
+    {
+        "id": 1,
+        "articleGuid": "https://vnexpress.net/tu-the-nga-cua-robot-hinh-nguoi-tesla-gay-nghi-ngo-4991525.html",
+        "userId": 3,
+        "content": "Robot Tesla ngày càng tiến bộ, nhưng việc có người điều khiển từ xa cũng là điều dễ hiểu trong giai đoạn thử nghiệm.",
+        "likes": 15,
+        "dislikes": 2,
+        "status": "approved",
+        "createdAt": "2025-12-09T16:30:00+07:00",
+        "updatedAt": "2025-12-09T16:30:00+07:00"
+    },
+    {
+        "id": 2,
+        "articleGuid": "https://vnexpress.net/tu-the-nga-cua-robot-hinh-nguoi-tesla-gay-nghi-ngo-4991525.html",
+        "userId": 5,
+        "content": "Elon Musk luôn có những công bố gây tranh cãi. Cần phải chờ xem thực tế robot hoạt động như thế nào.",
+        "likes": 8,
+        "dislikes": 1,
+        "status": "approved",
+        "createdAt": "2025-12-09T17:00:00+07:00",
+        "updatedAt": "2025-12-09T17:00:00+07:00"
+    },
+    {
+        "id": 3,
+        "articleGuid": "https://vnexpress.net/bien-dong-nhan-su-thuong-tang-o-apple-4991210.html",
+        "userId": 2,
+        "content": "Apple đang trải qua giai đoạn chuyển giao quan trọng. Hy vọng công ty vẫn giữ được văn hóa đổi mới.",
+        "likes": 22,
+        "dislikes": 0,
+        "status": "approved",
+        "createdAt": "2025-12-09T11:00:00+07:00",
+        "updatedAt": "2025-12-09T11:00:00+07:00"
+    },
+    {
+        "id": 4,
+        "articleGuid": "https://vnexpress.net/bien-dong-nhan-su-thuong-tang-o-apple-4991210.html",
+        "userId": 4,
+        "content": "Tim Cook đã làm rất tốt trong nhiều năm qua. Dù có thay đổi lãnh đạo, tôi tin Apple vẫn sẽ phát triển.",
+        "likes": 18,
+        "dislikes": 3,
+        "status": "approved",
+        "createdAt": "2025-12-09T12:30:00+07:00",
+        "updatedAt": "2025-12-09T12:30:00+07:00"
+    },
+    {
+        "id": 5,
+        "articleGuid": "https://vnexpress.net/apple-sap-mo-dich-vu-tap-the-duc-online-o-viet-nam-4991512.html",
+        "userId": 4,
+        "content": "Giá 69.000đ/tháng khá hợp lý so với thị trường. Mong Apple có thêm phụ đề tiếng Việt sớm!",
+        "likes": 30,
+        "dislikes": 1,
+        "status": "approved",
+        "createdAt": "2025-12-09T13:00:00+07:00",
+        "updatedAt": "2025-12-09T13:00:00+07:00"
+    },
+    {
+        "id": 6,
+        "articleGuid": "https://vnexpress.net/apple-sap-mo-dich-vu-tap-the-duc-online-o-viet-nam-4991512.html",
+        "userId": 6,
+        "content": "Cuối cùng cũng có Fitness+ ở Việt Nam. Đợi dịch vụ này lâu rồi!",
+        "likes": 25,
+        "dislikes": 0,
+        "status": "approved",
+        "createdAt": "2025-12-09T14:15:00+07:00",
+        "updatedAt": "2025-12-09T14:15:00+07:00"
+    },
+    {
+        "id": 7,
+        "articleGuid": "https://vnexpress.net/nha-mang-viet-dau-tien-vuot-20-000-tram-5g-4991274.html",
+        "userId": 3,
+        "content": "Viettel phát triển 5G rất nhanh. Mong sớm được trải nghiệm ở khu vực mình sinh sống.",
+        "likes": 12,
+        "dislikes": 0,
+        "status": "approved",
+        "createdAt": "2025-12-08T21:30:00+07:00",
+        "updatedAt": "2025-12-08T21:30:00+07:00"
+    },
+    {
+        "id": 8,
+        "articleGuid": "https://vnexpress.net/viettel-chuan-bi-nhan-luc-cho-nha-may-chip-ban-dan-dau-tien-4991163.html",
+        "userId": 9,
+        "content": "Việt Nam cần phải tự chủ công nghệ chip. Đây là bước đi đúng đắn của Viettel.",
+        "likes": 45,
+        "dislikes": 2,
+        "status": "approved",
+        "createdAt": "2025-12-08T18:00:00+07:00",
+        "updatedAt": "2025-12-08T18:00:00+07:00"
+    },
+    {
+        "id": 9,
+        "articleGuid": "https://vnexpress.net/viettel-chuan-bi-nhan-luc-cho-nha-may-chip-ban-dan-dau-tien-4991163.html",
+        "userId": 5,
+        "content": "Cần có nhiều chương trình đào tạo kỹ sư bán dẫn hơn nữa. Đây là ngành công nghiệp của tương lai.",
+        "likes": 38,
+        "dislikes": 0,
+        "status": "approved",
+        "createdAt": "2025-12-08T19:00:00+07:00",
+        "updatedAt": "2025-12-08T19:00:00+07:00"
+    },
+    {
+        "id": 10,
+        "articleGuid": "https://vnexpress.net/7-hiep-hoi-trung-quoc-tien-ao-pi-vo-gia-tri-4990974.html",
+        "userId": 7,
+        "content": "Đã cảnh báo từ lâu về Pi Network. Nhiều người vẫn tin vì tâm lý đám đông.",
+        "likes": 55,
+        "dislikes": 10,
+        "status": "approved",
+        "createdAt": "2025-12-08T12:00:00+07:00",
+        "updatedAt": "2025-12-08T12:00:00+07:00"
+    },
+    {
+        "id": 11,
+        "articleGuid": "https://vnexpress.net/7-hiep-hoi-trung-quoc-tien-ao-pi-vo-gia-tri-4990974.html",
+        "userId": 3,
+        "content": "Bài báo này rất hữu ích. Mọi người cần thận trọng với các dự án tiền ảo.",
+        "likes": 28,
+        "dislikes": 5,
+        "status": "approved",
+        "createdAt": "2025-12-08T13:30:00+07:00",
+        "updatedAt": "2025-12-08T13:30:00+07:00"
+    },
+    {
+        "id": 12,
+        "articleGuid": "https://vnexpress.net/bo-gia-ai-khuyen-van-nen-theo-nganh-khoa-hoc-may-tinh-4990908.html",
+        "userId": 6,
+        "content": "GS Geoffrey Hinton nói rất đúng. Khoa học máy tính không chỉ là lập trình mà còn nhiều hơn thế.",
+        "likes": 20,
+        "dislikes": 0,
+        "status": "approved",
+        "createdAt": "2025-12-08T17:00:00+07:00",
+        "updatedAt": "2025-12-08T17:00:00+07:00"
+    },
+    {
+        "id": 13,
+        "articleGuid": "https://vnexpress.net/intel-co-the-san-xuat-chip-cho-iphone-4990909.html",
+        "userId": 2,
+        "content": "Apple đa dạng hóa nhà cung cấp là bước đi thông minh. Không nên phụ thuộc hoàn toàn vào TSMC.",
+        "likes": 16,
+        "dislikes": 1,
+        "status": "approved",
+        "createdAt": "2025-12-08T15:00:00+07:00",
+        "updatedAt": "2025-12-08T15:00:00+07:00"
+    },
+    {
+        "id": 14,
+        "articleGuid": "https://vnexpress.net/robot-hinh-nguoi-my-chay-gan-giong-con-nguoi-4990825.html",
+        "userId": 8,
+        "content": "Figure 03 và Optimus đang cạnh tranh quyết liệt. Tương lai robot hình người sẽ rất thú vị.",
+        "likes": 14,
+        "dislikes": 0,
+        "status": "approved",
+        "createdAt": "2025-12-08T08:00:00+07:00",
+        "updatedAt": "2025-12-08T08:00:00+07:00"
+    },
+    {
+        "id": 15,
+        "articleGuid": "https://vnexpress.net/sieu-nha-may-trung-quoc-san-xuat-1-000-ve-tinh-moi-nam-4991099.html",
+        "userId": 10,
+        "content": "Trung Quốc đang đầu tư mạnh vào không gian. Cuộc đua vệ tinh Internet sẽ rất gay cấn.",
+        "likes": 22,
+        "dislikes": 3,
+        "status": "approved",
+        "createdAt": "2025-12-08T20:00:00+07:00",
+        "updatedAt": "2025-12-08T20:00:00+07:00"
+    },
+    {
+        "id": 16,
+        "articleGuid": "https://vnexpress.net/rac-roi-phan-chia-tai-san-so-khi-ly-hon-4991010.html",
+        "userId": 9,
+        "content": "Đây là vấn đề pháp lý mới cần được quan tâm. Luật cần phải theo kịp công nghệ.",
+        "likes": 18,
+        "dislikes": 0,
+        "status": "approved",
+        "createdAt": "2025-12-09T06:00:00+07:00",
+        "updatedAt": "2025-12-09T06:00:00+07:00"
+    },
+    {
+        "id": 17,
+        "articleGuid": "https://vnexpress.net/apple-moi-quan-he-voi-viet-nam-dang-di-vao-chieu-sau-4991693.html",
+        "userId": 4,
+        "content": "Rất vui khi thấy Apple đầu tư vào cộng đồng Việt Nam. Dự án nước sạch rất ý nghĩa!",
+        "likes": 35,
+        "dislikes": 0,
+        "status": "approved",
+        "createdAt": "2025-12-09T18:00:00+07:00",
+        "updatedAt": "2025-12-09T18:00:00+07:00"
+    },
+    {
+        "id": 18,
+        "articleGuid": "https://vnexpress.net/quan-quan-khoi-nghiep-quoc-gia-se-tham-gia-world-cup-startup-4991264.html",
+        "userId": 5,
+        "content": "Chúc các startup Việt Nam thành công tại Startup World Cup! Tự hào về các bạn trẻ.",
+        "likes": 40,
+        "dislikes": 0,
+        "status": "approved",
+        "createdAt": "2025-12-09T11:30:00+07:00",
+        "updatedAt": "2025-12-09T11:30:00+07:00"
+    },
+    {
+        "id": 19,
+        "articleGuid": "https://vnexpress.net/can-tho-se-trinh-dien-500-san-pham-cong-nghe-4991635.html",
+        "userId": 6,
+        "content": "ĐBSCL cần phát triển công nghệ mạnh mẽ hơn. Sự kiện này là bước đi tích cực.",
+        "likes": 12,
+        "dislikes": 0,
+        "status": "approved",
+        "createdAt": "2025-12-09T15:00:00+07:00",
+        "updatedAt": "2025-12-09T15:00:00+07:00"
+    },
+    {
+        "id": 20,
+        "articleGuid": "https://vnexpress.net/loat-hoat-dong-noi-bat-tai-techfest-viet-nam-2025-4988771.html",
+        "userId": 8,
+        "content": "Techfest 2025 hứa hẹn sẽ rất sôi động. Mong được tham gia trải nghiệm công nghệ tại Hồ Gươm!",
+        "likes": 28,
+        "dislikes": 0,
+        "status": "approved",
+        "createdAt": "2025-12-08T16:30:00+07:00",
+        "updatedAt": "2025-12-08T16:30:00+07:00"
+    }
+]

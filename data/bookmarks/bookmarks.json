@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "userId": 1,
+        "articleGuid": "https://vnexpress.net/tu-the-nga-cua-robot-hinh-nguoi-tesla-gay-nghi-ngo-4991525.html",
+        "category": "cong-nghe",
+        "note": "Theo dõi tin tức về robot Tesla",
+        "createdAt": "2025-12-09T16:00:00+07:00"
+    },
+    {
+        "id": 2,
+        "userId": 1,
+        "articleGuid": "https://vnexpress.net/viettel-chuan-bi-nhan-luc-cho-nha-may-chip-ban-dan-dau-tien-4991163.html",
+        "category": "cong-nghe",
+        "note": "Quan trọng - chip bán dẫn Việt Nam",
+        "createdAt": "2025-12-08T17:30:00+07:00"
+    },
+    {
+        "id": 3,
+        "userId": 2,
+        "articleGuid": "https://vnexpress.net/bien-dong-nhan-su-thuong-tang-o-apple-4991210.html",
+        "category": "cong-nghe",
+        "note": "Cập nhật tin Apple",
+        "createdAt": "2025-12-09T10:30:00+07:00"
+    },
+    {
+        "id": 4,
+        "userId": 3,
+        "articleGuid": "https://vnexpress.net/apple-sap-mo-dich-vu-tap-the-duc-online-o-viet-nam-4991512.html",
+        "category": "cong-nghe",
+        "note": "Đăng ký thử Fitness+",
+        "createdAt": "2025-12-09T12:00:00+07:00"
+    },
+    {
+        "id": 5,
+        "userId": 3,
+        "articleGuid": "https://vnexpress.net/nha-mang-viet-dau-tien-vuot-20-000-tram-5g-4991274.html",
+        "category": "cong-nghe",
+        "note": "Kiểm tra 5G khu vực mình",
+        "createdAt": "2025-12-08T21:00:00+07:00"
+    },
+    {
+        "id": 6,
+        "userId": 4,
+        "articleGuid": "https://vnexpress.net/7-hiep-hoi-trung-quoc-tien-ao-pi-vo-gia-tri-4990974.html",
+        "category": "cong-nghe",
+        "note": "Cảnh báo về tiền ảo",
+        "createdAt": "2025-12-08T11:30:00+07:00"
+    },
+    {
+        "id": 7,
+        "userId": 5,
+        "articleGuid": "https://vnexpress.net/bo-gia-ai-khuyen-van-nen-theo-nganh-khoa-hoc-may-tinh-4990908.html",
+        "category": "cong-nghe",
+        "note": "Tư vấn cho con",
+        "createdAt": "2025-12-08T16:45:00+07:00"
+    },
+    {
+        "id": 8,
+        "userId": 6,
+        "articleGuid": "https://vnexpress.net/quan-quan-khoi-nghiep-quoc-gia-se-tham-gia-world-cup-startup-4991264.html",
+        "category": "cong-nghe",
+        "note": "Theo dõi Techfest",
+        "createdAt": "2025-12-09T11:00:00+07:00"
+    },
+    {
+        "id": 9,
+        "userId": 7,
+        "articleGuid": "https://vnexpress.net/intel-co-the-san-xuat-chip-cho-iphone-4990909.html",
+        "category": "cong-nghe",
+        "note": "",
+        "createdAt": "2025-12-08T14:30:00+07:00"
+    },
+    {
+        "id": 10,
+        "userId": 8,
+        "articleGuid": "https://vnexpress.net/robot-hinh-nguoi-my-chay-gan-giong-con-nguoi-4990825.html",
+        "category": "cong-nghe",
+        "note": "So sánh với Tesla Optimus",
+        "createdAt": "2025-12-08T09:00:00+07:00"
+    },
+    {
+        "id": 11,
+        "userId": 2,
+        "articleGuid": "https://vnexpress.net/loat-hoat-dong-noi-bat-tai-techfest-viet-nam-2025-4988771.html",
+        "category": "cong-nghe",
+        "note": "Sự kiện tham gia",
+        "createdAt": "2025-12-08T16:00:00+07:00"
+    },
+    {
+        "id": 12,
+        "userId": 9,
+        "articleGuid": "https://vnexpress.net/rac-roi-phan-chia-tai-san-so-khi-ly-hon-4991010.html",
+        "category": "cong-nghe",
+        "note": "Tham khảo pháp lý",
+        "createdAt": "2025-12-09T07:00:00+07:00"
+    },
+    {
+        "id": 13,
+        "userId": 10,
+        "articleGuid": "https://vnexpress.net/sieu-nha-may-trung-quoc-san-xuat-1-000-ve-tinh-moi-nam-4991099.html",
+        "category": "cong-nghe",
+        "note": "Tin quốc tế",
+        "createdAt": "2025-12-08T20:30:00+07:00"
+    },
+    {
+        "id": 14,
+        "userId": 1,
+        "articleGuid": "https://vnexpress.net/apple-moi-quan-he-voi-viet-nam-dang-di-vao-chieu-sau-4991693.html",
+        "category": "cong-nghe",
+        "note": "Apple tại Việt Nam",
+        "createdAt": "2025-12-09T17:00:00+07:00"
+    },
+    {
+        "id": 15,
+        "userId": 4,
+        "articleGuid": "https://vnexpress.net/can-tho-se-trinh-dien-500-san-pham-cong-nghe-4991635.html",
+        "category": "cong-nghe",
+        "note": "Sự kiện ĐBSCL",
+        "createdAt": "2025-12-09T15:00:00+07:00"
+    }
+]
