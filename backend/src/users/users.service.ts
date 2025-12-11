@@ -6,9 +6,9 @@ import { RegisterRequestDto } from 'src/auth/dto/registerRequestDto';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseService) { }
 
-  create(registerRequestDto:RegisterRequestDto) {
+  create(registerRequestDto: RegisterRequestDto) {
     return this.databaseService.create<User>('users', registerRequestDto);
   }
 
@@ -33,6 +33,6 @@ export class UsersService {
   }
 
   remove(id: number) {
-    return this.databaseService.remove<User>('User', id);
+    return this.databaseService.remove<User>('users', id);
   }
 }
