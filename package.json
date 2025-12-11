@@ -2,6 +2,10 @@
   "name": "newsjco-root",
   "scripts": {
     "backend": "npm run start:dev --prefix backend",
-    "frontend": "npm run start --prefix frontend" 
+    "frontend": "npm run start --prefix frontend",
+    "dev":"concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1"
   }
 }
