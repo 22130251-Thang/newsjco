@@ -35,7 +35,7 @@ export const loginUser = createAsyncThunk<LoginSuccessResponse, LoginRequest>(
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 export const fetchCurrentUser = createAsyncThunk<User>(
   "auth/fetchCurrentUser",
@@ -46,7 +46,7 @@ export const fetchCurrentUser = createAsyncThunk<User>(
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 const authSlice = createSlice({
   name: "auth",
@@ -90,8 +90,8 @@ const authSlice = createSlice({
         state.user = null;
         state.isAuthenticated = false;
         state.isInitialized = true;
-        localStorage.removeItem("token")
-      })
+        localStorage.removeItem("token");
+      });
   },
 });
 
