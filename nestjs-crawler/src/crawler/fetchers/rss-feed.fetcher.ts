@@ -10,12 +10,12 @@ import {
 
 type RssItem = Parser.Item;
 
-
 @Injectable()
 export class RssFeedFetcher {
   private readonly logger = new Logger(RssFeedFetcher.name);
   private readonly parser: Parser;
-
+  private readonly IMG_SRC_REGEX =
+    /<img\s+(?:[^>]*?\s+)?src\s*=\s*(["'])(.*?)\1/i;
   constructor() {
     this.parser = new Parser({
       headers: { 'User-Agent': HTTP_USER_AGENT },
@@ -46,23 +46,28 @@ export class RssFeedFetcher {
     return results.flat();
   }
 
-
   private normalizeItem(
     item: RssItem,
     source: NewsSource,
     category: NewsCategory,
   ): UnifiedNewsItem {
     const anyItem = item as Record<string, unknown>;
-
+    const primaryContent =
+      item.content?.trim() ||
+      (anyItem['content:encoded'] as string)?.trim() ||
+      '';
+    let imageUrl: string | undefined;
+    const match = primaryContent.match(this.IMG_SRC_REGEX);
+    if (match && match[2]) {
+      imageUrl = match[2];
+    }
     return {
       title: item.title?.trim() || 'No Title',
       link: item.link?.trim() || '',
       pubDate: item.pubDate || new Date().toISOString(),
       description: item.contentSnippet?.trim() || item.summary?.trim() || '',
-      content:
-        item.content?.trim() ||
-        (anyItem['content:encoded'] as string)?.trim() ||
-        '',
+      content: primaryContent,
+      image: imageUrl,
       fullContent: '',
       author: item.creator || (anyItem.author as string) || 'Unknown',
       source,

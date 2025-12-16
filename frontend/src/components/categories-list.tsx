@@ -30,7 +30,7 @@ export const CategoriesList = () => {
   return (
     <ul className="space-x-3 flex my-4 text-sm">
       {categories.map((category) => (
-        <li key={category.id} className="">
+        <li key={category.id} className="text-nowrap">
           <Link
             to={`${category.slug}`}
             className="text-black-500 cursor-pointer"

@@ -5,11 +5,13 @@ import { DatabaseService } from './database/database.service';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { CategoriesModule } from './categories/categories.module';
+import { ArticlesModule } from './articles/articles.module';
 
 @Module({
-  imports: [UsersModule, AuthModule, CategoriesModule],
+  imports: [UsersModule, AuthModule, CategoriesModule, ArticlesModule],
   controllers: [AppController],
   providers: [AppService, DatabaseService],
 })
 export class AppModule { }
+
 

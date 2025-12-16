@@ -9,10 +9,8 @@ import {
 import { NewsSource } from '../types';
 import { sanitizeHtmlForTypography } from '../utils/content-sanitizer';
 
-
 const CONTENT_SELECTORS: Record<NewsSource, string[]> = {
   [NewsSource.VnExpress]: ['article.fck_detail', '.fck_detail'],
-  [NewsSource.ThanhNien]: ['div.detail__content', 'div.content-detail'],
 };
 
 const FALLBACK_SELECTORS = ['article', 'main', '.content'];

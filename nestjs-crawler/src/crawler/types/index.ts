@@ -1,7 +1,5 @@
-
 export enum NewsSource {
   VnExpress = 'VnExpress',
-  ThanhNien = 'ThanhNien',
 }
 
 export enum NewsCategory {
@@ -15,8 +13,15 @@ export enum NewsCategory {
   SucKhoe = 'suc-khoe',
   CongNghe = 'cong-nghe',
   DoiSong = 'doi-song',
+  MoiNhat = 'tin-moi-nhat',
+  NoiBat = 'tin-noi-bat',
+  DuLich = 'du-lich',
+  Xe = 'oto-xe-may',
+  YKien = 'y-kien',
+  TamSu = 'tam-su',
+  Cuoi = 'cuoi',
+  TinXemNhieu = 'tin-xem-nhieu',
 }
-
 
 export interface CategoryFeedConfig {
   source: NewsSource;
@@ -24,7 +29,6 @@ export interface CategoryFeedConfig {
   url: string;
   label: string;
 }
-
 
 export interface UnifiedNewsItem {
   title: string;
@@ -36,6 +40,7 @@ export interface UnifiedNewsItem {
   author?: string;
   source: NewsSource;
   category: NewsCategory;
+  image: string | undefined;
   categories: string[];
   guid: string;
 }
