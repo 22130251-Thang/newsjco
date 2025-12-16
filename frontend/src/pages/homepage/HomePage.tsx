@@ -15,11 +15,10 @@ export const HomePage = () => {
             <Menu className="cursor-pointer" />
           </div>
         </div>
-
-        <div className="w-[1200px] mx-auto flex flex-col justify-center items-center">
-          <TopThreeArticles />
-        </div>
       </nav>
+      <div className="w-[1200px] mx-auto flex flex-col justify-start items-startr mt-10">
+        <TopThreeArticles />
+      </div>
     </div>
   );
 };

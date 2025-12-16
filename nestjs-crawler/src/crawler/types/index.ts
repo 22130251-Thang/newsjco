@@ -39,6 +39,7 @@ export interface UnifiedNewsItem {
   fullContent: string;
   author?: string;
   source: NewsSource;
+  slug: string;
   category: NewsCategory;
   image: string | undefined;
   categories: string[];

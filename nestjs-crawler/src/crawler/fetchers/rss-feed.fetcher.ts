@@ -7,6 +7,7 @@ import {
   NewsSource,
   UnifiedNewsItem,
 } from '../types';
+import { generateSlug } from 'src/utils/utils';
 
 type RssItem = Parser.Item;
 
@@ -56,13 +57,20 @@ export class RssFeedFetcher {
       item.content?.trim() ||
       (anyItem['content:encoded'] as string)?.trim() ||
       '';
+
     let imageUrl: string | undefined;
     const match = primaryContent.match(this.IMG_SRC_REGEX);
     if (match && match[2]) {
       imageUrl = match[2];
     }
+
+    const title = item.title?.trim() || 'No Title';
+
+    const slug = generateSlug(title);
+
     return {
-      title: item.title?.trim() || 'No Title',
+      title: title,
+      slug: slug,
       link: item.link?.trim() || '',
       pubDate: item.pubDate || new Date().toISOString(),
       description: item.contentSnippet?.trim() || item.summary?.trim() || '',

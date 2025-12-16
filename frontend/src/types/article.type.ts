@@ -10,6 +10,7 @@ export interface Article {
   isFeatures?: boolean;
   position: number;
   category: string;
+  image: string;
   categories: string[];
   guid: string;
 }
