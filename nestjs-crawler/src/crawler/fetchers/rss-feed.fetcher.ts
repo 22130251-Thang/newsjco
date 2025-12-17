@@ -1,5 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import Parser from 'rss-parser';
+import * as https from 'https';
+import * as crypto from 'crypto';
 import { HTTP_USER_AGENT } from '../constants';
 import {
   CategoryFeedConfig,
@@ -18,8 +20,16 @@ export class RssFeedFetcher {
   private readonly IMG_SRC_REGEX =
     /<img\s+(?:[^>]*?\s+)?src\s*=\s*(["'])(.*?)\1/i;
   constructor() {
+    // Create custom https agent to allow legacy SSL renegotiation for baotintuc.vn
+    const httpsAgent = new https.Agent({
+      secureOptions: crypto.constants.SSL_OP_LEGACY_SERVER_CONNECT,
+    });
+
     this.parser = new Parser({
       headers: { 'User-Agent': HTTP_USER_AGENT },
+      requestOptions: {
+        agent: httpsAgent,
+      },
     });
   }
 

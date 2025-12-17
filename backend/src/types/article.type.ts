@@ -11,6 +11,7 @@ export interface Article extends BaseRecord {
   source: string;
   isFeatures?: boolean;
   position: number;
+  isMain: boolean;
   category: string;
   categories: string[];
   guid: string;

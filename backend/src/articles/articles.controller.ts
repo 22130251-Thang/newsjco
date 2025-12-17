@@ -42,6 +42,11 @@ export class ArticlesController {
     return this.articlesService.findTopThreeFeatures();
   }
 
+  @Get('top-10-thoi-su-articles')
+  findTop10ThoiSuArticles() {
+    return this.articlesService.findTop10ThoiSuArticles();
+  }
+
   @Post()
   create(@Body() createArticleDto: CreateArticleDto) {
     return this.articlesService.create(createArticleDto);

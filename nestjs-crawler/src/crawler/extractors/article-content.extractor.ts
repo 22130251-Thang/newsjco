@@ -1,6 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import * as https from 'https';
+import * as crypto from 'crypto';
 import {
   HTTP_TIMEOUT_MS,
   HTTP_USER_AGENT,
@@ -10,10 +12,15 @@ import { NewsSource } from '../types';
 import { sanitizeHtmlForTypography } from '../utils/content-sanitizer';
 
 const CONTENT_SELECTORS: Record<NewsSource, string[]> = {
-  [NewsSource.VnExpress]: ['article.fck_detail', '.fck_detail'],
+  [NewsSource.BaoTinTuc]: ['.newsdetail-content', '.article-content', '.content'],
 };
 
 const FALLBACK_SELECTORS = ['article', 'main', '.content'];
+
+// Create custom https agent to allow legacy SSL renegotiation for baotintuc.vn
+const httpsAgent = new https.Agent({
+  secureOptions: crypto.constants.SSL_OP_LEGACY_SERVER_CONNECT,
+});
 
 @Injectable()
 export class ArticleContentExtractor {
@@ -37,6 +44,7 @@ export class ArticleContentExtractor {
     const response = await axios.get<string>(url, {
       headers: { 'User-Agent': HTTP_USER_AGENT },
       timeout: HTTP_TIMEOUT_MS,
+      httpsAgent: httpsAgent,
     });
     return response.data;
   }

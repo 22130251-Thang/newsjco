@@ -33,7 +33,12 @@ export class ArticlesService {
   findByCategory(category: string): Article[] {
     return this.databaseService.findAll<Article>(category);
   }
-
+  findTop10ThoiSuArticles(): Article[] {
+    const articles = this.databaseService.findAll<Article>('thoi-su');
+    articles.filter((a) => a.isFeatures == undefined);
+    const top10Articles = articles.slice(0, 10);
+    return top10Articles;
+  }
   findByIndex(category: string, index: number): Article {
     const articles = this.databaseService.findAll<Article>(category);
     if (index < 0 || index >= articles.length) {
