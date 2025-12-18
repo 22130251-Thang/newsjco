@@ -91,6 +91,24 @@ export const FEED_CONFIGS: CategoryFeedConfig[] = [
     url: 'https://baotintuc.vn/dia-phuong.rss',
     label: 'Địa phương',
   },
+  {
+    source: NewsSource.BaoTinTuc,
+    category: NewsCategory.Anh,
+    url: 'https://baotintuc.vn/anh-360.rss',
+    label: 'Ảnh',
+  },
+  {
+    source: NewsSource.BaoTinTuc,
+    category: NewsCategory.DanTocMienNui,
+    url: 'https://baotintuc.vn/giai-ma-muon-mat.rss',
+    label: 'Dân tộc miền núi',
+  },
+  {
+    source: NewsSource.BaoTinTuc,
+    category: NewsCategory.InfoGraphics,
+    url: 'https://baotintuc.vn/infographics.rss',
+    label: 'InfoGraphics',
+  },
 ];
 
 export function getFeedsByCategory(

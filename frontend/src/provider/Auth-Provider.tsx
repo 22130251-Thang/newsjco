@@ -1,4 +1,3 @@
-// components/AuthProvider.tsx
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
 import { fetchCurrentUser } from "../lib/store/slices/authSlice";

@@ -37,7 +37,6 @@ export const CategorySection = ({ title, slug, articles, loading }: CategorySect
 
     return (
         <div className="bg-white mb-4">
-            {/* Section Header */}
             <div className="section-header px-4 pt-4">
                 <h2>{title}</h2>
                 <Link
@@ -48,12 +47,10 @@ export const CategorySection = ({ title, slug, articles, loading }: CategorySect
                 </Link>
             </div>
 
-            {/* Content */}
             <div className="p-4">
                 <div className="flex gap-4">
-                    {/* Main Article */}
                     <Link
-                        to={mainArticle.guid}
+                        to={`/${mainArticle.category}/${mainArticle.slug}`}
                         className="w-[300px] flex-shrink-0 group"
                     >
                         <div className="relative overflow-hidden rounded">
@@ -74,12 +71,11 @@ export const CategorySection = ({ title, slug, articles, loading }: CategorySect
                         </p>
                     </Link>
 
-                    {/* Side Articles */}
                     <div className="flex-1 space-y-3">
                         {sideArticles.map((article) => (
                             <Link
                                 key={article.guid}
-                                to={article.guid}
+                                to={`/${article.category}/${article.slug}`}
                                 className="flex gap-3 group"
                             >
                                 <img

@@ -1,38 +1,53 @@
-import { Bell, Rss, Search, Phone, Mail, Smartphone } from "lucide-react";
+import { Rss, Search, Phone, Mail, Smartphone } from "lucide-react";
 import { Link } from "react-router-dom";
+import { CategoriesList } from "./categories-list";
 
 export const Header = () => {
   return (
     <header className="bg-white">
-      {/* Top Bar with Search */}
       <div className="bg-gray-100 border-b border-gray-200">
         <div className="container-main">
           <div className="flex justify-between items-center py-2">
-            {/* Left: Contact & Links */}
             <div className="flex items-center gap-4 text-xs text-gray-600">
-              <a href="tel:0914914999" className="flex items-center gap-1 hover:text-[#c02424]">
+              <a
+                href="tel:0914914999"
+                className="flex items-center gap-1 hover:text-[#c02424]"
+              >
                 <Phone size={12} />
                 <span>0914.914.999</span>
               </a>
-              <a href="mailto:thuky@baotintuc.vn" className="flex items-center gap-1 hover:text-[#c02424]">
+              <a
+                href="mailto:thuky@baotintuc.vn"
+                className="flex items-center gap-1 hover:text-[#c02424]"
+              >
                 <Mail size={12} />
                 <span>thuky@baotintuc.vn</span>
               </a>
               <div className="h-3 w-px bg-gray-300 mx-1"></div>
-              <a href="/rss" className="flex items-center gap-1 hover:text-[#c02424]">
+              <a
+                href="/rss"
+                className="flex items-center gap-1 hover:text-[#c02424]"
+              >
                 <Rss size={12} />
                 <span>RSS</span>
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#c02424]">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#c02424]"
+              >
                 Fanpage
               </a>
-              <a href="/" className="flex items-center gap-1 hover:text-[#c02424]">
+              <a
+                href="/"
+                className="flex items-center gap-1 hover:text-[#c02424]"
+              >
                 <Smartphone size={12} />
                 <span>Bản mobile</span>
               </a>
             </div>
 
-            {/* Right: Search Bar */}
             <div className="relative">
               <input
                 type="text"
@@ -47,24 +62,22 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Main Header Logo */}
-      <div className="container-main py-4">
+      <div className="container-main">
         <div className="flex items-end gap-4">
           <Link to="/" className="flex flex-col">
-            <span className="text-4xl font-bold text-[#c02424] font-heading tracking-tight leading-none uppercase">
-              BÁO TIN TỨC
-            </span>
-            <span className="text-[12px] text-gray-600 tracking-[0.2em] mt-1 font-medium uppercase border-t border-gray-200 pt-1 w-full text-justify">
-              THÔNG TẤN XÃ VIỆT NAM
-            </span>
+            <img
+              src="https://cdnstatic.baotintuc.vn/web_images/baotintuc-logo.png?v=100"
+              width={233}
+              height={105}
+            />
           </Link>
 
-          {/* Top Banner Ad Placeholder (Optional, next to logo) */}
-          <div className="ml-auto w-[600px] h-[70px] bg-gray-50 border border-dashed border-gray-200 flex items-center justify-center text-xs text-gray-400">
+          <div className="ml-auto w-[900px] h-[90px] bg-gray-50 border border-dashed border-gray-200 flex items-center justify-center text-xs text-gray-400">
             Quảng cáo
           </div>
         </div>
       </div>
+      <CategoriesList />
     </header>
   );
 };

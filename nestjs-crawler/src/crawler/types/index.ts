@@ -18,6 +18,9 @@ export enum NewsCategory {
   BienDao = 'bien-dao-viet-nam',
   YTe = 'suc-khoe',
   DiaPhuong = 'dia-phuong',
+  Anh = 'anh',
+  InfoGraphics = 'infographics',
+  DanTocMienNui = 'giai-ma-muon-mat',
 }
 
 export interface CategoryFeedConfig {

@@ -14,6 +14,7 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="/profile" element={<></>} />
             </Route>
+            <Route path="/:category/:slug" element={<></>} />
           </Route>
           <Route path="*" element={<>Not found</>} />
         </Routes>

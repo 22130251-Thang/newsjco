@@ -45,7 +45,7 @@ export const HotNews = () => {
                 {hotNewsArticles.map((article, index) => (
                     <Link
                         key={article.guid}
-                        to={article.guid}
+                        to={`/${article.category}/${article.slug}`}
                         className={`flex gap-4 py-4 ${index !== hotNewsArticles.length - 1 ? "border-b border-gray-200" : ""
                             } group`}
                     >

@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { Article } from 'src/types/article.type';
 import { CreateArticleDto } from './dto/create-article.dto';
-import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Injectable()
 export class ArticlesService {
@@ -21,6 +20,10 @@ export class ArticlesService {
     'kinh-te',
     'van-hoa',
     'quan-su',
+    'anh',
+    'infographics',
+    'giai-ma-muon-mat',
+    'tin-moi-nhat',
   ];
 
   constructor(private readonly databaseService: DatabaseService) { }
@@ -37,67 +40,23 @@ export class ArticlesService {
   findByCategory(category: string): Article[] {
     return this.databaseService.findAll<Article>(category);
   }
-  findTop10ThoiSuArticles(): Article[] {
-    const articles = this.databaseService.findAll<Article>('thoi-su');
-    articles.filter((a) => a.isFeatures == undefined);
-    const top10Articles = articles.slice(0, 10);
-    return top10Articles;
-  }
-  findByIndex(category: string, index: number): Article {
-    const articles = this.databaseService.findAll<Article>(category);
-    if (index < 0 || index >= articles.length) {
-      throw new NotFoundException(
-        `Article at index ${index} not found in category ${category}`,
-      );
-    }
-    return articles[index];
-  }
-
-  findByGuid(guid: string): Article {
+  findBySlug(slug: string): Article {
     for (const category of this.categories) {
-      const article = this.databaseService.findOneBy<Article>(
-        category,
-        'guid',
-        guid,
-      );
+      const articles = this.databaseService.findAll<Article>(category);
+      const article = articles.find((a) => a.slug === slug);
       if (article) {
         return article;
       }
     }
-    throw new NotFoundException(`Article not found with guid: ${guid}`);
+    throw new NotFoundException(`Article with slug ${slug} not found`);
   }
+
 
   create(createArticleDto: CreateArticleDto): Article {
     const category = createArticleDto.category;
     return this.databaseService.create<Article>(category, createArticleDto);
   }
 
-  updateByIndex(
-    category: string,
-    index: number,
-    updateArticleDto: UpdateArticleDto,
-  ): Article {
-    const articles = this.databaseService.findAll<Article>(category);
-    if (index < 0 || index >= articles.length) {
-      throw new NotFoundException(
-        `Article at index ${index} not found in category ${category}`,
-      );
-    }
-    const updatedArticle = { ...articles[index], ...updateArticleDto };
-    articles[index] = updatedArticle;
-    return updatedArticle;
-  }
-
-  removeByIndex(category: string, index: number): Article {
-    const articles = this.databaseService.findAll<Article>(category);
-    if (index < 0 || index >= articles.length) {
-      throw new NotFoundException(
-        `Article at index ${index} not found in category ${category}`,
-      );
-    }
-    const [removedArticle] = articles.splice(index, 1);
-    return removedArticle;
-  }
   findTopThreeFeatures(): Article[] {
     const articles = this.databaseService.findAll<Article>('thoi-su');
     const featuresArticles = articles.filter(
@@ -109,7 +68,7 @@ export class ArticlesService {
   findMainTheGioiArticle(): Article | null {
     const articles = this.databaseService.findAll<Article>('the-gioi');
     const mainArticle = articles.find((a) => a.isMain && a.isMain === true);
-    console.log(mainArticle)
+    console.log(mainArticle);
     return mainArticle || null;
   }
 
@@ -126,7 +85,8 @@ export class ArticlesService {
 
   findHomePageCategories() {
     const result: { category: string; articles: Article[] }[] = [];
-    for (const category of this.categories) {
+    const categoriesToFetch = this.categories.slice(0, 10);
+    for (const category of categoriesToFetch) {
       try {
         const articles = this.databaseService.findAll<Article>(category);
         if (articles.length > 0) {
@@ -136,9 +96,22 @@ export class ArticlesService {
           });
         }
       } catch (error) {
-        console.warn(`Could not fetch articles for category ${category}: ${error.message}`);
+        console.warn(
+          `Could not fetch articles for category ${category}: ${error.message}`,
+        );
       }
     }
     return result;
+  }
+
+  findMediaArticles(): Article[] {
+    const anhArticles = this.databaseService.findAll<Article>('anh');
+    const infographicArticles =
+      this.databaseService.findAll<Article>('infographics');
+    return [...anhArticles, ...infographicArticles];
+  }
+
+  findEconomicArticles(): Article[] {
+    return this.databaseService.findAll<Article>('kinh-te');
   }
 }

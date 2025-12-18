@@ -10,7 +10,7 @@ export const Footer = () => {
 
   return (
     <footer className="mt-12">
-      <div className="border-t border-b border-gray-200 bg-white">
+      <div className="border-t border-b border-red-600 bg-white">
         <div className="container-main">
           <div className="flex flex-wrap items-center gap-x-4 py-2">
             <Link to="/" className="text-gray-500 hover:text-[#c02424]">
@@ -49,12 +49,7 @@ export const Footer = () => {
                   }}
                 />
                 <div className="flex flex-col">
-                  <span className="text-4xl font-bold text-[#c02424] font-heading uppercase leading-none">
-                    tin tức
-                  </span>
-                  <span className="text-sm font-bold text-[#0066b3] uppercase tracking-widest border-t border-[#c02424] mt-1 pt-1 w-max">
-                    TTXVN
-                  </span>
+                  <img width={150} height={93} src="https://cdnstatic.baotintuc.vn/web_images/log-TT-DT.png?v=100" />
                 </div>
               </div>
 

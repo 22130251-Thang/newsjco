@@ -5,9 +5,8 @@ import { getMainTheGioiArticle } from "../lib/store/slices/articleSlice";
 
 export const MainSection = () => {
   const dispatch = useAppDispatch();
-  const { mainTheGioiArticle, loadingMainTheGioiArticle, error } = useAppSelector(
-    (state) => state.article,
-  );
+  const { mainTheGioiArticle, loadingMainTheGioiArticle, error } =
+    useAppSelector((state) => state.article);
 
   useEffect(() => {
     dispatch(getMainTheGioiArticle());
@@ -49,29 +48,32 @@ export const MainSection = () => {
     <div className="bg-white">
       <div className="flex flex-col">
         <Link
-          to={mainTheGioiArticle.guid}
+          to={`/${mainTheGioiArticle.category}/${mainTheGioiArticle.slug}`}
           className="relative block w-full h-[300px] overflow-hidden group"
         >
           <img
             src={mainTheGioiArticle.image}
             alt={mainTheGioiArticle.title}
             className="w-full h-full object-cover"
+            width={540}
+            height={338}
           />
           <div className="absolute top-4 left-4">
-            <span className="category-badge">{mainTheGioiArticle.category}</span>
+            <span className="category-badge">
+              {mainTheGioiArticle.category}
+            </span>
           </div>
         </Link>
 
         <div className="p-4">
-          <Link to={mainTheGioiArticle.guid} className="group">
-            <h2 className="article-title text-3xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">
+          <Link to={`/${mainTheGioiArticle.category}/${mainTheGioiArticle.slug}`} className="group">
+            <h2 className="article-title text-2xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">
               {mainTheGioiArticle.title}
             </h2>
           </Link>
           <p className="article-description text-lg leading-relaxed text-gray-600 line-clamp-3">
             {mainTheGioiArticle.description}
           </p>
-
         </div>
       </div>
     </div>

@@ -16,14 +16,12 @@ export const CategoriesList = () => {
     dispatch(getCategories());
   }, [dispatch]);
 
-
-
   if (loading) return null;
   if (error) return null;
 
   return (
     <div className="sticky top-0 z-50">
-      <nav className="bg-red-700 text-white">
+      <nav className="bg-[#d21d21] text-white">
         <div className="container-main">
           <div className="flex items-center h-[40px]">
             <Link
@@ -34,16 +32,17 @@ export const CategoriesList = () => {
             </Link>
 
             <ul className="flex items-center flex-1 overflow-x-auto no-scrollbar h-full">
-              {categories && categories.slice(1).map((category) => (
-                <li key={category.id} className="h-full">
-                  <Link
-                    to={`/${category.slug}`}
-                    className="text-[12px] flex items-center px-2 h-full font-bold uppercase hover:text-yellow-200 transition-colors whitespace-nowrap"
-                  >
-                    {category.name}
-                  </Link>
-                </li>
-              ))}
+              {categories &&
+                categories.slice(1).map((category) => (
+                  <li key={category.id} className="h-full">
+                    <Link
+                      to={`/${category.slug}`}
+                      className="text-[12px] flex items-center px-2 h-full font-bold uppercase hover:text-yellow-200 transition-colors whitespace-nowrap"
+                    >
+                      {category.name}
+                    </Link>
+                  </li>
+                ))}
             </ul>
 
             <button className="px-3 h-full flex items-center justify-center hover:bg-[#a01c1c] transition-colors">
@@ -56,9 +55,7 @@ export const CategoriesList = () => {
       <div className="container-main bg-gray-100 py-2">
         <div className="flex items-center justify-between text-xs">
           <div className="flex items-center gap-3 overflow-hidden flex-1 mr-4 p-2">
-            <span className="font-bold text-red-500">
-              SỰ KIỆN
-            </span>
+            <span className="font-bold text-red-500">SỰ KIỆN</span>
             <div className="flex items-center gap-2 truncate text-gray-700">
               <Link to="/su-kien/1" className="bg-white rounded-xl px-2 py-2">
                 Báo Tin tức - 40 năm đổi mới
