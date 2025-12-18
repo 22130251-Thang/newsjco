@@ -11,3 +11,20 @@ export const fetchTop10ThoiSuArticles = async () => {
   );
   return response.data;
 };
+
+export const fetchMainTheGioiArticle = async () => {
+  const response = await apiClient.get<Article | null>("articles/main-the-gioi");
+  return response.data;
+};
+
+export const fetchHotNewsArticles = async () => {
+  const response = await apiClient.get<Article[]>("articles/hot-news");
+  return response.data;
+};
+
+export const fetchHomePageCategories = async () => {
+  const response = await apiClient.get<
+    { category: string; articles: Article[] }[]
+  >("articles/homepage-categories");
+  return response.data;
+};

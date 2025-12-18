@@ -7,7 +7,7 @@ import { UpdateArticleDto } from './dto/update-article.dto';
 @Injectable()
 export class ArticlesService {
   private readonly categories = [
-    'cong-nghe',
+    'khoa-hoc-cong-nghe',
     'doi-song',
     'giai-tri',
     'giao-duc',
@@ -17,9 +17,13 @@ export class ArticlesService {
     'the-gioi',
     'the-thao',
     'thoi-su',
+    'dia-phuong',
+    'kinh-te',
+    'van-hoa',
+    'quan-su',
   ];
 
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseService) { }
 
   findAll(): Article[] {
     let allArticles: Article[] = [];
@@ -100,5 +104,41 @@ export class ArticlesService {
       (a) => a.isFeatures && a.isFeatures == true,
     );
     return featuresArticles;
+  }
+
+  findMainTheGioiArticle(): Article | null {
+    const articles = this.databaseService.findAll<Article>('the-gioi');
+    const mainArticle = articles.find((a) => a.isMain && a.isMain === true);
+    console.log(mainArticle)
+    return mainArticle || null;
+  }
+
+  findHotNews(): Article[] {
+    const hotNews: Article[] = [];
+    for (const category of this.categories) {
+      const articles = this.databaseService.findAll<Article>(category);
+      if (articles.length > 0) {
+        hotNews.push(articles[0]);
+      }
+    }
+    return hotNews;
+  }
+
+  findHomePageCategories() {
+    const result: { category: string; articles: Article[] }[] = [];
+    for (const category of this.categories) {
+      try {
+        const articles = this.databaseService.findAll<Article>(category);
+        if (articles.length > 0) {
+          result.push({
+            category,
+            articles: articles.slice(0, 4),
+          });
+        }
+      } catch (error) {
+        console.warn(`Could not fetch articles for category ${category}: ${error.message}`);
+      }
+    }
+    return result;
   }
 }

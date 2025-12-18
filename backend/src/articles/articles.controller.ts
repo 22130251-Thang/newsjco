@@ -14,7 +14,7 @@ import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Controller('articles')
 export class ArticlesController {
-  constructor(private readonly articlesService: ArticlesService) {}
+  constructor(private readonly articlesService: ArticlesService) { }
 
   @Get()
   findAll(@Query('category') category?: string) {
@@ -45,6 +45,21 @@ export class ArticlesController {
   @Get('top-10-thoi-su-articles')
   findTop10ThoiSuArticles() {
     return this.articlesService.findTop10ThoiSuArticles();
+  }
+
+  @Get('main-the-gioi')
+  findMainTheGioiArticle() {
+    return this.articlesService.findMainTheGioiArticle();
+  }
+
+  @Get('hot-news')
+  findHotNews() {
+    return this.articlesService.findHotNews();
+  }
+
+  @Get('homepage-categories')
+  getHomePageCategories() {
+    return this.articlesService.findHomePageCategories();
   }
 
   @Post()

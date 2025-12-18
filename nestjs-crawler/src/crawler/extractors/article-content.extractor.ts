@@ -17,7 +17,6 @@ const CONTENT_SELECTORS: Record<NewsSource, string[]> = {
 
 const FALLBACK_SELECTORS = ['article', 'main', '.content'];
 
-// Create custom https agent to allow legacy SSL renegotiation for baotintuc.vn
 const httpsAgent = new https.Agent({
   secureOptions: crypto.constants.SSL_OP_LEGACY_SERVER_CONNECT,
 });
