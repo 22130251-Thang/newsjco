@@ -3,6 +3,7 @@ import AuthProvider from "./provider/Auth-Provider";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { HomePage } from "./pages/homepage/HomePage";
 import { MainLayout } from "./layouts/main-layout";
+import { ArticleDetail } from "./pages/articledetails/ArticleDetail";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="/profile" element={<></>} />
             </Route>
-            <Route path="/:category/:slug" element={<></>} />
+            <Route path="/:category/:slug" element={<ArticleDetail />} />
           </Route>
           <Route path="*" element={<>Not found</>} />
         </Routes>

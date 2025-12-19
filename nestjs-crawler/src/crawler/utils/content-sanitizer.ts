@@ -8,13 +8,9 @@ const REMOVE_ELEMENTS = [
   'script',
   'style',
   'link',
-  'meta',
-  'noscript',
-  'svg',
   'button',
   'input',
   'form',
-  'nav',
 ];
 
 

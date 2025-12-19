@@ -22,6 +22,10 @@ export class ArticlesController {
     }
     return this.articlesService.findAll();
   }
+  @Get('by-category/:category')
+  findFourByCategory(@Param('category') category: string) {
+    return this.articlesService.findFourByCategory(category);
+  }
 
 
   @Get('top-3-articles')

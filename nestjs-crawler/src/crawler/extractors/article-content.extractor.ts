@@ -12,7 +12,7 @@ import { NewsSource } from '../types';
 import { sanitizeHtmlForTypography } from '../utils/content-sanitizer';
 
 const CONTENT_SELECTORS: Record<NewsSource, string[]> = {
-  [NewsSource.BaoTinTuc]: ['.newsdetail-content', '.article-content', '.content'],
+  [NewsSource.BaoTinTuc]: ['.contents'],
 };
 
 const FALLBACK_SELECTORS = ['article', 'main', '.content'];

@@ -40,6 +40,11 @@ export class ArticlesService {
   findByCategory(category: string): Article[] {
     return this.databaseService.findAll<Article>(category);
   }
+
+  findFourByCategory(category: string): Article[] {
+    const articles = this.databaseService.findAll<Article>(category);
+    return articles.slice(0, 4);
+  }
   findBySlug(slug: string): Article {
     for (const category of this.categories) {
       const articles = this.databaseService.findAll<Article>(category);
@@ -68,7 +73,6 @@ export class ArticlesService {
   findMainTheGioiArticle(): Article | null {
     const articles = this.databaseService.findAll<Article>('the-gioi');
     const mainArticle = articles.find((a) => a.isMain && a.isMain === true);
-    console.log(mainArticle);
     return mainArticle || null;
   }
 
@@ -96,9 +100,7 @@ export class ArticlesService {
           });
         }
       } catch (error) {
-        console.warn(
-          `Could not fetch articles for category ${category}: ${error.message}`,
-        );
+        // Silently skip if category cannot be fetched
       }
     }
     return result;

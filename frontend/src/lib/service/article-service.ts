@@ -32,3 +32,13 @@ export const fetchEconomicArticles = async () => {
   const response = await apiClient.get<Article[]>("articles/economic-articles");
   return response.data;
 };
+export const fetchArticleBySlug = async (slug: string) => {
+  const response = await apiClient.get<Article>("articles/by-slug/" + slug);
+  return response.data;
+};
+export const fetchArticlesByCategory = async (category: string) => {
+  const response = await apiClient.get<Article[]>(
+    "articles/by-category/" + category,
+  );
+  return response.data;
+};
