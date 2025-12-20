@@ -4,6 +4,8 @@ import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
 import { getArticleBySlug, getArticlesByCategory } from "../../lib/store/slices/articleSlice";
 import { Calendar, User, Clock, Share2 } from "lucide-react";
 
+import TTSButton from "../../components/TTSButton";
+
 export const ArticleDetail = () => {
     const { category, slug } = useParams();
     const dispatch = useAppDispatch();
@@ -32,6 +34,10 @@ export const ArticleDetail = () => {
             <div className="container-main py-10 text-center">
                 <h1 className="text-2xl font-bold text-red-600">Lỗi</h1>
                 <p className="text-gray-600 mt-2">{error}</p>
+                {/* Nút TTS đọc bài viết */}
+                <div className="mb-4">
+                    <TTSButton text={article.fullContent || article.content || article.description || article.title} />
+                </div>
             </div>
         );
     }
@@ -74,7 +80,9 @@ export const ArticleDetail = () => {
                                         </button>
                                     </div>
                                 </div>
-
+                                <div className="mb-4">
+                                    <TTSButton text={article.fullContent || article.content || article.description || article.title} />
+                                </div>
                                 {article.description && (
                                     <p className="text-lg font-bold text-gray-700 leading-relaxed italic mb-8 border-l-4 border-red-600 pl-4 py-1">
                                         {article.description}
