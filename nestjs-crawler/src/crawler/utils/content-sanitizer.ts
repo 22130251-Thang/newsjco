@@ -58,22 +58,12 @@ export function sanitizeHtmlForTypography(html: string): string {
 
   REMOVE_ELEMENTS.forEach((tag) => $(tag).remove());
 
-  $('aside:not(:has(p))').remove();
-  $('header:not(:has(h1,h2,h3))').remove();
-
   $('*').each((_, node) => {
     const element = node as Element;
     const tagName = element.tagName?.toLowerCase();
 
     if (tagName && PRESERVED_ATTRIBUTES[tagName]) {
       preserveOnlyAttributes($, element, PRESERVED_ATTRIBUTES[tagName]);
-
-      if (tagName === 'a') {
-        const el = $(element);
-        if (el.attr('target') === '_blank') {
-          el.attr('rel', 'noopener noreferrer');
-        }
-      }
 
       if (['img', 'iframe', 'video'].includes(tagName)) {
         $(element).attr('loading', 'lazy');

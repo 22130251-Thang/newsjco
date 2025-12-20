@@ -44,10 +44,10 @@ export const MiniFeatured = () => {
           <img
             src={article.image}
             alt={article.title}
-            className="w-[120px] h-[70px] object-cover shrink-0"
+            className="w-[120px] h-[70px] object-cover"
           />
-          <div className="flex-1 min-w-0">
-            <h3 className="text-[14px] font-semibold leading-snug text-gray-800 group-hover:text-primary transition-colors">
+          <div className="flex-1">
+            <h3 className="text-[14px] font-semibold text-gray-800 group-hover:text-primary transition-colors">
               {article.title}
             </h3>
           </div>

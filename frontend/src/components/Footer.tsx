@@ -13,14 +13,14 @@ export const Footer = () => {
       <div className="border-t border-b border-red-600 bg-white">
         <div className="container-main">
           <div className="flex flex-wrap items-center gap-x-4 py-2">
-            <Link to="/" className="text-gray-500 hover:text-[#c02424]">
+            <Link to="/" className="text-gray-500 hover:text-primary">
               <Home size={16} />
             </Link>
             {categories.map((cat, index) => (
               <Link
                 key={index}
-                to={`/${cat.toLowerCase().replace(/\s/g, "-")}`}
-                className="text-[11px] font-bold text-gray-600 hover:text-[#c02424] uppercase"
+                to={`#`}
+                className="text-[11px] font-bold text-gray-600 hover:text-primary uppercase"
               >
                 {cat}
               </Link>

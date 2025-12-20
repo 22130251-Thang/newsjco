@@ -71,7 +71,7 @@ export const MainSection = () => {
               {mainTheGioiArticle.title}
             </h2>
           </Link>
-          <p className="article-description text-lg leading-relaxed text-gray-600 line-clamp-3">
+          <p className="article-description text-lg leading-relaxed text-gray-600 line-clamp-5">
             {mainTheGioiArticle.description}
           </p>
         </div>

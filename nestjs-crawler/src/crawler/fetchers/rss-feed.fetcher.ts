@@ -17,10 +17,16 @@ type RssItem = Parser.Item;
 export class RssFeedFetcher {
   private readonly logger = new Logger(RssFeedFetcher.name);
   private readonly parser: Parser;
+  /**
+   * Regex trích xuất URL ảnh từ thẻ <img>
+   * - Match: <img src="URL"> hoặc <img src='URL'>
+   * - Group 1: Ký tự nháy (" hoặc ')
+   * - Group 2: URL ảnh (giá trị cần lấy)
+   * - \1: Backreference đảm bảo dấu nháy đóng giống dấu nháy mở
+   */
   private readonly IMG_SRC_REGEX =
     /<img\s+(?:[^>]*?\s+)?src\s*=\s*(["'])(.*?)\1/i;
   constructor() {
-    // Create custom https agent to allow legacy SSL renegotiation for baotintuc.vn
     const httpsAgent = new https.Agent({
       secureOptions: crypto.constants.SSL_OP_LEGACY_SERVER_CONNECT,
     });
@@ -62,12 +68,7 @@ export class RssFeedFetcher {
     source: NewsSource,
     category: NewsCategory,
   ): UnifiedNewsItem {
-    const anyItem = item as Record<string, unknown>;
-    const primaryContent =
-      item.content?.trim() ||
-      (anyItem['content:encoded'] as string)?.trim() ||
-      '';
-
+    const primaryContent = item.content?.trim() || '';
     let imageUrl: string | undefined;
     const match = primaryContent.match(this.IMG_SRC_REGEX);
     if (match && match[2]) {
@@ -87,9 +88,8 @@ export class RssFeedFetcher {
       content: primaryContent,
       image: imageUrl,
       fullContent: '',
-      author: item.creator || (anyItem.author as string) || 'Unknown',
       source,
-      category,
+      category: category,
       categories: item.categories || [],
       guid: item.guid || item.link || '',
     };

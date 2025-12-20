@@ -22,7 +22,7 @@ export const CategoryBlock = ({ category, articles }: CategoryBlockProps) => {
         <div className="flex items-center gap-4">
           <Link
             to={`/${category}`}
-            className="text-[#cc0000] font-bold text-sm uppercase pl-3 border-l-4 border-[#cc0000] leading-none hover:text-red-700 transition-colors"
+            className="text-primary font-bold text-sm uppercase pl-3 border-l-4 border-primary leading-none hover:text-red-700 transition-colors"
           >
             {formatCategoryName(category)}
           </Link>
@@ -32,11 +32,11 @@ export const CategoryBlock = ({ category, articles }: CategoryBlockProps) => {
 
       <div className="flex flex-col gap-4">
         <Link to={`/${mainArticle.category}/${mainArticle.slug}`} className="flex gap-4 group">
-          <div className="w-[260px] h-[160px] shrink-0 overflow-hidden bg-gray-100">
+          <div className="w-[260px] h-[160px] overflow-hidden bg-gray-100">
             <img
               src={mainArticle.image}
               alt={mainArticle.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full"
             />
           </div>
           <div className="flex-1">
@@ -55,10 +55,10 @@ export const CategoryBlock = ({ category, articles }: CategoryBlockProps) => {
               <Link
                 key={article.guid}
                 to={`/${article.category}/${article.slug}`}
-                className="block transition-colors group"
+                className="block transition-colors"
               >
                 <div className="flex items-start gap-2">
-                  <span className="text-[#cc0000] font-bold text-lg leading-none">
+                  <span className="text-primary font-bold text-lg leading-none">
                     •
                   </span>
                   <span className="text-xs font-medium font-heading text-gray-700">

@@ -20,8 +20,8 @@ export const CategoriesList = () => {
   if (error) return null;
 
   return (
-    <div className="sticky top-0 z-50">
-      <nav className="bg-[#d21d21] text-white">
+    <>
+      <nav className="sticky top-0 z-50 bg-[#d21d21] text-white">
         <div className="container-main">
           <div className="flex items-center h-[40px]">
             <Link
@@ -52,6 +52,7 @@ export const CategoriesList = () => {
         </div>
       </nav>
 
+      {/* Phần SỰ KIỆN - scroll bình thường */}
       <div className="container-main bg-gray-100 py-2">
         <div className="flex items-center justify-between text-xs">
           <div className="flex items-center gap-3 overflow-hidden flex-1 mr-4 p-2">
@@ -71,6 +72,6 @@ export const CategoriesList = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

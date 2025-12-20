@@ -24,7 +24,7 @@ export class CrawlerController {
 
 
   @Get('run')
-  async runAll(): Promise<Record<NewsCategory, UnifiedNewsItem[]>> {
+  async runAll(): Promise<Partial<Record<NewsCategory, UnifiedNewsItem[]>>> {
     return this.crawlerService.crawlAllCategories();
   }
 

@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
 import { getArticleBySlug, getArticlesByCategory } from "../../lib/store/slices/articleSlice";
-import { LeftSidebar } from "../../components/LeftSidebar";
-import { RightSidebar } from "../../components/RightSidebar";
 import { Calendar, User, Clock, Share2 } from "lucide-react";
 
 export const ArticleDetail = () => {
@@ -44,9 +42,7 @@ export const ArticleDetail = () => {
         <div className="bg-white min-h-screen">
             <div className="container-main py-8">
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
-                    {/* Left Section: Article */}
                     <main className="flex-1 min-w-0">
-                        {/* Breadcrumbs */}
                         <nav className="flex items-center gap-2 text-xs text-gray-500 mb-6 uppercase tracking-wider font-semibold">
                             <span className="text-red-600 font-bold">{article.category}</span>
                             <span className="text-gray-300">/</span>
@@ -86,7 +82,6 @@ export const ArticleDetail = () => {
                                 )}
                             </header>
 
-                            {/* Main Content with Typography */}
                             <section
                                 className="prose prose-lg max-w-none prose-headings:font-heading prose-a:text-red-600"
                                 dangerouslySetInnerHTML={{ __html: article.fullContent || article.content }}
@@ -94,7 +89,6 @@ export const ArticleDetail = () => {
                         </article>
                     </main>
 
-                    {/* Right Section: Related News */}
                     <aside className="w-full lg:w-[350px] shrink-0 sticky top-24">
                         <div className="bg-gray-50 p-6 rounded-lg">
                             <h2 className="text-xl font-bold mb-6 flex items-center gap-2">

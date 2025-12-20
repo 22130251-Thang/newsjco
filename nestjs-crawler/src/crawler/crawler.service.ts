@@ -15,7 +15,7 @@ export class CrawlerService {
     private readonly feedFetcher: RssFeedFetcher,
     private readonly contentExtractor: ArticleContentExtractor,
     private readonly exporter: JsonFileExporter,
-  ) {}
+  ) { }
 
   async crawlByCategory(category: NewsCategory): Promise<UnifiedNewsItem[]> {
     const feeds = getFeedsByCategory(category);
@@ -32,15 +32,15 @@ export class CrawlerService {
     return enrichedItems;
   }
 
-  async crawlAllCategories(): Promise<Record<NewsCategory, UnifiedNewsItem[]>> {
+  async crawlAllCategories(): Promise<Partial<Record<NewsCategory, UnifiedNewsItem[]>>> {
     const categories = getAvailableCategories();
-    const results: Record<string, UnifiedNewsItem[]> = {};
+    const results: Partial<Record<NewsCategory, UnifiedNewsItem[]>> = {};
 
     for (const category of categories) {
       results[category] = await this.crawlByCategory(category);
     }
 
-    return results as Record<NewsCategory, UnifiedNewsItem[]>;
+    return results;
   }
 
   private async enrichWithFullContent(
