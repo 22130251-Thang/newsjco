@@ -11,7 +11,7 @@ export const ArticleDetail = () => {
     const dispatch = useAppDispatch();
     const { SelectedarticleBySlug: article, loadingArticleBySlug: loading, error, articlesByCategory } = useAppSelector((state) => state.article);
 
-    useEffect(() => {
+    useEffect(() => {   
         if (slug) {
             dispatch(getArticleBySlug(slug));
             window.scrollTo(0, 0);
@@ -34,9 +34,19 @@ export const ArticleDetail = () => {
             <div className="container-main py-10 text-center">
                 <h1 className="text-2xl font-bold text-red-600">Lỗi</h1>
                 <p className="text-gray-600 mt-2">{error}</p>
-                {/* Nút TTS đọc bài viết */}
                 <div className="mb-4">
-                    <TTSButton text={article.fullContent || article.content || article.description || article.title} />
+                    {/* <TTSButton text={article.fullContent || article.content || article.description || article.title} /> */}
+                    {article && (
+                        <TTSButton
+                            text={
+                                article.fullContent ||
+                                article.content ||
+                                article.description ||
+                                article.title
+                            }
+                        />
+                    )}
+
                 </div>
             </div>
         );
