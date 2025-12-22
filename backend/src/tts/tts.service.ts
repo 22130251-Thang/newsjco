@@ -8,23 +8,19 @@ import { Response } from 'express';
 import * as https from 'https';
 import * as fs from 'fs';
 import * as path from 'path';
+import * as crypto from 'crypto';
 
 @Injectable()
 export class TtsService {
   private readonly logger = new Logger(TtsService.name);
-  private readonly storagePath = path.join(process.cwd(), 'data', 'tts');
   private readonly apiKey = 'c6489e80-c6e8-46f8-b20e-f95cea10ea57';
   private readonly apiHost = 'api.ttsforfree.com';
+  private readonly storagePath = path.join(process.cwd(), 'data', 'tts');
   private readonly defaultVoice =
-    'v1:YPj2X6j04RZcJdGzo-CC0GBpkJ985PD5X_VWU_nJkNzppGtbnxJL-dU_hglv';
+    'v1:o8v2E5HAj_zW0Zn2DMp8VJGA6Udz_46V1nHU1P4naSyjD2_E1joZLno4zWA';
 
   constructor() {
-    this.ensureDirectoryExists();
-  }
-
-  private ensureDirectoryExists() {
     if (!fs.existsSync(this.storagePath)) {
-      this.logger.log(`Creating storage directory at ${this.storagePath}`);
       fs.mkdirSync(this.storagePath, { recursive: true });
     }
   }
@@ -32,51 +28,62 @@ export class TtsService {
   async createOrGetAudio(
     slug: string,
     text: string,
-  ): Promise<{ path: string; created: boolean }> {
-    const fileName = `${slug}.mp3`;
+  ): Promise<{ audioUrl: string; cached: boolean }> {
+    const cleanedText = this.cleanText(text);
+    const hash = this.hash(cleanedText);
+    const fileName = `${slug}-${hash}.mp3`;
     const localPath = path.join(this.storagePath, fileName);
 
     if (fs.existsSync(localPath)) {
-      this.logger.log(`Cache hit for ${fileName}. Serving from local storage.`);
-      return { path: `/tts/${fileName}`, created: false };
-    }
-
-    this.logger.log(`Cache miss for ${fileName}. Requesting new TTS job.`);
-    const job = await this._createApiJob(text);
-
-    if (job.Status === 'SUCCESS' && job.Data) {
-        this.logger.log(`API has a cached version: ${job.Data}. Downloading...`);
-        await this._downloadAudio(job.Data, localPath);
-        return { path: `/tts/${fileName}`, created: true };
-    }
-
-    if (!job.Data) {
-        throw new HttpException('Failed to create TTS job: No Job ID returned.', HttpStatus.INTERNAL_SERVER_ERROR);
+      return { audioUrl: `/tts/${fileName}`, cached: true };
     }
     
-    this.logger.log(`Polling for job ID: ${job.Data}`);
-    const finalFileName = await this._pollJobStatus(job.Data);
 
-    this.logger.log(`Job finished. Downloading ${finalFileName} to ${localPath}`);
-    await this._downloadAudio(finalFileName, localPath);
+    const job = await this.createApiJob(cleanedText);
+    this.logger.log(`TTS job created: ${JSON.stringify(job)}`);
 
-    return { path: `/tts/${fileName}`, created: true };
-  }
-
-  async streamAudio(filename: string, res: Response) {
-    const filePath = path.join(this.storagePath, filename);
-
-    if (!fs.existsSync(filePath)) {
-      throw new HttpException('File not found', HttpStatus.NOT_FOUND);
+    if (job.Status === 'SUCCESS' && job.Data) {
+      this.logger.log(`TTS job success (cache hit), downloading: ${job.Data}`);
+      await this.downloadAudio(job.Data, localPath);
+      return { audioUrl: `/tts/${fileName}`, cached: false };
     }
 
-    res.setHeader('Content-Type', 'audio/mpeg');
-    const fileStream = fs.createReadStream(filePath);
-    fileStream.pipe(res);
+    if (job.Status === 'PENDING' && job.Id) {
+      this.logger.log(`TTS job pending, polling for status: ${job.Id}`);
+      const finalFileName = await this.pollJobStatus(job.Id);
+      this.logger.log(`TTS polling finished, downloading: ${finalFileName}`);
+      await this.downloadAudio(finalFileName, localPath);
+      return { audioUrl: `/tts/${fileName}`, cached: false };
+    }
+    this.logger.error(`TTS DATA = ${job.Data}`);
+    throw new HttpException(
+      job.Message || 'TTS job creation failed',
+      HttpStatus.INTERNAL_SERVER_ERROR,
+    );
   }
 
+  streamAudio(filename: string, res: Response) {
+    const filePath = path.join(this.storagePath, filename);
+    if (!fs.existsSync(filePath)) {
+      throw new HttpException('File not found', 404);
+    }
+    res.setHeader('Content-Type', 'audio/mpeg');
+    fs.createReadStream(filePath).pipe(res);
+  }
 
-  private _createApiJob(text: string): Promise<{ Data: string, Status: string }> {
+  private cleanText(text: string): string {
+    return text
+      .replace(/<[^>]*>/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 5000);
+  }
+
+  private hash(text: string): string {
+    return crypto.createHash('sha256').update(text).digest('hex').slice(0, 8);
+  }
+
+  private createApiJob(text: string): Promise<any> {
     const postData = JSON.stringify({
       Texts: text,
       Voice: this.defaultVoice,
@@ -85,125 +92,123 @@ export class TtsService {
       CallbackUrl: '',
     });
 
-    const options: https.RequestOptions = {
-      hostname: this.apiHost,
-      path: '/api/tts/createby',
-      method: 'POST',
-      headers: {
-        'X-API-Key': this.apiKey,
-        'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(postData),
+    return this.httpsRequest(
+      {
+        hostname: this.apiHost,
+        path: '/api/tts/createby',
+        method: 'POST',
+        headers: {
+          'X-API-Key': this.apiKey,
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(postData),
+        },
       },
-    };
-
-    return this._httpsRequest(options, postData);
+      postData,
+    );
   }
 
-  private _pollJobStatus(jobId: string): Promise<string> {
+  private pollJobStatus(jobId: number): Promise<string> {
     return new Promise((resolve, reject) => {
+      let attempts = 0;
+      const maxAttempts = 10;
+
       const interval = setInterval(async () => {
         try {
-          const options: https.RequestOptions = {
+          const result = await this.httpsRequest({
             hostname: this.apiHost,
             path: `/api/tts/status/${jobId}`,
             method: 'GET',
-            headers: { 'X-API-Key': this.apiKey },
-          };
+            headers: {
+              'X-API-Key': this.apiKey,
+            },
+          });
 
-          const statusResult = await this._httpsRequest(options);
-
-          if (statusResult.Status === 'SUCCESS') {
+          if (result.Status === 'SUCCESS' && result.Data) {
             clearInterval(interval);
-            resolve(statusResult.Data); // Returns the final file name
-          } else if (statusResult.Status === 'ERROR') {
+            resolve(result.Data);
+          }
+
+          if (result.Status === 'ERROR') {
             clearInterval(interval);
             reject(
               new HttpException(
-                `TTS job failed: ${statusResult.Message}`,
+                result.Message || 'TTS job failed',
                 HttpStatus.INTERNAL_SERVER_ERROR,
               ),
             );
           }
-          // Otherwise, continue polling
-        } catch (error) {
+
+          if (++attempts >= maxAttempts) {
+            clearInterval(interval);
+            reject(
+              new HttpException(
+                'TTS job timeout',
+                HttpStatus.GATEWAY_TIMEOUT,
+              ),
+            );
+          }
+        } catch (err) {
           clearInterval(interval);
-          reject(error);
+          reject(err);
         }
-      }, 5000); // Poll every 5 seconds as recommended
+      }, 5000);
     });
   }
+private downloadAudio(fileRef: string, localPath: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    let url: string;
 
-  private _downloadAudio(fileName: string, localPath: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-      const options: https.RequestOptions = {
-        hostname: this.apiHost,
-        path: `/api/tts/StreamFile?filename=${fileName}`,
-        method: 'GET',
-      };
+    if (fileRef.startsWith('http')) {
+      url = fileRef;
+    } else if (fileRef.startsWith('/')) {
+      url = `https://${this.apiHost}${fileRef}`;
+    } else {
+      url = `https://${this.apiHost}/api/tts/StreamFile?filename=${encodeURIComponent(fileRef)}`;
+    }
 
-      const request = https.get(options, (res) => {
-        if (res.statusCode !== 200) {
-          reject(
-            new HttpException(
-              `Failed to download audio file. Status: ${res.statusCode}`,
-              HttpStatus.BAD_GATEWAY,
-            ),
-          );
-          return;
-        }
+    https.get(url, (res) => {
+      if (res.statusCode !== 200) {
+        reject(
+          new HttpException(
+            `Download failed (${res.statusCode})`,
+            HttpStatus.BAD_GATEWAY,
+          ),
+        );
+        return;
+      }
 
-        const fileStream = fs.createWriteStream(localPath);
-        res.pipe(fileStream);
+      const fileStream = fs.createWriteStream(localPath);
+      res.pipe(fileStream);
+      fileStream.on('finish', () => resolve());
+    }).on('error', reject);
+  });
+}
 
-        fileStream.on('finish', () => {
-          fileStream.close();
-          resolve();
-        });
-      });
 
-      request.on('error', (err) => {
-        fs.unlink(localPath, () => reject(err)); 
-      });
-    });
-  }
-
-  private _httpsRequest(
+  private httpsRequest(
     options: https.RequestOptions,
     postData?: string,
   ): Promise<any> {
     return new Promise((resolve, reject) => {
       const req = https.request(options, (res) => {
         let data = '';
-        res.on('data', (chunk) => {
-          data += chunk;
-        });
+        res.on('data', (chunk) => (data += chunk));
         res.on('end', () => {
           try {
-            const statusCode = res.statusCode ?? 500;
-            if (statusCode >= 200 && statusCode < 300) {
-              resolve(JSON.parse(data));
-            } else {
-              reject(
-                new HttpException(
-                  `API Error: ${data}`,
-                  statusCode,
-                ),
-              );
-            }
-          } catch (e) {
-            reject(new HttpException('Failed to parse API response', HttpStatus.INTERNAL_SERVER_ERROR));
+            resolve(JSON.parse(data));
+          } catch {
+            reject(
+              new HttpException(
+                'Invalid API response',
+                HttpStatus.INTERNAL_SERVER_ERROR,
+              ),
+            );
           }
         });
       });
 
-      req.on('error', (e) => {
-        reject(e);
-      });
-
-      if (postData) {
-        req.write(postData);
-      }
-
+      req.on('error', reject);
+      if (postData) req.write(postData);
       req.end();
     });
   }
