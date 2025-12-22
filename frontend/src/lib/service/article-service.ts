@@ -1,4 +1,5 @@
 import type { Article } from "../../types/article.type";
+import type { PaginatedResponse } from "../../types/pagination.type";
 import apiClient from "../api.config";
 
 export const fetchThreeFeaturesArticles = async () => {
@@ -36,9 +37,15 @@ export const fetchArticleBySlug = async (slug: string) => {
   const response = await apiClient.get<Article>("articles/by-slug/" + slug);
   return response.data;
 };
-export const fetchArticlesByCategory = async (category: string) => {
-  const response = await apiClient.get<Article[]>(
-    "articles/by-category/" + category,
+
+export const fetchArticlesByCategory = async (
+  category: string,
+  page: number = 1,
+  limit: number = 10,
+  offset: number = 0
+) => {
+  const response = await apiClient.get<PaginatedResponse<Article>>(
+    `articles/by-category/${category}?page=${page}&limit=${limit}&offset=${offset}`,
   );
   return response.data;
 };

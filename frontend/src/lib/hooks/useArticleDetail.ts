@@ -29,11 +29,11 @@ export const useArticleDetail = ({ slug, category, scrollToTop = true }: UseArti
 
     useEffect(() => {
         if (category) {
-            dispatch(getArticlesByCategory(category));
+            dispatch(getArticlesByCategory({ category }));
         }
     }, [category, dispatch]);
 
-    const relatedArticles = articlesByCategory.filter((a) => a.slug !== slug);
+    const relatedArticles = articlesByCategory?.data.filter((a) => a.slug !== slug) || [];
 
     return {
         article,

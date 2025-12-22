@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { Article } from 'src/types/article.type';
 import { CreateArticleDto } from './dto/create-article.dto';
+import { PaginationResult } from '../types/pagination.type';
 
 @Injectable()
 export class ArticlesService {
@@ -37,8 +38,32 @@ export class ArticlesService {
     return allArticles;
   }
 
-  findByCategory(category: string): Article[] {
-    return this.databaseService.findAll<Article>(category);
+  findByCategory(
+    category: string,
+    page: number = 1,
+    limit: number = 10,
+    offset: number = 0,
+  ): PaginationResult<Article> {
+    const allArticles = this.databaseService.findAll<Article>(category);
+
+    const totalItems = allArticles.length;
+
+    const startIndex = offset + (page - 1) * limit;
+    const endIndex = startIndex + limit;
+    const paginatedArticles = allArticles.slice(startIndex, endIndex);
+
+    const totalPages = Math.ceil(Math.max(0, totalItems - offset) / limit);
+
+    return {
+      data: paginatedArticles,
+      meta: {
+        totalItems,
+        itemCount: paginatedArticles.length,
+        itemsPerPage: limit,
+        totalPages,
+        currentPage: page,
+      },
+    };
   }
 
   findFourByCategory(category: string): Article[] {
@@ -100,7 +125,6 @@ export class ArticlesService {
           });
         }
       } catch (error) {
-        // Silently skip if category cannot be fetched
       }
     }
     return result;

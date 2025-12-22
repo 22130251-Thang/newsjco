@@ -4,6 +4,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { HomePage } from "./pages/homepage/HomePage";
 import { MainLayout } from "./layouts/main-layout";
 import { ArticleDetail } from "./pages/articledetails/ArticleDetail";
+import { CategoryPage } from "./pages/category/CategoryPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<HomePage />} />
+            <Route path="/:category" element={<CategoryPage />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/profile" element={<></>} />
             </Route>
@@ -23,5 +25,6 @@ function App() {
     </BrowserRouter>
   );
 }
+
 
 export default App;

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { ActionReducerMapBuilder, AsyncThunk } from "@reduxjs/toolkit";
 import type { Article } from "../../../types/article.type";
+import type { PaginatedResponse } from "../../../types/pagination.type";
 import {
   fetchArticleBySlug,
   fetchArticlesByCategory,
@@ -29,7 +30,8 @@ interface ArticleState {
   hotNewsArticles: AsyncState<Article[]>;
   mediaArticles: AsyncState<Article[]>;
   economicArticles: AsyncState<Article[]>;
-  articlesByCategory: AsyncState<Article[]>;
+  articlesByCategory: AsyncState<PaginatedResponse<Article> | null>;
+  featuredArticlesByCat: AsyncState<Article[]>;
   selectedArticleBySlug: AsyncState<Article | null>;
   error: string | null;
 }
@@ -41,7 +43,8 @@ const initialState: ArticleState = {
   hotNewsArticles: createAsyncState([]),
   mediaArticles: createAsyncState([]),
   economicArticles: createAsyncState([]),
-  articlesByCategory: createAsyncState([]),
+  articlesByCategory: createAsyncState(null),
+  featuredArticlesByCat: createAsyncState([]),
   selectedArticleBySlug: createAsyncState(null),
   error: null,
 };
@@ -144,16 +147,28 @@ export const getArticleBySlug = createAsyncThunk<Article, string>(
   }
 );
 
-export const getArticlesByCategory = createAsyncThunk<Article[], string>(
-  "article/fetchArticlesByCategory",
-  async (category, { rejectWithValue }) => {
-    try {
-      return await fetchArticlesByCategory(category);
-    } catch (error: unknown) {
-      return rejectWithValue(error instanceof Error ? error.message : "Unknown error");
-    }
+export const getArticlesByCategory = createAsyncThunk<
+  PaginatedResponse<Article>,
+  { category: string; page?: number; limit?: number; offset?: number }
+>("article/fetchArticlesByCategory", async ({ category, page, limit, offset }, { rejectWithValue }) => {
+  try {
+    return await fetchArticlesByCategory(category, page, limit, offset);
+  } catch (error: unknown) {
+    return rejectWithValue(error instanceof Error ? error.message : "Unknown error");
   }
-);
+});
+
+export const getFeaturedArticlesByCat = createAsyncThunk<
+  Article[],
+  string
+>("article/fetchFeaturedArticlesByCat", async (category, { rejectWithValue }) => {
+  try {
+    const response = await fetchArticlesByCategory(category, 1, 4, 0);
+    return response.data;
+  } catch (error: unknown) {
+    return rejectWithValue(error instanceof Error ? error.message : "Unknown error");
+  }
+});
 
 const articleSlice = createSlice({
   name: "article",
@@ -172,6 +187,7 @@ const articleSlice = createSlice({
     addAsyncThunkCases(builder, getEconomicArticles, "economicArticles");
     addAsyncThunkCases(builder, getArticleBySlug, "selectedArticleBySlug");
     addAsyncThunkCases(builder, getArticlesByCategory, "articlesByCategory");
+    addAsyncThunkCases(builder, getFeaturedArticlesByCat, "featuredArticlesByCat");
   },
 });
 

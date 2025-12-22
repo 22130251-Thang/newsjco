@@ -16,15 +16,26 @@ export class ArticlesController {
   constructor(private readonly articlesService: ArticlesService) { }
 
   @Get()
-  findAll(@Query('category') category?: string) {
+  findAll(
+    @Query('category') category?: string,
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+    @Query('offset') offset: number = 0,
+  ) {
     if (category) {
-      return this.articlesService.findByCategory(category);
+      return this.articlesService.findByCategory(category, +page, +limit, +offset);
     }
     return this.articlesService.findAll();
   }
+
   @Get('by-category/:category')
-  findFourByCategory(@Param('category') category: string) {
-    return this.articlesService.findFourByCategory(category);
+  findByCategory(
+    @Param('category') category: string,
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+    @Query('offset') offset: number = 0,
+  ) {
+    return this.articlesService.findByCategory(category, +page, +limit, +offset);
   }
 
 
