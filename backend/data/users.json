@@ -58,5 +58,12 @@
     "bio": "Nhà báo tự do về kinh doanh",
     "createdAt": "2025-03-20T14:00:00+07:00",
     "updatedAt": "2025-12-05T11:30:00+07:00"
+  },
+  {
+    "username": "testuser",
+    "useremail": "test@example.com",
+    "password": "$2b$10$aYnoGQLrx5DNyzz0win8v.GaWF5.6P6mRkYTl2m1PYVbYB.o04QeW",
+    "displayName": "Test User",
+    "id": 6
   }
 ]

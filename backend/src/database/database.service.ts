@@ -67,6 +67,7 @@ export class DatabaseService implements OnModuleInit {
       id: newId,
     } as T;
     table.push(newRecord);
+    this.persistToFile(tablename, table);
     return newRecord;
   }
   update<T extends BaseRecord>(
@@ -87,6 +88,7 @@ export class DatabaseService implements OnModuleInit {
       id: id,
     };
     table[index] = updatedRecord;
+    this.persistToFile(tableName, table);
     return updatedRecord;
   }
   remove<T extends BaseRecord>(tableName: string, id: number | string): T {
@@ -101,8 +103,24 @@ export class DatabaseService implements OnModuleInit {
     }
 
     const [removedItem] = table.splice(index, 1);
+    this.persistToFile(tableName, table);
 
     return removedItem;
+  }
+
+  private persistToFile<T extends BaseRecord>(
+    tableName: string,
+    data: T[],
+  ): void {
+    const filePath = path.join(this.DATA_PATH, `${tableName}.json`);
+    try {
+      fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+      this.logger.log(`Persisted ${tableName} to file`);
+    } catch (error) {
+      this.logger.error(
+        `Failed to persist ${tableName} to file: ${error.message}`,
+      );
+    }
   }
   findOneBy<T extends BaseRecord>(tablename: string, key: keyof T, value: any) {
     const table = this.findAll<T>(tablename);

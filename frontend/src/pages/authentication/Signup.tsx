@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
-import { registerUser, clearError } from "../../lib/store/slices/authSlice";
+import { registerUser, clearError, fetchCurrentUser } from "../../lib/store/slices/authSlice";
 import type { RegisterRequest } from "../../types/users.type";
 
 export const Signup = () => {
@@ -43,6 +43,7 @@ export const Signup = () => {
     const { confirmPassword, ...registerData } = formData;
     const result = await dispatch(registerUser(registerData));
     if (result.meta.requestStatus === "fulfilled") {
+      await dispatch(fetchCurrentUser());
       navigate("/");
     }
   };
