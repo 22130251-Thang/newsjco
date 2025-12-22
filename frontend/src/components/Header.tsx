@@ -1,8 +1,19 @@
-import { Rss, Search, Phone, Mail, Smartphone } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Rss, Search, Phone, Mail, Smartphone, LogOut } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { CategoriesList } from "./CategoriesList";
+import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
+import { logout } from "../lib/store/slices/authSlice";
 
 export const Header = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { user, isAuthenticated } = useAppSelector((state) => state.auth);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
+
   return (
     <>
       <header className="bg-white">
@@ -49,15 +60,49 @@ export const Header = () => {
                 </a>
               </div>
 
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Tìm kiếm..."
-                  className="w-[200px] pl-3 pr-8 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:border-primary"
-                />
-                <button className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary">
-                  <Search size={14} />
-                </button>
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Tìm kiếm..."
+                    className="w-[200px] pl-3 pr-8 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:border-primary"
+                  />
+                  <button className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary">
+                    <Search size={14} />
+                  </button>
+                </div>
+
+                {isAuthenticated && user ? (
+                  <div className="flex items-center gap-3 text-xs border-l border-gray-300 pl-4">
+                    <div className="text-gray-700">
+                      <p className="font-medium">{user.displayName}</p>
+                      <p className="text-gray-500">{user.username}</p>
+                    </div>
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center gap-1 text-red-600 hover:text-red-700 ml-2"
+                      title="Đăng xuất"
+                    >
+                      <LogOut size={14} />
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2 text-xs border-l border-gray-300 pl-4">
+                    <Link
+                      to="/login"
+                      className="px-3 py-1 text-primary hover:text-red-700 font-medium"
+                    >
+                      Đăng nhập
+                    </Link>
+                    <span className="text-gray-300">|</span>
+                    <Link
+                      to="/signup"
+                      className="px-3 py-1 bg-primary text-white rounded hover:bg-red-700 font-medium"
+                    >
+                      Đăng ký
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>

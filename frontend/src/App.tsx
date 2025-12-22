@@ -5,6 +5,7 @@ import { HomePage } from "./pages/homepage/HomePage";
 import { MainLayout } from "./layouts/main-layout";
 import { ArticleDetail } from "./pages/articledetails/ArticleDetail";
 import { CategoryPage } from "./pages/category/CategoryPage";
+import { Login, Signup } from "./pages/authentication";
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/:category" element={<CategoryPage />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/profile" element={<></>} />
@@ -25,6 +28,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
 
 export default App;

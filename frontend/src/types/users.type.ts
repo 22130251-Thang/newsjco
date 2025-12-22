@@ -13,6 +13,12 @@ export interface LoginRequest {
     username: string,
     password: string
 }
+export interface RegisterRequest {
+    username: string,
+    useremail: string,
+    password: string,
+    displayName: string
+}
 export interface LoginSuccessResponse {
     access_token: string,
 }

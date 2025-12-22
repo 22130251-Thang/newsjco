@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
-import { fetchCurrentUser } from "../lib/store/slices/authSlice";
+import { fetchCurrentUser, setInitialized } from "../lib/store/slices/authSlice";
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -15,11 +15,12 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
     if (token) {
       dispatch(fetchCurrentUser());
+    } else {
+      dispatch(setInitialized());
     }
   }, [dispatch]);
 
-  const token = localStorage.getItem("token");
-  if (token && !isInitialized) {
+  if (!isInitialized) {
     return <div className="h-screen w-full flex items-center justify-center">Loading App...</div>;
   }
 
