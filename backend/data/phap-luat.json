@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "phap-luat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "ngay-512026-xet-xu-55-bi-cao-trong-vu-nhan-hoi-lo-tai-cuc-an-toan-thuc-pham-bo-y-te"
   },
   {
     "title": "Khởi tố 7 đối tượng sản xuất, buôn bán thịt heo giả thịt bò",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "phap-luat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "khoi-to-7-doi-tuong-san-xuat-buon-ban-thit-heo-gia-thit-bo"
   },
   {
     "title": "Khởi tố vụ án hình sự và khởi tố 5 bị can liên quan vụ tai nạn điện chết người",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "phap-luat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "khoi-to-vu-an-hinh-su-va-khoi-to-5-bi-can-lien-quan-vu-tai-nan-dien-chet-nguoi"
   },
   {
     "title": "Khởi tố 2 đối tượng vận chuyển vàng trái phép qua biên giới",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "phap-luat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "khoi-to-2-doi-tuong-van-chuyen-vang-trai-phep-qua-bien-gioi"
   },
   {
     "title": "Sôi nổi Cuộc thi Tìm hiểu pháp luật chống hàng giả và bảo vệ người tiêu dùng trong TMĐT",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "phap-luat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "soi-noi-cuoc-thi-tim-hieu-phap-luat-chong-hang-gia-va-bao-ve-nguoi-tieu-dung-trong-tmdt"
   },
   {
     "title": "Đắk Lắk: Xử lý tình trạng khai thác cát trái phép, sai phép",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "phap-luat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "dak-lak-xu-ly-tinh-trang-khai-thac-cat-trai-phep-sai-phep"
   },
   {
     "title": "Tuyên án phúc thẩm vụ Tập đoàn Phúc Sơn: Giảm nhẹ hình phạt cho các bị cáo",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "phap-luat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tuyen-an-phuc-tham-vu-tap-doan-phuc-son-giam-nhe-hinh-phat-cho-cac-bi-cao"
   },
   {
     "title": "Triệt xóa đường dây lừa đảo 1.275 tỷ đồng đầu tư tiền ảo",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "phap-luat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "triet-xoa-duong-day-lua-dao-1275-ty-dong-dau-tu-tien-ao"
   },
   {
     "title": "Một phụ nữ 'đã chết' cách đây 5 năm bỗng trở về xin xóa khai tử",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "phap-luat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "mot-phu-nu-da-chet-cach-day-5-nam-bong-tro-ve-xin-xoa-khai-tu"
   },
   {
     "title": "Triệt phá đường dây mua bán số lượng lớn ma túy từ biên giới Camphuchia vào Đồng Nai",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "phap-luat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "triet-pha-duong-day-mua-ban-so-luong-lon-ma-tuy-tu-bien-gioi-camphuchia-vao-dong-nai"
   }
 ]

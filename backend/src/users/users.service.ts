@@ -20,6 +20,14 @@ export class UsersService {
     return user;
   }
 
+  findByUserNameOrEmail(username: string, email: string): User | null {
+    const userByName = this.databaseService.findOneBy<User>('users', 'username', username);
+    if (userByName) return userByName;
+    
+    const userByEmail = this.databaseService.findOneBy<User>('users', 'useremail', email);
+    return userByEmail || null;
+  }
+
   findAll() {
     return this.databaseService.findAll<User>('users');
   }

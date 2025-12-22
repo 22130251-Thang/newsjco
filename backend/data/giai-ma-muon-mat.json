@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "giai-ma-muon-mat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "phat-hien-protein-giup-bao-ve-suc-khoe-nao-bo-khi-lao-hoa"
   },
   {
     "title": "Đột phá phương pháp chữa viêm nướu không tiêu diệt lợi khuẩn",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "giai-ma-muon-mat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "dot-pha-phuong-phap-chua-viem-nuou-khong-tieu-diet-loi-khuan"
   },
   {
     "title": "Nature: Nhịn ăn gián đoạn hỗ trợ điều trị ung thư vú thông qua cơ chế hormone",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "giai-ma-muon-mat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "nature-nhin-an-gian-doan-ho-tro-dieu-tri-ung-thu-vu-thong-qua-co-che-hormone"
   },
   {
     "title": "Phí chuyển mục đích sử dụng đất sẽ 'nhẹ gánh' hơn từ năm 2026",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "giai-ma-muon-mat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "phi-chuyen-muc-dich-su-dung-dat-se-nhe-ganh-hon-tu-nam-2026"
   },
   {
     "title": "Thiếu năm đóng bảo hiểm xã hội trên VssID xử lý như thế nào?",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "giai-ma-muon-mat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "thieu-nam-dong-bao-hiem-xa-hoi-tren-vssid-xu-ly-nhu-the-nao"
   },
   {
     "title": "Ô nhiễm không khí gia tăng, người dân cần làm gì để bảo vệ sức khoẻ?",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "giai-ma-muon-mat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "o-nhiem-khong-khi-gia-tang-nguoi-dan-can-lam-gi-de-bao-ve-suc-khoe"
   },
   {
     "title": "Phát hiện hợp chất trong sôcôla đen giúp làm chậm quá trình lão hóa",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "giai-ma-muon-mat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "phat-hien-hop-chat-trong-socola-den-giup-lam-cham-qua-trinh-lao-hoa"
   },
   {
     "title": "Những tổn thương của cơ thể khi hút vape",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "giai-ma-muon-mat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "nhung-ton-thuong-cua-co-the-khi-hut-vape"
   },
   {
     "title": "Chuyển đổi mô hình thuế khoán sang kê khai, hộ kinh doanh cần chuẩn bị gì?",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "giai-ma-muon-mat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "chuyen-doi-mo-hinh-thue-khoan-sang-ke-khai-ho-kinh-doanh-can-chuan-bi-gi"
   },
   {
     "title": "Báo động 3/4 dân số thế giới thiếu hụt Omega-3 nghiêm trọng",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "giai-ma-muon-mat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "bao-dong-34-dan-so-the-gioi-thieu-hut-omega-3-nghiem-trong"
   }
 ]

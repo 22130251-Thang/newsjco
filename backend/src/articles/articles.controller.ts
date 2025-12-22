@@ -15,38 +15,9 @@ import { CreateArticleDto } from './dto/create-article.dto';
 export class ArticlesController {
   constructor(private readonly articlesService: ArticlesService) { }
 
-  @Get()
-  findAll(
-    @Query('category') category?: string,
-    @Query('page') page: number = 1,
-    @Query('limit') limit: number = 10,
-    @Query('offset') offset: number = 0,
-  ) {
-    if (category) {
-      return this.articlesService.findByCategory(category, +page, +limit, +offset);
-    }
-    return this.articlesService.findAll();
-  }
-
-  @Get('by-category/:category')
-  findByCategory(
-    @Param('category') category: string,
-    @Query('page') page: number = 1,
-    @Query('limit') limit: number = 10,
-    @Query('offset') offset: number = 0,
-  ) {
-    return this.articlesService.findByCategory(category, +page, +limit, +offset);
-  }
-
-
   @Get('top-3-articles')
   findTopThreeArticles() {
     return this.articlesService.findTopThreeFeatures();
-  }
-
-  @Get('by-slug/:slug')
-  findBySlug(@Param('slug') slug: string) {
-    return this.articlesService.findBySlug(slug);
   }
 
   @Get('main-the-gioi')
@@ -72,6 +43,34 @@ export class ArticlesController {
   @Get('economic-articles')
   findEconomicArticles() {
     return this.articlesService.findEconomicArticles();
+  }
+
+  @Get('by-slug/:slug')
+  findBySlug(@Param('slug') slug: string) {
+    return this.articlesService.findBySlug(slug);
+  }
+
+  @Get('by-category/:category')
+  findByCategory(
+    @Param('category') category: string,
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+    @Query('offset') offset: number = 0,
+  ) {
+    return this.articlesService.findByCategory(category, +page, +limit, +offset);
+  }
+
+  @Get()
+  findAll(
+    @Query('category') category?: string,
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+    @Query('offset') offset: number = 0,
+  ) {
+    if (category) {
+      return this.articlesService.findByCategory(category, +page, +limit, +offset);
+    }
+    return this.articlesService.findAll();
   }
 
   @Post()

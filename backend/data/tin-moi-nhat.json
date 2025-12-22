@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "tin-moi-nhat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "thu-tuong-pham-minh-chinh-dai-hoi-thi-dua-yeu-nuoc-phai-la-noi-hoi-tu-lan-toa-tinh-than-yeu-nuoc-cua-toan-dan-toc"
   },
   {
     "title": "Mùa Giáng sinh dài nhất thế giới tại Philippines",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "tin-moi-nhat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines"
   },
   {
     "title": "Dầu Venezuela vẫn sang Mỹ bất chấp các vụ bắt giữ tàu dầu",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "tin-moi-nhat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "dau-venezuela-van-sang-my-bat-chap-cac-vu-bat-giu-tau-dau"
   },
   {
     "title": "Nâng cao chất lượng tác phẩm báo chí đa phương tiện về bảo vệ nền tảng tư tưởng của Đảng",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "tin-moi-nhat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "nang-cao-chat-luong-tac-pham-bao-chi-da-phuong-tien-ve-bao-ve-nen-tang-tu-tuong-cua-dang"
   },
   {
     "title": "Euroclear hoan nghênh quyết định của EU không sử dụng tài sản Nga cho Ukraine",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "tin-moi-nhat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "euroclear-hoan-nghenh-quyet-dinh-cua-eu-khong-su-dung-tai-san-nga-cho-ukraine"
   },
   {
     "title": "Mở rộng giáo dục phổ thông tại Nghệ An và Tây Ninh",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "tin-moi-nhat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "mo-rong-giao-duc-pho-thong-tai-nghe-an-va-tay-ninh"
   },
   {
     "title": "Tuyên dương 145 học sinh, sinh viên, thanh niên dân tộc thiểu số tiêu biểu, xuất sắc năm 2025",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "tin-moi-nhat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tuyen-duong-145-hoc-sinh-sinh-vien-thanh-nien-dan-toc-thieu-so-tieu-bieu-xuat-sac-nam-2025"
   },
   {
     "title": "Bia Saigon Special trao hàng ngàn ‘Lộc Special’ tại Extra Special Night 2025, sẵn sàng tỏa Tết lớn",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "tin-moi-nhat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "bia-saigon-special-trao-hang-ngan-loc-special-tai-extra-special-night-2025-san-sang-toa-tet-lon"
   },
   {
     "title": "Phát huy nguồn lực kiều bào để xây dựng đất nước",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "tin-moi-nhat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "phat-huy-nguon-luc-kieu-bao-de-xay-dung-dat-nuoc"
   },
   {
     "title": "Cảnh sát biển tổ chức tốt công tác dân vận ‘Cảnh sát biển với đồng bào dân tộc, tôn giáo’",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "tin-moi-nhat",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "canh-sat-bien-to-chuc-tot-cong-tac-dan-van-canh-sat-bien-voi-dong-bao-dan-toc-ton-giao"
   }
 ]

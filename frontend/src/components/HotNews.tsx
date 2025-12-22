@@ -31,7 +31,7 @@ export const HotNews = () => {
             <div className="flex flex-col">
                 {hotNewsArticles.map((article, index) => (
                     <ArticleCard
-                        key={article.guid}
+                        key={`hotnews-${index}`}
                         article={article}
                         variant="horizontal"
                         showBorder={index !== hotNewsArticles.length - 1}

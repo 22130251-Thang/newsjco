@@ -17,7 +17,7 @@ export const MediaCarousel = ({ articles }: MediaCarouselProps) => {
             className="mt-4"
         >
             {articles.map((article, index) => (
-                <MediaCard key={article.guid || index} article={article} />
+                <MediaCard key={`mediacarousel-${index}`} article={article} />
             ))}
         </Carousel>
     );

@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "the-thao",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "the-thao-viet-nam-tren-hanh-trinh-vuon-toi-nhung-dinh-cao-moi"
   },
   {
     "title": "Giải Bóng đá Thiếu niên quốc tế U13 Việt Nam - Nhật Bản năm 2025 sôi nổi, fair-play và đầy cảm xúc",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "the-thao",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "giai-bong-da-thieu-nien-quoc-te-u13-viet-nam-nhat-ban-nam-2025-soi-noi-fair-play-va-day-cam-xuc"
   },
   {
     "title": "30 kỳ thủ hàng đầu châu Á tranh tài tại Giải Cờ tướng các danh thủ quốc tế",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "the-thao",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "30-ky-thu-hang-dau-chau-a-tranh-tai-tai-giai-co-tuong-cac-danh-thu-quoc-te"
   },
   {
     "title": "SEA Games 33: Hành trình truyền cảm hứng của 3 chị em đô vật nhà họ Nguyễn xứ Huế",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "the-thao",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "sea-games-33-hanh-trinh-truyen-cam-hung-cua-3-chi-em-do-vat-nha-ho-nguyen-xu-hue"
   },
   {
     "title": "Khai mạc Giải bóng đá Tứ hùng - Thái Nguyên năm 2025",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "the-thao",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "khai-mac-giai-bong-da-tu-hung-thai-nguyen-nam-2025"
   },
   {
     "title": "U13 Becamex Hồ Chí Minh City vô địch Giải bóng đá Thiếu niên Quốc tế U13 Việt Nam - Nhật Bản",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "the-thao",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "u13-becamex-ho-chi-minh-city-vo-dich-giai-bong-da-thieu-nien-quoc-te-u13-viet-nam-nhat-ban"
   },
   {
     "title": "Bế mạc Giải Vô địch Bóng bàn Cúp Hội Nhà báo Việt Nam lần thứ XVIII - năm 2025",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "the-thao",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "be-mac-giai-vo-dich-bong-ban-cup-hoi-nha-bao-viet-nam-lan-thu-xviii-nam-2025"
   },
   {
     "title": "Trên 100 vận động viên tham gia Giải Cờ vua quốc tế năm 2025",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "the-thao",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tren-100-van-dong-vien-tham-gia-giai-co-vua-quoc-te-nam-2025"
   },
   {
     "title": "SEA Games 33: Những dấu ấn đáng nhớ",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "the-thao",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "sea-games-33-nhung-dau-an-dang-nho"
   },
   {
     "title": "Hưng Yên: Lan tỏa phong trào thể dục, thể thao quần chúng",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "the-thao",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "hung-yen-lan-toa-phong-trao-the-duc-the-thao-quan-chung"
   }
 ]

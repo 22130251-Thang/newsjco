@@ -12,7 +12,8 @@
     "category": "thoi-su",
     "categories": [],
     "isFeatures": true,
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "thu-tuong-pham-minh-chinh-dai-hoi-thi-dua-yeu-nuoc-phai-la-noi-hoi-tu-lan-toa-tinh-than-yeu-nuoc-cua-toan-dan-toc"
   },
   {
     "title": "Phát huy nguồn lực kiều bào để xây dựng đất nước",
@@ -27,7 +28,8 @@
     "category": "thoi-su",
     "isFeatures": true,
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "phat-huy-nguon-luc-kieu-bao-de-xay-dung-dat-nuoc"
   },
   {
     "title": "Khánh thành tượng đài 'Bác Hồ với chiến sĩ Biên phòng'",
@@ -42,7 +44,8 @@
     "category": "thoi-su",
     "isFeatures": true,
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "khanh-thanh-tuong-dai-bac-ho-voi-chien-si-bien-phong"
   },
   {
     "title": "Tạo nền tảng chính sách về công tác người Việt Nam ở nước ngoài trong giai đoạn mới",
@@ -56,7 +59,8 @@
     "source": "BaoTinTuc",
     "category": "thoi-su",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tao-nen-tang-chinh-sach-ve-cong-tac-nguoi-viet-nam-o-nuoc-ngoai-trong-giai-doan-moi"
   },
   {
     "title": "Cả nước có 182 đơn vị bầu cử đại biểu Quốc hội khóa XVI",
@@ -70,7 +74,8 @@
     "source": "BaoTinTuc",
     "category": "thoi-su",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "ca-nuoc-co-182-don-vi-bau-cu-dai-bieu-quoc-hoi-khoa-xvi"
   },
   {
     "title": "Thủ tướng Phạm Minh Chính chủ trì Phiên họp lần thứ 16 của Hội đồng Thi đua - Khen thưởng Trung ương",
@@ -84,7 +89,8 @@
     "source": "BaoTinTuc",
     "category": "thoi-su",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "thu-tuong-pham-minh-chinh-chu-tri-phien-hop-lan-thu-16-cua-hoi-dong-thi-dua-khen-thuong-trung-uong"
   },
   {
     "title": "Thông cáo báo chí ngày làm việc thứ nhất Hội nghị Trung ương 15, khóa XIII",
@@ -98,7 +104,8 @@
     "source": "BaoTinTuc",
     "category": "thoi-su",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "thong-cao-bao-chi-ngay-lam-viec-thu-nhat-hoi-nghi-trung-uong-15-khoa-xiii"
   },
   {
     "title": "'Quả ngọt' từ chiến dịch 90 ngày đêm tổng lực làm sạch dữ liệu đất đai",
@@ -112,7 +119,8 @@
     "source": "BaoTinTuc",
     "category": "thoi-su",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "qua-ngot-tu-chien-dich-90-ngay-dem-tong-luc-lam-sach-du-lieu-dat-dai"
   },
   {
     "title": "Thủ tướng Phạm Minh Chính trao Quyết định giao Quyền Bộ trưởng Bộ Công Thương",
@@ -126,7 +134,8 @@
     "source": "BaoTinTuc",
     "category": "thoi-su",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "thu-tuong-pham-minh-chinh-trao-quyet-dinh-giao-quyen-bo-truong-bo-cong-thuong"
   },
   {
     "title": "Trưng bày 1.000 tư liệu ca ngợi truyền thống hào hùng của Quân đội nhân dân Việt Nam",
@@ -140,6 +149,7 @@
     "source": "BaoTinTuc",
     "category": "thoi-su",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "trung-bay-1000-tu-lieu-ca-ngoi-truyen-thong-hao-hung-cua-quan-doi-nhan-dan-viet-nam"
   }
 ]

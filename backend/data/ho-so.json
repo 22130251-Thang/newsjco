@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "ho-so",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "nu-vo-si-giac-dau-khien-the-gioi-la-ma-co-dai-chan-dong"
   },
   {
     "title": "Từ Minh Trị đến hải chiến Tsushima – Hành trình lột xác của Nhật Bản - Kỳ cuối",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "ho-so",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tu-minh-tri-den-hai-chien-tsushima-hanh-trinh-lot-xac-cua-nhat-ban-ky-cuoi"
   },
   {
     "title": "Từ Minh Trị đến hải chiến Tsushima – Hành trình lột xác của Nhật Bản - Kỳ 1",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "ho-so",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tu-minh-tri-den-hai-chien-tsushima-hanh-trinh-lot-xac-cua-nhat-ban-ky-1"
   },
   {
     "title": "Điểm lại các cuộc đối đầu của Tổng thống Trump với giới truyền thông",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "ho-so",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "diem-lai-cac-cuoc-doi-dau-cua-tong-thong-trump-voi-gioi-truyen-thong"
   },
   {
     "title": "Điệp viên Freddie Scappaticci - 'Quả trứng vàng' của tình báo Anh",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "ho-so",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "diep-vien-freddie-scappaticci-qua-trung-vang-cua-tinh-bao-anh"
   },
   {
     "title": "Căn bệnh bí ẩn cuối đời của Jane Austen - Kỳ cuối",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "ho-so",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "can-benh-bi-an-cuoi-doi-cua-jane-austen-ky-cuoi"
   },
   {
     "title": "Căn bệnh bí ẩn cuối đời của Jane Austen - Kỳ 1",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "ho-so",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "can-benh-bi-an-cuoi-doi-cua-jane-austen-ky-1"
   },
   {
     "title": "Chuyện tình bi thương phía sau kỳ quan Taj Mahal",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "ho-so",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "chuyen-tinh-bi-thuong-phia-sau-ky-quan-taj-mahal"
   },
   {
     "title": "Hồi kết buồn của vị vua khai sinh nền dân chủ Tây Ban Nha",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "ho-so",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "hoi-ket-buon-cua-vi-vua-khai-sinh-nen-dan-chu-tay-ban-nha"
   },
   {
     "title": "Bí ẩn 400 năm xung quanh vợ và con trai của Shakespeare - Kỳ cuối",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "ho-so",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "bi-an-400-nam-xung-quanh-vo-va-con-trai-cua-shakespeare-ky-cuoi"
   }
 ]

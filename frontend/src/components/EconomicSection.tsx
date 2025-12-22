@@ -28,7 +28,7 @@ export const EconomicSection = ({ articles, loading }: EconomicSectionProps) => 
                     <CarouselCardSkeleton count={4} cardWidth="280px" />
                 ) : (
                     articles.map((article, index) => (
-                        <EconomicCard key={article.guid || index} article={article} />
+                        <EconomicCard key={`economicsection-${index}`} article={article} />
                     ))
                 )}
             </Carousel>

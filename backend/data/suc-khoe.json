@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "suc-khoe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "phat-hien-protein-giup-bao-ve-suc-khoe-nao-bo-khi-lao-hoa"
   },
   {
     "title": "Đột phá phương pháp chữa viêm nướu không tiêu diệt lợi khuẩn",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "suc-khoe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "dot-pha-phuong-phap-chua-viem-nuou-khong-tieu-diet-loi-khuan"
   },
   {
     "title": "Nature: Nhịn ăn gián đoạn hỗ trợ điều trị ung thư vú thông qua cơ chế hormone",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "suc-khoe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "nature-nhin-an-gian-doan-ho-tro-dieu-tri-ung-thu-vu-thong-qua-co-che-hormone"
   },
   {
     "title": "Phát hiện hợp chất trong sôcôla đen giúp làm chậm quá trình lão hóa",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "suc-khoe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "phat-hien-hop-chat-trong-socola-den-giup-lam-cham-qua-trinh-lao-hoa"
   },
   {
     "title": "Những tổn thương của cơ thể khi hút vape",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "suc-khoe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "nhung-ton-thuong-cua-co-the-khi-hut-vape"
   },
   {
     "title": "Báo động 3/4 dân số thế giới thiếu hụt Omega-3 nghiêm trọng",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "suc-khoe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "bao-dong-34-dan-so-the-gioi-thieu-hut-omega-3-nghiem-trong"
   },
   {
     "title": "Xét nghiệm gene giúp dự báo nguy cơ đau tim và đột quỵ",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "suc-khoe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "xet-nghiem-gene-giup-du-bao-nguy-co-dau-tim-va-dot-quy"
   },
   {
     "title": "Phát hiện cơ chế tăng nguy cơ ung thư đại trực tràng của vi khuẩn đường ruột",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "suc-khoe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "phat-hien-co-che-tang-nguy-co-ung-thu-dai-truc-trang-cua-vi-khuan-duong-ruot"
   },
   {
     "title": "Cảnh báo ung thư vú gia tăng ở phụ nữ dưới 40 tuổi",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "suc-khoe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "canh-bao-ung-thu-vu-gia-tang-o-phu-nu-duoi-40-tuoi"
   },
   {
     "title": "Phương pháp mới giúp giảm bốc hỏa ở phụ nữ",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "suc-khoe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "phuong-phap-moi-giup-giam-boc-hoa-o-phu-nu"
   }
 ]

@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "van-hoa",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "khai-mac-trien-lam-anh-80-nam-hao-khi-mien-dong"
   },
   {
     "title": "Múa Tắc Xình, sức sống bền bỉ của di sản văn hóa phi vật thể quốc gia",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "van-hoa",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "mua-tac-xinh-suc-song-ben-bi-cua-di-san-van-hoa-phi-vat-the-quoc-gia"
   },
   {
     "title": "Bảo tồn nhạc Ngũ âm Khmer: Gìn giữ ‘di sản sống’ giữa dòng chảy đương đại",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "van-hoa",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "bao-ton-nhac-ngu-am-khmer-gin-giu-di-san-song-giua-dong-chay-duong-dai"
   },
   {
     "title": "Câu chuyện điện ảnh: Avatar 'thắp sáng' các phòng vé toàn cầu",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "van-hoa",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "cau-chuyen-dien-anh-avatar-thap-sang-cac-phong-ve-toan-cau"
   },
   {
     "title": "Xây dựng tour, tuyến du lịch với hành trình trải nghiệm từ đại ngàn đến biển xanh",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "van-hoa",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "xay-dung-tour-tuyen-du-lich-voi-hanh-trinh-trai-nghiem-tu-dai-ngan-den-bien-xanh"
   },
   {
     "title": "Bế mạc Lễ hội ném còn 3 nước Việt Nam - Lào - Trung Quốc lần thứ IX",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "van-hoa",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "be-mac-le-hoi-nem-con-3-nuoc-viet-nam-lao-trung-quoc-lan-thu-ix"
   },
   {
     "title": "Nhiều hoạt động văn hóa đặc sắc trong 3 ngày giỗ Đức Thánh Tản Viên Sơn",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "van-hoa",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "nhieu-hoat-dong-van-hoa-dac-sac-trong-3-ngay-gio-duc-thanh-tan-vien-son"
   },
   {
     "title": "Người đẹp Hoa Kỳ đăng quang Miss Cosmo 2025",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "van-hoa",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "nguoi-dep-hoa-ky-dang-quang-miss-cosmo-2025"
   },
   {
     "title": "‘Mệnh lệnh từ trái tim’ - Bản hùng ca về ý chí và sức mạnh của Quân đội nhân dân Việt Nam",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "van-hoa",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "menh-lenh-tu-trai-tim-ban-hung-ca-ve-y-chi-va-suc-manh-cua-quan-doi-nhan-dan-viet-nam"
   },
   {
     "title": "Tấu khúc không lời - Chương trình hòa nhạc kỷ niệm 50 năm quan hệ hữu nghị Việt - Đức",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "van-hoa",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tau-khuc-khong-loi-chuong-trinh-hoa-nhac-ky-niem-50-nam-quan-he-huu-nghi-viet-duc"
   }
 ]

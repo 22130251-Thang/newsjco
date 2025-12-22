@@ -21,7 +21,7 @@ export const NewsGrid = ({ loading, categories }: NewsGridProps) => {
                     ) : categories.length > 0 ? (
                         categories.map((cat, index) => (
                             <CategoryBlock
-                                key={index}
+                                key={`${cat.category}-${index}`}
                                 category={cat.category}
                                 articles={cat.articles}
                             />

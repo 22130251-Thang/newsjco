@@ -15,7 +15,7 @@ export const CategoryArticleList = ({ articles }: CategoryArticleListProps) => {
             <div className="divide-y divide-gray-100">
                 {articles.map((article, index) => (
                     <ArticleCard
-                        key={article.slug || index}
+                        key={`catarticlelist-${index}`}
                         article={article}
                         variant="horizontal"
                         showDescription={true}

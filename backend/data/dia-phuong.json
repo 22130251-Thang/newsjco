@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "dia-phuong",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tieu-thuong-mong-cho-nhon-bac-ninh-som-duoc-sua-chua-va-hoat-dong-tro-lai"
   },
   {
     "title": "Lâm Đồng: Xử lý nghiêm tái lấn chiếm đất Cụm công nghiệp Quảng Tâm",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "dia-phuong",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "lam-dong-xu-ly-nghiem-tai-lan-chiem-dat-cum-cong-nghiep-quang-tam"
   },
   {
     "title": "Giảm nghèo đa chiều ở Huế - Không ai bị bỏ lại phía sau",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "dia-phuong",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "giam-ngheo-da-chieu-o-hue-khong-ai-bi-bo-lai-phia-sau"
   },
   {
     "title": "Tạo diện mạo mới cho vùng khó khăn Quảng Ngãi",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "dia-phuong",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tao-dien-mao-moi-cho-vung-kho-khan-quang-ngai"
   },
   {
     "title": "Không để khoảng trống pháp lý sau sáp nhập",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "dia-phuong",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "khong-de-khoang-trong-phap-ly-sau-sap-nhap"
   },
   {
     "title": "TP Hồ Chí Minh triển khai nhiều chính sách đặc thù hỗ trợ du lịch MICE",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "dia-phuong",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tp-ho-chi-minh-trien-khai-nhieu-chinh-sach-dac-thu-ho-tro-du-lich-mice"
   },
   {
     "title": "Mùa Xuân từ những mái ấm nghĩa tình",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "dia-phuong",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "mua-xuan-tu-nhung-mai-am-nghia-tinh"
   },
   {
     "title": "Thành tựu giảm nghèo ở miền núi Quảng Ngãi",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "dia-phuong",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "thanh-tuu-giam-ngheo-o-mien-nui-quang-ngai"
   },
   {
     "title": "Thông tin - 'Bệ đỡ' để hộ nghèo thoát nghèo",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "dia-phuong",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "thong-tin-be-do-de-ho-ngheo-thoat-ngheo"
   },
   {
     "title": "Nỗ lực từ những vùng đất 30a của Quảng Ngãi",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "dia-phuong",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "no-luc-tu-nhung-vung-dat-30a-cua-quang-ngai"
   }
 ]

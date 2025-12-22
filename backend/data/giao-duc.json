@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "giao-duc",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "mo-rong-giao-duc-pho-thong-tai-nghe-an-va-tay-ninh"
   },
   {
     "title": "Tuyên dương 145 học sinh, sinh viên, thanh niên dân tộc thiểu số tiêu biểu, xuất sắc năm 2025",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "giao-duc",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tuyen-duong-145-hoc-sinh-sinh-vien-thanh-nien-dan-toc-thieu-so-tieu-bieu-xuat-sac-nam-2025"
   },
   {
     "title": "Cuba dành học bổng toàn phần đào tạo Y khoa cho sinh viên Việt Nam",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "giao-duc",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "cuba-danh-hoc-bong-toan-phan-dao-tao-y-khoa-cho-sinh-vien-viet-nam"
   },
   {
     "title": "TP Hồ Chí Minh: Tăng cường xây dựng văn hóa học đường gắn với đạo đức nhà giáo",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "giao-duc",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tp-ho-chi-minh-tang-cuong-xay-dung-van-hoa-hoc-duong-gan-voi-dao-duc-nha-giao"
   },
   {
     "title": "Hành trình bền bỉ kết nối học thuật Việt Nam - Nhật Bản",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "giao-duc",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "hanh-trinh-ben-bi-ket-noi-hoc-thuat-viet-nam-nhat-ban"
   },
   {
     "title": "Hiệu trưởng kỳ vọng các thạc sĩ, tiến sĩ kết nối nguồn lực phát triển giáo dục",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "giao-duc",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "hieu-truong-ky-vong-cac-thac-si-tien-si-ket-noi-nguon-luc-phat-trien-giao-duc"
   },
   {
     "title": "Kiến tạo môi trường hướng nghiệp hiện đại, cá nhân hóa cho học sinh phổ thông",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "giao-duc",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "kien-tao-moi-truong-huong-nghiep-hien-dai-ca-nhan-hoa-cho-hoc-sinh-pho-thong"
   },
   {
     "title": "Cô học trò nhỏ với khát vọng khám phá tri thức",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "giao-duc",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "co-hoc-tro-nho-voi-khat-vong-kham-pha-tri-thuc"
   },
   {
     "title": "Tận tâm ươm mầm tài năng Sinh học",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "giao-duc",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tan-tam-uom-mam-tai-nang-sinh-hoc"
   },
   {
     "title": "Sắp xếp trường học: Không cắt giảm cơ học, lấy chất lượng giáo dục làm mục tiêu cao nhất",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "giao-duc",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "sap-xep-truong-hoc-khong-cat-giam-co-hoc-lay-chat-luong-giao-duc-lam-muc-tieu-cao-nhat"
   }
 ]

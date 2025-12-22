@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "bien-dao-viet-nam",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "canh-sat-bien-to-chuc-tot-cong-tac-dan-van-canh-sat-bien-voi-dong-bao-dan-toc-ton-giao"
   },
   {
     "title": "Đồng Tháp kiểm soát 100% tàu cá ra vào cảng",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "bien-dao-viet-nam",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "dong-thap-kiem-soat-100-tau-ca-ra-vao-cang"
   },
   {
     "title": "Những người lính nhà giàn DK1 viết tiếp truyền thống Anh hùng lực lượng vũ trang nhân dân",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "bien-dao-viet-nam",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "nhung-nguoi-linh-nha-gian-dk1-viet-tiep-truyen-thong-anh-hung-luc-luong-vu-trang-nhan-dan"
   },
   {
     "title": "Quân chủng Hải quân kiểm tra chức trách từng cương vị cán bộ cấp Vùng, Học viện",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "bien-dao-viet-nam",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "quan-chung-hai-quan-kiem-tra-chuc-trach-tung-cuong-vi-can-bo-cap-vung-hoc-vien"
   },
   {
     "title": "Lữ đoàn 681 - 'lá chắn thép' bảo vệ vững chắc biển trời Tổ quốc",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "bien-dao-viet-nam",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "lu-doan-681-la-chan-thep-bao-ve-vung-chac-bien-troi-to-quoc"
   },
   {
     "title": "Đưa 52 ngư dân gặp nạn trên biển vào đảo Song Tử Tây an toàn",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "bien-dao-viet-nam",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "dua-52-ngu-dan-gap-nan-tren-bien-vao-dao-song-tu-tay-an-toan"
   },
   {
     "title": "Lan tỏa chương trình 'Cảnh sát biển đồng hành với ngư dân' tại tỉnh Ninh Bình",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "bien-dao-viet-nam",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "lan-toa-chuong-trinh-canh-sat-bien-dong-hanh-voi-ngu-dan-tai-tinh-ninh-binh"
   },
   {
     "title": "Triển khai có hiệu quả nhiệm vụ phòng, chống, khắc phục hậu quả thiên tai",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "bien-dao-viet-nam",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "trien-khai-co-hieu-qua-nhiem-vu-phong-chong-khac-phuc-hau-qua-thien-tai"
   },
   {
     "title": "Chủ động, kiên định, hiệu quả trong bảo vệ chủ quyền và thực thi pháp luật trên biển",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "bien-dao-viet-nam",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "chu-dong-kien-dinh-hieu-qua-trong-bao-ve-chu-quyen-va-thuc-thi-phap-luat-tren-bien"
   },
   {
     "title": "Bộ Tư lệnh vùng Cảnh sát biển 3 tổ chức các hoạt động tuyên truyền, giáo dục về biển đảo",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "bien-dao-viet-nam",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "bo-tu-lenh-vung-canh-sat-bien-3-to-chuc-cac-hoat-dong-tuyen-truyen-giao-duc-ve-bien-dao"
   }
 ]

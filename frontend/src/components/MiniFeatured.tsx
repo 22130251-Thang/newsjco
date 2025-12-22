@@ -24,9 +24,9 @@ export const MiniFeatured = () => {
 
   return (
     <div className="flex flex-col">
-      {top3Articles.slice(0, 3).map((article) => (
+      {top3Articles.slice(0, 3).map((article, index) => (
         <Link
-          key={article.guid}
+          key={`minifeatured-${index}`}
           to={`/${article.category}/${article.slug}`}
           className="flex gap-3 bg-gray-100 p-2 border-b border-gray-300"
         >

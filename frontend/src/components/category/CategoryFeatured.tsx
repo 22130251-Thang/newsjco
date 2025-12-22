@@ -39,9 +39,9 @@ export const CategoryFeatured = ({ articles }: CategoryFeaturedProps) => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-gray-100">
-                    {subArticles.map((article) => (
+                    {subArticles.map((article, index) => (
                         <ArticleCard
-                            key={article.slug}
+                            key={`catfeatured-${index}`}
                             article={article}
                             variant="vertical"
                         />

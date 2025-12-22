@@ -51,9 +51,9 @@ export const CategoryBlock = ({ category, articles }: CategoryBlockProps) => {
 
         {subArticles.length > 0 && (
           <div className="space-y-2 mt-2">
-            {subArticles.map((article) => (
+            {subArticles.map((article, index) => (
               <Link
-                key={article.guid}
+                key={`${category}-${article.id || article.slug}-${index}`}
                 to={`/${article.category}/${article.slug}`}
                 className="block transition-colors"
               >

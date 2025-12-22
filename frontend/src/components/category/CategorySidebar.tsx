@@ -17,7 +17,7 @@ export const CategorySidebar = ({ trendingArticles, mostReadArticles }: Category
                 <div className="space-y-4">
                     {trendingArticles.map((article, index) => (
                         <Link
-                            key={article.slug || index}
+                            key={`catsidebar-trending-${index}`}
                             to={`/${article.category}/${article.slug}`}
                             className="flex items-start gap-3"
                         >
@@ -40,7 +40,7 @@ export const CategorySidebar = ({ trendingArticles, mostReadArticles }: Category
                 <div className="flex flex-col gap-6">
                     {mostReadArticles.map((article, index) => (
                         <Link
-                            key={article.slug || index}
+                            key={`catsidebar-mostread-${index}`}
                             to={`/${article.category}/${article.slug}`}
                             className="flex gap-4 border-b border-gray-200 pb-4 last:border-0 last:pb-0 group"
                         >

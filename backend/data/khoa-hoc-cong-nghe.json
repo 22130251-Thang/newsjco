@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "khoa-hoc-cong-nghe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao"
   },
   {
     "title": "Lưu trữ CO2 dưới đáy Biển Bắc - Giải pháp cho ngành công nghiệp khó khử carbon",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "khoa-hoc-cong-nghe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "luu-tru-co2-duoi-day-bien-bac-giai-phap-cho-nganh-cong-nghiep-kho-khu-carbon"
   },
   {
     "title": "'Quản gia AI' và kỷ nguyên mới của nhà bếp thông minh",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "khoa-hoc-cong-nghe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "quan-gia-ai-va-ky-nguyen-moi-cua-nha-bep-thong-minh"
   },
   {
     "title": "TP Hồ Chí Minh đẩy mạnh ứng dụng công nghệ trong giám sát, hướng tới đô thị thông minh",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "khoa-hoc-cong-nghe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tp-ho-chi-minh-day-manh-ung-dung-cong-nghe-trong-giam-sat-huong-toi-do-thi-thong-minh"
   },
   {
     "title": "'Máy giặt người' sắp có mặt trên thị trường",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "khoa-hoc-cong-nghe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "may-giat-nguoi-sap-co-mat-tren-thi-truong"
   },
   {
     "title": "Biochip ADN mới giúp nhân loại sẵn sàng trước đại dịch virus tiếp theo",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "khoa-hoc-cong-nghe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "biochip-adn-moi-giup-nhan-loai-san-sang-truoc-dai-dich-virus-tiep-theo"
   },
   {
     "title": "Tiềm năng phát hiện sớm nguy cơ căng thẳng mạn tính bằng AI",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "khoa-hoc-cong-nghe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tiem-nang-phat-hien-som-nguy-co-cang-thang-man-tinh-bang-ai"
   },
   {
     "title": "Robot hình người của Tesla phát bắp rang cho khách tham quan",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "khoa-hoc-cong-nghe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "robot-hinh-nguoi-cua-tesla-phat-bap-rang-cho-khach-tham-quan"
   },
   {
     "title": "Chuyển đổi số mở vận hội mới cho doanh nghiệp Việt vươn tầm toàn cầu",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "khoa-hoc-cong-nghe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "chuyen-doi-so-mo-van-hoi-moi-cho-doanh-nghiep-viet-vuon-tam-toan-cau"
   },
   {
     "title": "Làm việc thiện 2 giờ mỗi tuần giúp não bộ trẻ lâu hơn",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "khoa-hoc-cong-nghe",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "lam-viec-thien-2-gio-moi-tuan-giup-nao-bo-tre-lau-hon"
   }
 ]

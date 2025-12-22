@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "xa-hoi",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "nang-cao-chat-luong-tac-pham-bao-chi-da-phuong-tien-ve-bao-ve-nen-tang-tu-tuong-cua-dang"
   },
   {
     "title": "Phát hiện quả bom nặng khoảng 500kg ven sông Hẹ (Phú Thọ)",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "xa-hoi",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "phat-hien-qua-bom-nang-khoang-500kg-ven-song-he-phu-tho"
   },
   {
     "title": "Vướng vào dây điện ngang đường, nam thanh niên tử vong",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "xa-hoi",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "vuong-vao-day-dien-ngang-duong-nam-thanh-nien-tu-vong"
   },
   {
     "title": "Kịp thời giải cứu 8 người mắc kẹt trong vụ cháy nhà trọ ở Bắc Ninh",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "xa-hoi",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "kip-thoi-giai-cuu-8-nguoi-mac-ket-trong-vu-chay-nha-tro-o-bac-ninh"
   },
   {
     "title": "Thời tiết đêm 22/12: Bắc Bộ trời rét về đêm và sáng",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "xa-hoi",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "thoi-tiet-dem-2212-bac-bo-troi-ret-ve-dem-va-sang"
   },
   {
     "title": "Tinh thần bác ái, yêu thương - điểm tựa cho người yếu thế",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "xa-hoi",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tinh-than-bac-ai-yeu-thuong-diem-tua-cho-nguoi-yeu-the"
   },
   {
     "title": "Rộn ràng không khí Giáng sinh tại An Giang",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "xa-hoi",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "ron-rang-khong-khi-giang-sinh-tai-an-giang"
   },
   {
     "title": "Vượt qua thất bại, trở thành mô hình nông nghiệp kiểu mẫu",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "xa-hoi",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "vuot-qua-that-bai-tro-thanh-mo-hinh-nong-nghiep-kieu-mau"
   },
   {
     "title": "Nỗ lực mỗi ngày, làm lợi cho doanh nghiệp hàng tỉ đồng mỗi năm",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "xa-hoi",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "no-luc-moi-ngay-lam-loi-cho-doanh-nghiep-hang-ti-dong-moi-nam"
   },
   {
     "title": "Tìm thấy thi thể người đàn ông sau một ngày bị sóng biển cuốn mất tích",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "xa-hoi",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tim-thay-thi-the-nguoi-dan-ong-sau-mot-ngay-bi-song-bien-cuon-mat-tich"
   }
 ]

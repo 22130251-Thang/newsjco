@@ -11,7 +11,8 @@
     "source": "BaoTinTuc",
     "category": "kinh-te",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "giu-nhip-ngan-sach-tao-nen-tang-cho-giai-doan-phat-trien-moi"
   },
   {
     "title": "FAO đánh giá cao tiến bộ của Việt Nam trong phát triển nông nghiệp bền vững",
@@ -25,7 +26,8 @@
     "source": "BaoTinTuc",
     "category": "kinh-te",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "fao-danh-gia-cao-tien-bo-cua-viet-nam-trong-phat-trien-nong-nghiep-ben-vung"
   },
   {
     "title": "Gia tăng giá trị thặng dư cho nông sản xuất khẩu",
@@ -39,7 +41,8 @@
     "source": "BaoTinTuc",
     "category": "kinh-te",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "gia-tang-gia-tri-thang-du-cho-nong-san-xuat-khau"
   },
   {
     "title": "Hệ thống Quản lý và Cấp giấy chứng nhận xuất xứ điện tử chính thức vận hành từ trưa 22/12",
@@ -53,7 +56,8 @@
     "source": "BaoTinTuc",
     "category": "kinh-te",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "he-thong-quan-ly-va-cap-giay-chung-nhan-xuat-xu-dien-tu-chinh-thuc-van-hanh-tu-trua-2212"
   },
   {
     "title": "Từ ngày 23/12, Bộ Công Thương sẽ chính thức triển khai hệ thống truy xuất nguồn gốc",
@@ -67,7 +71,8 @@
     "source": "BaoTinTuc",
     "category": "kinh-te",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "tu-ngay-2312-bo-cong-thuong-se-chinh-thuc-trien-khai-he-thong-truy-xuat-nguon-goc"
   },
   {
     "title": "Chứng khoán châu Á khởi sắc",
@@ -81,7 +86,8 @@
     "source": "BaoTinTuc",
     "category": "kinh-te",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "chung-khoan-chau-a-khoi-sac"
   },
   {
     "title": "Ra mắt nhãn hiệu chứng nhận 'GỖ VIỆT NAM/VIETNAM WOOD'",
@@ -95,7 +101,8 @@
     "source": "BaoTinTuc",
     "category": "kinh-te",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "ra-mat-nhan-hieu-chung-nhan-go-viet-namvietnam-wood"
   },
   {
     "title": "Giá dầu châu Á tăng do lo ngại căng thẳng địa chính trị",
@@ -109,7 +116,8 @@
     "source": "BaoTinTuc",
     "category": "kinh-te",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "gia-dau-chau-a-tang-do-lo-ngai-cang-thang-dia-chinh-tri"
   },
   {
     "title": "Kinh tế số gắn với đổi mới công nghệ tài chính DeFi 2025",
@@ -123,7 +131,8 @@
     "source": "BaoTinTuc",
     "category": "kinh-te",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "kinh-te-so-gan-voi-doi-moi-cong-nghe-tai-chinh-defi-2025"
   },
   {
     "title": "Đồng NDT xác lập vị thế mới trong huy động vốn toàn cầu",
@@ -137,6 +146,7 @@
     "source": "BaoTinTuc",
     "category": "kinh-te",
     "categories": [],
-    "guid": " 00000000-0000-0000-0000-000000000000 "
+    "guid": " 00000000-0000-0000-0000-000000000000 ",
+    "id": "dong-ndt-xac-lap-vi-the-moi-trong-huy-dong-von-toan-cau"
   }
 ]

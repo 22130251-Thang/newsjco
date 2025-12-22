@@ -53,6 +53,7 @@ export class DatabaseService implements OnModuleInit {
     }
     return item;
   }
+
   create<T extends BaseRecord>(tablename: string, data: Omit<T, 'id'>): T {
     const table = this.findAll<T>(tablename);
     const maxId = table.reduce(
