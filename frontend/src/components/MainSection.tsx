@@ -2,30 +2,21 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
 import { Link } from "react-router-dom";
 import { getMainTheGioiArticle } from "../lib/store/slices/articleSlice";
+import { MainArticleSkeleton } from "./Skeleton";
 
 export const MainSection = () => {
   const dispatch = useAppDispatch();
-  const { mainTheGioiArticle, loadingMainTheGioiArticle, error } =
-    useAppSelector((state) => state.article);
+  const { data: mainTheGioiArticle, loading } = useAppSelector(
+    (state) => state.article.mainTheGioiArticle
+  );
+  const error = useAppSelector((state) => state.article.error);
 
   useEffect(() => {
     dispatch(getMainTheGioiArticle());
   }, [dispatch]);
 
-  if (loadingMainTheGioiArticle) {
-    return (
-      <div className="bg-white animate-pulse">
-        <div className="flex flex-col">
-          <div className="w-full h-[300px] bg-gray-200"></div>
-          <div className="p-4 space-y-3">
-            <div className="h-8 bg-gray-200 rounded w-3/4"></div>
-            <div className="h-4 bg-gray-200 rounded w-full"></div>
-            <div className="h-4 bg-gray-200 rounded w-full"></div>
-            <div className="h-4 bg-gray-200 rounded w-2/3"></div>
-          </div>
-        </div>
-      </div>
-    );
+  if (loading) {
+    return <MainArticleSkeleton />;
   }
 
   if (error) {

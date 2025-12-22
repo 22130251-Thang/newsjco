@@ -2,33 +2,20 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
 import { getHotNewsArticles } from "../lib/store/slices/articleSlice";
+import { HotNewsSkeleton } from "./Skeleton";
 
 export const HotNews = () => {
     const dispatch = useAppDispatch();
-    const { hotNewsArticles, loadingHotNewsArticles } = useAppSelector(
-        (state) => state.article
+    const { data: hotNewsArticles, loading } = useAppSelector(
+        (state) => state.article.hotNewsArticles
     );
 
     useEffect(() => {
         dispatch(getHotNewsArticles());
     }, [dispatch]);
 
-    if (loadingHotNewsArticles) {
-        return (
-            <div className="space-y-4 animate-pulse">
-                <div className="bg-gray-200 h-8 w-24 mb-4"></div>
-                {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="flex gap-4">
-                        <div className="w-[180px] h-[110px] bg-gray-200 shrink-0"></div>
-                        <div className="flex-1 space-y-2">
-                            <div className="h-4 bg-gray-200 w-1/4"></div>
-                            <div className="h-6 bg-gray-200 w-full"></div>
-                            <div className="h-6 bg-gray-200 w-2/3"></div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        );
+    if (loading) {
+        return <HotNewsSkeleton count={4} />;
     }
 
     if (hotNewsArticles.length === 0) return null;

@@ -15,13 +15,9 @@ import { EconomicSection } from "../../components/EconomicSection";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
-  const {
-    homePageCategories,
-    loadingHomePageCategories,
-    mediaArticles,
-    economicArticles,
-    loadingEconomicArticles,
-  } = useAppSelector((state) => state.article);
+  const homePageCategories = useAppSelector((state) => state.article.homePageCategories);
+  const mediaArticles = useAppSelector((state) => state.article.mediaArticles);
+  const economicArticles = useAppSelector((state) => state.article.economicArticles);
 
   useEffect(() => {
     dispatch(getHomePageCategories());
@@ -46,14 +42,14 @@ export const HomePage = () => {
           </aside>
         </div>
       </div>
-      <MediaSection articles={mediaArticles} />
+      <MediaSection articles={mediaArticles.data} />
       <NewsGrid
-        loading={loadingHomePageCategories}
-        categories={homePageCategories}
+        loading={homePageCategories.loading}
+        categories={homePageCategories.data}
       />
       <EconomicSection
-        articles={economicArticles}
-        loading={loadingEconomicArticles}
+        articles={economicArticles.data}
+        loading={economicArticles.loading}
       />
     </div>
   );

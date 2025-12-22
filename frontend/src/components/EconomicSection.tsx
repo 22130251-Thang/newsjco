@@ -1,6 +1,7 @@
 import type { Article } from '../types/article.type';
 import { EconomicCard } from './EconomicCard';
 import { Carousel } from './Carousel';
+import { CarouselCardSkeleton } from './Skeleton';
 
 interface EconomicSectionProps {
     articles: Article[];
@@ -24,13 +25,7 @@ export const EconomicSection = ({ articles, loading }: EconomicSectionProps) => 
                 buttonTop="35%"
             >
                 {loading ? (
-                    [1, 2, 3, 4].map((i) => (
-                        <div key={i} className="shrink-0 w-[240px] md:w-[280px] animate-pulse">
-                            <div className="aspect-video bg-gray-100 rounded-sm mb-3"></div>
-                            <div className="h-4 bg-gray-100 rounded w-full mb-2"></div>
-                            <div className="h-4 bg-gray-100 rounded w-2/3"></div>
-                        </div>
-                    ))
+                    <CarouselCardSkeleton count={4} cardWidth="280px" />
                 ) : (
                     articles.map((article, index) => (
                         <EconomicCard key={article.guid || index} article={article} />

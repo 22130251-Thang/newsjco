@@ -1,6 +1,7 @@
 import { HotNews } from "./HotNews";
 import { CategoryBlock } from "./CategoryBlock";
 import type { Article } from "../types/article.type";
+import { CategoryBlockSkeleton } from "./Skeleton";
 
 interface NewsGridProps {
     loading: boolean;
@@ -16,11 +17,7 @@ export const NewsGrid = ({ loading, categories }: NewsGridProps) => {
                 </div>
                 <div className="w-[50%] space-y-8">
                     {loading ? (
-                        <div className="animate-pulse space-y-8">
-                            {[1, 2, 3].map((i) => (
-                                <div key={i} className="h-40 bg-gray-100 rounded"></div>
-                            ))}
-                        </div>
+                        <CategoryBlockSkeleton count={3} />
                     ) : categories.length > 0 ? (
                         categories.map((cat, index) => (
                             <CategoryBlock

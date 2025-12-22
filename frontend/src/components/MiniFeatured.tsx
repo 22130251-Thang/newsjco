@@ -2,31 +2,20 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
 import { getTop3FeaturesArticles } from "../lib/store/slices/articleSlice";
 import { Link } from "react-router-dom";
+import { ArticleCardSkeleton } from "./Skeleton";
 
 export const MiniFeatured = () => {
   const dispatch = useAppDispatch();
-  const { top3Articles, loadingTop3Articles } = useAppSelector(
-    (state) => state.article,
+  const { data: top3Articles, loading } = useAppSelector(
+    (state) => state.article.top3Articles,
   );
 
   useEffect(() => {
     dispatch(getTop3FeaturesArticles());
   }, [dispatch]);
 
-  if (loadingTop3Articles) {
-    return (
-      <div className="space-y-4">
-        {[1, 2, 3].map((i) => (
-          <div key={i} className="flex gap-3 animate-pulse">
-            <div className="w-[120px] h-[70px] bg-gray-200 shrink-0"></div>
-            <div className="flex-1 space-y-2">
-              <div className="h-3 bg-gray-200 rounded w-full"></div>
-              <div className="h-3 bg-gray-200 rounded w-2/3"></div>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
+  if (loading) {
+    return <ArticleCardSkeleton count={3} imageWidth="120px" imageHeight="70px" />;
   }
 
   if (top3Articles.length === 0) {

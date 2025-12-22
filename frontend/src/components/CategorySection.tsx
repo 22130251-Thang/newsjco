@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import type { Article } from "../types/article.type";
+import { CategorySectionSkeleton } from "./Skeleton";
 
 interface CategorySectionProps {
     title: string;
@@ -11,21 +12,7 @@ interface CategorySectionProps {
 
 export const CategorySection = ({ title, slug, articles, loading }: CategorySectionProps) => {
     if (loading) {
-        return (
-            <div className="bg-white mb-4 animate-pulse">
-                <div className="section-header">
-                    <div className="h-5 bg-gray-200 rounded w-24"></div>
-                </div>
-                <div className="flex gap-4 p-4">
-                    <div className="w-[300px] h-[180px] bg-gray-200 rounded flex-shrink-0"></div>
-                    <div className="flex-1 space-y-3">
-                        <div className="h-4 bg-gray-200 rounded w-full"></div>
-                        <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                        <div className="h-3 bg-gray-200 rounded w-full"></div>
-                    </div>
-                </div>
-            </div>
-        );
+        return <CategorySectionSkeleton />;
     }
 
     if (articles.length === 0) {
