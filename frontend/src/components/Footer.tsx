@@ -1,7 +1,18 @@
 import { Link } from "react-router-dom";
 import { Home } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
+import { useEffect } from "react";
+import { getEconomicArticles } from "../lib/store/slices/articleSlice";
+import { EconomicSection } from "./EconomicSection";
 
 export const Footer = () => {
+  const dispatch = useAppDispatch();
+  const economicArticles = useAppSelector((state) => state.article.economicArticles);
+
+  useEffect(() => {
+    dispatch(getEconomicArticles());
+  }, [dispatch]);
+
   const categories = [
     "THỜI SỰ", "THẾ GIỚI", "KINH TẾ", "XÃ HỘI", "PHÁP LUẬT",
     "VĂN HÓA", "GIÁO DỤC", "THỂ THAO", "HỒ SƠ", "QUÂN SỰ",
@@ -10,6 +21,10 @@ export const Footer = () => {
 
   return (
     <footer className="mt-12">
+      <EconomicSection
+        articles={economicArticles.data}
+        loading={economicArticles.loading}
+      />
       <div className="border-t border-b border-red-600 bg-white">
         <div className="container-main">
           <div className="flex flex-wrap items-center gap-x-4 py-2">

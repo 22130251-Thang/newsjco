@@ -5,24 +5,20 @@ import { useEffect } from "react";
 import {
   getHomePageCategories,
   getMediaArticles,
-  getEconomicArticles,
 } from "../../lib/store/slices/articleSlice";
 import { RightSidebar } from "../../components/RightSidebar";
 import { MainSection } from "../../components/MainSection";
 import { NewsGrid } from "../../components/NewsGrid";
 import { MediaSection } from "../../components/MediaSection";
-import { EconomicSection } from "../../components/EconomicSection";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
   const homePageCategories = useAppSelector((state) => state.article.homePageCategories);
   const mediaArticles = useAppSelector((state) => state.article.mediaArticles);
-  const economicArticles = useAppSelector((state) => state.article.economicArticles);
 
   useEffect(() => {
     dispatch(getHomePageCategories());
     dispatch(getMediaArticles());
-    dispatch(getEconomicArticles());
   }, [dispatch]);
 
   return (
@@ -46,10 +42,6 @@ export const HomePage = () => {
       <NewsGrid
         loading={homePageCategories.loading}
         categories={homePageCategories.data}
-      />
-      <EconomicSection
-        articles={economicArticles.data}
-        loading={economicArticles.loading}
       />
     </div>
   );

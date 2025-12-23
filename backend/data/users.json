@@ -65,5 +65,12 @@
     "password": "$2b$10$aYnoGQLrx5DNyzz0win8v.GaWF5.6P6mRkYTl2m1PYVbYB.o04QeW",
     "displayName": "Test User",
     "id": 6
+  },
+  {
+    "username": "thang",
+    "useremail": "thang@gmail.com",
+    "password": "$2b$10$hGqAi.hNEQHA3CeclW1MFuKKcLNDvWTi.9gbv1h4abR7ek3QgZ/yG",
+    "displayName": "thang",
+    "id": 7
   }
 ]
