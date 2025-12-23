@@ -21,15 +21,11 @@ export const Footer = () => {
 
   return (
     <footer className="mt-12">
-<<<<<<< HEAD
-      <div className="border-t border-b border-red-600 bg-white dark:bg-gray-800">
-=======
       <EconomicSection
         articles={economicArticles.data}
         loading={economicArticles.loading}
       />
-      <div className="border-t border-b border-red-600 bg-white">
->>>>>>> 53a9a9f90617cd7e8a5309ed84c2305d6d3b67cc
+      <div className="border-t border-b border-red-600 bg-white dark:bg-gray-800">
         <div className="container-main">
           <div className="flex flex-wrap items-center gap-x-4 py-2">
             <Link to="/" className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-orange-400">
