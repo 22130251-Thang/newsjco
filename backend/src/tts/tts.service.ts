@@ -13,7 +13,7 @@ import * as crypto from 'crypto';
 @Injectable()
 export class TtsService {
   private readonly logger = new Logger(TtsService.name);
-  private readonly apiKey = 'c6489e80-c6e8-46f8-b20e-f95cea10ea57';
+  private readonly apiKey = 'f1f42de3-7985-4478-a0c8-8d1468c384ce';
   private readonly apiHost = 'api.ttsforfree.com';
   private readonly storagePath = path.join(process.cwd(), 'data', 'tts');
   private readonly defaultVoice =

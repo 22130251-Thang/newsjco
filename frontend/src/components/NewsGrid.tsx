@@ -10,7 +10,7 @@ interface NewsGridProps {
 
 export const NewsGrid = ({ loading, categories }: NewsGridProps) => {
     return (
-        <div className="container-main py-6">
+        <div className="container-main py-6 bg-white dark:bg-gray-900">
             <div className="flex gap-8 items-start">
                 <div className="w-[50%]">
                     <HotNews />
@@ -27,7 +27,7 @@ export const NewsGrid = ({ loading, categories }: NewsGridProps) => {
                             />
                         ))
                     ) : (
-                        <div className="text-gray-500">Đang cập nhật nội dung...</div>
+                        <div className="text-gray-500 dark:text-gray-400">Đang cập nhật nội dung...</div>
                     )}
                 </div>
             </div>

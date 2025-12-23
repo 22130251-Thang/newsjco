@@ -21,7 +21,7 @@ export const MainSection = () => {
 
   if (error) {
     return (
-      <div className="bg-white p-4 text-red-600 border border-red-200 rounded">
+      <div className="bg-white dark:bg-gray-800 p-4 text-red-600 border border-red-200 dark:border-red-900 rounded">
         Lỗi khi tải bài viết: {error}
       </div>
     );

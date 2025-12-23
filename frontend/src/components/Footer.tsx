@@ -10,17 +10,17 @@ export const Footer = () => {
 
   return (
     <footer className="mt-12">
-      <div className="border-t border-b border-red-600 bg-white">
+      <div className="border-t border-b border-red-600 bg-white dark:bg-gray-800">
         <div className="container-main">
           <div className="flex flex-wrap items-center gap-x-4 py-2">
-            <Link to="/" className="text-gray-500 hover:text-primary">
+            <Link to="/" className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-orange-400">
               <Home size={16} />
             </Link>
             {categories.map((cat, index) => (
               <Link
                 key={index}
                 to={`#`}
-                className="text-[11px] font-bold text-gray-600 hover:text-primary uppercase"
+                className="text-[11px] font-bold text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-orange-400 uppercase"
               >
                 {cat}
               </Link>
@@ -29,9 +29,9 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="py-8 bg-white">
+      <div className="py-8 bg-white dark:bg-gray-800">
         <div className="container-main text-center mb-6">
-          <h3 className="text-sm font-bold text-gray-800 uppercase">
+          <h3 className="text-sm font-bold text-gray-800 dark:text-gray-300 uppercase">
             KÊNH THÔNG TIN CỦA CHÍNH PHỦ DO TTXVN PHÁT HÀNH
           </h3>
         </div>
@@ -53,9 +53,9 @@ export const Footer = () => {
                 </div>
               </div>
 
-              <div className="text-sm text-gray-800 space-y-1">
-                <p><span className="font-bold">Tổng biên tập:</span> Ninh Hồng Nga</p>
-                <p><span className="font-bold">Phó Tổng biên tập:</span> Nguyễn Trọng Chính, Phạm Thị Tuyết,</p>
+              <div className="text-sm text-gray-800 dark:text-gray-400 space-y-1">
+                <p><span className="font-bold dark:text-gray-300">Tổng biên tập:</span> Ninh Hồng Nga</p>
+                <p><span className="font-bold dark:text-gray-300">Phó Tổng biên tập:</span> Nguyễn Trọng Chính, Phạm Thị Tuyết,</p>
                 <p>Phạm Thuỳ Hương, Đinh Quang Dũng</p>
               </div>
             </div>

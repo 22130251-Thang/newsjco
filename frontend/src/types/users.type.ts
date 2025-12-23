@@ -6,6 +6,7 @@ export interface User {
     role: string
     avatar: string
     bio: string
+    theme?: 'light' | 'dark'
     createdAt: string
     updatedAt: string
 }

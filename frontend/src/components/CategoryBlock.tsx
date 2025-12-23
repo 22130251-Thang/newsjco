@@ -17,16 +17,16 @@ export const CategoryBlock = ({ category, articles }: CategoryBlockProps) => {
   };
 
   return (
-    <div className="bg-gray-100 p-4 mb-8">
+    <div className="bg-gray-100 dark:bg-gray-800 p-4 mb-8">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-4">
           <Link
             to={`/${category}`}
-            className="text-primary font-bold text-sm uppercase pl-3 border-l-4 border-primary leading-none hover:text-red-700 transition-colors"
+            className="text-primary font-bold text-sm uppercase pl-3 border-l-4 border-primary leading-none hover:text-red-700 dark:hover:text-orange-400 transition-colors"
           >
             {formatCategoryName(category)}
           </Link>
-          <div className="hidden md:flex gap-4 text-xs text-gray-500"></div>
+          <div className="hidden md:flex gap-4 text-xs text-gray-500 dark:text-gray-400"></div>
         </div>
       </div>
 

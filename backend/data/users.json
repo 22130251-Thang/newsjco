@@ -65,5 +65,12 @@
     "password": "$2b$10$aYnoGQLrx5DNyzz0win8v.GaWF5.6P6mRkYTl2m1PYVbYB.o04QeW",
     "displayName": "Test User",
     "id": 6
+  },
+  {
+    "username": "thinh2302",
+    "useremail": "thinh@gmai.com",
+    "password": "$2b$10$qn.WNHpedGeXMjSSWLJYs.kZKXAlFj9yrpo7GHBcvQG22XYZS1JEy",
+    "displayName": "Ngọc Thịnh",
+    "id": 7
   }
 ]
