@@ -32,7 +32,7 @@ export class AuthService {
       registerRequestDto.username,
       registerRequestDto.useremail,
     );
-    
+
     if (existingUser) {
       throw new BadRequestException('Username hoặc email đã tồn tại');
     }
