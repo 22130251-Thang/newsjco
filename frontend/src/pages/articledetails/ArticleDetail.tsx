@@ -9,6 +9,8 @@ import {
     ArticleError,
 } from "../../components/articledetails";
 
+import { CommentList } from "../../components/comments/CommentList";
+
 export const ArticleDetail = () => {
     const { category, slug } = useParams();
     const { article, loading, error, relatedArticles } = useArticleDetail({
@@ -36,6 +38,7 @@ export const ArticleDetail = () => {
                             <ArticleHeader article={article} />
                             <ArticleContent article={article} />
                         </article>
+                        {slug && <CommentList slug={slug} />}
                     </main>
 
                     <RelatedArticlesSidebar articles={relatedArticles} maxItems={6} />

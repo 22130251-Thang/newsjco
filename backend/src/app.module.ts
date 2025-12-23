@@ -7,9 +7,10 @@ import { AuthModule } from './auth/auth.module';
 import { CategoriesModule } from './categories/categories.module';
 import { ArticlesModule } from './articles/articles.module';
 import { TtsModule } from './tts/tts.module';
+import { CommentsModule } from './comments/comments.module';
 
 @Module({
-  imports: [UsersModule, AuthModule, CategoriesModule, ArticlesModule, TtsModule],
+  imports: [UsersModule, AuthModule, CategoriesModule, ArticlesModule, TtsModule, CommentsModule],
   controllers: [AppController],
   providers: [AppService, DatabaseService],
 })
