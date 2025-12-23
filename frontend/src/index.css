@@ -31,13 +31,157 @@ html.dark {
     color-scheme: dark;
 }
 
+/* ===== DARK MODE BASE STYLES ===== */
 html.dark body,
-html.dark main,
-html.dark section,
-html.dark div,
-html.dark article {
+html.dark main {
     background-color: #111827;
+    color: #f5f5f5;
+}
+
+html.dark p,
+html.dark span,
+html.dark label {
     color: #e0e0e0;
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+    color: #ffffff;
+}
+
+/* ===== LIGHT MODE - ENSURE WHITE/LIGHT BACKGROUNDS ===== */
+.bg-white {
+    background-color: #ffffff !important;
+    color: #222222 !important;
+}
+
+.bg-gray-100 {
+    background-color: #f5f5f5 !important;
+    color: #222222 !important;
+}
+
+/* ===== DARK MODE - OVERRIDE LIGHT BACKGROUNDS TO DARK ===== */
+html.dark .bg-white {
+    background-color: #1f2937 !important;
+    color: #f3f4f6 !important;
+}
+
+html.dark .bg-gray-50 {
+    background-color: #2d3748 !important;
+    color: #e2e8f0 !important;
+}
+
+html.dark .bg-gray-100 {
+    background-color: #2d3748 !important;
+    color: #e2e8f0 !important;
+}
+
+/* Footer categories bar - RED in both light and dark */
+.footer-categories {
+    background-color: #d21d21 !important;
+    color: #ffffff !important;
+}
+
+html.dark .footer-categories {
+    background-color: #b91c1c !important;
+    color: #fecaca !important;
+}
+
+html.dark .footer-categories a {
+    color: #fecaca !important;
+}
+
+html.dark .footer-categories a:hover {
+    color: #fca5a5 !important;
+}
+
+/* ===== DARK MODE TEXT COLOR OVERRIDES ===== */
+/* Fix text that becomes unreadable in dark mode */
+html.dark .text-gray-800,
+html.dark .text-gray-900 {
+    color: #f3f4f6 !important;
+}
+
+html.dark .text-gray-700 {
+    color: #e5e7eb !important;
+}
+
+html.dark .text-gray-600 {
+    color: #d1d5db !important;
+}
+
+html.dark .text-gray-500 {
+    color: #9ca3af !important;
+}
+
+html.dark .text-gray-400 {
+    color: #6b7280 !important;
+}
+
+/* ===== DARK MODE BORDERS ===== */
+html.dark .border-gray-100 {
+    border-color: #4b5563 !important;
+}
+
+html.dark .border-gray-200 {
+    border-color: #4b5563 !important;
+}
+
+html.dark .border-gray-300 {
+    border-color: #374151 !important;
+}
+
+html.dark .border-dashed {
+    border-color: #4b5563 !important;
+}
+
+/* ===== DARK MODE PLACEHOLDER & INPUT ===== */
+html.dark input::placeholder {
+    color: #9ca3af !important;
+}
+
+html.dark input {
+    color: #ffffff !important;
+}
+
+/* Media and specific sections */
+html.dark .bg-gray-200 {
+    background-color: #374151;
+}
+
+html.dark .bg-gray-300 {
+    background-color: #4b5563;
+}
+
+/* Links */
+html.dark .group-hover\:text-primary {
+    color: #c02424;
+}
+
+html.dark .group-hover\:text-orange-300 {
+    color: #fed7aa;
+}
+
+/* Ensure white text stays white */
+html.dark .text-white {
+    color: #ffffff !important;
+}
+
+/* Utility classes for dark mode text */
+html.dark .dark\:text-white {
+    color: #ffffff !important;
+}
+
+html.dark .dark\:text-gray-100 {
+    color: #f3f4f6 !important;
+}
+
+html.dark .dark\:text-gray-200 {
+    color: #e5e7eb !important;
 }
 
 .font-heading {

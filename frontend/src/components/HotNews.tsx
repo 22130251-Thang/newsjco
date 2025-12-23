@@ -21,7 +21,7 @@ export const HotNews = () => {
     if (hotNewsArticles.length === 0) return null;
 
     return (
-        <div className="bg-white">
+        <div className="bg-white dark:bg-gray-800">
             <div className="mb-4">
                 <span className="bg-[#cc0000] text-white font-bold px-3 py-1 text-sm uppercase inline-block">
                     TIN NÓNG

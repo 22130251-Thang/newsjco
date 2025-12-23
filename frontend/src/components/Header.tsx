@@ -40,7 +40,7 @@ export const Header = () => {
                 <div className="h-3 w-px bg-gray-300 mx-1"></div>
                 <a
                   href="/rss"
-                  className="flex items-center gap-1 hover:text-primary"
+                  className="flex items-center gap-1 hover:text-primary dark:hover:text-orange-300"
                 >
                   <Rss size={12} />
                   <span>RSS</span>
@@ -49,13 +49,13 @@ export const Header = () => {
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#c02424]"
+                  className="hover:text-[#c02424] dark:hover:text-orange-300"
                 >
                   Fanpage
                 </a>
                 <a
                   href="/"
-                  className="flex items-center gap-1 hover:text-primary"
+                  className="flex items-center gap-1 hover:text-primary dark:hover:text-orange-300"
                 >
                   <Smartphone size={12} />
                   <span>Bản mobile</span>
@@ -88,9 +88,9 @@ export const Header = () => {
 
                 {isAuthenticated && user ? (
                   <div className="flex items-center gap-3 text-xs border-l border-gray-300 dark:border-gray-600 pl-4">
-                    <div className="text-gray-700 dark:text-gray-300">
+                    <div className="text-gray-700 dark:text-gray-200">
                       <p className="font-medium">{user.displayName}</p>
-                      <p className="text-gray-500">{user.username}</p>
+                      <p className="text-gray-500 dark:text-gray-400">{user.username}</p>
                     </div>
                     <button
                       onClick={handleLogout}
@@ -132,7 +132,7 @@ export const Header = () => {
               />
             </Link>
 
-            <div className="ml-auto w-[900px] h-[90px] bg-gray-50 border border-dashed border-gray-200 flex items-center justify-center text-xs text-gray-400">
+            <div className="ml-auto w-[900px] h-[90px] bg-gray-50 dark:bg-gray-800 border border-dashed border-gray-200 dark:border-gray-600 flex items-center justify-center text-xs text-gray-400 dark:text-gray-500">
               Quảng cáo
             </div>
           </div>

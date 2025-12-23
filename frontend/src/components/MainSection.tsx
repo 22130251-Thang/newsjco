@@ -36,7 +36,7 @@ export const MainSection = () => {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       <div className="flex flex-col">
         <Link
           to={`/${mainTheGioiArticle.category}/${mainTheGioiArticle.slug}`}
@@ -58,11 +58,11 @@ export const MainSection = () => {
 
         <div className="p-4">
           <Link to={`/${mainTheGioiArticle.category}/${mainTheGioiArticle.slug}`} className="group">
-            <h2 className="article-title text-2xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">
+            <h2 className="article-title text-2xl font-bold mb-3 group-hover:text-primary dark:text-white dark:group-hover:text-orange-300 transition-colors leading-tight">
               {mainTheGioiArticle.title}
             </h2>
           </Link>
-          <p className="article-description text-lg leading-relaxed text-gray-600 line-clamp-5">
+          <p className="article-description text-lg leading-relaxed text-gray-600 dark:text-gray-300 line-clamp-5">
             {mainTheGioiArticle.description}
           </p>
         </div>

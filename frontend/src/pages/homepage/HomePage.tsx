@@ -22,7 +22,7 @@ export const HomePage = () => {
   }, [dispatch]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <div className="container-main py-6">
         <div className="flex gap-8 items-start h-[488px] mb-3">
           <aside className="">
