@@ -67,17 +67,10 @@
     "id": 6
   },
   {
-<<<<<<< HEAD
-    "username": "thinh2302",
-    "useremail": "thinh@gmai.com",
-    "password": "$2b$10$qn.WNHpedGeXMjSSWLJYs.kZKXAlFj9yrpo7GHBcvQG22XYZS1JEy",
-    "displayName": "Ngọc Thịnh",
-=======
     "username": "thang",
     "useremail": "thang@gmail.com",
     "password": "$2b$10$hGqAi.hNEQHA3CeclW1MFuKKcLNDvWTi.9gbv1h4abR7ek3QgZ/yG",
     "displayName": "thang",
->>>>>>> 53a9a9f90617cd7e8a5309ed84c2305d6d3b67cc
     "id": 7
   }
 ]
