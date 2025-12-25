@@ -229,5 +229,29 @@
     "createdAt": "2025-12-23T11:27:35.090Z",
     "updatedAt": "2025-12-23T11:27:35.090Z",
     "id": 21
+  },
+  {
+    "articleGuid": " 00000000-0000-0000-0000-000000000000 ",
+    "userId": 7,
+    "content": "fgfdg",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2025-12-25T04:48:42.359Z",
+    "updatedAt": "2025-12-25T04:48:42.359Z",
+    "parentId": 21,
+    "id": 22
+  },
+  {
+    "articleGuid": " 00000000-0000-0000-0000-000000000000 ",
+    "userId": 7,
+    "content": "asdasd",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2025-12-25T04:48:44.373Z",
+    "updatedAt": "2025-12-25T04:48:44.373Z",
+    "parentId": 22,
+    "id": 23
   }
 ]

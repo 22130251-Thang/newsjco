@@ -6,14 +6,18 @@ import { RegisterRequestDto } from 'src/auth/dto/registerRequestDto';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly databaseService: DatabaseService) { }
+  constructor(private readonly databaseService: DatabaseService) {}
 
   create(registerRequestDto: RegisterRequestDto) {
     return this.databaseService.create<User>('users', registerRequestDto);
   }
 
   findByUserName(username: string) {
-    const user = this.databaseService.findOneBy<User>('users', 'username', username);
+    const user = this.databaseService.findOneBy<User>(
+      'users',
+      'username',
+      username,
+    );
     if (!user) {
       throw new NotFoundException(`User not found with username ${username}`);
     }
@@ -21,10 +25,18 @@ export class UsersService {
   }
 
   findByUserNameOrEmail(username: string, email: string): User | null {
-    const userByName = this.databaseService.findOneBy<User>('users', 'username', username);
+    const userByName = this.databaseService.findOneBy<User>(
+      'users',
+      'username',
+      username,
+    );
     if (userByName) return userByName;
-    
-    const userByEmail = this.databaseService.findOneBy<User>('users', 'useremail', email);
+
+    const userByEmail = this.databaseService.findOneBy<User>(
+      'users',
+      'useremail',
+      email,
+    );
     return userByEmail || null;
   }
 

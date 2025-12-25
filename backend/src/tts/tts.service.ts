@@ -1,9 +1,4 @@
-import {
-  Injectable,
-  HttpException,
-  HttpStatus,
-  Logger,
-} from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { Response } from 'express';
 import * as https from 'https';
 import * as fs from 'fs';
@@ -37,7 +32,6 @@ export class TtsService {
     if (fs.existsSync(localPath)) {
       return { audioUrl: `/tts/${fileName}`, cached: true };
     }
-    
 
     const job = await this.createApiJob(cleanedText);
     this.logger.log(`TTS job created: ${JSON.stringify(job)}`);
@@ -141,10 +135,7 @@ export class TtsService {
           if (++attempts >= maxAttempts) {
             clearInterval(interval);
             reject(
-              new HttpException(
-                'TTS job timeout',
-                HttpStatus.GATEWAY_TIMEOUT,
-              ),
+              new HttpException('TTS job timeout', HttpStatus.GATEWAY_TIMEOUT),
             );
           }
         } catch (err) {
@@ -154,36 +145,37 @@ export class TtsService {
       }, 5000);
     });
   }
-private downloadAudio(fileRef: string, localPath: string): Promise<void> {
-  return new Promise((resolve, reject) => {
-    let url: string;
+  private downloadAudio(fileRef: string, localPath: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      let url: string;
 
-    if (fileRef.startsWith('http')) {
-      url = fileRef;
-    } else if (fileRef.startsWith('/')) {
-      url = `https://${this.apiHost}${fileRef}`;
-    } else {
-      url = `https://${this.apiHost}/api/tts/StreamFile?filename=${encodeURIComponent(fileRef)}`;
-    }
-
-    https.get(url, (res) => {
-      if (res.statusCode !== 200) {
-        reject(
-          new HttpException(
-            `Download failed (${res.statusCode})`,
-            HttpStatus.BAD_GATEWAY,
-          ),
-        );
-        return;
+      if (fileRef.startsWith('http')) {
+        url = fileRef;
+      } else if (fileRef.startsWith('/')) {
+        url = `https://${this.apiHost}${fileRef}`;
+      } else {
+        url = `https://${this.apiHost}/api/tts/StreamFile?filename=${encodeURIComponent(fileRef)}`;
       }
 
-      const fileStream = fs.createWriteStream(localPath);
-      res.pipe(fileStream);
-      fileStream.on('finish', () => resolve());
-    }).on('error', reject);
-  });
-}
+      https
+        .get(url, (res) => {
+          if (res.statusCode !== 200) {
+            reject(
+              new HttpException(
+                `Download failed (${res.statusCode})`,
+                HttpStatus.BAD_GATEWAY,
+              ),
+            );
+            return;
+          }
 
+          const fileStream = fs.createWriteStream(localPath);
+          res.pipe(fileStream);
+          fileStream.on('finish', () => resolve());
+        })
+        .on('error', reject);
+    });
+  }
 
   private httpsRequest(
     options: https.RequestOptions,

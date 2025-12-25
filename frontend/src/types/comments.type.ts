@@ -11,10 +11,12 @@ export interface Comment {
     createdAt: string;
     updatedAt: string;
     user?: User;
+    parentId?: number;
 }
 
 export interface CreateCommentRequest {
     slug: string;
     content: string;
     userId: number;
+    parentId?: number;
 }

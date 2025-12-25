@@ -25,7 +25,9 @@ export class DatabaseService implements OnModuleInit {
     files
       .filter((file) => path.extname(file) === '.json')
       .forEach((file) => {
-        const tableName = path.basename(file).substring(0,path.basename(file).length-5);
+        const tableName = path
+          .basename(file)
+          .substring(0, path.basename(file).length - 5);
         const filePath = path.join(this.DATA_PATH, file);
         try {
           const rawData = fs.readFileSync(filePath, 'utf-8');
@@ -124,7 +126,7 @@ export class DatabaseService implements OnModuleInit {
   }
   findOneBy<T extends BaseRecord>(tablename: string, key: keyof T, value: any) {
     const table = this.findAll<T>(tablename);
-    this.logger.log(this.memoryStore.keys())
+    this.logger.log(this.memoryStore.keys());
     return table.find((record) => record[key] === value);
   }
 }

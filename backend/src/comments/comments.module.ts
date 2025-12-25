@@ -6,8 +6,8 @@ import { ArticlesModule } from 'src/articles/articles.module';
 import { UsersModule } from 'src/users/users.module';
 
 @Module({
-    imports: [ArticlesModule, UsersModule],
-    controllers: [CommentsController],
-    providers: [CommentsService, DatabaseService],
+  imports: [ArticlesModule, UsersModule],
+  controllers: [CommentsController],
+  providers: [CommentsService, DatabaseService],
 })
-export class CommentsModule { }
+export class CommentsModule {}

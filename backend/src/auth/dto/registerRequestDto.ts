@@ -1,6 +1,6 @@
-export class RegisterRequestDto{
-    username:string
-    useremail:string
-    password:string
-    displayName:string
+export class RegisterRequestDto {
+  username: string;
+  useremail: string;
+  password: string;
+  displayName: string;
 }

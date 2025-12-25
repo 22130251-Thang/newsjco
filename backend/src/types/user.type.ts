@@ -1,13 +1,13 @@
-import { BaseRecord } from "./baserecord.type";
+import { BaseRecord } from './baserecord.type';
 
-export interface User extends BaseRecord{
-    username:string,
-    useremail:string,
-    password:string,
-    displayName:string,
-    role?:string,
-    avatar?:string,
-    bio?:string,
-    createdAt?:string,
-    updatedAt?:string
+export interface User extends BaseRecord {
+  username: string;
+  useremail: string;
+  password: string;
+  displayName: string;
+  role?: string;
+  avatar?: string;
+  bio?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }

@@ -13,7 +13,7 @@ import { CreateArticleDto } from './dto/create-article.dto';
 
 @Controller('articles')
 export class ArticlesController {
-  constructor(private readonly articlesService: ArticlesService) { }
+  constructor(private readonly articlesService: ArticlesService) {}
 
   @Get('top-3-articles')
   findTopThreeArticles() {
@@ -57,7 +57,12 @@ export class ArticlesController {
     @Query('limit') limit: number = 10,
     @Query('offset') offset: number = 0,
   ) {
-    return this.articlesService.findByCategory(category, +page, +limit, +offset);
+    return this.articlesService.findByCategory(
+      category,
+      +page,
+      +limit,
+      +offset,
+    );
   }
 
   @Get()
@@ -68,7 +73,12 @@ export class ArticlesController {
     @Query('offset') offset: number = 0,
   ) {
     if (category) {
-      return this.articlesService.findByCategory(category, +page, +limit, +offset);
+      return this.articlesService.findByCategory(
+        category,
+        +page,
+        +limit,
+        +offset,
+      );
     }
     return this.articlesService.findAll();
   }
