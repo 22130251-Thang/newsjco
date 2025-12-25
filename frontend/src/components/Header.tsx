@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { CategoriesList } from "./CategoriesList";
 import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
 import { logout } from "../lib/store/slices/authSlice";
-import { NotificationBell } from "./NotificationBell";
 import { useTheme } from "../context/ThemeContext";
 
 export const Header = () => {
@@ -50,7 +49,7 @@ export const Header = () => {
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary dark:hover:text-orange-300"
+                  className="hover:text-[#c02424] dark:hover:text-orange-300"
                 >
                   Fanpage
                 </a>
@@ -88,25 +87,11 @@ export const Header = () => {
                 </button>
 
                 {isAuthenticated && user ? (
-                  <div className="flex items-center gap-3 text-xs border-l border-gray-300 pl-4">
-                    <NotificationBell />
-
-                    <Link
-                      to="/profile"
-                      className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
-                      title="Xem thông tin cá nhân"
-                    >
-                      <img
-                        src={user.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName)}&background=cc0000&color=fff&size=32`}
-                        alt={user.displayName}
-                        className="w-8 h-8 rounded-full object-cover border border-gray-300"
-                      />
-                      <div className="text-gray-700 dark:text-gray-300">
-                        <p className="font-medium">{user.displayName}</p>
-                        <p className="text-gray-500 dark:text-gray-400">@{user.username}</p>
-                      </div>
-                    </Link>
-
+                  <div className="flex items-center gap-3 text-xs border-l border-gray-300 dark:border-gray-600 pl-4">
+                    <div className="text-gray-700 dark:text-gray-200">
+                      <p className="font-medium">{user.displayName}</p>
+                      <p className="text-gray-500 dark:text-gray-400">{user.username}</p>
+                    </div>
                     <button
                       onClick={handleLogout}
                       className="flex items-center gap-1 text-red-600 hover:text-red-700 ml-2"
