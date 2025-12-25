@@ -23,7 +23,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     return 'light';
   });
 
-  // Update when user logs in/out or user changes
+  // Update when user logs in//out or user changes
   useEffect(() => {
     if (isAuthenticated && user?.theme) {
       setTheme(user.theme);
