@@ -58,7 +58,7 @@ export const fetchCurrentUser = createAsyncThunk<User>(
       const response = await fetchUserByToken();
       return response;
     } catch (error: any) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response?.status || error.message);
     }
   },
 );
@@ -116,11 +116,13 @@ const authSlice = createSlice({
         state.isAuthenticated = true;
         state.isInitialized = true;
       })
-      .addCase(fetchCurrentUser.rejected, (state) => {
+      .addCase(fetchCurrentUser.rejected, (state, action) => {
         state.user = null;
         state.isAuthenticated = false;
         state.isInitialized = true;
-        localStorage.removeItem("token");
+        if (action.payload === 401) {
+          localStorage.removeItem("token");
+        }
       });
   },
 });

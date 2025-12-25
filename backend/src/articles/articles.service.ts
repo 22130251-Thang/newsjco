@@ -27,7 +27,7 @@ export class ArticlesService {
     'tin-moi-nhat',
   ];
 
-  constructor(private readonly databaseService: DatabaseService) { }
+  constructor(private readonly databaseService: DatabaseService) {}
 
   findAll(): Article[] {
     let allArticles: Article[] = [];
@@ -81,7 +81,6 @@ export class ArticlesService {
     throw new NotFoundException(`Article with slug ${slug} not found`);
   }
 
-
   create(createArticleDto: CreateArticleDto): Article {
     const category = createArticleDto.category;
     return this.databaseService.create<Article>(category, createArticleDto);
@@ -124,8 +123,7 @@ export class ArticlesService {
             articles: articles.slice(0, 4),
           });
         }
-      } catch (error) {
-      }
+      } catch (error) {}
     }
     return result;
   }

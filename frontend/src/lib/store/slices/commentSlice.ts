@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { ActionReducerMapBuilder, AsyncThunk } from "@reduxjs/toolkit";
-import type { Comment, CreateCommentRequest } from "../../../types/comments.type";
+import type { Comment, CreateCommentRequest, PaginatedCommentResponse } from "../../../types/comments.type";
 import { getCommentsByArticle, createComment } from "../../service/comment-service";
 
 interface AsyncState<T> {
@@ -15,43 +14,40 @@ const createAsyncState = <T>(initialData: T): AsyncState<T> => ({
 
 interface CommentState {
     comments: AsyncState<Comment[]>;
+    total: number;
+    page: number;
+    hasMore: boolean;
     error: string | null;
 }
 
 const initialState: CommentState = {
     comments: createAsyncState([]),
+    total: 0,
+    page: 1,
+    hasMore: false,
     error: null,
 };
 
-function addAsyncThunkCases<TData, TArg>(
-    builder: ActionReducerMapBuilder<CommentState>,
-    thunk: AsyncThunk<TData, TArg, object>,
-    stateKey: keyof Omit<CommentState, "error">
-): void {
-    builder
-        .addCase(thunk.pending, (state) => {
-            (state[stateKey] as AsyncState<TData>).loading = true;
-            state.error = null;
-        })
-        .addCase(thunk.fulfilled, (state, action) => {
-            (state[stateKey] as AsyncState<TData>).loading = false;
-            (state[stateKey] as AsyncState<TData>).data = action.payload;
-            state.error = null;
-        })
-        .addCase(thunk.rejected, (state, action) => {
-            (state[stateKey] as AsyncState<TData>).loading = false;
-            state.error = (action.payload as string) ?? action.error.message ?? null;
-        });
-}
 
-export const fetchCommentsByArticle = createAsyncThunk<Comment[], string>(
+
+export const fetchCommentsByArticle = createAsyncThunk<PaginatedCommentResponse, { slug: string; page?: number; limit?: number }>(
     "comment/fetchByArticle",
-    async (slug, { rejectWithValue }) => {
+    async ({ slug, page = 1, limit = 5 }, { rejectWithValue }) => {
         try {
-            const data = await getCommentsByArticle(slug);
-            return data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+            return await getCommentsByArticle(slug, page, limit);
         } catch (error: unknown) {
             return rejectWithValue(error instanceof Error ? error.message : "Failed to fetch comments");
+        }
+    }
+);
+
+export const loadMoreComments = createAsyncThunk<PaginatedCommentResponse, { slug: string; page: number; limit?: number }>(
+    "comment/loadMore",
+    async ({ slug, page, limit = 5 }, { rejectWithValue }) => {
+        try {
+            return await getCommentsByArticle(slug, page, limit);
+        } catch (error: unknown) {
+            return rejectWithValue(error instanceof Error ? error.message : "Failed to load more comments");
         }
     }
 );
@@ -76,10 +72,47 @@ const commentSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        addAsyncThunkCases(builder, fetchCommentsByArticle, "comments");
-        builder.addCase(addCommentToArticle.fulfilled, (state, action) => {
-            state.comments.data = [action.payload, ...state.comments.data];
-        });
+        builder
+            .addCase(fetchCommentsByArticle.pending, (state) => {
+                state.comments.loading = true;
+                state.error = null;
+            })
+            .addCase(fetchCommentsByArticle.fulfilled, (state, action) => {
+                state.comments.loading = false;
+                state.comments.data = action.payload.data;
+                state.total = action.payload.total;
+                state.page = action.payload.page;
+
+                const currentRoots = action.payload.data.filter((c: Comment) => !c.parentId).length;
+                state.hasMore = currentRoots < action.payload.total;
+                state.error = null;
+            })
+            .addCase(fetchCommentsByArticle.rejected, (state, action) => {
+                state.comments.loading = false;
+                state.error = (action.payload as string) ?? action.error.message ?? null;
+            })
+            .addCase(loadMoreComments.pending, (state) => {
+                state.comments.loading = true;
+                state.error = null;
+            })
+            .addCase(loadMoreComments.fulfilled, (state, action) => {
+                state.comments.loading = false;
+                state.comments.data = [...state.comments.data, ...action.payload.data];
+                state.page = action.payload.page;
+                const currentRoots = state.comments.data.filter((c: Comment) => !c.parentId).length;
+                state.hasMore = currentRoots < action.payload.total;
+                state.error = null;
+            })
+            .addCase(loadMoreComments.rejected, (state, action) => {
+                state.comments.loading = false;
+                state.error = (action.payload as string) ?? action.error.message ?? null;
+            })
+            .addCase(addCommentToArticle.fulfilled, (state, action) => {
+                state.comments.data = [action.payload, ...state.comments.data];
+                if (!action.payload.parentId) {
+                    state.total += 1;
+                }
+            });
     },
 });
 

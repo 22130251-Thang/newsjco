@@ -14,7 +14,7 @@ export const EconomicSection = ({ articles, loading }: EconomicSectionProps) => 
     return (
         <div className="container-main py-8 mt-4 bg-white dark:bg-gray-900">
             <div className="flex mb-6">
-                <h2 className="bg-[#cc0000] text-white px-4 py-1.5 text-[13px] font-bold uppercase tracking-wide">
+                <h2 className="bg-[#cc0000] text-white px-4 py-1.5 text-[13px] font-bold uppercase ">
                     DOANH NGHIỆP - SẢN PHẨM - DỊCH VỤ
                 </h2>
             </div>

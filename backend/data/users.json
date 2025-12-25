@@ -72,5 +72,12 @@
     "password": "$2b$10$hGqAi.hNEQHA3CeclW1MFuKKcLNDvWTi.9gbv1h4abR7ek3QgZ/yG",
     "displayName": "thang",
     "id": 7
+  },
+  {
+    "username": "Màu",
+    "useremail": "Mau@gmail.com",
+    "password": "$2b$10$RLE/phdIkoZ8BGmnV69OTuQycR0nzI/duYcRBnFVTWC66yJ.MwbOe",
+    "displayName": "MàuMàuMàu",
+    "id": 8
   }
 ]

@@ -1,8 +1,12 @@
 import apiClient from "../api.config";
-import type { Comment, CreateCommentRequest } from "../../types/comments.type";
+import type { Comment, CreateCommentRequest, PaginatedCommentResponse } from "../../types/comments.type";
 
-export const getCommentsByArticle = async (slug: string): Promise<Comment[]> => {
-    const response = await apiClient.get<Comment[]>(`comments/article/${slug}`);
+export const getCommentsByArticle = async (
+    slug: string,
+    page: number = 1,
+    limit: number = 5
+): Promise<PaginatedCommentResponse> => {
+    const response = await apiClient.get<PaginatedCommentResponse>(`comments/article/${slug}?page=${page}&limit=${limit}`);
     return response.data;
 };
 

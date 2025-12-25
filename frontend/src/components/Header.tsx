@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { CategoriesList } from "./CategoriesList";
 import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
 import { logout } from "../lib/store/slices/authSlice";
+import { NotificationBell } from "./NotificationBell";
 import { useTheme } from "../context/ThemeContext";
 
 export const Header = () => {
@@ -49,7 +50,7 @@ export const Header = () => {
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#c02424] dark:hover:text-orange-300"
+                  className="hover:text-primary dark:hover:text-orange-300"
                 >
                   Fanpage
                 </a>
@@ -87,8 +88,9 @@ export const Header = () => {
                 </button>
 
                 {isAuthenticated && user ? (
-                  <div className="flex items-center gap-3 text-xs border-l border-gray-300 dark:border-gray-600 pl-4">
-                    <div className="text-gray-700 dark:text-gray-200">
+                  <div className="flex items-center gap-3 text-xs border-l border-gray-300 pl-4">
+                    <NotificationBell />
+                    <div className="text-gray-700">
                       <p className="font-medium">{user.displayName}</p>
                       <p className="text-gray-500 dark:text-gray-400">{user.username}</p>
                     </div>

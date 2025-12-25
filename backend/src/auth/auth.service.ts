@@ -11,13 +11,16 @@ export class AuthService {
   constructor(
     private jwtService: JwtService,
     private readonly userService: UsersService,
-  ) { }
+  ) {}
 
   async login(loginRequestDto: LoginRequestDto) {
     const user: User = this.userService.findByUserName(
       loginRequestDto.username,
     );
-    const isPasswordMatch = await bcrypt.compare(loginRequestDto.password, user.password);
+    const isPasswordMatch = await bcrypt.compare(
+      loginRequestDto.password,
+      user.password,
+    );
     if (!isPasswordMatch) {
       throw new BadRequestException('Tài khoản hoặc mật khẩu sai');
     }
