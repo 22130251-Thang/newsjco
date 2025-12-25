@@ -90,10 +90,23 @@ export const Header = () => {
                 {isAuthenticated && user ? (
                   <div className="flex items-center gap-3 text-xs border-l border-gray-300 pl-4">
                     <NotificationBell />
-                    <div className="text-gray-700">
-                      <p className="font-medium">{user.displayName}</p>
-                      <p className="text-gray-500 dark:text-gray-400">{user.username}</p>
-                    </div>
+
+                    <Link
+                      to="/profile"
+                      className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
+                      title="Xem thông tin cá nhân"
+                    >
+                      <img
+                        src={user.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName)}&background=cc0000&color=fff&size=32`}
+                        alt={user.displayName}
+                        className="w-8 h-8 rounded-full object-cover border border-gray-300"
+                      />
+                      <div className="text-gray-700 dark:text-gray-300">
+                        <p className="font-medium">{user.displayName}</p>
+                        <p className="text-gray-500 dark:text-gray-400">@{user.username}</p>
+                      </div>
+                    </Link>
+
                     <button
                       onClick={handleLogout}
                       className="flex items-center gap-1 text-red-600 hover:text-red-700 ml-2"
