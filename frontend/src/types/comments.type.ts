@@ -20,3 +20,10 @@ export interface CreateCommentRequest {
     userId: number;
     parentId?: number;
 }
+
+export interface PaginatedCommentResponse {
+    data: Comment[];
+    total: number;
+    page: number;
+    limit: number;
+}

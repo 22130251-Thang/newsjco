@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { CategoriesList } from "./CategoriesList";
 import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
 import { logout } from "../lib/store/slices/authSlice";
+import { NotificationBell } from "./NotificationBell";
 
 export const Header = () => {
   const dispatch = useAppDispatch();
@@ -47,7 +48,7 @@ export const Header = () => {
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#c02424]"
+                  className="hover:text-primary"
                 >
                   Fanpage
                 </a>
@@ -74,6 +75,7 @@ export const Header = () => {
 
                 {isAuthenticated && user ? (
                   <div className="flex items-center gap-3 text-xs border-l border-gray-300 pl-4">
+                    <NotificationBell />
                     <div className="text-gray-700">
                       <p className="font-medium">{user.displayName}</p>
                       <p className="text-gray-500">{user.username}</p>

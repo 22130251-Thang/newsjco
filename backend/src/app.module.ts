@@ -8,6 +8,7 @@ import { CategoriesModule } from './categories/categories.module';
 import { ArticlesModule } from './articles/articles.module';
 import { TtsModule } from './tts/tts.module';
 import { CommentsModule } from './comments/comments.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CommentsModule } from './comments/comments.module';
     ArticlesModule,
     TtsModule,
     CommentsModule,
+    NotificationsModule,
   ],
   controllers: [AppController],
   providers: [AppService, DatabaseService],

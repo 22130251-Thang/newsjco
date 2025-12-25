@@ -50,7 +50,7 @@ export const CommentForm = ({ onSubmit, onCancel, placeholder = "Chia sẻ ý ki
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     placeholder={placeholder}
-                    className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none resize-none h-28 transition-all"
+                    className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none resize-none h-28 transition-all"
                     disabled={isSubmitting}
                 />
             </div>

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { CommentsService } from './comments.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
 
@@ -12,7 +12,11 @@ export class CommentsController {
   }
 
   @Get('article/:slug')
-  findByArticleSlug(@Param('slug') slug: string) {
-    return this.commentsService.findByArticleSlug(slug);
+  findByArticleSlug(
+    @Param('slug') slug: string,
+    @Query('page') page: string = '1',
+    @Query('limit') limit: string = '10',
+  ) {
+    return this.commentsService.findByArticleSlug(slug, +page, +limit);
   }
 }
