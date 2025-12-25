@@ -8,7 +8,7 @@ interface ArticleHeaderProps {
 
 export const ArticleHeader = ({ article }: ArticleHeaderProps) => (
     <header className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4 font-heading">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4 font-heading">
             {article.title}
         </h1>
 
@@ -19,7 +19,7 @@ export const ArticleHeader = ({ article }: ArticleHeaderProps) => (
         </div>
 
         {article.description && (
-            <p className="text-lg font-bold text-gray-700 leading-relaxed italic mb-8 border-l-4 border-red-600 pl-4 py-1">
+            <p className="text-lg font-bold text-gray-700 dark:text-gray-300 leading-relaxed italic mb-8 border-l-4 border-red-600 pl-4 py-1">
                 {article.description}
             </p>
         )}
@@ -27,10 +27,10 @@ export const ArticleHeader = ({ article }: ArticleHeaderProps) => (
 );
 
 const ArticleMeta = ({ article }: ArticleHeaderProps) => (
-    <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500 border-y border-gray-100 py-4 mb-6">
+    <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500 dark:text-gray-400 border-y border-gray-100 dark:border-gray-700 py-4 mb-6">
         <div className="flex items-center gap-1">
             <User size={14} className="text-red-500" />
-            <span className="font-bold text-gray-800 uppercase">
+            <span className="font-bold text-gray-800 dark:text-gray-200 uppercase">
                 {article.author || "Báo Tin Tức"}
             </span>
         </div>
@@ -48,7 +48,7 @@ const ArticleMeta = ({ article }: ArticleHeaderProps) => (
             </span>
         </div>
         <div className="ml-auto flex items-center gap-3">
-            <button className="p-1.5 transition-colors">
+            <button className="p-1.5 transition-colors hover:text-gray-600 dark:hover:text-gray-300">
                 <Share2 size={16} />
             </button>
         </div>

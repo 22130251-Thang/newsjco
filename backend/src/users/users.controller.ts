@@ -29,6 +29,15 @@ export class UsersController {
     return null;
   }
 
+  @UseGuards(JwtAuthGuard)
+  @Patch('user/theme')
+  updateTheme(
+    @Request() req: { user: { userId: number } },
+    @Body() body: { theme: 'light' | 'dark' },
+  ) {
+    return this.usersService.update(req.user.userId, { theme: body.theme });
+  }
+
   @Post('users')
   create(@Body() registerRequestDto: RegisterRequestDto) {
     return this.usersService.create(registerRequestDto);

@@ -29,7 +29,7 @@ export const ArticleDetail = () => {
     if (!article) return null;
 
     return (
-        <div className="bg-white min-h-screen">
+        <div className="bg-white dark:bg-gray-900 min-h-screen">
             <div className="container-main py-8">
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
                     <main className="flex-1 min-w-0">

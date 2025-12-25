@@ -8,11 +8,11 @@ interface CategoryArticleListProps {
 export const CategoryArticleList = ({ articles }: CategoryArticleListProps) => {
     return (
         <div className="space-y-8">
-            <h3 className="text-lg font-bold text-gray-900 border-l-4 border-primary pl-3 uppercase tracking-wider mb-6">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white border-l-4 border-primary dark:border-orange-400 pl-3 uppercase tracking-wider mb-6">
                 Tin mới
             </h3>
 
-            <div className="divide-y divide-gray-100">
+            <div className="divide-y divide-gray-100 dark:divide-gray-700">
                 {articles.map((article, index) => (
                     <ArticleCard
                         key={`catarticlelist-${index}`}

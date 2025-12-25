@@ -53,21 +53,21 @@ export const CategoriesList = () => {
       </nav>
 
       {/* Phần SỰ KIỆN - scroll bình thường */}
-      <div className="container-main bg-gray-100 py-2">
+      <div className="container-main bg-gray-100 dark:bg-gray-800 py-2">
         <div className="flex items-center justify-between text-xs">
           <div className="flex items-center gap-3 overflow-hidden flex-1 mr-4 p-2">
-            <span className="font-bold text-red-500">SỰ KIỆN</span>
-            <div className="flex items-center gap-2 truncate text-gray-700">
-              <Link to="/su-kien/1" className="bg-white rounded-xl px-2 py-2">
+            <span className="font-bold text-red-500 dark:text-red-400">SỰ KIỆN</span>
+            <div className="flex items-center gap-2 truncate text-gray-700 dark:text-gray-300">
+              <Link to="/su-kien/1" className="bg-white dark:bg-gray-700 rounded-xl px-2 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                 Báo Tin tức - 40 năm đổi mới
               </Link>
-              <Link to="/su-kien/2" className="bg-white rounded-xl px-2 py-2">
+              <Link to="/su-kien/2" className="bg-white dark:bg-gray-700 rounded-xl px-2 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                 Việt Nam: Kỷ nguyên mới
               </Link>
             </div>
           </div>
 
-          <div className="text-gray-500 font-medium whitespace-nowrap">
+          <div className="text-gray-500 dark:text-gray-400 font-medium whitespace-nowrap">
             {getVietnameseFormattedDate()}
           </div>
         </div>

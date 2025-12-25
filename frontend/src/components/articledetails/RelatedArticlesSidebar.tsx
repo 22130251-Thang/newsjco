@@ -14,8 +14,8 @@ export const RelatedArticlesSidebar = ({
 
     return (
         <aside className="w-[350px] shrink-0 ">
-            <div className="bg-gray-50 p-6 rounded-lg">
-                <h2 className="text-xl font-bold mb-6 flex items-center">
+            <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                <h2 className="text-xl font-bold mb-6 flex items-center text-gray-900 dark:text-white">
                     <span className="w-1.5 h-6 bg-red-600" />
                     TIN LIÊN QUAN
                 </h2>

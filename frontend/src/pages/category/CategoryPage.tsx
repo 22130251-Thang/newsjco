@@ -30,7 +30,7 @@ export const CategoryPage = () => {
     if ((!articles || articles.length === 0) && features.length === 0) {
         return (
             <div className="container-main py-12 text-center">
-                <h2 className="text-2xl font-bold text-gray-500">Không tìm thấy bài viết cho chuyên mục này.</h2>
+                <h2 className="text-2xl font-bold text-gray-500 dark:text-gray-400">Không tìm thấy bài viết cho chuyên mục này.</h2>
             </div>
         );
     }
@@ -48,7 +48,7 @@ export const CategoryPage = () => {
     };
 
     return (
-        <div className="bg-white min-h-screen">
+        <div className="bg-white dark:bg-gray-900 min-h-screen">
             <div className="container-main py-8 flex flex-col gap-10">
                 <CategoryHeader
                     category={category || ""}

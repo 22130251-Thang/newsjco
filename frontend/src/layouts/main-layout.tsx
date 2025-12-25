@@ -6,7 +6,7 @@ export const MainLayout = () => {
   return (
     <>
       <Header />
-      <div>
+      <div className="bg-white dark:bg-gray-900 min-h-screen">
         <Outlet />
       </div>
       <Footer />

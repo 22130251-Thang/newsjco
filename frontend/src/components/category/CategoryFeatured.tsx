@@ -28,17 +28,17 @@ export const CategoryFeatured = ({ articles }: CategoryFeaturedProps) => {
                             />
                         </div>
                         <div className="flex-1">
-                            <h2 className="text-[28px] font-extrabold text-gray-900 leading-tight mb-4 font-heading">
+                            <h2 className="text-[28px] font-extrabold text-gray-900 dark:text-white leading-tight mb-4 font-heading">
                                 {mainArticle.title}
                             </h2>
-                            <p className="text-[16px] text-gray-600 line-clamp-6 leading-relaxed">
+                            <p className="text-[16px] text-gray-600 dark:text-gray-300 line-clamp-6 leading-relaxed">
                                 {mainArticle.description}
                             </p>
                         </div>
                     </Link>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-gray-100">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-gray-100 dark:border-gray-700">
                     {subArticles.map((article, index) => (
                         <ArticleCard
                             key={`catfeatured-${index}`}

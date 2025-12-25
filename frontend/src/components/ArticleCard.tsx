@@ -24,7 +24,7 @@ export const ArticleCard = ({
         return (
             <Link
                 to={`/${article.category}/${article.slug}`}
-                className={`flex gap-4 py-4 ${showBorder ? "border-b border-gray-200" : ""} group ${containerClassName}`}
+                className={`flex gap-4 py-4 ${showBorder ? "border-b border-gray-200 dark:border-gray-700" : ""} group ${containerClassName}`}
             >
                 <div className={`shrink-0 overflow-hidden ${imageClassName || "w-[200px] h-[120px]"}`}>
                     <img
@@ -40,11 +40,11 @@ export const ArticleCard = ({
                             {article.category.replace("-", " ")}
                         </span>
                     )}
-                    <h3 className="text-[17px] font-bold font-heading leading-snug text-gray-800 transition-colors line-clamp-3 mb-2">
+                    <h3 className="text-[17px] font-bold font-heading leading-snug text-gray-800 dark:text-white transition-colors line-clamp-3 mb-2">
                         {article.title}
                     </h3>
                     {showDescription && (
-                        <p className="text-sm text-gray-600 line-clamp-2 md:line-clamp-3 leading-relaxed hidden sm:block">
+                        <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 md:line-clamp-3 leading-relaxed hidden sm:block">
                             {article.description || article.content?.substring(0, 150)}
                         </p>
                     )}
@@ -70,11 +70,11 @@ export const ArticleCard = ({
                     {article.category.replace("-", " ")}
                 </span>
             )}
-            <h3 className="text-[17px] font-bold text-gray-900 leading-snug line-clamp-3 font-heading mb-2">
+            <h3 className="text-[17px] font-bold text-gray-900 dark:text-white leading-snug line-clamp-3 font-heading mb-2">
                 {article.title}
             </h3>
             {showDescription && (
-                <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
+                <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 leading-relaxed">
                     {article.description || article.content?.substring(0, 150)}
                 </p>
             )}
