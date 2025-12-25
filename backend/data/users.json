@@ -79,5 +79,17 @@
     "password": "$2b$10$RLE/phdIkoZ8BGmnV69OTuQycR0nzI/duYcRBnFVTWC66yJ.MwbOe",
     "displayName": "MàuMàuMàu",
     "id": 8
+  },
+  {
+    "username": "tienthanh",
+    "useremail": "tienthanhtct@gmail.com",
+    "password": "$2b$10$YFdRlBSj1qPgnFvC7u.tT.LUNsordhEMLNHa9acKm3O6PekaKkqB6",
+    "displayName": "Tiến Thành",
+    "id": 9,
+    "gender": "female",
+    "birthDate": "2024-01-02",
+    "address": "Đà Nẵng",
+    "updatedAt": "2025-12-25T09:36:53.612Z",
+    "phone": "0908737813"
   }
 ]
