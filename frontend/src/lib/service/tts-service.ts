@@ -5,6 +5,16 @@ interface TTSResponse {
   cached: boolean;
 }
 
+<<<<<<< HEAD
+=======
+interface StatusResponse {
+  status: 'pending' | 'generating' | 'ready' | 'error';
+  error?: string;
+}
+
+const backendUrl = 'http://localhost:3000';
+
+>>>>>>> 8535aec (update)
 export const generateTTS = async (
   slug: string,
   title?: string,
@@ -12,11 +22,19 @@ export const generateTTS = async (
   fullContent?: string
 ): Promise<Blob> => {
   try {
+<<<<<<< HEAD
     const response = await apiClient.post<TTSResponse>('tts', {
       slug,
       title,
       description,
       fullContent,
+=======
+    const url = `${backendUrl}/tts/generate`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug, title, description, fullContent }),
+>>>>>>> 8535aec (update)
     });
     
     console.log('TTS Response:', response.data);
@@ -45,3 +63,25 @@ export const generateTTS = async (
     throw new Error('Không thể tạo âm thanh cho bài viết');
   }
 };
+<<<<<<< HEAD
+=======
+
+export const checkTTSStatus = async (taskId: string): Promise<StatusResponse> => {
+  try {
+    const response = await fetch(`${backendUrl}/tts/status/${taskId}`);
+    
+    if (response.status === 404) throw new Error('Task not found');
+    if (response.status === 410) throw new Error('Task expired');
+    if (!response.ok) throw new Error('Status check failed');
+    
+    return response.json();
+  } catch (error) {
+    console.error('Failed to check TTS status:', error);
+    throw new Error('Không thể kiểm tra trạng thái');
+  }
+};
+
+export const getTTSStream = (taskId: string): string => {
+  return `${backendUrl}/tts/stream/${taskId}`;
+};
+>>>>>>> 8535aec (update)
