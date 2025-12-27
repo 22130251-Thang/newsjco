@@ -8,6 +8,7 @@ import { ArticleDetail } from "./pages/articledetails/ArticleDetail";
 import { CategoryPage } from "./pages/category/CategoryPage";
 import { Login, Signup } from "./pages/authentication";
 import { ProfilePage } from "./pages/profile/ProfilePage";
+import { BookmarksPage } from "./pages/bookmarks/BookmarksPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route element={<ProtectedRoute />}>
                 <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/bookmarks" element={<BookmarksPage />} />
               </Route>
 
               <Route path="/:category" element={<CategoryPage />} />
