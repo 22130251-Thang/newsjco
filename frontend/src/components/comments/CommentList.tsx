@@ -1,9 +1,17 @@
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
-import { fetchCommentsByArticle, addCommentToArticle, loadMoreComments } from "../../lib/store/slices/commentSlice";
+import {
+    fetchCommentsByArticle,
+    addCommentToArticle,
+    loadMoreComments,
+} from "../../lib/store/slices/commentSlice";
 import { CommentForm } from "./CommentForm";
 import { CommentItem } from "./CommentItem";
-import type { Comment } from "../../types/comments.type";
+import { LoadMoreButton } from "./LoadMoreButton";
+import { EmptyComments } from "./EmptyComments";
+import { CommentListLoading } from "./CommentListLoading";
+import { useCommentTree } from "./hooks/useCommentTree";
+import { COMMENTS_PER_PAGE } from "./constants";
 
 interface CommentListProps {
     slug: string;
@@ -15,60 +23,42 @@ export const CommentList = ({ slug }: CommentListProps) => {
     const { hasMore, page, total } = useAppSelector((state) => state.comment);
     const { user } = useAppSelector((state) => state.auth);
 
+    const commentTree = useCommentTree(comments);
+
     useEffect(() => {
         if (slug) {
-            dispatch(fetchCommentsByArticle({ slug, page: 1, limit: 5 }));
+            dispatch(fetchCommentsByArticle({ slug, page: 1, limit: COMMENTS_PER_PAGE }));
         }
     }, [slug, dispatch]);
 
     const handleLoadMore = () => {
         if (slug && !loading && hasMore) {
-            dispatch(loadMoreComments({ slug, page: page + 1, limit: 5 }));
+            dispatch(loadMoreComments({ slug, page: page + 1, limit: COMMENTS_PER_PAGE }));
         }
     };
-
-    const commentTree = useMemo(() => {
-        const commentMap: { [key: number]: Comment & { replies: Comment[] } } = {};
-        const roots: (Comment & { replies: Comment[] })[] = [];
-
-        comments.forEach(comment => {
-            commentMap[comment.id] = { ...comment, replies: [] };
-        });
-
-        comments.forEach(comment => {
-            if (comment.parentId && commentMap[comment.parentId]) {
-                commentMap[comment.parentId].replies.push(commentMap[comment.id]);
-            } else if (!comment.parentId) {
-                roots.push(commentMap[comment.id]);
-            }
-        });
-
-        return roots;
-    }, [comments]);
 
     const handleCreateComment = async (content: string, parentId?: number) => {
         if (!user) return;
 
-        await dispatch(addCommentToArticle({
-            slug,
-            content,
-            userId: user.id,
-            parentId,
-        })).unwrap();
+        await dispatch(
+            addCommentToArticle({
+                slug,
+                content,
+                userId: user.id,
+                parentId,
+            })
+        ).unwrap();
     };
 
     if (loading && comments.length === 0) {
-        return <div className="py-8 text-center text-gray-500">Đang tải bình luận...</div>;
+        return <CommentListLoading />;
     }
+
+    const isEmpty = comments.length === 0 && !loading;
 
     return (
         <div className="mt-8 bg-white p-8 rounded-2xl">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
-                Bình luận
-                <span className="text-sm bg-gray-100 text-gray-500 px-3 py-1 rounded-full font-medium">
-                    {total}
-                </span>
-            </h3>
+            <CommentListHeader total={total} />
 
             <div className="mb-10 bg-gray-50/50 p-6 rounded-2xl border border-gray-100">
                 <CommentForm onSubmit={(content) => handleCreateComment(content)} />
@@ -84,29 +74,19 @@ export const CommentList = ({ slug }: CommentListProps) => {
                     />
                 ))}
 
-                {hasMore && (
-                    <div className="mt-8 text-center">
-                        <button
-                            onClick={handleLoadMore}
-                            disabled={loading}
-                            className={`px-8 py-3 rounded-xl font-bold transition-all border-2 ${loading
-                                ? "bg-gray-50 border-gray-100 text-gray-400 cursor-not-allowed"
-                                : "border-indigo-100 text-indigo-600 cursor-pointer"
-                                }`}
-                        >
-                            {loading ? "Đang tải..." : "Xem thêm bình luận"}
-                        </button>
-                    </div>
-                )}
+                {hasMore && <LoadMoreButton loading={loading} onClick={handleLoadMore} />}
 
-                {comments.length === 0 && !loading && (
-                    <div className="text-center py-12 text-gray-400 bg-gray-50/30 rounded-2xl border border-dashed border-gray-200">
-                        <p className="text-lg">Chưa có bình luận nào.</p>
-                        <p className="text-sm mt-1">Hãy là người đầu tiên chia sẻ ý kiến của bạn!</p>
-                    </div>
-                )}
+                {isEmpty && <EmptyComments />}
             </div>
         </div>
     );
 };
 
+const CommentListHeader = ({ total }: { total: number }) => (
+    <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+        Bình luận
+        <span className="text-sm bg-gray-100 text-gray-500 px-3 py-1 rounded-full font-medium">
+            {total}
+        </span>
+    </h3>
+);

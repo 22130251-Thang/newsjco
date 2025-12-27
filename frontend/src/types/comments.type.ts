@@ -21,6 +21,10 @@ export interface CreateCommentRequest {
     parentId?: number;
 }
 
+export interface CommentWithReplies extends Comment {
+    replies: CommentWithReplies[];
+}
+
 export interface PaginatedCommentResponse {
     data: Comment[];
     total: number;
