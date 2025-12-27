@@ -1,8 +1,11 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UpdateProfileDto } from './dto/update-profile.dto';
+import { ChangePasswordDto } from './dto/change-password.dto';
 import { DatabaseService } from 'src/database/database.service';
 import { User } from 'src/types/user.type';
 import { RegisterRequestDto } from 'src/auth/dto/registerRequestDto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -13,7 +16,7 @@ export class UsersService {
   }
 
   findByUserName(username: string) {
-    const user = this.databaseService.findOneBy<User>(
+    const user = this.databaseService. findOneBy<User>(
       'users',
       'username',
       username,
@@ -32,7 +35,7 @@ export class UsersService {
     );
     if (userByName) return userByName;
 
-    const userByEmail = this.databaseService.findOneBy<User>(
+    const userByEmail = this. databaseService.findOneBy<User>(
       'users',
       'useremail',
       email,
@@ -54,5 +57,81 @@ export class UsersService {
 
   remove(id: number) {
     return this.databaseService.remove<User>('users', id);
+  }
+
+  //Update profile
+  updateProfile(userId:  number, updateProfileDto: UpdateProfileDto) {
+    const user = this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('Không tìm thấy người dùng');
+    }
+
+    const updatedData:  Partial<User> = {
+      ... updateProfileDto,
+      updatedAt: new Date().toISOString(),
+    };
+
+    const updatedUser = this.databaseService.update<User>('users', userId, updatedData);
+    if (updatedUser) {
+      const { password, ...result } = updatedUser;
+      return result;
+    }
+    return null;
+  }
+
+  // Change password
+  async changePassword(userId: number, changePasswordDto: ChangePasswordDto) {
+    const { currentPassword, newPassword, confirmPassword } = changePasswordDto;
+
+    // Validate confirm password
+    if (newPassword !== confirmPassword) {
+      throw new BadRequestException('Mật khẩu xác nhận không khớp');
+    }
+
+    // Validate password length
+    if (newPassword.length < 6) {
+      throw new BadRequestException('Mật khẩu mới phải có ít nhất 6 ký tự');
+    }
+
+    const user = this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('Không tìm thấy người dùng');
+    }
+
+    // Verify current password
+    const isPasswordMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isPasswordMatch) {
+      throw new BadRequestException('Mật khẩu hiện tại không đúng');
+    }
+
+    // Hash new password
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    // Update password
+    const updatedUser = this.databaseService.update<User>('users', userId, {
+      password: hashedPassword,
+      updatedAt: new Date().toISOString(),
+    });
+
+    return { message: 'Đổi mật khẩu thành công' };
+  }
+
+  // Update avatar
+  updateAvatar(userId: number, avatarUrl: string) {
+    const user = this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('Không tìm thấy người dùng');
+    }
+
+    const updatedUser = this.databaseService.update<User>('users', userId, {
+      avatar: avatarUrl,
+      updatedAt: new Date().toISOString(),
+    });
+
+    if (updatedUser) {
+      const { password, ...result } = updatedUser;
+      return result;
+    }
+    return null;
   }
 }

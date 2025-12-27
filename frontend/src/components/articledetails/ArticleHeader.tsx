@@ -15,7 +15,12 @@ export const ArticleHeader = ({ article }: ArticleHeaderProps) => (
         <ArticleMeta article={article} />
 
         <div className="mb-4">
-            <TTSButton text={article.fullContent || article.content || article.description || article.title} />
+            <TTSButton 
+                slug={article.slug}
+                title={article.title}
+                description={article.description}
+                fullContent={article.fullContent || article.content}
+            />
         </div>
 
         {article.description && (

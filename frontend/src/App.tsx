@@ -7,6 +7,7 @@ import { MainLayout } from "./layouts/main-layout";
 import { ArticleDetail } from "./pages/articledetails/ArticleDetail";
 import { CategoryPage } from "./pages/category/CategoryPage";
 import { Login, Signup } from "./pages/authentication";
+import { ProfilePage } from "./pages/profile/ProfilePage";
 
 function App() {
   return (
@@ -18,10 +19,11 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/:category" element={<CategoryPage />} />
               <Route element={<ProtectedRoute />}>
-                <Route path="/profile" element={<></>} />
+                <Route path="/profile" element={<ProfilePage />} />
               </Route>
+
+              <Route path="/:category" element={<CategoryPage />} />
               <Route path="/:category/:slug" element={<ArticleDetail />} />
             </Route>
             <Route path="*" element={<>Not found</>} />

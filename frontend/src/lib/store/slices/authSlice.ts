@@ -8,8 +8,11 @@ import type {
   LoginSuccessResponse,
   User,
   RegisterRequest,
+  UpdateProfileRequest,
+  ChangePasswordRequest,
 } from "../../../types/users.type";
 import { fetchUserByToken, login, register } from "../../service/auth-service";
+import { updateProfile, changePassword, updateAvatar } from "../../service/user-service";
 
 interface AuthState {
   user: User | null;
@@ -17,6 +20,9 @@ interface AuthState {
   isInitialized: boolean;
   loading: boolean;
   error: string | null;
+  updateLoading: boolean;
+  updateError: string | null;
+  updateSuccess: boolean;
 }
 
 const initialState: AuthState = {
@@ -25,6 +31,9 @@ const initialState: AuthState = {
   isInitialized: false,
   loading: false,
   error: null,
+  updateLoading: false,
+  updateError:  null,
+  updateSuccess: false,
 };
 
 export const loginUser = createAsyncThunk<LoginSuccessResponse, LoginRequest>(
@@ -33,10 +42,10 @@ export const loginUser = createAsyncThunk<LoginSuccessResponse, LoginRequest>(
     try {
       const response = await login(data);
       return response;
-    } catch (error: any) {
-      return rejectWithValue(error.message);
+    } catch (error:  any) {
+      return rejectWithValue(error.response?.data?.message || error.message);
     }
-  },
+  }
 );
 
 export const registerUser = createAsyncThunk<LoginSuccessResponse, RegisterRequest>(
@@ -46,9 +55,9 @@ export const registerUser = createAsyncThunk<LoginSuccessResponse, RegisterReque
       const response = await register(data);
       return response;
     } catch (error: any) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response?.data?. message || error.message);
     }
-  },
+  }
 );
 
 export const fetchCurrentUser = createAsyncThunk<User>(
@@ -60,10 +69,50 @@ export const fetchCurrentUser = createAsyncThunk<User>(
     } catch (error: any) {
       return rejectWithValue(error.response?.status || error.message);
     }
-  },
+  }
 );
+
+// profile action
+export const updateUserProfile = createAsyncThunk<User, UpdateProfileRequest>(
+  "auth/updateUserProfile",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await updateProfile(data);
+      return response as User;
+    } catch (error: any) {
+      return rejectWithValue(error.response?. data?.message || error.message);
+    }
+  }
+);
+
+// password action
+export const changeUserPassword = createAsyncThunk<{ message: string }, ChangePasswordRequest>(
+  "auth/changeUserPassword",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await changePassword(data);
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data?. message || error.message);
+    }
+  }
+);
+
+// avatar action
+export const updateUserAvatar = createAsyncThunk<User, string>(
+  "auth/updateUserAvatar",
+  async (avatarUrl, { rejectWithValue }) => {
+    try {
+      const response = await updateAvatar(avatarUrl);
+      return response as User;
+    } catch (error: any) {
+      return rejectWithValue(error. response?.data?.message || error. message);
+    }
+  }
+);
+
 const authSlice = createSlice({
-  name: "auth",
+  name:  "auth",
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<User>) => {
@@ -78,26 +127,34 @@ const authSlice = createSlice({
     },
     clearError: (state) => {
       state.error = null;
+      state.updateError = null;
     },
     setInitialized: (state) => {
       state.isInitialized = true;
     },
+    clearUpdateStatus: (state) => {
+      state.updateLoading = false;
+      state. updateError = null;
+      state.updateSuccess = false;
+    },
   },
   extraReducers: (builder) => {
     builder
+      // Login
       .addCase(loginUser.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        state. loading = true;
+        state. error = null;
       })
-      .addCase(loginUser.fulfilled, (state, action) => {
+      .addCase(loginUser. fulfilled, (state, action) => {
         state.loading = false;
         state.isAuthenticated = true;
-        localStorage.setItem("token", action.payload.access_token);
+        localStorage.setItem("token", action. payload.access_token);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       })
+      // Register
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -105,27 +162,70 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
         state.isAuthenticated = true;
-        localStorage.setItem("token", action.payload.access_token);
+        localStorage.setItem("token", action. payload.access_token);
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       })
+      // Fetch current user
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action. payload;
         state.isAuthenticated = true;
         state.isInitialized = true;
       })
       .addCase(fetchCurrentUser.rejected, (state, action) => {
-        state.user = null;
+        state. user = null;
         state.isAuthenticated = false;
         state.isInitialized = true;
         if (action.payload === 401) {
           localStorage.removeItem("token");
         }
+      })
+      // profile
+      .addCase(updateUserProfile.pending, (state) => {
+        state.updateLoading = true;
+        state. updateError = null;
+        state.updateSuccess = false;
+      })
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        state.updateLoading = false;
+        state.updateSuccess = true;
+        state.user = { ...state.user, ...action. payload } as User;
+      })
+      .addCase(updateUserProfile. rejected, (state, action) => {
+        state.updateLoading = false;
+        state.updateError = action.payload as string;
+      })
+      // password
+      .addCase(changeUserPassword.pending, (state) => {
+        state.updateLoading = true;
+        state.updateError = null;
+        state.updateSuccess = false;
+      })
+      .addCase(changeUserPassword.fulfilled, (state) => {
+        state.updateLoading = false;
+        state.updateSuccess = true;
+      })
+      .addCase(changeUserPassword.rejected, (state, action) => {
+        state.updateLoading = false;
+        state.updateError = action.payload as string;
+      })
+      // avatar
+      .addCase(updateUserAvatar.pending, (state) => {
+        state.updateLoading = true;
+        state.updateError = null;
+      })
+      .addCase(updateUserAvatar.fulfilled, (state, action) => {
+        state.updateLoading = false;
+        state.user = { ...state.user, ... action.payload } as User;
+      })
+      .addCase(updateUserAvatar.rejected, (state, action) => {
+        state.updateLoading = false;
+        state.updateError = action.payload as string;
       });
   },
 });
 
-export const { clearError, setUser, logout, setInitialized } = authSlice.actions;
+export const { setUser, logout, clearError, setInitialized, clearUpdateStatus } = authSlice.actions;
 export default authSlice.reducer;

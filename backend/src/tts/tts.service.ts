@@ -18,9 +18,17 @@ export class TtsService {
 
   async createOrGetAudio(
     slug: string,
-    text: string,
+    title?: string,
+    description?: string,
+    fullContent?: string,
   ): Promise<{ audioUrl: string; cached: boolean }> {
-    const cleanedText = this.cleanText(text);
+    const textParts: string[] = [];
+    if (title) textParts.push(title);
+    if (description) textParts.push(description);
+    if (fullContent) textParts.push(fullContent);
+    
+    const combinedText = textParts.join('. ');
+    const cleanedText = this.cleanText(combinedText);
     const hash = this.hash(cleanedText);
     const fileName = `${slug}-${hash}.mp3`;
     const localPath = path.join(this.storagePath, fileName);

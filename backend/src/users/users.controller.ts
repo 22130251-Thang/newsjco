@@ -11,6 +11,8 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UpdateProfileDto } from './dto/update-profile.dto';
+import { ChangePasswordDto } from './dto/change-password.dto';
 import { RegisterRequestDto } from 'src/auth/dto/registerRequestDto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
@@ -29,6 +31,36 @@ export class UsersController {
     return null;
   }
 
+  // Update profile
+  @UseGuards(JwtAuthGuard)
+  @Patch('user/profile')
+  updateProfile(
+    @Request() req: { user: { userId: number } },
+    @Body() updateProfileDto: UpdateProfileDto,
+  ) {
+    return this.usersService.updateProfile(req.user.userId, updateProfileDto);
+  }
+
+  // Change password
+  @UseGuards(JwtAuthGuard)
+  @Patch('user/password')
+  changePassword(
+    @Request() req: { user: { userId: number } },
+    @Body() changePasswordDto: ChangePasswordDto,
+  ) {
+    return this.usersService. changePassword(req.user.userId, changePasswordDto);
+  }
+
+  // Update avatar
+  @UseGuards(JwtAuthGuard)
+  @Patch('user/avatar')
+  updateAvatar(
+    @Request() req: { user: { userId: number } },
+    @Body() body: { avatar: string },
+  ) {
+    return this.usersService. updateAvatar(req.user. userId, body.avatar);
+  }
+
   @UseGuards(JwtAuthGuard)
   @Patch('user/theme')
   updateTheme(
@@ -45,7 +77,7 @@ export class UsersController {
 
   @Get('users')
   findAll() {
-    return this.usersService.findAll();
+    return this.usersService. findAll();
   }
 
   @Get('users/:id')
@@ -55,7 +87,7 @@ export class UsersController {
 
   @Patch('users/:id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+    return this.usersService. update(+id, updateUserDto);
   }
 
   @Delete('users/:id')
