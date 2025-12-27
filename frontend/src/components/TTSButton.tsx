@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { generateTTS } from "../lib/service/tts-service";
+import { generateTTS, checkTTSStatus, getTTSStream } from "../lib/service/tts-service";
 
 interface TTSButtonProps {
   slug: string;
@@ -19,6 +19,34 @@ const TTSButton: React.FC<TTSButtonProps> = ({ slug, title, description, fullCon
     const temp = document.createElement('div');
     temp.innerHTML = html;
     return temp.textContent || temp.innerText || '';
+  };
+
+  const pollTTSStatus = async (taskId: string): Promise<void> => {
+    let attempts = 0;
+    const maxAttempts = 120; // 60 seconds with 500ms interval
+    const pollInterval = 500;
+
+    while (attempts < maxAttempts) {
+      try {
+        const status = await checkTTSStatus(taskId);
+        
+        if (status.status === 'ready') {
+          return; // Audio is ready
+        }
+        
+        if (status.status === 'error') {
+          throw new Error(status.error || 'TTS generation failed');
+        }
+        
+        // Still generating, wait and retry
+        await new Promise(resolve => setTimeout(resolve, pollInterval));
+        attempts++;
+      } catch (err) {
+        throw err;
+      }
+    }
+    
+    throw new Error('TTS generation timeout');
   };
 
   const handleSpeak = async () => {
@@ -49,13 +77,16 @@ const TTSButton: React.FC<TTSButtonProps> = ({ slug, title, description, fullCon
       const cleanedDescription = cleanText(description);
       const cleanedFullContent = cleanText(fullContent);
       
-      const audioBlob = await generateTTS(slug, cleanedTitle, cleanedDescription, cleanedFullContent);
+      const taskId = await generateTTS(slug, cleanedTitle, cleanedDescription, cleanedFullContent);
       
-      // Create blob URL
-      const blobUrl = URL.createObjectURL(audioBlob);
+      // Poll for status
+      await pollTTSStatus(taskId);
+      
+      // Get stream URL
+      const audioUrl = getTTSStream(taskId);
       
       // Create and play audio
-      const audioElement = new Audio(blobUrl);
+      const audioElement = new Audio(audioUrl);
       audioElement.onplay = () => setSpeaking(true);
       audioElement.onended = () => setSpeaking(false);
       audioElement.onerror = (e) => {
@@ -86,7 +117,7 @@ const TTSButton: React.FC<TTSButtonProps> = ({ slug, title, description, fullCon
         disabled={speaking || loading}
         aria-label={speaking ? "Tạm dừng" : "Đọc bài viết"}
       >
-        {loading ? "⏳ Đang chuẩn bị..." : speaking ? "⏸ Tạm dừng" : "🔊 Đọc bài viết"}
+        {loading ? "⏳ Đang xử lý âm thanh..." : speaking ? "⏸ Tạm dừng" : "🔊 Đọc bài viết"}
       </button>
       {error && (
         <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
