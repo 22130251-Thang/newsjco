@@ -19,7 +19,7 @@ export class BookmarksController {
 
   @Get()
   findAll(@Request() req: { user: { userId: number } }) {
-    return this.bookmarksService.findAllByUser(req.user.userId);
+    return this.bookmarksService.findAllByUser(req.user. userId);
   }
 
   @Get('check/:slug')
@@ -27,14 +27,14 @@ export class BookmarksController {
     @Request() req: { user: { userId: number } },
     @Param('slug') slug: string,
   ) {
-    const isBookmarked = this.bookmarksService.isBookmarked(req.user. userId, slug);
+    const isBookmarked = this.bookmarksService.isBookmarked(req.user.userId, slug);
     return { isBookmarked };
   }
 
-  @Post(': slug')
+  @Post(':slug')
   @HttpCode(HttpStatus.CREATED)
   addBookmark(
-    @Request() req: { user: { userId:  number } },
+    @Request() req: { user: { userId: number } },
     @Param('slug') slug: string,
   ) {
     return this.bookmarksService.addBookmark(req.user.userId, slug);
@@ -51,7 +51,7 @@ export class BookmarksController {
 
   @Post('toggle/:slug')
   toggleBookmark(
-    @Request() req: { user: { userId:  number } },
+    @Request() req: { user: { userId: number } },
     @Param('slug') slug: string,
   ) {
     return this.bookmarksService.toggleBookmark(req.user.userId, slug);
