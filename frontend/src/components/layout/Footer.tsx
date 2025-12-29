@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { Home } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
 import { useEffect } from "react";
-import { getEconomicArticles } from "../lib/store/slices/articleSlice";
-import { EconomicSection } from "./EconomicSection";
+import { getEconomicArticles } from "../../lib/store/slices/articleSlice";
+import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
+import { EconomicSection } from "../news/EconomicSection";
+
 
 export const Footer = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +26,6 @@ export const Footer = () => {
         articles={economicArticles.data}
         loading={economicArticles.loading}
       />
-      {/* Categories Bar - RED in both light and dark mode */}
       <div className="footer-categories border-t border-b border-red-600 bg-[#d21d21]">
         <div className="container-main">
           <div className="flex flex-wrap items-center gap-x-4 py-2">
@@ -45,7 +45,6 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Main Footer Section */}
       <div className="py-8 bg-white dark:bg-gray-900">
         <div className="container-main text-center mb-6">
           <h3 className="text-sm font-bold text-gray-800 dark:text-gray-100 uppercase">

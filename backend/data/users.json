@@ -71,7 +71,10 @@
     "useremail": "thang@gmail.com",
     "password": "$2b$10$hGqAi.hNEQHA3CeclW1MFuKKcLNDvWTi.9gbv1h4abR7ek3QgZ/yG",
     "displayName": "thang",
-    "id": 7
+    "id": 7,
+    "gender": "female",
+    "address": "Đắk Nông",
+    "updatedAt": "2025-12-29T11:53:55.208Z"
   },
   {
     "username": "Màu",

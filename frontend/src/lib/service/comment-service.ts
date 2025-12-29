@@ -4,9 +4,11 @@ import type { Comment, CreateCommentRequest, PaginatedCommentResponse } from "..
 export const getCommentsByArticle = async (
     slug: string,
     page: number = 1,
-    limit: number = 5
+    limit: number = 5,
+    userId?: number
 ): Promise<PaginatedCommentResponse> => {
-    const response = await apiClient.get<PaginatedCommentResponse>(`comments/article/${slug}?page=${page}&limit=${limit}`);
+    const url = `comments/article/${slug}?page=${page}&limit=${limit}${userId ? `&userId=${userId}` : ""}`;
+    const response = await apiClient.get<PaginatedCommentResponse>(url);
     return response.data;
 };
 
@@ -14,5 +16,21 @@ export const createComment = async (
     data: CreateCommentRequest
 ): Promise<Comment> => {
     const response = await apiClient.post<Comment>("comments", data);
+    return response.data;
+};
+
+export const reactToComment = async (
+    commentId: number,
+    userId: number,
+    type: 'like' | 'dislike',
+    articleSlug: string,
+    categorySlug: string
+): Promise<Comment> => {
+    const response = await apiClient.post<Comment>(`comments/${commentId}/react`, {
+        userId,
+        type,
+        articleSlug,
+        categorySlug
+    });
     return response.data;
 };

@@ -1,5 +1,5 @@
-import { GocNhin } from "./GocNhin";
-import { MiniFeatured } from "./MiniFeatured";
+import { GocNhin } from "../news/GocNhin";
+import { MiniFeatured } from "../news/MiniFeatured";
 
 export const LeftSidebar = () => {
     return (

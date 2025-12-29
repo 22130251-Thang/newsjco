@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { generateTTS } from "../lib/service/tts-service";
+import { generateTTS } from "../../lib/service/tts-service";
 
 interface TTSButtonProps {
   slug: string;
@@ -48,12 +48,12 @@ const TTSButton: React.FC<TTSButtonProps> = ({ slug, title, description, fullCon
       const cleanedTitle = cleanText(title);
       const cleanedDescription = cleanText(description);
       const cleanedFullContent = cleanText(fullContent);
-      
+
       const audioBlob = await generateTTS(slug, cleanedTitle, cleanedDescription, cleanedFullContent);
-      
+
       // Create blob URL
       const blobUrl = URL.createObjectURL(audioBlob);
-      
+
       // Create and play audio
       const audioElement = new Audio(blobUrl);
       audioElement.onplay = () => setSpeaking(true);
@@ -63,7 +63,7 @@ const TTSButton: React.FC<TTSButtonProps> = ({ slug, title, description, fullCon
         setError('Lỗi khi phát âm thanh');
         setSpeaking(false);
       };
-      
+
       setAudio(audioElement);
       setLoading(false);
       await audioElement.play();
@@ -79,9 +79,8 @@ const TTSButton: React.FC<TTSButtonProps> = ({ slug, title, description, fullCon
     <div className="flex flex-col gap-2">
       <button
         type="button"
-        className={`px-3 py-2 rounded font-bold text-white bg-red-600 hover:bg-red-700 transition ${
-          (speaking || loading) ? "opacity-60 cursor-not-allowed" : ""
-        }`}
+        className={`px-3 py-2 rounded font-bold text-white bg-red-600 hover:bg-red-700 transition ${(speaking || loading) ? "opacity-60 cursor-not-allowed" : ""
+          }`}
         onClick={handleSpeak}
         disabled={speaking || loading}
         aria-label={speaking ? "Tạm dừng" : "Đọc bài viết"}

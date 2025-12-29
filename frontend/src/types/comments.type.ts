@@ -12,6 +12,7 @@ export interface Comment {
     updatedAt: string;
     user?: User;
     parentId?: number;
+    userReaction?: 'like' | 'dislike' | null;
 }
 
 export interface CreateCommentRequest {

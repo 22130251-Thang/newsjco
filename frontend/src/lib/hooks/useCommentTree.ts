@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { Comment, CommentWithReplies } from "../../../types/comments.type";
+import type { Comment, CommentWithReplies } from "../../types/comments.type";
 
 export const useCommentTree = (comments: Comment[]): CommentWithReplies[] => {
     return useMemo(() => {

@@ -1,15 +1,15 @@
 
-import { LeftSidebar } from "../../components/LeftSidebar";
+import { LeftSidebar } from "../../components/layout/LeftSidebar";
 import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
 import { useEffect } from "react";
 import {
   getHomePageCategories,
   getMediaArticles,
 } from "../../lib/store/slices/articleSlice";
-import { RightSidebar } from "../../components/RightSidebar";
-import { MainSection } from "../../components/MainSection";
-import { NewsGrid } from "../../components/NewsGrid";
-import { MediaSection } from "../../components/MediaSection";
+import { RightSidebar } from "../../components/layout/RightSidebar";
+import { MainSection } from "../../components/news/MainSection";
+import { NewsGrid } from "../../components/news/NewsGrid";
+import { MediaSection } from "../../components/news/MediaSection";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();

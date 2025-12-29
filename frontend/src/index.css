@@ -31,7 +31,6 @@ html.dark {
     color-scheme: dark;
 }
 
-/* ===== DARK MODE BASE STYLES ===== */
 html.dark body,
 html.dark main {
     background-color: #111827;
@@ -53,7 +52,6 @@ html.dark h6 {
     color: #ffffff;
 }
 
-/* ===== LIGHT MODE - ENSURE WHITE/LIGHT BACKGROUNDS ===== */
 .bg-white {
     background-color: #ffffff !important;
     color: #222222 !important;
@@ -64,7 +62,6 @@ html.dark h6 {
     color: #222222 !important;
 }
 
-/* ===== DARK MODE - OVERRIDE LIGHT BACKGROUNDS TO DARK ===== */
 html.dark .bg-white {
     background-color: #1f2937 !important;
     color: #f3f4f6 !important;
@@ -80,7 +77,6 @@ html.dark .bg-gray-100 {
     color: #e2e8f0 !important;
 }
 
-/* Footer categories bar - RED in both light and dark */
 .footer-categories {
     background-color: #d21d21 !important;
     color: #ffffff !important;
@@ -99,8 +95,7 @@ html.dark .footer-categories a:hover {
     color: #fca5a5 !important;
 }
 
-/* ===== DARK MODE TEXT COLOR OVERRIDES ===== */
-/* Fix text that becomes unreadable in dark mode */
+
 html.dark .text-gray-800,
 html.dark .text-gray-900 {
     color: #f3f4f6 !important;
@@ -122,7 +117,6 @@ html.dark .text-gray-400 {
     color: #6b7280 !important;
 }
 
-/* ===== DARK MODE BORDERS ===== */
 html.dark .border-gray-100 {
     border-color: #4b5563 !important;
 }
@@ -139,7 +133,6 @@ html.dark .border-dashed {
     border-color: #4b5563 !important;
 }
 
-/* ===== DARK MODE PLACEHOLDER & INPUT ===== */
 html.dark input::placeholder {
     color: #9ca3af !important;
 }
@@ -148,7 +141,6 @@ html.dark input {
     color: #ffffff !important;
 }
 
-/* Media and specific sections */
 html.dark .bg-gray-200 {
     background-color: #374151;
 }
@@ -157,7 +149,6 @@ html.dark .bg-gray-300 {
     background-color: #4b5563;
 }
 
-/* Links */
 html.dark .group-hover\:text-primary {
     color: #c02424;
 }
@@ -166,12 +157,10 @@ html.dark .group-hover\:text-orange-300 {
     color: #fed7aa;
 }
 
-/* Ensure white text stays white */
 html.dark .text-white {
     color: #ffffff !important;
 }
 
-/* Utility classes for dark mode text */
 html.dark .dark\:text-white {
     color: #ffffff !important;
 }
@@ -247,7 +236,6 @@ html.dark .dark\:text-gray-200 {
     line-height: 1.5;
 }
 
-/* Category badge */
 .category-badge {
     display: inline-block;
     padding: 2px 8px;
@@ -259,7 +247,6 @@ html.dark .dark\:text-gray-200 {
     border-radius: 2px;
 }
 
-/* Hot news ticker */
 .hot-news-label {
     background: linear-gradient(135deg, #c02424 0%, #a01e1e 100%);
     color: white;
@@ -269,7 +256,6 @@ html.dark .dark\:text-gray-200 {
     text-transform: uppercase;
 }
 
-/* Navigation styles */
 .nav-link {
     position: relative;
     padding: 12px 16px;
@@ -299,13 +285,11 @@ html.dark .dark\:text-gray-200 {
     width: 100%;
 }
 
-/* Header styles */
 .header-main {
     background: var(--color-bg-white);
     border-bottom: 1px solid var(--color-border);
 }
 
-/* Hero article overlay */
 .hero-overlay {
     position: absolute;
     bottom: 0;
@@ -324,14 +308,12 @@ html.dark .dark\:text-gray-200 {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Sidebar styles */
 .sidebar-section {
     background: var(--color-bg-white);
     border: 1px solid var(--color-border);
     margin-bottom: 16px;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -348,7 +330,6 @@ html.dark .dark\:text-gray-200 {
     animation: fadeIn 0.3s ease-out;
 }
 
-/* Scrollbar styling */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -367,14 +348,11 @@ html.dark .dark\:text-gray-200 {
     background: #a1a1a1;
 }
 
-/* Hide scrollbar utility */
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
 
 .no-scrollbar {
     -ms-overflow-style: none;
-    /* IE and Edge */
     scrollbar-width: none;
-    /* Firefox */
 }

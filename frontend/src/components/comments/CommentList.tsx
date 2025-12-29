@@ -10,8 +10,8 @@ import { CommentItem } from "./CommentItem";
 import { LoadMoreButton } from "./LoadMoreButton";
 import { EmptyComments } from "./EmptyComments";
 import { CommentListLoading } from "./CommentListLoading";
-import { useCommentTree } from "./hooks/useCommentTree";
 import { COMMENTS_PER_PAGE } from "./constants";
+import { useCommentTree } from "../../lib/hooks/useCommentTree";
 
 interface CommentListProps {
     slug: string;
@@ -27,13 +27,13 @@ export const CommentList = ({ slug }: CommentListProps) => {
 
     useEffect(() => {
         if (slug) {
-            dispatch(fetchCommentsByArticle({ slug, page: 1, limit: COMMENTS_PER_PAGE }));
+            dispatch(fetchCommentsByArticle({ slug, page: 1, limit: COMMENTS_PER_PAGE, userId: user?.id }));
         }
-    }, [slug, dispatch]);
+    }, [slug, dispatch, user?.id]);
 
     const handleLoadMore = () => {
         if (slug && !loading && hasMore) {
-            dispatch(loadMoreComments({ slug, page: page + 1, limit: COMMENTS_PER_PAGE }));
+            dispatch(loadMoreComments({ slug, page: page + 1, limit: COMMENTS_PER_PAGE, userId: user?.id }));
         }
     };
 

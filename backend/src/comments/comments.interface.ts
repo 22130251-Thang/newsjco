@@ -13,7 +13,15 @@ export interface Comment extends BaseRecord {
 }
 
 export interface CommentWithUser extends Comment {
-    user: unknown;
+    user: any;
+    userReaction?: ReactionType | null;
 }
 
 export type CommentStatus = 'approved' | 'pending' | 'rejected';
+export type ReactionType = 'like' | 'dislike';
+
+export interface CommentReaction extends BaseRecord {
+    commentId: number;
+    userId: number;
+    type: ReactionType;
+}

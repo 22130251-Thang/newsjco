@@ -1,5 +1,5 @@
 import { ArticleCard } from "../ArticleCard";
-import type { Article } from "../../types/article.type";
+import type { Article } from "../../../types/article.type";
 
 interface CategoryArticleListProps {
     articles: Article[];

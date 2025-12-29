@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import type { Article } from '../types/article.type';
+import type { Article } from "../../types/article.type";
 
 interface EconomicCardProps {
     article: Article;
@@ -17,7 +17,7 @@ export const EconomicCard = ({ article }: EconomicCardProps) => {
                     alt={article.title}
                     width={280}
                     height={156}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                    className="w-full h-full object-cover"
                 />
             </div>
             <h3 className="text-[15px] font-bold leading-[1.4] text-gray-800 dark:text-gray-200 group-hover:text-[#cc0000] dark:group-hover:text-orange-300 transition-colors line-clamp-3">

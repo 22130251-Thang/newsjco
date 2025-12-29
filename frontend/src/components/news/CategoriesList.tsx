@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
-import { getCategories } from "../lib/store/slices/categorySlice";
+import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
+import { getCategories } from "../../lib/store/slices/categorySlice";
 import { Link } from "react-router-dom";
 import { Home, MoreVertical } from "lucide-react";
-import { getVietnameseFormattedDate } from "../lib/utils/date-utils";
+import { getVietnameseFormattedDate } from "../../lib/utils/date-utils";
 
 export const CategoriesList = () => {
   const dispatch = useAppDispatch();
