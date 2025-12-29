@@ -32,7 +32,7 @@ const initialState: AuthState = {
   loading: false,
   error: null,
   updateLoading: false,
-  updateError:  null,
+  updateError: null,
   updateSuccess: false,
 };
 
@@ -42,7 +42,7 @@ export const loginUser = createAsyncThunk<LoginSuccessResponse, LoginRequest>(
     try {
       const response = await login(data);
       return response;
-    } catch (error:  any) {
+    } catch (error: any) {
       return rejectWithValue(error.response?.data?.message || error.message);
     }
   }
@@ -55,7 +55,7 @@ export const registerUser = createAsyncThunk<LoginSuccessResponse, RegisterReque
       const response = await register(data);
       return response;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?. message || error.message);
+      return rejectWithValue(error.response?.data?.message || error.message);
     }
   }
 );
@@ -72,7 +72,6 @@ export const fetchCurrentUser = createAsyncThunk<User>(
   }
 );
 
-// profile action
 export const updateUserProfile = createAsyncThunk<User, UpdateProfileRequest>(
   "auth/updateUserProfile",
   async (data, { rejectWithValue }) => {
@@ -80,12 +79,11 @@ export const updateUserProfile = createAsyncThunk<User, UpdateProfileRequest>(
       const response = await updateProfile(data);
       return response as User;
     } catch (error: any) {
-      return rejectWithValue(error.response?. data?.message || error.message);
+      return rejectWithValue(error.response?.data?.message || error.message);
     }
   }
 );
 
-// password action
 export const changeUserPassword = createAsyncThunk<{ message: string }, ChangePasswordRequest>(
   "auth/changeUserPassword",
   async (data, { rejectWithValue }) => {
@@ -93,12 +91,11 @@ export const changeUserPassword = createAsyncThunk<{ message: string }, ChangePa
       const response = await changePassword(data);
       return response;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?. message || error.message);
+      return rejectWithValue(error.response?.data?.message || error.message);
     }
   }
 );
 
-// avatar action
 export const updateUserAvatar = createAsyncThunk<User, string>(
   "auth/updateUserAvatar",
   async (avatarUrl, { rejectWithValue }) => {
@@ -106,13 +103,13 @@ export const updateUserAvatar = createAsyncThunk<User, string>(
       const response = await updateAvatar(avatarUrl);
       return response as User;
     } catch (error: any) {
-      return rejectWithValue(error. response?.data?.message || error. message);
+      return rejectWithValue(error.response?.data?.message || error.message);
     }
   }
 );
 
 const authSlice = createSlice({
-  name:  "auth",
+  name: "auth",
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<User>) => {
@@ -134,27 +131,25 @@ const authSlice = createSlice({
     },
     clearUpdateStatus: (state) => {
       state.updateLoading = false;
-      state. updateError = null;
+      state.updateError = null;
       state.updateSuccess = false;
     },
   },
   extraReducers: (builder) => {
     builder
-      // Login
       .addCase(loginUser.pending, (state) => {
-        state. loading = true;
-        state. error = null;
+        state.loading = true;
+        state.error = null;
       })
-      .addCase(loginUser. fulfilled, (state, action) => {
+      .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.isAuthenticated = true;
-        localStorage.setItem("token", action. payload.access_token);
+        localStorage.setItem("token", action.payload.access_token);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       })
-      // Register
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -162,42 +157,39 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
         state.isAuthenticated = true;
-        localStorage.setItem("token", action. payload.access_token);
+        localStorage.setItem("token", action.payload.access_token);
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       })
-      // Fetch current user
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
-        state.user = action. payload;
+        state.user = action.payload;
         state.isAuthenticated = true;
         state.isInitialized = true;
       })
       .addCase(fetchCurrentUser.rejected, (state, action) => {
-        state. user = null;
+        state.user = null;
         state.isAuthenticated = false;
         state.isInitialized = true;
         if (action.payload === 401) {
           localStorage.removeItem("token");
         }
       })
-      // profile
       .addCase(updateUserProfile.pending, (state) => {
         state.updateLoading = true;
-        state. updateError = null;
+        state.updateError = null;
         state.updateSuccess = false;
       })
       .addCase(updateUserProfile.fulfilled, (state, action) => {
         state.updateLoading = false;
         state.updateSuccess = true;
-        state.user = { ...state.user, ...action. payload } as User;
+        state.user = { ...state.user, ...action.payload } as User;
       })
-      .addCase(updateUserProfile. rejected, (state, action) => {
+      .addCase(updateUserProfile.rejected, (state, action) => {
         state.updateLoading = false;
         state.updateError = action.payload as string;
       })
-      // password
       .addCase(changeUserPassword.pending, (state) => {
         state.updateLoading = true;
         state.updateError = null;
@@ -211,14 +203,13 @@ const authSlice = createSlice({
         state.updateLoading = false;
         state.updateError = action.payload as string;
       })
-      // avatar
       .addCase(updateUserAvatar.pending, (state) => {
         state.updateLoading = true;
         state.updateError = null;
       })
       .addCase(updateUserAvatar.fulfilled, (state, action) => {
         state.updateLoading = false;
-        state.user = { ...state.user, ... action.payload } as User;
+        state.user = { ...state.user, ...action.payload } as User;
       })
       .addCase(updateUserAvatar.rejected, (state, action) => {
         state.updateLoading = false;

@@ -23,18 +23,16 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     return 'light';
   });
 
-  // Update when user logs in//out or user changes
   useEffect(() => {
     if (isAuthenticated && user?.theme) {
       setTheme(user.theme);
     }
   }, [user?.theme, isAuthenticated]);
 
-  // Apply theme to document
   useEffect(() => {
     const html = document.documentElement;
     console.log('Theme effect triggered:', theme);
-    
+
     if (theme === 'dark') {
       html.classList.add('dark');
       html.style.colorScheme = 'dark';
@@ -58,13 +56,13 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     const html = document.documentElement;
     console.log('Toggling to:', newTheme);
     console.log('Before:', html.className);
-    
+
     if (newTheme === 'dark') {
       html.classList.add('dark');
     } else {
       html.classList.remove('dark');
     }
-    
+
     console.log('After:', html.className);
     localStorage.setItem('theme', newTheme);
 

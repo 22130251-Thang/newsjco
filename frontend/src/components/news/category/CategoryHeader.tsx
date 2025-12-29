@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getCategoryNameUppercase } from "../../../lib/utils/category-utils";
 
 interface CategoryHeaderProps {
     category: string;
@@ -7,7 +8,7 @@ interface CategoryHeaderProps {
 }
 
 export const CategoryHeader = ({ category, subCategories }: CategoryHeaderProps) => {
-    const formattedCategory = category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    const formattedCategory = getCategoryNameUppercase(category);
 
     return (
         <div className="mb-8 border-b-2 border-primary dark:border-orange-400 pb-2 flex items-center justify-between">
