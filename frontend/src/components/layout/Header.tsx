@@ -31,6 +31,7 @@ export const Header = () => {
                   <Phone size={12} />
                   <span>0914.914.999</span>
                 </a>
+
                 <a
                   href="mailto:thuky@baotintuc.vn"
                   className="flex items-center gap-1 hover:text-primary"
@@ -38,7 +39,9 @@ export const Header = () => {
                   <Mail size={12} />
                   <span>thuky@baotintuc.vn</span>
                 </a>
+
                 <div className="h-3 w-px bg-gray-300 mx-1"></div>
+
                 <a
                   href="/rss"
                   className="flex items-center gap-1 hover:text-primary dark:hover:text-orange-300"
@@ -46,6 +49,7 @@ export const Header = () => {
                   <Rss size={12} />
                   <span>RSS</span>
                 </a>
+
                 <a
                   href="https://facebook.com"
                   target="_blank"
@@ -54,6 +58,7 @@ export const Header = () => {
                 >
                   Fanpage
                 </a>
+
                 <a
                   href="/"
                   className="flex items-center gap-1 hover:text-primary dark:hover:text-orange-300"
@@ -80,21 +85,34 @@ export const Header = () => {
                   className="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
                   title="Toggle Dark Mode"
                 >
-                  {theme === 'light' ? (
-                    <Moon size={16} />
-                  ) : (
-                    <Sun size={16} />
-                  )}
+                  {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
                 </button>
 
                 <NotificationBell />
 
                 {isAuthenticated && user ? (
                   <div className="flex items-center gap-3 text-xs border-l border-gray-300 dark:border-gray-600 pl-4">
-                    <div className="text-gray-700 dark:text-gray-200">
-                      <p className="font-medium">{user.displayName}</p>
-                      <p className="text-gray-500 dark:text-gray-400">{user.username}</p>
-                    </div>
+                    <Link
+                      to="/profile"
+                      className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
+                      title="Xem thông tin cá nhân">
+                      <img
+                        src={
+                          user.avatar ||
+                          `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                            user.displayName
+                          )}&background=cc0000&color=fff&size=32`
+                        }
+                        alt={user.displayName}
+                        className="w-8 h-8 rounded-full object-cover border border-gray-300"/>
+                      <div className="text-gray-700 dark:text-gray-300">
+                        <p className="font-medium">{user.displayName}</p>
+                        <p className="text-gray-500 dark:text-gray-400">
+                          @{user.username}
+                        </p>
+                      </div>
+                    </Link>
+
                     <button
                       onClick={handleLogout}
                       className="flex items-center gap-1 text-red-600 hover:text-red-700 ml-2"
@@ -132,6 +150,7 @@ export const Header = () => {
                 src="https://cdnstatic.baotintuc.vn/web_images/baotintuc-logo.png?v=100"
                 width={233}
                 height={105}
+                alt="Báo Tin Tức"
               />
             </Link>
 
@@ -141,6 +160,7 @@ export const Header = () => {
           </div>
         </div>
       </header>
+
       <CategoriesList />
     </>
   );

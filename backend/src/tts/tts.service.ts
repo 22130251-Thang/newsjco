@@ -1,64 +1,154 @@
 import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { Response } from 'express';
-import * as fs from 'fs';
-import * as path from 'path';
 import * as crypto from 'crypto';
 import gTTS from 'gtts';
+
+interface TaskStatus {
+  id: string;
+  status: 'pending' | 'generating' | 'ready' | 'error';
+  buffer?: Buffer;
+  error?: string;
+  createdAt: number;
+}
 
 @Injectable()
 export class TtsService {
   private readonly logger = new Logger(TtsService.name);
-  private readonly storagePath = path.join(process.cwd(), 'data', 'tts');
+  private readonly taskMap = new Map<string, TaskStatus>();
+  private readonly taskTimeout = 60000; // 60 seconds
 
   constructor() {
-    if (!fs.existsSync(this.storagePath)) {
-      fs.mkdirSync(this.storagePath, { recursive: true });
-    }
+    // Cleanup expired tasks every 30 seconds
+    setInterval(() => this.cleanupExpiredTasks(), 30000);
   }
 
-  async createOrGetAudio(
+  generateTaskId(): string {
+    return crypto.randomBytes(8).toString('hex');
+  }
+
+  generateAudioAsync(
     slug: string,
     title?: string,
     description?: string,
     fullContent?: string,
-  ): Promise<{ audioUrl: string; cached: boolean }> {
-    const textParts: string[] = [];
-    if (title) textParts.push(title);
-    if (description) textParts.push(description);
-    if (fullContent) textParts.push(fullContent);
+  ): { taskId: string; status: string } {
+    const taskId = this.generateTaskId();
     
-    const combinedText = textParts.join('. ');
-    const cleanedText = this.cleanText(combinedText);
-    const hash = this.hash(cleanedText);
-    const fileName = `${slug}-${hash}.mp3`;
-    const localPath = path.join(this.storagePath, fileName);
+    // Store task with pending status
+    this.taskMap.set(taskId, {
+      id: taskId,
+      status: 'pending',
+      createdAt: Date.now(),
+    });
 
-    if (fs.existsSync(localPath)) {
-      this.logger.log(`TTS file found in cache: ${fileName}`);
-      return { audioUrl: `/tts/${fileName}`, cached: true };
-    }
+    // Start generation in background (without await)
+    this.generateInBackground(taskId, slug, title, description, fullContent);
 
+    return { taskId, status: 'pending' };
+  }
+
+  private async generateInBackground(
+    taskId: string,
+    slug: string,
+    title?: string,
+    description?: string,
+    fullContent?: string,
+  ): Promise<void> {
     try {
-      this.logger.log(`Generating TTS audio for slug: ${slug}`);
-      await this.generateAudioWithEdgeTTS(cleanedText, localPath);
-      this.logger.log(`TTS audio generated successfully: ${fileName}`);
-      return { audioUrl: `/tts/${fileName}`, cached: false };
+      const task = this.taskMap.get(taskId);
+      if (!task) return;
+
+      task.status = 'generating';
+
+      const textParts: string[] = [];
+      if (title) textParts.push(title);
+      if (description) textParts.push(description);
+      if (fullContent) textParts.push(fullContent);
+
+      const combinedText = textParts.join('. ');
+      const cleanedText = this.cleanText(combinedText);
+
+      this.logger.log(`[${taskId}] Generating TTS audio for slug: ${slug}`);
+
+      const buffer = await this.generateAudioBuffer(cleanedText);
+
+      task.buffer = buffer;
+      task.status = 'ready';
+      this.logger.log(`[${taskId}] TTS audio generated successfully, size: ${buffer.length} bytes`);
     } catch (error) {
-      this.logger.error(`TTS generation failed: ${error.message}`, error.stack);
-      throw new HttpException(
-        'Failed to generate audio',
-        HttpStatus.INTERNAL_SERVER_ERROR,
-      );
+      const task = this.taskMap.get(taskId);
+      if (task) {
+        task.status = 'error';
+        task.error = error instanceof Error ? error.message : 'Unknown error';
+      }
+      this.logger.error(`[${taskId}] TTS generation failed: ${error}`);
     }
   }
 
-  streamAudio(filename: string, res: Response) {
-    const filePath = path.join(this.storagePath, filename);
-    if (!fs.existsSync(filePath)) {
-      throw new HttpException('File not found', 404);
+  getTaskStatus(taskId: string): { status: string; error?: string } {
+    const task = this.taskMap.get(taskId);
+    if (!task) {
+      throw new HttpException('Task not found', HttpStatus.NOT_FOUND);
     }
+
+    if (task.status === 'error') {
+      return { status: 'error', error: task.error };
+    }
+
+    return { status: task.status };
+  }
+
+  streamAudio(taskId: string, res: Response): void {
+    const task = this.taskMap.get(taskId);
+    
+    if (!task) {
+      throw new HttpException('Task not found', HttpStatus.NOT_FOUND);
+    }
+
+    if (task.status !== 'ready') {
+      throw new HttpException('Audio not ready', HttpStatus.BAD_REQUEST);
+    }
+
+    if (!task.buffer) {
+      throw new HttpException('Buffer not available', HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     res.setHeader('Content-Type', 'audio/mpeg');
-    fs.createReadStream(filePath).pipe(res);
+    res.setHeader('Content-Length', task.buffer.length);
+    res.setHeader('Accept-Ranges', 'bytes');
+    
+    const range = res.req.headers.range;
+    if (range) {
+      const parts = range.replace(/bytes=/, '').split('-');
+      const start = parseInt(parts[0], 10);
+      const end = parts[1] ? parseInt(parts[1], 10) : task.buffer.length - 1;
+      const chunksize = end - start + 1;
+
+      res.writeHead(206, {
+        'Content-Range': `bytes ${start}-${end}/${task.buffer.length}`,
+        'Content-Length': chunksize,
+        'Content-Type': 'audio/mpeg',
+      });
+      res.end(task.buffer.slice(start, end + 1));
+    } else {
+      res.end(task.buffer);
+    }
+  }
+
+  private async generateAudioBuffer(text: string): Promise<Buffer> {
+    return new Promise((resolve, reject) => {
+      try {
+        const gtts = new gTTS(text, 'vi');
+        const chunks: Buffer[] = [];
+
+        gtts.stream()
+          .on('data', (chunk: Buffer) => chunks.push(chunk))
+          .on('end', () => resolve(Buffer.concat(chunks)))
+          .on('error', (error) => reject(error));
+      } catch (error) {
+        reject(error);
+      }
+    });
   }
 
   private cleanText(text: string): string {
@@ -69,12 +159,15 @@ export class TtsService {
       .slice(0, 5000);
   }
 
-  private hash(text: string): string {
-    return crypto.createHash('sha256').update(text).digest('hex').slice(0, 8);
-  }
+  private cleanupExpiredTasks(): void {
+    const now = Date.now();
+    const expiredTasks = Array.from(this.taskMap.entries())
+      .filter(([_, task]) => now - task.createdAt > this.taskTimeout)
+      .map(([id]) => id);
 
-  private async generateAudioWithEdgeTTS(text: string, outputPath: string): Promise<void> {
-    const gtts = new gTTS(text, 'vi'); // Tiếng Việt
-    await gtts.save(outputPath);
+    expiredTasks.forEach((taskId) => {
+      this.taskMap.delete(taskId);
+      this.logger.log(`[${taskId}] Task expired and removed`);
+    });
   }
 }

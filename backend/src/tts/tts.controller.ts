@@ -13,13 +13,18 @@ interface CreateTtsDto {
 export class TtsController {
   constructor(private readonly ttsService: TtsService) {}
 
-  @Post()
-  async createTts(@Body() body: CreateTtsDto) {
-    return this.ttsService.createOrGetAudio(body.slug, body.title, body.description, body.fullContent);
+  @Post('generate')
+  generateAudio(@Body() body: CreateTtsDto) {
+    return this.ttsService.generateAudioAsync(body.slug, body.title, body.description, body.fullContent);
   }
 
-  @Get(':filename')
-  async streamAudio(@Param('filename') filename: string, @Res() res: Response) {
-    return this.ttsService.streamAudio(filename, res);
+  @Get('status/:taskId')
+  getStatus(@Param('taskId') taskId: string) {
+    return this.ttsService.getTaskStatus(taskId);
+  }
+
+  @Get('stream/:taskId')
+  streamAudio(@Param('taskId') taskId: string, @Res() res: Response) {
+    return this.ttsService.streamAudio(taskId, res);
   }
 }
