@@ -9,6 +9,7 @@ import {
   ArticleError,
 } from "../../components/articledetails";
 import { CommentList } from "../../components/comments/CommentList";
+import { BookmarkButton } from "../../components/BookmarkButton";
 
 export const ArticleDetail = () => {
   const { category, slug } = useParams();
