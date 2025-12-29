@@ -12,6 +12,7 @@ export interface Comment {
     updatedAt: string;
     user?: User;
     parentId?: number;
+    userReaction?: 'like' | 'dislike' | null;
 }
 
 export interface CreateCommentRequest {
@@ -19,6 +20,10 @@ export interface CreateCommentRequest {
     content: string;
     userId: number;
     parentId?: number;
+}
+
+export interface CommentWithReplies extends Comment {
+    replies: CommentWithReplies[];
 }
 
 export interface PaginatedCommentResponse {

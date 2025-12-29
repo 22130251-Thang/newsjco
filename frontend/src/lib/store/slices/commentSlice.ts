@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { Comment, CreateCommentRequest, PaginatedCommentResponse } from "../../../types/comments.type";
-import { getCommentsByArticle, createComment } from "../../service/comment-service";
+import { getCommentsByArticle, createComment, reactToComment } from "../../service/comment-service";
 
 interface AsyncState<T> {
     data: T;
@@ -30,22 +30,22 @@ const initialState: CommentState = {
 
 
 
-export const fetchCommentsByArticle = createAsyncThunk<PaginatedCommentResponse, { slug: string; page?: number; limit?: number }>(
+export const fetchCommentsByArticle = createAsyncThunk<PaginatedCommentResponse, { slug: string; page?: number; limit?: number; userId?: number }>(
     "comment/fetchByArticle",
-    async ({ slug, page = 1, limit = 5 }, { rejectWithValue }) => {
+    async ({ slug, page = 1, limit = 5, userId }, { rejectWithValue }) => {
         try {
-            return await getCommentsByArticle(slug, page, limit);
+            return await getCommentsByArticle(slug, page, limit, userId);
         } catch (error: unknown) {
             return rejectWithValue(error instanceof Error ? error.message : "Failed to fetch comments");
         }
     }
 );
 
-export const loadMoreComments = createAsyncThunk<PaginatedCommentResponse, { slug: string; page: number; limit?: number }>(
+export const loadMoreComments = createAsyncThunk<PaginatedCommentResponse, { slug: string; page: number; limit?: number; userId?: number }>(
     "comment/loadMore",
-    async ({ slug, page, limit = 5 }, { rejectWithValue }) => {
+    async ({ slug, page, limit = 5, userId }, { rejectWithValue }) => {
         try {
-            return await getCommentsByArticle(slug, page, limit);
+            return await getCommentsByArticle(slug, page, limit, userId);
         } catch (error: unknown) {
             return rejectWithValue(error instanceof Error ? error.message : "Failed to load more comments");
         }
@@ -62,6 +62,18 @@ export const addCommentToArticle = createAsyncThunk<Comment, CreateCommentReques
         }
     }
 );
+
+export const reactToCommentAsync = createAsyncThunk<Comment, { commentId: number; userId: number; type: 'like' | 'dislike'; articleSlug: string; categorySlug: string }>(
+    "comment/react",
+    async (params, { rejectWithValue }) => {
+        try {
+            return await reactToComment(params.commentId, params.userId, params.type, params.articleSlug, params.categorySlug);
+        } catch (error: unknown) {
+            return rejectWithValue(error instanceof Error ? error.message : "Failed to react to comment");
+        }
+    }
+);
+
 
 const commentSlice = createSlice({
     name: "comment",
@@ -111,6 +123,12 @@ const commentSlice = createSlice({
                 state.comments.data = [action.payload, ...state.comments.data];
                 if (!action.payload.parentId) {
                     state.total += 1;
+                }
+            })
+            .addCase(reactToCommentAsync.fulfilled, (state, action) => {
+                const index = state.comments.data.findIndex(c => c.id === action.payload.id);
+                if (index !== -1) {
+                    state.comments.data[index] = action.payload;
                 }
             });
     },

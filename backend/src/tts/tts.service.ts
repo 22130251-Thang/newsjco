@@ -15,10 +15,9 @@ interface TaskStatus {
 export class TtsService {
   private readonly logger = new Logger(TtsService.name);
   private readonly taskMap = new Map<string, TaskStatus>();
-  private readonly taskTimeout = 60000; // 60 seconds
+  private readonly taskTimeout = 60000;
 
   constructor() {
-    // Cleanup expired tasks every 30 seconds
     setInterval(() => this.cleanupExpiredTasks(), 30000);
   }
 
@@ -33,15 +32,13 @@ export class TtsService {
     fullContent?: string,
   ): { taskId: string; status: string } {
     const taskId = this.generateTaskId();
-    
-    // Store task with pending status
+
     this.taskMap.set(taskId, {
       id: taskId,
       status: 'pending',
       createdAt: Date.now(),
     });
 
-    // Start generation in background (without await)
     this.generateInBackground(taskId, slug, title, description, fullContent);
 
     return { taskId, status: 'pending' };
@@ -100,7 +97,7 @@ export class TtsService {
 
   streamAudio(taskId: string, res: Response): void {
     const task = this.taskMap.get(taskId);
-    
+
     if (!task) {
       throw new HttpException('Task not found', HttpStatus.NOT_FOUND);
     }
@@ -116,7 +113,7 @@ export class TtsService {
     res.setHeader('Content-Type', 'audio/mpeg');
     res.setHeader('Content-Length', task.buffer.length);
     res.setHeader('Accept-Ranges', 'bytes');
-    
+
     const range = res.req.headers.range;
     if (range) {
       const parts = range.replace(/bytes=/, '').split('-');
