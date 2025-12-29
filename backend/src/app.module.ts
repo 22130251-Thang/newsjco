@@ -9,6 +9,7 @@ import { ArticlesModule } from './articles/articles.module';
 import { TtsModule } from './tts/tts.module';
 import { CommentsModule } from './comments/comments.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { BookmarksModule } from './bookmarks/bookmarks.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { NotificationsModule } from './notifications/notifications.module';
     TtsModule,
     CommentsModule,
     NotificationsModule,
+    BookmarksModule,
   ],
   controllers: [AppController],
   providers: [AppService, DatabaseService],
