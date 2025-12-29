@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import type { Article } from "../types/article.type";
+import type { Article } from "../../types/article.type";
 
 interface CategoryBlockProps {
   category: string;
@@ -53,7 +53,7 @@ export const CategoryBlock = ({ category, articles }: CategoryBlockProps) => {
           <div className="space-y-2 mt-2">
             {subArticles.map((article, index) => (
               <Link
-                key={`${category}-${article.id || article.slug}-${index}`}
+                key={`${category}-${article.guid || article.slug}-${index}`}
                 to={`/${article.category}/${article.slug}`}
                 className="block transition-colors group"
               >

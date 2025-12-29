@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
-import { getHotNewsArticles } from "../lib/store/slices/articleSlice";
-import { HotNewsSkeleton } from "./Skeleton";
+import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
+import { getHotNewsArticles } from "../../lib/store/slices/articleSlice";
+import { HotNewsSkeleton } from "../shared/Skeleton";
 import { ArticleCard } from "./ArticleCard";
 
 export const HotNews = () => {

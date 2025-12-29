@@ -7,8 +7,8 @@ import {
     CategoryArticleList,
     CategorySidebar,
     CategoryPagination,
-} from "../../components/category";
-import { ArticleLoadingSpinner, ArticleError } from "../../components/articledetails/ArticleStates";
+} from "../../components/news/category";
+import { ArticleLoadingSpinner, ArticleError } from "../../components/news/articledetails/ArticleStates";
 
 export const CategoryPage = () => {
     const { category } = useParams();

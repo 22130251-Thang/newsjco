@@ -1,4 +1,4 @@
-import type { Article } from '../types/article.type';
+import type { Article } from "../../types/article.type";
 import { MediaCard } from './MediaCard';
 import { Carousel } from './Carousel';
 

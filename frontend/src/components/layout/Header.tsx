@@ -1,9 +1,10 @@
 import { Rss, Search, Phone, Mail, Smartphone, LogOut, Moon, Sun } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { CategoriesList } from "./CategoriesList";
-import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
-import { logout } from "../lib/store/slices/authSlice";
-import { useTheme } from "../context/ThemeContext";
+import { CategoriesList } from "../news/CategoriesList";
+import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
+import { logout } from "../../lib/store/slices/authSlice";
+import { useTheme } from "../../context/ThemeContext";
+import { NotificationBell } from "./NotificationBell";
 
 export const Header = () => {
   const dispatch = useAppDispatch();
@@ -53,7 +54,7 @@ export const Header = () => {
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#c02424] dark:hover:text-orange-300"
+                  className="hover:text-primary dark:hover:text-orange-300"
                 >
                   Fanpage
                 </a>
@@ -86,6 +87,8 @@ export const Header = () => {
                 >
                   {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
                 </button>
+
+                <NotificationBell />
 
                 {isAuthenticated && user ? (
                   <div className="flex items-center gap-3 text-xs border-l border-gray-300 dark:border-gray-600 pl-4">

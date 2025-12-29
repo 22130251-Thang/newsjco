@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { generateTTS, checkTTSStatus, getTTSStream } from "../lib/service/tts-service";
+import { checkTTSStatus, generateTTS, getTTSStream } from "../../lib/service/tts-service";
 
 interface TTSButtonProps {
   slug: string;
@@ -53,22 +53,22 @@ const TTSButton: React.FC<TTSButtonProps> = ({ slug, title, description, fullCon
     while (attempts < maxAttempts) {
       try {
         const status = await checkTTSStatus(taskId);
-        
+
         if (status.status === 'ready') {
           return;
         }
-        
+
         if (status.status === 'error') {
           throw new Error(status.error || 'TTS generation failed');
         }
-        
+
         await new Promise(resolve => setTimeout(resolve, pollInterval));
         attempts++;
       } catch (err) {
         throw err;
       }
     }
-    
+
     throw new Error('TTS generation timeout');
   };
 
@@ -96,13 +96,13 @@ const TTSButton: React.FC<TTSButtonProps> = ({ slug, title, description, fullCon
       const cleanedTitle = cleanText(title);
       const cleanedDescription = cleanText(description);
       const cleanedFullContent = cleanText(fullContent);
-      
+
       const taskId = await generateTTS(slug, cleanedTitle, cleanedDescription, cleanedFullContent);
-      
+
       await pollTTSStatus(taskId);
-      
+
       const audioUrl = getTTSStream(taskId);
-      
+
       const audioElement = new Audio(audioUrl);
       audioElement.onplay = () => setSpeaking(true);
       audioElement.onended = () => {
@@ -114,7 +114,7 @@ const TTSButton: React.FC<TTSButtonProps> = ({ slug, title, description, fullCon
         setError('Lỗi khi phát âm thanh');
         setSpeaking(false);
       };
-      
+
       setAudio(audioElement);
       setLoading(false);
       await audioElement.play();
@@ -164,9 +164,8 @@ const TTSButton: React.FC<TTSButtonProps> = ({ slug, title, description, fullCon
               onChange={handleProgressChange}
               className="flex-1 h-1 bg-red-400 rounded cursor-pointer appearance-none accent-white"
               style={{
-                background: `linear-gradient(to right, white 0%, white ${
-                  duration ? (currentTime / duration) * 100 : 0
-                }%, rgb(248 113 113) ${duration ? (currentTime / duration) * 100 : 0}%, rgb(248 113 113) 100%)`
+                background: `linear-gradient(to right, white 0%, white ${duration ? (currentTime / duration) * 100 : 0
+                  }%, rgb(248 113 113) ${duration ? (currentTime / duration) * 100 : 0}%, rgb(248 113 113) 100%)`
               }}
             />
             {/* Duration */}

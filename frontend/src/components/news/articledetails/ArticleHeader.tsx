@@ -1,6 +1,6 @@
 import { Calendar, User, Clock, Share2 } from "lucide-react";
-import type { Article } from "../../types/article.type";
-import TTSButton from "../TTSButton";
+import type { Article } from "../../../types/article.type";
+import TTSButton from "../../shared/TTSButton";
 
 interface ArticleHeaderProps {
     article: Article;
@@ -15,7 +15,7 @@ export const ArticleHeader = ({ article }: ArticleHeaderProps) => (
         <ArticleMeta article={article} />
 
         <div className="mb-4">
-            <TTSButton 
+            <TTSButton
                 slug={article.slug}
                 title={article.title}
                 description={article.description}

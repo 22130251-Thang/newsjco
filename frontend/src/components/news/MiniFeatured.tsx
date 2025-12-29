@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
-import { getTop3FeaturesArticles } from "../lib/store/slices/articleSlice";
+import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
+import { getTop3FeaturesArticles } from "../../lib/store/slices/articleSlice";
 import { Link } from "react-router-dom";
-import { ArticleCardSkeleton } from "./Skeleton";
+import { ArticleCardSkeleton } from "../shared/Skeleton";
 
 export const MiniFeatured = () => {
   const dispatch = useAppDispatch();

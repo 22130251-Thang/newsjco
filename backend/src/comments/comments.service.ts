@@ -2,21 +2,16 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { ArticlesService } from 'src/articles/articles.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
-import { BaseRecord } from 'src/types/baserecord.type';
 import { UsersService } from 'src/users/users.service';
 import { NotificationsService } from 'src/notifications/notifications.service';
-
-export interface Comment extends BaseRecord {
-  articleGuid: string;
-  userId: number;
-  content: string;
-  likes: number;
-  dislikes: number;
-  status: string;
-  createdAt: string;
-  updatedAt: string;
-  parentId?: number;
-}
+import { Comment, CommentWithUser, ReactionType, CommentReaction } from './comments.interface';
+import {
+  COMMENTS_TABLE,
+  COMMENT_STATUS,
+  DEFAULT_PAGE,
+  DEFAULT_LIMIT,
+  COMMENT_REACTIONS_TABLE,
+} from './comments.constants';
 
 @Injectable()
 export class CommentsService {
@@ -27,93 +22,183 @@ export class CommentsService {
     private readonly notificationsService: NotificationsService,
   ) { }
 
-  async create(createCommentDto: CreateCommentDto) {
-    const article = this.articlesService.findBySlug(createCommentDto.slug);
-    if (!article) {
-      throw new NotFoundException('Article not found');
-    }
 
-    const newComment = {
-      articleGuid: article.guid,
-      userId: createCommentDto.userId,
-      content: createCommentDto.content,
-      likes: 0,
-      dislikes: 0,
-      status: 'approved',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      parentId: createCommentDto.parentId || null,
-    };
+  async create(createCommentDto: CreateCommentDto): Promise<CommentWithUser> {
+    const article = this.getArticleOrThrow(createCommentDto.slug);
+    const savedComment = this.saveComment(createCommentDto, article.guid);
 
-    const savedComment = this.databaseService.create<Comment>(
-      'comments',
-      newComment,
-    );
+    this.notifyParentCommentOwner(savedComment, createCommentDto.slug, article.category);
 
-    if (savedComment.parentId) {
-      const parentComment = this.databaseService.findById<Comment>(
-        'comments',
-        savedComment.parentId,
-      );
-
-      if (parentComment && parentComment.userId !== savedComment.userId) {
-        const replierUser = this.usersService.findOne(savedComment.userId);
-        const replierName =
-          replierUser?.displayName || replierUser?.username || 'Ai đó';
-
-        this.notificationsService.create({
-          userId: parentComment.userId,
-          type: 'reply',
-          message: `${replierName} đã trả lời bình luận của bạn`,
-          articleSlug: createCommentDto.slug,
-          categorySlug: article.category,
-          commentId: savedComment.id as number,
-        });
-      }
-    }
-
-    const user = this.usersService.findOne(savedComment.userId);
-    return { ...savedComment, user };
+    return this.attachUserToComment(savedComment);
   }
 
-  async findByArticleSlug(slug: string, page: number = 1, limit: number = 10) {
+
+  async findByArticleSlug(
+    slug: string,
+    page: number = DEFAULT_PAGE,
+    limit: number = DEFAULT_LIMIT,
+    userId?: number,
+  ) {
+    const article = this.getArticleOrThrow(slug);
+    const articleComments = this.getCommentsByArticle(article.guid);
+
+    const { topLevelComments, replies } = this.separateTopLevelAndReplies(articleComments);
+    const paginatedTopLevel = this.paginateComments(topLevelComments, page, limit);
+    const relatedReplies = this.getRepliesForComments(replies, paginatedTopLevel);
+
+    const allComments = [...paginatedTopLevel, ...relatedReplies];
+
+    const userReactions = userId
+      ? this.databaseService.findAll<CommentReaction>(COMMENT_REACTIONS_TABLE).filter(r => r.userId === userId)
+      : [];
+
+    const commentsWithUser = allComments.map((comment) => {
+      const commentWithUser = this.attachUserToComment(comment);
+      if (userId) {
+        const reaction = userReactions.find(r => r.commentId === comment.id);
+        commentWithUser.userReaction = reaction ? reaction.type : null;
+      }
+      return commentWithUser;
+    });
+
+    return {
+      data: commentsWithUser,
+      total: topLevelComments.length,
+      page,
+      limit,
+    };
+  }
+
+  async reactToComment(
+    commentId: number,
+    userId: number,
+    type: ReactionType,
+    articleSlug: string,
+    categorySlug: string,
+  ) {
+    const comment = this.databaseService.findById<Comment>(COMMENTS_TABLE, commentId);
+    const existing = this.findUserReaction(commentId, userId);
+
+    let { likes, dislikes } = comment;
+    let userReaction: ReactionType | null = type;
+
+    if (existing?.type === type) {
+      this.databaseService.remove(COMMENT_REACTIONS_TABLE, existing.id);
+      type === 'like' ? likes-- : dislikes--;
+      userReaction = null;
+    } else if (existing) {
+      this.databaseService.update(COMMENT_REACTIONS_TABLE, existing.id, { type });
+      if (type === 'like') { likes++; dislikes--; }
+      else { likes--; dislikes++; }
+      this.notifyReaction(comment, userId, type, articleSlug, categorySlug);
+    } else {
+      this.databaseService.create(COMMENT_REACTIONS_TABLE, { commentId, userId, type });
+      type === 'like' ? likes++ : dislikes++;
+      this.notifyReaction(comment, userId, type, articleSlug, categorySlug);
+    }
+
+    const updated = this.databaseService.update<Comment>(COMMENTS_TABLE, commentId, { likes, dislikes });
+    return { ...this.attachUserToComment(updated), userReaction };
+  }
+
+
+  private getArticleOrThrow(slug: string) {
     const article = this.articlesService.findBySlug(slug);
     if (!article) {
       throw new NotFoundException('Article not found');
     }
+    return article;
+  }
 
-    const allComments = this.databaseService.findAll<Comment>('comments');
-    const articleComments = allComments
-      .filter((comment) => comment.articleGuid === article.guid)
-      .sort(
-        (a, b) =>
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-      );
-
-    const roots = articleComments.filter((c) => !c.parentId);
-    const repliesBase = articleComments.filter((c) => !!c.parentId);
-
-    const total = roots.length;
-    const paginatedRoots = roots.slice((page - 1) * limit, page * limit);
-
-    const rootIds = new Set(paginatedRoots.map((r) => r.id));
-    const resultComments = [
-      ...paginatedRoots,
-      ...repliesBase.filter((reply) => {
-        return reply.parentId && rootIds.has(reply.parentId);
-      }),
-    ];
-
-    const data = resultComments.map((comment) => {
-      const user = this.usersService.findOne(comment.userId);
-      return { ...comment, user };
+  private saveComment(dto: CreateCommentDto, articleGuid: string): Comment {
+    const now = new Date().toISOString();
+    return this.databaseService.create<Comment>(COMMENTS_TABLE, {
+      articleGuid,
+      userId: dto.userId,
+      content: dto.content,
+      likes: 0,
+      dislikes: 0,
+      status: COMMENT_STATUS.APPROVED,
+      createdAt: now,
+      updatedAt: now,
+      parentId: dto.parentId || null,
     });
+  }
 
+
+  private getCommentsByArticle(articleGuid: string): Comment[] {
+    return this.databaseService
+      .findAll<Comment>(COMMENTS_TABLE)
+      .filter((comment) => comment.articleGuid === articleGuid)
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  }
+
+  private separateTopLevelAndReplies(allComments: Comment[]) {
     return {
-      data,
-      total,
-      page,
-      limit,
+      topLevelComments: allComments.filter((c) => !c.parentId),
+      replies: allComments.filter((c) => !!c.parentId),
     };
+  }
+
+  private paginateComments(comments: Comment[], page: number, limit: number): Comment[] {
+    return comments.slice((page - 1) * limit, page * limit);
+  }
+
+  private getRepliesForComments(replies: Comment[], visibleParents: Comment[]): Comment[] {
+    const visibleIds = new Set(visibleParents.map((c) => c.id as number));
+    const result: Comment[] = [];
+    const includedIds = new Set<number>(visibleIds);
+
+    let added;
+    do {
+      added = false;
+      for (const r of replies) {
+        if (r.parentId && includedIds.has(r.parentId) && !includedIds.has(r.id as number)) {
+          result.push(r);
+          includedIds.add(r.id as number);
+          added = true;
+        }
+      }
+    } while (added);
+
+    return result;
+  }
+
+
+  private notifyParentCommentOwner(comment: Comment, articleSlug: string, categorySlug: string) {
+    if (!comment.parentId) return;
+    const parent = this.databaseService.findById<Comment>(COMMENTS_TABLE, comment.parentId);
+    if (!parent || parent.userId === comment.userId) return;
+
+    this.sendNotification(parent.userId, 'reply', comment.userId, articleSlug, categorySlug, comment.id as number);
+  }
+
+  private notifyReaction(comment: Comment, reactorId: number, type: ReactionType, articleSlug: string, categorySlug: string) {
+    if (comment.userId === reactorId) return;
+    this.sendNotification(comment.userId, 'reaction', reactorId, articleSlug, categorySlug, comment.id as number, type);
+  }
+
+  private sendNotification(targetId: number, type: 'reply' | 'reaction', actorId: number, slug: string, cat: string, commentId: number, reactionType?: ReactionType) {
+    const actor = this.usersService.findOne(actorId);
+    const actorName = actor?.displayName || actor?.username || 'Ai đó';
+    const action = type === 'reply' ? 'đã trả lời bình luận' : `đã ${reactionType === 'like' ? 'thích' : 'không thích'} bình luận`;
+
+    this.notificationsService.create({
+      userId: targetId,
+      type,
+      message: `${actorName} ${action} của bạn`,
+      articleSlug: slug,
+      categorySlug: cat,
+      commentId,
+    });
+  }
+
+  private findUserReaction(commentId: number, userId: number): CommentReaction | undefined {
+    return this.databaseService.findAll<CommentReaction>(COMMENT_REACTIONS_TABLE)
+      .find(r => r.commentId === commentId && r.userId === userId);
+  }
+
+  private attachUserToComment(comment: Comment): CommentWithUser {
+    return { ...comment, user: this.usersService.findOne(comment.userId) };
   }
 }

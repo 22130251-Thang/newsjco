@@ -1,7 +1,7 @@
 import { HotNews } from "./HotNews";
 import { CategoryBlock } from "./CategoryBlock";
-import type { Article } from "../types/article.type";
-import { CategoryBlockSkeleton } from "./Skeleton";
+import type { Article } from "../../types/article.type";
+import { CategoryBlockSkeleton } from "../shared/Skeleton";
 
 interface NewsGridProps {
     loading: boolean;

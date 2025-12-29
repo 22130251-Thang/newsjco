@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
+import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
 import { Link } from "react-router-dom";
-import { getMainTheGioiArticle } from "../lib/store/slices/articleSlice";
-import { MainArticleSkeleton } from "./Skeleton";
+import { getMainTheGioiArticle } from "../../lib/store/slices/articleSlice";
+import { MainArticleSkeleton } from "../shared/Skeleton";
 
 export const MainSection = () => {
   const dispatch = useAppDispatch();

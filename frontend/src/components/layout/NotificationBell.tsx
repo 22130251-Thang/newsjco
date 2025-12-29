@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Bell, CheckCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../lib/store/hooks";
+import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
 import {
     fetchNotifications,
     markNotificationAsRead,
@@ -9,10 +9,10 @@ import {
     closeNotificationPanel,
     toggleNotificationPanel,
     addNotification,
-} from "../lib/store/slices/notificationSlice";
-import { getSocket } from "../lib/socket";
-import type { Notification } from "../types/notifications.type";
-import { NotificationItem } from "./notifications/NotificationItem";
+} from "../../lib/store/slices/notificationSlice";
+import { getSocket } from "../../lib/socket";
+import type { Notification } from "../../types/notifications.type";
+import { NotificationItem } from "../notifications/NotificationItem";
 
 export const NotificationBell = () => {
     const dispatch = useAppDispatch();

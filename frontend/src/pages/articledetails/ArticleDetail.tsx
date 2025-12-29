@@ -7,7 +7,7 @@ import {
     RelatedArticlesSidebar,
     ArticleLoadingSpinner,
     ArticleError,
-} from "../../components/articledetails";
+} from "../../components/news/articledetails";
 
 import { CommentList } from "../../components/comments/CommentList";
 
