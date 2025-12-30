@@ -1,18 +1,20 @@
 import { Calendar, User, Clock, Share2 } from "lucide-react";
 import type { Article } from "../../../types/article.type";
 import TTSButton from "../../shared/TTSButton";
+import { BookmarkButton } from "../../BookmarkButton";
 
 interface ArticleHeaderProps {
     article: Article;
+    slug?: string;
 }
 
-export const ArticleHeader = ({ article }: ArticleHeaderProps) => (
+export const ArticleHeader = ({ article, slug }: ArticleHeaderProps) => (
     <header className="mb-8">
         <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4 font-heading">
             {article.title}
         </h1>
 
-        <ArticleMeta article={article} />
+        <ArticleMeta article={article} slug={slug} />
 
         <div className="mb-4">
             <TTSButton
@@ -31,7 +33,7 @@ export const ArticleHeader = ({ article }: ArticleHeaderProps) => (
     </header>
 );
 
-const ArticleMeta = ({ article }: ArticleHeaderProps) => (
+const ArticleMeta = ({ article, slug }: ArticleHeaderProps) => (
     <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500 dark:text-gray-400 border-y border-gray-100 dark:border-gray-700 py-4 mb-6">
         <div className="flex items-center gap-1">
             <User size={14} className="text-red-500" />
@@ -53,10 +55,10 @@ const ArticleMeta = ({ article }: ArticleHeaderProps) => (
             </span>
         </div>
         <div className="ml-auto flex items-center gap-3">
-            <button className="p-1.5 transition-colors hover:text-gray-600 dark:hover:text-gray-300">
+            {slug && <BookmarkButton slug={slug} size="sm" showText />}
+            <button className="p-1.5 transition-colors hover:text-gray-600 dark:hover:text-gray-300 cursor-pointer">
                 <Share2 size={16} />
             </button>
         </div>
     </div>
 );
-

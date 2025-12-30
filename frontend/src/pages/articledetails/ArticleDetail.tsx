@@ -9,7 +9,6 @@ import {
   ArticleError,
 } from "../../components/news/articledetails";
 import { CommentList } from "../../components/comments/CommentList";
-import { BookmarkButton } from "../../components/BookmarkButton";
 
 export const ArticleDetail = () => {
   const { category, slug } = useParams();
@@ -31,10 +30,7 @@ export const ArticleDetail = () => {
             <ArticleBreadcrumb category={article.category} />
 
             <article>
-              <div className="flex items-center justify-between mb-4">
-                <ArticleHeader article={article} />
-                {slug && <BookmarkButton slug={slug} size="lg" showText />}
-              </div>
+              <ArticleHeader article={article} slug={slug} />
 
               <ArticleContent article={article} />
             </article>

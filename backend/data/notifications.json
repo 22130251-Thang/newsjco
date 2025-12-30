@@ -173,5 +173,17 @@
     "isRead": false,
     "createdAt": "2025-12-30T03:56:50.675Z",
     "id": 16
+  },
+  {
+    "userId": 1003,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "the-gioi",
+    "commentId": 22,
+    "isRead": true,
+    "createdAt": "2025-12-30T06:32:22.849Z",
+    "id": 17,
+    "updatedAt": "2025-12-30T06:32:22.849Z"
   }
 ]

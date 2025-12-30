@@ -238,5 +238,29 @@
     "updatedAt": "2025-12-30T03:56:50.674Z",
     "parentId": 19,
     "id": 20
+  },
+  {
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "userId": 1003,
+    "content": "@AI summarize this",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2025-12-30T06:32:22.844Z",
+    "updatedAt": "2025-12-30T06:32:22.844Z",
+    "parentId": null,
+    "id": 21
+  },
+  {
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "userId": 999,
+    "content": "[MOCK SUMMARY] This is a simulated summary because Google GenAI is not configured. \n      Original text length: 551 characters. \n      Please set GOOGLE_API_KEY to use real AI.",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2025-12-30T06:32:22.848Z",
+    "updatedAt": "2025-12-30T06:32:22.848Z",
+    "parentId": 21,
+    "id": 22
   }
 ]
