@@ -4,5 +4,11 @@
     "userId": 7,
     "type": "like",
     "id": 1
+  },
+  {
+    "commentId": 15,
+    "userId": 7,
+    "type": "like",
+    "id": 2
   }
 ]

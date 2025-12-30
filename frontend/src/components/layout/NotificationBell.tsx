@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Bell, CheckCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
@@ -72,7 +72,7 @@ export const NotificationBell = () => {
             await dispatch(markNotificationAsRead(notification.id));
         }
         dispatch(closeNotificationPanel());
-        navigate(`/${notification.categorySlug}/${notification.articleSlug}`);
+        navigate(`/${notification.categorySlug}/${notification.articleSlug}#comment-${notification.commentId}`);
     };
 
     const handleMarkAllAsRead = async () => {

