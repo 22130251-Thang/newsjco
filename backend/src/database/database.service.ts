@@ -64,10 +64,13 @@ export class DatabaseService implements OnModuleInit {
       0,
     );
     const newId = maxId + 1;
+    const now = new Date().toISOString();
     const newRecord = {
       ...data,
       id: newId,
-    } as T;
+      createdAt: now,
+      updatedAt: now,
+    } as unknown as T;
     table.push(newRecord);
     this.persistToFile(tablename, table);
     return newRecord;

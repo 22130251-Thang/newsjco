@@ -17,6 +17,17 @@ export const Header = () => {
     navigate("/");
   };
 
+  const getAvatarUrl = (avatar?: string, displayName?: string) => {
+    const defaultAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+      displayName || 'User'
+    )}&background=cc0000&color=fff&size=32`;
+
+    if (!avatar) return defaultAvatar;
+    if (avatar.startsWith('http')) return avatar;
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    return `${API_URL}${avatar}`;
+  };
+
   return (
     <>
       <header className="bg-white dark:bg-gray-900">
@@ -106,19 +117,14 @@ export const Header = () => {
                       title="Xem thông tin cá nhân"
                     >
                       <img
-                        src={
-                          user.avatar ||
-                          `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                            user.displayName
-                          )}&background=cc0000&color=fff&size=32`
-                        }
+                        src={getAvatarUrl(user.avatar, user.displayName)}
                         alt={user.displayName}
                         className="w-8 h-8 rounded-full object-cover border border-gray-300"
                       />
                       <div className="text-gray-700 dark:text-gray-300">
                         <p className="font-medium">{user.displayName}</p>
                         <p className="text-gray-500 dark:text-gray-400">
-                          @{user. username}
+                          @{user.username}
                         </p>
                       </div>
                     </Link>
