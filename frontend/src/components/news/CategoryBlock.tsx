@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { Article } from "../../types/article.type";
+import { getCategoryNameUppercase } from "../../lib/utils/category-utils";
 
 interface CategoryBlockProps {
   category: string;
@@ -12,10 +13,6 @@ export const CategoryBlock = ({ category, articles }: CategoryBlockProps) => {
   const mainArticle = articles[0];
   const subArticles = articles.slice(1, 4);
 
-  const formatCategoryName = (slug: string) => {
-    return slug.replace(/-/g, " ").toUpperCase();
-  };
-
   return (
     <div className="bg-gray-100 dark:bg-gray-800 p-4 mb-8">
       <div className="flex items-center justify-between mb-4">
@@ -24,7 +21,7 @@ export const CategoryBlock = ({ category, articles }: CategoryBlockProps) => {
             to={`/${category}`}
             className="text-primary dark:text-orange-300 font-bold text-sm uppercase pl-3 border-l-4 border-primary dark:border-orange-300 leading-none hover:text-red-700 dark:hover:text-orange-200 transition-colors"
           >
-            {formatCategoryName(category)}
+            {getCategoryNameUppercase(category)}
           </Link>
           <div className="hidden md:flex gap-4 text-xs text-gray-500 dark:text-gray-400"></div>
         </div>

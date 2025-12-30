@@ -9,14 +9,14 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseService) { }
 
   create(registerRequestDto: RegisterRequestDto) {
     return this.databaseService.create<User>('users', registerRequestDto);
   }
 
   findByUserName(username: string) {
-    const user = this.databaseService. findOneBy<User>(
+    const user = this.databaseService.findOneBy<User>(
       'users',
       'username',
       username,
@@ -35,7 +35,7 @@ export class UsersService {
     );
     if (userByName) return userByName;
 
-    const userByEmail = this. databaseService.findOneBy<User>(
+    const userByEmail = this.databaseService.findOneBy<User>(
       'users',
       'useremail',
       email,
@@ -59,15 +59,14 @@ export class UsersService {
     return this.databaseService.remove<User>('users', id);
   }
 
-  //Update profile
-  updateProfile(userId:  number, updateProfileDto: UpdateProfileDto) {
+  updateProfile(userId: number, updateProfileDto: UpdateProfileDto) {
     const user = this.findOne(userId);
     if (!user) {
       throw new NotFoundException('Không tìm thấy người dùng');
     }
 
-    const updatedData:  Partial<User> = {
-      ... updateProfileDto,
+    const updatedData: Partial<User> = {
+      ...updateProfileDto,
       updatedAt: new Date().toISOString(),
     };
 
@@ -79,16 +78,13 @@ export class UsersService {
     return null;
   }
 
-  // Change password
   async changePassword(userId: number, changePasswordDto: ChangePasswordDto) {
     const { currentPassword, newPassword, confirmPassword } = changePasswordDto;
 
-    // Validate confirm password
     if (newPassword !== confirmPassword) {
       throw new BadRequestException('Mật khẩu xác nhận không khớp');
     }
 
-    // Validate password length
     if (newPassword.length < 6) {
       throw new BadRequestException('Mật khẩu mới phải có ít nhất 6 ký tự');
     }
@@ -98,16 +94,13 @@ export class UsersService {
       throw new NotFoundException('Không tìm thấy người dùng');
     }
 
-    // Verify current password
     const isPasswordMatch = await bcrypt.compare(currentPassword, user.password);
     if (!isPasswordMatch) {
       throw new BadRequestException('Mật khẩu hiện tại không đúng');
     }
 
-    // Hash new password
     const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-    // Update password
     const updatedUser = this.databaseService.update<User>('users', userId, {
       password: hashedPassword,
       updatedAt: new Date().toISOString(),
@@ -116,7 +109,6 @@ export class UsersService {
     return { message: 'Đổi mật khẩu thành công' };
   }
 
-  // Update avatar
   updateAvatar(userId: number, avatarUrl: string) {
     const user = this.findOne(userId);
     if (!user) {

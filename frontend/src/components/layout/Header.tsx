@@ -1,4 +1,4 @@
-import { Rss, Search, Phone, Mail, Smartphone, LogOut, Moon, Sun } from "lucide-react";
+import { Rss, Search, Phone, Mail, Smartphone, LogOut, Moon, Sun, Bookmark } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { CategoriesList } from "../news/CategoriesList";
 import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
@@ -23,7 +23,7 @@ export const Header = () => {
         <div className="bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <div className="container-main">
             <div className="flex justify-between items-center py-2">
-              <div className="flex items-center gap-4 text-xs text-gray-600 dark:text-gray-400">
+              <div className="flex items-center gap-4 text-xs text-gray-600 dark: text-gray-400">
                 <a
                   href="tel:0914914999"
                   className="flex items-center gap-1 hover:text-primary dark:hover:text-orange-400"
@@ -34,7 +34,7 @@ export const Header = () => {
 
                 <a
                   href="mailto:thuky@baotintuc.vn"
-                  className="flex items-center gap-1 hover:text-primary"
+                  className="flex items-center gap-1 hover: text-primary"
                 >
                   <Mail size={12} />
                   <span>thuky@baotintuc.vn</span>
@@ -93,9 +93,18 @@ export const Header = () => {
                 {isAuthenticated && user ? (
                   <div className="flex items-center gap-3 text-xs border-l border-gray-300 dark:border-gray-600 pl-4">
                     <Link
+                      to="/bookmarks"
+                      className="flex items-center gap-1 text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+                      title="Bài viết đã lưu"
+                    >
+                      <Bookmark size={16} />
+                    </Link>
+
+                    <Link
                       to="/profile"
                       className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
-                      title="Xem thông tin cá nhân">
+                      title="Xem thông tin cá nhân"
+                    >
                       <img
                         src={
                           user.avatar ||
@@ -104,11 +113,12 @@ export const Header = () => {
                           )}&background=cc0000&color=fff&size=32`
                         }
                         alt={user.displayName}
-                        className="w-8 h-8 rounded-full object-cover border border-gray-300"/>
+                        className="w-8 h-8 rounded-full object-cover border border-gray-300"
+                      />
                       <div className="text-gray-700 dark:text-gray-300">
                         <p className="font-medium">{user.displayName}</p>
                         <p className="text-gray-500 dark:text-gray-400">
-                          @{user.username}
+                          @{user. username}
                         </p>
                       </div>
                     </Link>
