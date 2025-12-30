@@ -4,6 +4,7 @@ import {
     fetchCommentsByArticle,
     addCommentToArticle,
     loadMoreComments,
+    clearComments,
 } from "../../lib/store/slices/commentSlice";
 import { CommentForm } from "./CommentForm";
 import { CommentItem } from "./CommentItem";
@@ -17,6 +18,9 @@ interface CommentListProps {
     slug: string;
 }
 
+import { getSocket, joinArticleRoom, leaveArticleRoom } from "../../lib/socket";
+import { addNewComment } from "../../lib/store/slices/commentSlice";
+
 export const CommentList = ({ slug }: CommentListProps) => {
     const dispatch = useAppDispatch();
     const { data: comments, loading } = useAppSelector((state) => state.comment.comments);
@@ -27,7 +31,25 @@ export const CommentList = ({ slug }: CommentListProps) => {
 
     useEffect(() => {
         if (slug) {
+            dispatch(clearComments());
             dispatch(fetchCommentsByArticle({ slug, page: 1, limit: COMMENTS_PER_PAGE, userId: user?.id }));
+
+            joinArticleRoom(slug);
+
+            const socket = getSocket();
+            if (socket) {
+                socket.on('newComment', (comment) => {
+                    dispatch(addNewComment(comment));
+                });
+            }
+
+            return () => {
+                leaveArticleRoom(slug);
+                if (socket) {
+                    socket.off('newComment');
+                }
+                dispatch(clearComments());
+            };
         }
     }, [slug, dispatch, user?.id]);
 

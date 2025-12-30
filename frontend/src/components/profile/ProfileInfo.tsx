@@ -1,21 +1,21 @@
 import { User, Mail, FileText, Phone, MapPin, Calendar, Users } from "lucide-react";
-import type { User as UserType } from "../../types/users. type";
+import type { User as UserType } from "../../types/users.type";
 
 interface ProfileInfoProps {
   user: UserType;
 }
 
 export const ProfileInfo = ({ user }: ProfileInfoProps) => {
-  const formatGender = (gender?:  string) => {
+  const formatGender = (gender?: string) => {
     switch (gender) {
-      case 'male':  return 'Nam';
+      case 'male': return 'Nam';
       case 'female': return 'Nữ';
       case 'other': return 'Khác';
       default: return 'Chưa cập nhật';
     }
   };
 
-  const formatBirthDate = (dateString?:  string) => {
+  const formatBirthDate = (dateString?: string) => {
     if (!dateString) return 'Chưa cập nhật';
     const date = new Date(dateString);
     return date.toLocaleDateString('vi-VN', {

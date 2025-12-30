@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, Calendar } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface CategoryPaginationProps {
     currentPage: number;

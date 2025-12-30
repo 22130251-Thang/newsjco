@@ -30,5 +30,148 @@
     "isRead": false,
     "createdAt": "2025-12-29T11:33:48.451Z",
     "id": 3
+  },
+  {
+    "userId": 7,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "ai-summary",
+    "commentId": 61,
+    "isRead": true,
+    "createdAt": "2025-12-29T14:47:26.162Z",
+    "id": 4
+  },
+  {
+    "userId": 7,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "ai-summary",
+    "commentId": 63,
+    "isRead": true,
+    "createdAt": "2025-12-29T14:49:20.605Z",
+    "id": 5
+  },
+  {
+    "userId": 7,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "ai-summary",
+    "commentId": 65,
+    "isRead": true,
+    "createdAt": "2025-12-29T14:51:20.252Z",
+    "id": 6
+  },
+  {
+    "userId": 7,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "ai-summary",
+    "commentId": 67,
+    "isRead": true,
+    "createdAt": "2025-12-29T14:57:04.049Z",
+    "id": 7
+  },
+  {
+    "userId": 7,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "ai-summary",
+    "commentId": 69,
+    "isRead": true,
+    "createdAt": "2025-12-29T15:15:42.795Z",
+    "id": 8
+  },
+  {
+    "userId": 7,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "ai-summary",
+    "commentId": 4,
+    "isRead": true,
+    "createdAt": "2025-12-30T03:29:34.605Z",
+    "id": 9
+  },
+  {
+    "userId": 7,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "ai-summary",
+    "commentId": 8,
+    "isRead": true,
+    "createdAt": "2025-12-30T03:32:06.129Z",
+    "id": 10
+  },
+  {
+    "userId": 7,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "anh",
+    "commentId": 10,
+    "isRead": true,
+    "createdAt": "2025-12-30T03:38:51.784Z",
+    "id": 11
+  },
+  {
+    "userId": 7,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "anh",
+    "commentId": 14,
+    "isRead": true,
+    "createdAt": "2025-12-30T03:45:57.153Z",
+    "id": 12
+  },
+  {
+    "userId": 7,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "anh",
+    "commentId": 16,
+    "isRead": true,
+    "createdAt": "2025-12-30T03:47:25.189Z",
+    "id": 13
+  },
+  {
+    "userId": 999,
+    "type": "reply",
+    "message": "thang đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "anh",
+    "commentId": 17,
+    "isRead": false,
+    "createdAt": "2025-12-30T03:55:13.185Z",
+    "id": 14
+  },
+  {
+    "userId": 7,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "anh",
+    "commentId": 18,
+    "isRead": false,
+    "createdAt": "2025-12-30T03:55:21.306Z",
+    "id": 15
+  },
+  {
+    "userId": 7,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "anh",
+    "commentId": 20,
+    "isRead": false,
+    "createdAt": "2025-12-30T03:56:50.675Z",
+    "id": 16
   }
 ]

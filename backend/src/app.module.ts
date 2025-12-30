@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseService } from './database/database.service';
@@ -10,9 +11,13 @@ import { TtsModule } from './tts/tts.module';
 import { CommentsModule } from './comments/comments.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { BookmarksModule } from './bookmarks/bookmarks.module';
+import { AiModule } from './ai/ai.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     UsersModule,
     AuthModule,
     CategoriesModule,
@@ -21,8 +26,9 @@ import { BookmarksModule } from './bookmarks/bookmarks.module';
     CommentsModule,
     NotificationsModule,
     BookmarksModule,
+    AiModule,
   ],
   controllers: [AppController],
   providers: [AppService, DatabaseService],
 })
-export class AppModule {}
+export class AppModule { }

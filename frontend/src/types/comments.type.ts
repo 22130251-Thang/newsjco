@@ -2,7 +2,7 @@ import type { User } from "./users.type";
 
 export interface Comment {
     id: number;
-    articleGuid: string;
+    articleSlug: string;
     userId: number;
     content: string;
     likes: number;

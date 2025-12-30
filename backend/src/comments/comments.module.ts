@@ -6,9 +6,11 @@ import { ArticlesModule } from 'src/articles/articles.module';
 import { UsersModule } from 'src/users/users.module';
 import { NotificationsModule } from 'src/notifications/notifications.module';
 
+import { AiModule } from 'src/ai/ai.module';
+
 @Module({
-  imports: [ArticlesModule, UsersModule, NotificationsModule],
+  imports: [ArticlesModule, UsersModule, NotificationsModule, AiModule],
   controllers: [CommentsController],
   providers: [CommentsService, DatabaseService],
 })
-export class CommentsModule {}
+export class CommentsModule { }

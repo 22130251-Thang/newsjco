@@ -65,6 +65,22 @@ export const CommentForm = ({ onSubmit, onCancel, placeholder = "Chia sẻ ý ki
                     </button>
                 )}
                 <button
+                    type="button"
+                    disabled={isSubmitting}
+                    onClick={async () => {
+                        setIsSubmitting(true);
+                        try {
+                            await onSubmit("@AI summarize this");
+                            setContent("");
+                        } finally {
+                            setIsSubmitting(false);
+                        }
+                    }}
+                    className="px-4 py-2 rounded-lg font-medium text-purple-600 bg-purple-50 hover:bg-purple-100 transition-colors flex items-center gap-2"
+                >
+                    Summarize with AI
+                </button>
+                <button
                     type="submit"
                     disabled={!content.trim() || isSubmitting}
                     className={`px-6 py-2 rounded-lg font-semibold text-white ${!content.trim() || isSubmitting
