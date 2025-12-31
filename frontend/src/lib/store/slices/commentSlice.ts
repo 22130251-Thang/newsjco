@@ -57,8 +57,9 @@ export const addCommentToArticle = createAsyncThunk<Comment, CreateCommentReques
     async (request, { rejectWithValue }) => {
         try {
             return await createComment(request);
-        } catch (error: unknown) {
-            return rejectWithValue(error instanceof Error ? error.message : "Failed to add comment");
+        } catch (error: any) {
+            const message = error?.response?.data?.message || error?.message || "Failed to add comment";
+            return rejectWithValue(message);
         }
     }
 );
