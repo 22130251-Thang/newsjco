@@ -185,5 +185,65 @@
     "createdAt": "2025-12-30T06:32:22.849Z",
     "id": 17,
     "updatedAt": "2025-12-30T06:32:22.849Z"
+  },
+  {
+    "userId": 1004,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
+    "categorySlug": "khoa-hoc-cong-nghe",
+    "commentId": 31,
+    "isRead": false,
+    "createdAt": "2025-12-31T06:18:55.473Z",
+    "id": 18,
+    "updatedAt": "2025-12-31T06:18:55.473Z"
+  },
+  {
+    "userId": 1004,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
+    "categorySlug": "khoa-hoc-cong-nghe",
+    "commentId": 32,
+    "isRead": false,
+    "createdAt": "2025-12-31T06:19:00.393Z",
+    "id": 19,
+    "updatedAt": "2025-12-31T06:19:00.393Z"
+  },
+  {
+    "userId": 1004,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
+    "categorySlug": "khoa-hoc-cong-nghe",
+    "commentId": 33,
+    "isRead": false,
+    "createdAt": "2025-12-31T06:19:00.397Z",
+    "id": 20,
+    "updatedAt": "2025-12-31T06:19:00.397Z"
+  },
+  {
+    "userId": 1004,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
+    "categorySlug": "khoa-hoc-cong-nghe",
+    "commentId": 34,
+    "isRead": false,
+    "createdAt": "2025-12-31T06:19:00.492Z",
+    "id": 21,
+    "updatedAt": "2025-12-31T06:19:00.492Z"
+  },
+  {
+    "userId": 1004,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
+    "categorySlug": "khoa-hoc-cong-nghe",
+    "commentId": 35,
+    "isRead": true,
+    "createdAt": "2025-12-31T06:19:00.800Z",
+    "id": 22,
+    "updatedAt": "2025-12-31T06:19:00.800Z"
   }
 ]

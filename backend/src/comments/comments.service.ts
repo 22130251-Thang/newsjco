@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { ArticlesService } from 'src/articles/articles.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
@@ -15,6 +15,7 @@ import {
 
 import { AiService } from 'src/ai/ai.service';
 import { NotificationsGateway } from 'src/notifications/notifications.gateway';
+import { ModerationService } from 'src/moderation/moderation.service';
 
 @Injectable()
 export class CommentsService {
@@ -25,16 +26,28 @@ export class CommentsService {
     private readonly notificationsService: NotificationsService,
     private readonly aiService: AiService,
     private readonly notificationsGateway: NotificationsGateway,
+    private readonly moderationService: ModerationService,
   ) { }
 
 
   async create(createCommentDto: CreateCommentDto): Promise<CommentWithUser> {
+    const isAiCommand = createCommentDto.content.toLowerCase().includes('@ai summarize this');
+    if (!isAiCommand) {
+      const moderationResult = await this.moderationService.checkContent(createCommentDto.content);
+      if (moderationResult.flagged) {
+        throw new BadRequestException({
+          message: 'Nội dung bình luận không phù hợp',
+          reason: moderationResult.reason,
+        });
+      }
+    }
+
     const article = this.getArticleOrThrow(createCommentDto.slug);
     const savedComment = this.saveComment(createCommentDto, article.slug);
 
     this.notifyParentCommentOwner(savedComment, createCommentDto.slug, article.category);
 
-    if (createCommentDto.content.toLowerCase().includes('@ai summarize this')) {
+    if (isAiCommand) {
       this.handleAiSummarization(savedComment.id, createCommentDto.slug, article.category, article.content || 'Article content not available.');
     }
 

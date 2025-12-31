@@ -154,5 +154,14 @@
     "createdAt": "2025-12-30T05:47:07.303Z",
     "updatedAt": "2025-12-30T06:03:11.778Z",
     "avatar": "/avatars/avatar-1767074591752-941423113.png"
+  },
+  {
+    "username": "lo1111",
+    "useremail": "ksdksdj@sjs.com",
+    "password": "$2b$10$kqbl4UKygEp811r5SqFGwe5.Of6AFlM/HM0.b.OKZ1/5VTPRgVRNa",
+    "displayName": "Lô",
+    "id": 1004,
+    "createdAt": "2025-12-31T05:17:54.287Z",
+    "updatedAt": "2025-12-31T05:17:54.287Z"
   }
 ]
