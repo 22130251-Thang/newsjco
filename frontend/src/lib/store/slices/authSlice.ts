@@ -10,9 +10,19 @@ import type {
   RegisterRequest,
   UpdateProfileRequest,
   ChangePasswordRequest,
+  SubscribeCategoryResponse,
 } from "../../../types/users.type";
 import { fetchUserByToken, login, register } from "../../service/auth-service";
-import { updateProfile, changePassword, updateAvatar } from "../../service/user-service";
+import {
+  updateProfile,
+  changePassword,
+  updateAvatar,
+} from "../../service/user-service";
+import {
+  subscribeCategory,
+  unsubscribeCategory,
+  toggleSubscription,
+} from "../../service/subscription-service";
 
 interface AuthState {
   user: User | null;
@@ -23,6 +33,8 @@ interface AuthState {
   updateLoading: boolean;
   updateError: string | null;
   updateSuccess: boolean;
+  subscriptionLoading: boolean;
+  subscriptionError: string | null;
 }
 
 const initialState: AuthState = {
@@ -34,6 +46,8 @@ const initialState: AuthState = {
   updateLoading: false,
   updateError: null,
   updateSuccess: false,
+  subscriptionLoading: false,
+  subscriptionError: null,
 };
 
 export const loginUser = createAsyncThunk<LoginSuccessResponse, LoginRequest>(
@@ -108,6 +122,42 @@ export const updateUserAvatar = createAsyncThunk<User, string>(
   }
 );
 
+export const subscribeCategoryAction = createAsyncThunk<SubscribeCategoryResponse, string>(
+  "auth/subscribeCategory",
+  async (categorySlug, { rejectWithValue }) => {
+    try {
+      const response = await subscribeCategory(categorySlug);
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data?.message || error.message);
+    }
+  }
+);
+
+export const unsubscribeCategoryAction = createAsyncThunk<SubscribeCategoryResponse, string>(
+  "auth/unsubscribeCategory",
+  async (categorySlug, { rejectWithValue }) => {
+    try {
+      const response = await unsubscribeCategory(categorySlug);
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data?.message || error.message);
+    }
+  }
+);
+
+export const toggleSubscriptionAction = createAsyncThunk<SubscribeCategoryResponse, string>(
+  "auth/toggleSubscription",
+  async (categorySlug, { rejectWithValue }) => {
+    try {
+      const response = await toggleSubscription(categorySlug);
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data?.message || error.message);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -125,6 +175,7 @@ const authSlice = createSlice({
     clearError: (state) => {
       state.error = null;
       state.updateError = null;
+      state.subscriptionError = null;
     },
     setInitialized: (state) => {
       state.isInitialized = true;
@@ -214,9 +265,53 @@ const authSlice = createSlice({
       .addCase(updateUserAvatar.rejected, (state, action) => {
         state.updateLoading = false;
         state.updateError = action.payload as string;
+      })
+      .addCase(subscribeCategoryAction.pending, (state) => {
+        state.subscriptionLoading = true;
+        state.subscriptionError = null;
+      })
+      .addCase(subscribeCategoryAction.fulfilled, (state, action) => {
+        state.subscriptionLoading = false;
+        if (state.user) {
+          state.user.subscribedCategories = action.payload.subscribedCategories;
+        }
+      })
+      .addCase(subscribeCategoryAction.rejected, (state, action) => {
+        state.subscriptionLoading = false;
+        state.subscriptionError = action.payload as string;
+      })
+      .addCase(unsubscribeCategoryAction.pending, (state) => {
+        state.subscriptionLoading = true;
+        state.subscriptionError = null;
+      })
+      .addCase(unsubscribeCategoryAction.fulfilled, (state, action) => {
+        state.subscriptionLoading = false;
+        if (state.user) {
+          state.user.subscribedCategories = action.payload.subscribedCategories;
+        }
+      })
+      .addCase(unsubscribeCategoryAction.rejected, (state, action) => {
+        state.subscriptionLoading = false;
+        state.subscriptionError = action.payload as string;
+      })
+      .addCase(toggleSubscriptionAction.pending, (state) => {
+        state.subscriptionLoading = true;
+        state.subscriptionError = null;
+      })
+      .addCase(toggleSubscriptionAction.fulfilled, (state, action) => {
+        state.subscriptionLoading = false;
+        if (state.user) {
+          state.user.subscribedCategories = action.payload.subscribedCategories;
+        }
+      })
+      .addCase(toggleSubscriptionAction.rejected, (state, action) => {
+        state.subscriptionLoading = false;
+        state.subscriptionError = action.payload as string;
       });
   },
 });
 
-export const { setUser, logout, clearError, setInitialized, clearUpdateStatus } = authSlice.actions;
+export const { setUser, logout, clearError, setInitialized, clearUpdateStatus } =
+  authSlice.actions;
+
 export default authSlice.reducer;
