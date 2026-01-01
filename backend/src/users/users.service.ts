@@ -9,18 +9,14 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly databaseService: DatabaseService) { }
+  constructor(private readonly databaseService: DatabaseService) {}
 
   create(registerRequestDto: RegisterRequestDto) {
     return this.databaseService.create<User>('users', registerRequestDto);
   }
 
   findByUserName(username: string) {
-    const user = this.databaseService.findOneBy<User>(
-      'users',
-      'username',
-      username,
-    );
+    const user = this.databaseService.findOneBy<User>('users', 'username', username);
     if (!user) {
       throw new NotFoundException(`User not found with username ${username}`);
     }
@@ -28,18 +24,10 @@ export class UsersService {
   }
 
   findByUserNameOrEmail(username: string, email: string): User | null {
-    const userByName = this.databaseService.findOneBy<User>(
-      'users',
-      'username',
-      username,
-    );
+    const userByName = this.databaseService.findOneBy<User>('users', 'username', username);
     if (userByName) return userByName;
 
-    const userByEmail = this.databaseService.findOneBy<User>(
-      'users',
-      'useremail',
-      email,
-    );
+    const userByEmail = this.databaseService.findOneBy<User>('users', 'useremail', email);
     return userByEmail || null;
   }
 
@@ -101,7 +89,7 @@ export class UsersService {
 
     const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-    const updatedUser = this.databaseService.update<User>('users', userId, {
+    this.databaseService.update<User>('users', userId, {
       password: hashedPassword,
       updatedAt: new Date().toISOString(),
     });
@@ -125,5 +113,99 @@ export class UsersService {
       return result;
     }
     return null;
+  }
+
+  getSubscribedCategories(userId: number): string[] {
+    const user = this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('Không tìm thấy người dùng');
+    }
+    return user.subscribedCategories || [];
+  }
+
+  subscribeCategory(userId: number, categorySlug: string) {
+    const user = this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('Không tìm thấy người dùng');
+    }
+
+    const subscribedCategories = user.subscribedCategories || [];
+
+    if (subscribedCategories.includes(categorySlug)) {
+      throw new BadRequestException('Bạn đã theo dõi danh mục này rồi');
+    }
+
+    subscribedCategories.push(categorySlug);
+
+    const updatedUser = this.databaseService.update<User>('users', userId, {
+      subscribedCategories,
+      updatedAt: new Date().toISOString(),
+    });
+
+    if (updatedUser) {
+      const { password, ...result } = updatedUser;
+      return {
+        message: 'Theo dõi danh mục thành công',
+        subscribedCategories: updatedUser.subscribedCategories,
+        user: result,
+      };
+    }
+    return null;
+  }
+
+  unsubscribeCategory(userId: number, categorySlug: string) {
+    const user = this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('Không tìm thấy người dùng');
+    }
+
+    const subscribedCategories = user.subscribedCategories || [];
+
+    if (!subscribedCategories.includes(categorySlug)) {
+      throw new BadRequestException('Bạn chưa theo dõi danh mục này');
+    }
+
+    const updatedCategories = subscribedCategories.filter(
+      (slug) => slug !== categorySlug,
+    );
+
+    const updatedUser = this.databaseService.update<User>('users', userId, {
+      subscribedCategories: updatedCategories,
+      updatedAt: new Date().toISOString(),
+    });
+
+    if (updatedUser) {
+      const { password, ...result } = updatedUser;
+      return {
+        message: 'Hủy theo dõi danh mục thành công',
+        subscribedCategories: updatedUser.subscribedCategories,
+        user: result,
+      };
+    }
+    return null;
+  }
+
+  toggleSubscribeCategory(userId: number, categorySlug: string) {
+    const user = this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('Không tìm thấy người dùng');
+    }
+
+    const subscribedCategories = user.subscribedCategories || [];
+    const isSubscribed = subscribedCategories.includes(categorySlug);
+
+    if (isSubscribed) {
+      return this.unsubscribeCategory(userId, categorySlug);
+    } else {
+      return this.subscribeCategory(userId, categorySlug);
+    }
+  }
+
+  isSubscribed(userId: number, categorySlug: string): boolean {
+    const user = this.findOne(userId);
+    if (!user) {
+      return false;
+    }
+    return (user.subscribedCategories || []).includes(categorySlug);
   }
 }

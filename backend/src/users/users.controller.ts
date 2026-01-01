@@ -17,13 +17,14 @@ import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
+import { SubscribeCategoryDto } from './dto/subscribe-category.dto';
 import { RegisterRequestDto } from 'src/auth/dto/registerRequestDto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { multerConfig } from 'src/config/multer.config';
 
 @Controller()
 export class UsersController {
-  constructor(private readonly usersService: UsersService) { }
+  constructor(private readonly usersService: UsersService) {}
 
   @UseGuards(JwtAuthGuard)
   @Get('user/profile')
@@ -88,6 +89,67 @@ export class UsersController {
     @Body() body: { theme: 'light' | 'dark' },
   ) {
     return this.usersService.update(req.user.userId, { theme: body.theme });
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('user/subscriptions')
+  getSubscribedCategories(@Request() req: { user: { userId: number } }) {
+    return {
+      subscribedCategories: this.usersService.getSubscribedCategories(
+        req.user.userId,
+      ),
+    };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('user/subscriptions')
+  subscribeCategory(
+    @Request() req: { user: { userId: number } },
+    @Body() body: SubscribeCategoryDto,
+  ) {
+    return this.usersService.subscribeCategory(
+      req.user.userId,
+      body.categorySlug,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('user/subscriptions/:categorySlug')
+  unsubscribeCategory(
+    @Request() req: { user: { userId: number } },
+    @Param('categorySlug') categorySlug: string,
+  ) {
+    return this.usersService.unsubscribeCategory(
+      req.user.userId,
+      categorySlug,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Patch('user/subscriptions/toggle')
+  toggleSubscribeCategory(
+    @Request() req: { user: { userId: number } },
+    @Body() body: SubscribeCategoryDto,
+  ) {
+    return this.usersService.toggleSubscribeCategory(
+      req.user.userId,
+      body.categorySlug,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('user/subscriptions/check/:categorySlug')
+  checkSubscription(
+    @Request() req: { user: { userId: number } },
+    @Param('categorySlug') categorySlug: string,
+  ) {
+    return {
+      isSubscribed: this.usersService.isSubscribed(
+        req.user.userId,
+        categorySlug,
+      ),
+      categorySlug,
+    };
   }
 
   @Post('users')

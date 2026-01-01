@@ -245,5 +245,17 @@
     "createdAt": "2025-12-31T06:19:00.800Z",
     "id": 22,
     "updatedAt": "2025-12-31T06:19:00.800Z"
+  },
+  {
+    "userId": 9,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "tieu-thuong-mong-cho-nhon-bac-ninh-som-duoc-sua-chua-va-hoat-dong-tro-lai",
+    "categorySlug": "dia-phuong",
+    "commentId": 37,
+    "isRead": false,
+    "createdAt": "2026-01-01T02:36:59.351Z",
+    "id": 23,
+    "updatedAt": "2026-01-01T02:36:59.351Z"
   }
 ]
