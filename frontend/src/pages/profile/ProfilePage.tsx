@@ -6,13 +6,16 @@ import { ProfileInfo } from "../../components/profile/ProfileInfo";
 import { EditProfileModal } from "../../components/profile/EditProfileModal";
 import { ChangePasswordModal } from "../../components/profile/ChangePasswordModal";
 import { UserComments } from "../../components/profile/UserComments";
+import { SubscribedCategories } from "../../components/profile/SubscribedCategories";
 import { Edit, Key, Camera } from "lucide-react";
 import { Modal } from "../../components/ui/Modal";
 import { updateUserAvatar } from "../../lib/store/slices/authSlice";
 
 export const ProfilePage = () => {
   const dispatch = useAppDispatch();
-  const { user, isAuthenticated, updateLoading } = useAppSelector((state) => state.auth);
+  const { user, isAuthenticated, updateLoading } = useAppSelector(
+    (state) => state.auth
+  );
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
@@ -31,7 +34,7 @@ export const ProfilePage = () => {
         alert("File quá lớn! Vui lòng chọn file nhỏ hơn 5MB");
         return;
       }
-      if (!file.type.startsWith('image/')) {
+      if (!file.type.startsWith("image/")) {
         alert("Vui lòng chọn file ảnh!");
         return;
       }
@@ -48,15 +51,15 @@ export const ProfilePage = () => {
     e.preventDefault();
     if (avatarFile) {
       const formData = new FormData();
-      formData.append('avatar', avatarFile);
+      formData.append("avatar", avatarFile);
 
       try {
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-        const token = localStorage.getItem('token');
+        const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+        const token = localStorage.getItem("token");
         const response = await fetch(`${API_URL}/user/avatar/upload`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Authorization': `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
           body: formData,
         });
@@ -68,12 +71,14 @@ export const ProfilePage = () => {
           setAvatarFile(null);
           setAvatarPreview("");
         } else {
-          const errorData = await response.json().catch(() => ({ message: 'Upload thất bại!' }));
-          console.error('Upload error:', errorData);
-          alert(errorData.message || 'Upload thất bại!');
+          const errorData = await response
+            .json()
+            .catch(() => ({ message: "Upload thất bại!" }));
+          console.error("Upload error:", errorData);
+          alert(errorData.message || "Upload thất bại!");
         }
       } catch (error) {
-        console.error('Upload error:', error);
+        console.error("Upload error:", error);
         alert("Có lỗi xảy ra khi upload!");
       }
     }
@@ -82,7 +87,7 @@ export const ProfilePage = () => {
   const mockComments = [
     {
       id: 1,
-      content: "Bài viết rất hay và bổ ích! ",
+      content: "Bài viết rất hay và bổ ích!",
       articleTitle: "Tin thời sự mới nhất hôm nay",
       articleSlug: "tin-thoi-su-moi-nhat",
       categorySlug: "thoi-su",
@@ -111,19 +116,21 @@ export const ProfilePage = () => {
         <div className="flex flex-wrap gap-3 mt-6">
           <button
             onClick={() => setIsEditModalOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark: border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+            className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
           >
             <Edit size={18} />
             Chỉnh sửa thông tin
           </button>
           <button
             onClick={() => setIsPasswordModalOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+            className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
           >
             <Key size={18} />
             Đổi mật khẩu
           </button>
         </div>
+
+        <SubscribedCategories />
 
         <UserComments comments={mockComments} />
 
@@ -155,7 +162,7 @@ export const ProfilePage = () => {
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100 dark:file:bg-red-900/20 dark:file:text-red-400"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
                 required
               />
               <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
