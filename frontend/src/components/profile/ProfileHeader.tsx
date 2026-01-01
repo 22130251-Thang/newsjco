@@ -13,22 +13,29 @@ export const ProfileHeader = ({ user, onAvatarClick }: ProfileHeaderProps) => {
     return date.toLocaleDateString("vi-VN", {
       day: "2-digit",
       month: "2-digit",
-      year:  "numeric",
+      year: "numeric",
     });
   };
 
-  const defaultAvatar = `https://ui-avatars.com/api/? name=${encodeURIComponent(
+  const defaultAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(
     user.displayName || user.username
   )}&background=cc0000&color=fff&size=128`;
+
+  const getAvatarUrl = (avatar?: string) => {
+    if (!avatar) return defaultAvatar;
+    if (avatar.startsWith('http')) return avatar;
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    return `${API_URL}${avatar}`;
+  };
 
   return (
     <div className="bg-gradient-to-r from-red-600 to-red-800 dark:from-gray-800 dark:to-gray-900 rounded-t-lg p-6">
       <div className="flex flex-col sm:flex-row items-center gap-6">
         <div className="relative group">
           <img
-            src={user.avatar || defaultAvatar}
+            src={getAvatarUrl(user.avatar)}
             alt={user.displayName}
-            className="w-28 h-28 rounded-full border-4 border-white dark: border-gray-700 object-cover shadow-lg"
+            className="w-28 h-28 rounded-full border-4 border-white dark:border-gray-700 object-cover shadow-lg"
             onError={(e) => {
               e.currentTarget.src = defaultAvatar;
             }}

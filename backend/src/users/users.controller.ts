@@ -8,13 +8,18 @@ import {
   Delete,
   UseGuards,
   Request,
+  UseInterceptors,
+  UploadedFile,
+  BadRequestException,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { RegisterRequestDto } from 'src/auth/dto/registerRequestDto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { multerConfig } from 'src/config/multer.config';
 
 @Controller()
 export class UsersController {
@@ -56,6 +61,24 @@ export class UsersController {
     @Body() body: { avatar: string },
   ) {
     return this.usersService.updateAvatar(req.user.userId, body.avatar);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('user/avatar/upload')
+  @UseInterceptors(FileInterceptor('avatar', multerConfig))
+  uploadAvatar(
+    @Request() req: { user: { userId: number } },
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    try {
+      if (!file) {
+        throw new BadRequestException('Không có file nào được upload');
+      }
+      const avatarUrl = `/avatars/${file.filename}`;
+      return this.usersService.updateAvatar(req.user.userId, avatarUrl);
+    } catch (error) {
+      throw new BadRequestException(error.message || 'Upload thất bại');
+    }
   }
 
   @UseGuards(JwtAuthGuard)

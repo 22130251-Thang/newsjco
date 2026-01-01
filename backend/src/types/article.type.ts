@@ -9,6 +9,7 @@ export interface Article extends BaseRecord {
   fullContent: string;
   author: string;
   source: string;
+  slug: string;
   isFeatures?: boolean;
   position: number;
   isMain: boolean;

@@ -1,7 +1,7 @@
 import { BaseRecord } from 'src/types/baserecord.type';
 
 export interface Comment extends BaseRecord {
-    articleGuid: string;
+    articleSlug: string;
     userId: number;
     content: string;
     likes: number;

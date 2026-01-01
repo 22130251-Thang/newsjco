@@ -64,7 +64,9 @@
     "useremail": "test@example.com",
     "password": "$2b$10$aYnoGQLrx5DNyzz0win8v.GaWF5.6P6mRkYTl2m1PYVbYB.o04QeW",
     "displayName": "Test User",
-    "id": 6
+    "id": 6,
+    "createdAt": "2025-04-01T10:00:00+07:00",
+    "updatedAt": "2025-04-01T10:00:00+07:00"
   },
   {
     "username": "thang",
@@ -74,6 +76,7 @@
     "id": 7,
     "gender": "female",
     "address": "Đắk Nông",
+    "createdAt": "2025-05-10T12:00:00+07:00",
     "updatedAt": "2025-12-29T11:53:55.208Z"
   },
   {
@@ -81,7 +84,9 @@
     "useremail": "Mau@gmail.com",
     "password": "$2b$10$RLE/phdIkoZ8BGmnV69OTuQycR0nzI/duYcRBnFVTWC66yJ.MwbOe",
     "displayName": "MàuMàuMàu",
-    "id": 8
+    "id": 8,
+    "createdAt": "2025-06-15T14:30:00+07:00",
+    "updatedAt": "2025-06-15T14:30:00+07:00"
   },
   {
     "username": "tienthanh",
@@ -92,7 +97,71 @@
     "gender": "female",
     "birthDate": "2024-01-02",
     "address": "Đà Nẵng",
-    "updatedAt": "2025-12-25T09:36:53.612Z",
-    "phone": "0908737813"
+    "phone": "0908737813",
+    "createdAt": "2025-07-20T16:00:00+07:00",
+    "updatedAt": "2025-12-25T09:36:53.612Z"
+  },
+  {
+    "id": 999,
+    "username": "aibot",
+    "useremail": "ai@newsjco.com",
+    "displayName": "AI Bot",
+    "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=ai",
+    "role": "admin",
+    "password": "$2b$10$K5/9Gh6cPZVfK9kY0C8BreyEQvFXi1dN/JzGEp5WOO0J1Z0Q8XcXm",
+    "bio": "I am an AI assistant here to help summarize articles.",
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-01-01T00:00:00+07:00"
+  },
+  {
+    "username": "thinh2302",
+    "useremail": "thinh@gmai.com",
+    "password": "$2b$10$OknApmf5wLy7G8A2T.QIt.Hgz4eUsaSjYaxXIwbtnLkJqNdRR6Aam",
+    "displayName": "Thịnh Chim Dài",
+    "id": 1000,
+    "gender": "male",
+    "birthDate": "2000-01-01",
+    "phone": "000000000000",
+    "address": "Bà Rịa - Vũng Tàu",
+    "bio": "chim dài",
+    "createdAt": "2025-08-25T18:00:00+07:00",
+    "updatedAt": "2025-12-30T05:32:21.371Z"
+  },
+  {
+    "username": "thinh0000",
+    "useremail": "thinsh@gmai.com",
+    "password": "$2b$10$/0LuLXzuj3zbd.EkryVyOeL.AxzI2hmMB/w/XTiZlmqNwaSI.yVty",
+    "displayName": "Thịnh Chim To",
+    "id": 1001,
+    "createdAt": "2025-12-30T05:43:32.389Z",
+    "updatedAt": "2025-12-30T05:43:32.389Z"
+  },
+  {
+    "username": "thinh0z000",
+    "useremail": "thinha@gmai.com",
+    "password": "$2b$10$MV8WLh7hRPH8GIxISrTSReFtMAfTg4AL9j0xHwstK.2bsCe3D/Rb6",
+    "displayName": "Thịnh Chim Dài",
+    "id": 1002,
+    "createdAt": "2025-12-30T05:46:30.390Z",
+    "updatedAt": "2025-12-30T05:46:30.390Z"
+  },
+  {
+    "username": "ht",
+    "useremail": "sdj@hsfh.com",
+    "password": "$2b$10$Qrv2HE0hIGiGAsVliMr2WuWx3udM2d99fLvWVkDvSPZnIQzBOZlae",
+    "displayName": "au",
+    "id": 1003,
+    "createdAt": "2025-12-30T05:47:07.303Z",
+    "updatedAt": "2025-12-30T06:03:11.778Z",
+    "avatar": "/avatars/avatar-1767074591752-941423113.png"
+  },
+  {
+    "username": "lo1111",
+    "useremail": "ksdksdj@sjs.com",
+    "password": "$2b$10$kqbl4UKygEp811r5SqFGwe5.Of6AFlM/HM0.b.OKZ1/5VTPRgVRNa",
+    "displayName": "Lô",
+    "id": 1004,
+    "createdAt": "2025-12-31T05:17:54.287Z",
+    "updatedAt": "2025-12-31T05:17:54.287Z"
   }
 ]

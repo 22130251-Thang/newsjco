@@ -57,8 +57,9 @@ export const addCommentToArticle = createAsyncThunk<Comment, CreateCommentReques
     async (request, { rejectWithValue }) => {
         try {
             return await createComment(request);
-        } catch (error: unknown) {
-            return rejectWithValue(error instanceof Error ? error.message : "Failed to add comment");
+        } catch (error: any) {
+            const message = error?.response?.data?.message || error?.message || "Failed to add comment";
+            return rejectWithValue(message);
         }
     }
 );
@@ -81,6 +82,22 @@ const commentSlice = createSlice({
     reducers: {
         clearCommentError: (state) => {
             state.error = null;
+        },
+        clearComments: (state) => {
+            state.comments.data = [];
+            state.total = 0;
+            state.page = 1;
+            state.hasMore = false;
+            state.error = null;
+        },
+        addNewComment: (state, action) => {
+            const exists = state.comments.data.find(c => c.id === action.payload.id);
+            if (!exists) {
+                state.comments.data = [action.payload, ...state.comments.data];
+                if (!action.payload.parentId) {
+                    state.total += 1;
+                }
+            }
         },
     },
     extraReducers: (builder) => {
@@ -119,12 +136,7 @@ const commentSlice = createSlice({
                 state.comments.loading = false;
                 state.error = (action.payload as string) ?? action.error.message ?? null;
             })
-            .addCase(addCommentToArticle.fulfilled, (state, action) => {
-                state.comments.data = [action.payload, ...state.comments.data];
-                if (!action.payload.parentId) {
-                    state.total += 1;
-                }
-            })
+
             .addCase(reactToCommentAsync.fulfilled, (state, action) => {
                 const index = state.comments.data.findIndex(c => c.id === action.payload.id);
                 if (index !== -1) {
@@ -134,5 +146,5 @@ const commentSlice = createSlice({
     },
 });
 
-export const { clearCommentError } = commentSlice.actions;
+export const { clearCommentError, addNewComment, clearComments } = commentSlice.actions;
 export default commentSlice.reducer;

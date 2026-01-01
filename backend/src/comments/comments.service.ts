@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { ArticlesService } from 'src/articles/articles.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
@@ -13,6 +13,10 @@ import {
   COMMENT_REACTIONS_TABLE,
 } from './comments.constants';
 
+import { AiService } from 'src/ai/ai.service';
+import { NotificationsGateway } from 'src/notifications/notifications.gateway';
+import { ModerationService } from 'src/moderation/moderation.service';
+
 @Injectable()
 export class CommentsService {
   constructor(
@@ -20,16 +24,71 @@ export class CommentsService {
     private readonly articlesService: ArticlesService,
     private readonly usersService: UsersService,
     private readonly notificationsService: NotificationsService,
+    private readonly aiService: AiService,
+    private readonly notificationsGateway: NotificationsGateway,
+    private readonly moderationService: ModerationService,
   ) { }
 
 
   async create(createCommentDto: CreateCommentDto): Promise<CommentWithUser> {
+    const isAiCommand = createCommentDto.content.toLowerCase().includes('@ai summarize this');
+    if (!isAiCommand) {
+      const moderationResult = await this.moderationService.checkContent(createCommentDto.content);
+      if (moderationResult.flagged) {
+        throw new BadRequestException({
+          message: 'Nội dung bình luận không phù hợp',
+          reason: moderationResult.reason,
+        });
+      }
+    }
+
     const article = this.getArticleOrThrow(createCommentDto.slug);
-    const savedComment = this.saveComment(createCommentDto, article.guid);
+    const savedComment = this.saveComment(createCommentDto, article.slug);
 
     this.notifyParentCommentOwner(savedComment, createCommentDto.slug, article.category);
 
-    return this.attachUserToComment(savedComment);
+    if (isAiCommand) {
+      this.handleAiSummarization(savedComment.id, createCommentDto.slug, article.category, article.content || 'Article content not available.');
+    }
+
+    const commentWithUser = this.attachUserToComment(savedComment);
+    this.notificationsGateway.sendCommentToArticle(createCommentDto.slug, commentWithUser);
+
+    return commentWithUser;
+  }
+
+  private async handleAiSummarization(replyToId: number | string, articleSlug: string, categorySlug: string, articleContent: string) {
+    const summary = await this.aiService.summarize(articleContent);
+    if (!summary) return;
+
+    let aiUser;
+    try {
+      aiUser = this.usersService.findByUserName('aibot');
+    } catch (e) {
+      aiUser = null;
+    }
+    const aiUserId = aiUser ? aiUser.id : 999;
+
+    const now = new Date().toISOString();
+    const aiComment = this.databaseService.create<Comment>(COMMENTS_TABLE, {
+      articleSlug,
+      userId: aiUserId as number,
+      content: summary,
+      likes: 0,
+      dislikes: 0,
+      status: COMMENT_STATUS.APPROVED,
+      createdAt: now,
+      updatedAt: now,
+      parentId: Number(replyToId),
+    });
+
+    const aiCommentWithUser = this.attachUserToComment(aiComment);
+    this.notificationsGateway.sendCommentToArticle(articleSlug, aiCommentWithUser);
+
+    const originalComment = this.databaseService.findById<Comment>(COMMENTS_TABLE, replyToId);
+    if (originalComment) {
+      this.sendNotification(originalComment.userId, 'reply', aiUserId as number, articleSlug, categorySlug, aiComment.id as number);
+    }
   }
 
 
@@ -40,7 +99,7 @@ export class CommentsService {
     userId?: number,
   ) {
     const article = this.getArticleOrThrow(slug);
-    const articleComments = this.getCommentsByArticle(article.guid);
+    const articleComments = this.getCommentsByArticle(article.slug);
 
     const { topLevelComments, replies } = this.separateTopLevelAndReplies(articleComments);
     const paginatedTopLevel = this.paginateComments(topLevelComments, page, limit);
@@ -110,10 +169,10 @@ export class CommentsService {
     return article;
   }
 
-  private saveComment(dto: CreateCommentDto, articleGuid: string): Comment {
+  private saveComment(dto: CreateCommentDto, articleSlug: string): Comment {
     const now = new Date().toISOString();
     return this.databaseService.create<Comment>(COMMENTS_TABLE, {
-      articleGuid,
+      articleSlug,
       userId: dto.userId,
       content: dto.content,
       likes: 0,
@@ -126,10 +185,10 @@ export class CommentsService {
   }
 
 
-  private getCommentsByArticle(articleGuid: string): Comment[] {
+  private getCommentsByArticle(articleSlug: string): Comment[] {
     return this.databaseService
       .findAll<Comment>(COMMENTS_TABLE)
-      .filter((comment) => comment.articleGuid === articleGuid)
+      .filter((comment) => comment.articleSlug === articleSlug)
       .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }
 
