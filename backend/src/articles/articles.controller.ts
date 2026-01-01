@@ -1,19 +1,35 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Query, Param } from '@nestjs/common';
 import { ArticlesService } from './articles.service';
 import { CreateArticleDto } from './dto/create-article.dto';
 
 @Controller('articles')
 export class ArticlesController {
   constructor(private readonly articlesService: ArticlesService) {}
+
+  @Get('search')
+  search(
+    @Query('q') query: string,
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+    @Query('category') category?: string,
+  ) {
+    return this.articlesService.search(query, +page, +limit, category);
+  }
+
+  @Get('search/suggestions')
+  searchSuggestions(
+    @Query('q') query: string,
+    @Query('limit') limit: number = 5,
+  ) {
+    return this.articlesService.searchSuggestions(query, +limit);
+  }
+
+  @Get('search/trending')
+  getTrendingKeywords() {
+    return {
+      keywords: this.articlesService.getTrendingKeywords(),
+    };
+  }
 
   @Get('top-3-articles')
   findTopThreeArticles() {
@@ -57,12 +73,7 @@ export class ArticlesController {
     @Query('limit') limit: number = 10,
     @Query('offset') offset: number = 0,
   ) {
-    return this.articlesService.findByCategory(
-      category,
-      +page,
-      +limit,
-      +offset,
-    );
+    return this.articlesService.findByCategory(category, +page, +limit, +offset);
   }
 
   @Get()
