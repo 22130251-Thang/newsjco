@@ -3,17 +3,18 @@ export interface User {
   username: string;
   useremail: string;
   password: string;
-  displayName:  string;
-  role:  string;
+  displayName: string;
+  role: string;
   avatar: string;
   bio: string;
-  theme?:  'light' | 'dark';
+  theme?: 'light' | 'dark';
   gender?: 'male' | 'female' | 'other';
   birthDate?: string;
   phone?: string;
   address?: string;
-  createdAt:  string;
-  updatedAt:  string;
+  subscribedCategories?: string[];
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface LoginRequest {
@@ -33,7 +34,7 @@ export interface LoginSuccessResponse {
 }
 
 export interface UpdateProfileRequest {
-  displayName?:  string;
+  displayName?: string;
   bio?: string;
   avatar?: string;
   gender?: 'male' | 'female' | 'other';
@@ -44,8 +45,27 @@ export interface UpdateProfileRequest {
 
 export interface ChangePasswordRequest {
   currentPassword: string;
-  newPassword:  string;
+  newPassword: string;
   confirmPassword: string;
 }
 
 export interface UserProfile extends Omit<User, 'password'> {}
+
+export interface SubscribeCategoryRequest {
+  categorySlug: string;
+}
+
+export interface SubscribeCategoryResponse {
+  message: string;
+  subscribedCategories: string[];
+  user: UserProfile;
+}
+
+export interface SubscribedCategoriesResponse {
+  subscribedCategories: string[];
+}
+
+export interface CheckSubscriptionResponse {
+  isSubscribed: boolean;
+  categorySlug: string;
+}

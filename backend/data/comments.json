@@ -418,5 +418,53 @@
     "updatedAt": "2025-12-31T06:19:00.799Z",
     "parentId": 30,
     "id": 35
+  },
+  {
+    "articleSlug": "tieu-thuong-mong-cho-nhon-bac-ninh-som-duoc-sua-chua-va-hoat-dong-tro-lai",
+    "userId": 9,
+    "content": "@AI summarize this",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-01T02:36:52.381Z",
+    "updatedAt": "2026-01-01T02:36:52.381Z",
+    "parentId": null,
+    "id": 36
+  },
+  {
+    "articleSlug": "tieu-thuong-mong-cho-nhon-bac-ninh-som-duoc-sua-chua-va-hoat-dong-tro-lai",
+    "userId": 999,
+    "content": "Local officials in Kinh Bac ward recently met with traders from Nhon Market. The clear message from everyone? They're all eagerly hoping the market gets repaired and reopens its doors soon!",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-01T02:36:59.349Z",
+    "updatedAt": "2026-01-01T02:36:59.349Z",
+    "parentId": 36,
+    "id": 37
+  },
+  {
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "userId": 9,
+    "content": "@AI summarize this",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-01T07:00:05.241Z",
+    "updatedAt": "2026-01-01T07:00:05.241Z",
+    "parentId": 24,
+    "id": 38
+  },
+  {
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "userId": 999,
+    "content": "Philippines takes Christmas seriously! They kick off celebrations *months* before December, earning them the title of the world's longest Christmas season. It's a beautiful blend of faith, family, and vibrant festivities!",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-01T07:00:10.030Z",
+    "updatedAt": "2026-01-01T07:00:10.030Z",
+    "parentId": 38,
+    "id": 39
   }
 ]

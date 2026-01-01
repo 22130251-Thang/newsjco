@@ -13,6 +13,7 @@ export interface User extends BaseRecord {
   birthDate?: string;
   phone?: string;
   address?: string;
+  subscribedCategories?: string[];
   createdAt?: string;
   updatedAt?: string;
 }

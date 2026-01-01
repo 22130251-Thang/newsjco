@@ -245,5 +245,41 @@
     "createdAt": "2025-12-31T06:19:00.800Z",
     "id": 22,
     "updatedAt": "2025-12-31T06:19:00.800Z"
+  },
+  {
+    "userId": 9,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "tieu-thuong-mong-cho-nhon-bac-ninh-som-duoc-sua-chua-va-hoat-dong-tro-lai",
+    "categorySlug": "dia-phuong",
+    "commentId": 37,
+    "isRead": true,
+    "createdAt": "2026-01-01T02:36:59.351Z",
+    "id": 23,
+    "updatedAt": "2026-01-01T02:36:59.351Z"
+  },
+  {
+    "userId": 1004,
+    "type": "reply",
+    "message": "Tiến Thành đã trả lời bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "the-gioi",
+    "commentId": 38,
+    "isRead": false,
+    "createdAt": "2026-01-01T07:00:05.242Z",
+    "id": 24,
+    "updatedAt": "2026-01-01T07:00:05.242Z"
+  },
+  {
+    "userId": 9,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "the-gioi",
+    "commentId": 39,
+    "isRead": true,
+    "createdAt": "2026-01-01T07:00:10.032Z",
+    "id": 25,
+    "updatedAt": "2026-01-01T07:00:10.032Z"
   }
 ]
