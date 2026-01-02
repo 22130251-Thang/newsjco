@@ -12,7 +12,7 @@ interface Comment {
 
 interface UserCommentsProps {
   comments: Comment[];
-  loading?:  boolean;
+  loading?: boolean;
 }
 
 export const UserComments = ({ comments, loading }: UserCommentsProps) => {
@@ -32,13 +32,17 @@ export const UserComments = ({ comments, loading }: UserCommentsProps) => {
 
   if (loading) {
     return (
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mt-6">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-          <MessageSquare size={20} className="text-red-600" />
-          Bình luận gần đây
-        </h2>
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 mt-6">
+        <div className="flex items-center gap-3 mb-5 pb-4 border-b border-gray-100 dark:border-gray-700">
+          <div className="p-2 bg-red-100 dark:bg-red-900/30 rounded-lg">
+            <MessageSquare size={20} className="text-red-500" />
+          </div>
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
+            Lịch sử bình luận
+          </h2>
+        </div>
         <div className="space-y-4">
-          {[1, 2, 3]. map((i) => (
+          {[1, 2, 3].map((i) => (
             <div key={i} className="animate-pulse">
               <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
               <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
@@ -50,32 +54,46 @@ export const UserComments = ({ comments, loading }: UserCommentsProps) => {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mt-6">
-      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-        <MessageSquare size={20} className="text-red-600" />
-        Bình luận gần đây
-      </h2>
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 mt-6">
+      <div className="flex items-center gap-3 mb-5 pb-4 border-b border-gray-100 dark:border-gray-700">
+        <div className="p-2 bg-red-100 dark:bg-red-900/30 rounded-lg">
+          <MessageSquare size={20} className="text-red-500" />
+        </div>
+        <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
+          Lịch sử bình luận
+        </h2>
+        {comments.length > 0 && (
+          <span className="ml-auto text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
+            {comments.length} bình luận
+          </span>
+        )}
+      </div>
 
-      {comments.length === 0 ?  (
-        <p className="text-gray-500 dark:text-gray-400 text-center py-4">
-          Bạn chưa có bình luận nào
-        </p>
+      {comments.length === 0 ? (
+        <div className="text-center py-10">
+          <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
+            <MessageSquare className="text-gray-400" size={32} />
+          </div>
+          <p className="text-gray-500 dark:text-gray-400">
+            Bạn chưa có bình luận nào
+          </p>
+        </div>
       ) : (
         <div className="space-y-4">
           {comments.map((comment) => (
             <div
               key={comment.id}
-              className="border-b border-gray-100 dark:border-gray-700 pb-4 last:border-0 last:pb-0"
+              className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             >
               <Link
                 to={`/${comment.categorySlug}/${comment.articleSlug}`}
-                className="group"
+                className="group block"
               >
-                <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-1">
+                <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-2 mb-2">
                   "{comment.content}"
                 </p>
                 <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                  <span className="text-red-600 dark:text-red-400 group-hover:underline flex items-center gap-1">
+                  <span className="text-red-600 dark:text-red-400 group-hover:underline flex items-center gap-1 font-medium">
                     {comment.articleTitle}
                     <ExternalLink size={12} />
                   </span>

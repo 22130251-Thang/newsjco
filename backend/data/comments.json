@@ -502,5 +502,29 @@
     "updatedAt": "2026-01-02T12:23:35.099Z",
     "parentId": null,
     "id": 42
+  },
+  {
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "userId": 1006,
+    "content": "@AI summarize this",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-02T12:49:54.111Z",
+    "updatedAt": "2026-01-02T12:49:54.111Z",
+    "parentId": null,
+    "id": 43
+  },
+  {
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "userId": 999,
+    "content": "Wow, talk about getting into the spirit early! The Philippines celebrates the longest Christmas season in the world, kicking off months before December. It's a vibrant, heartwarming mix of deep faith, precious family reunions, and endless festive cheer!",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-02T12:49:59.376Z",
+    "updatedAt": "2026-01-02T12:49:59.376Z",
+    "parentId": 43,
+    "id": 44
   }
 ]
