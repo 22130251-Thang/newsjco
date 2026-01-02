@@ -81,7 +81,10 @@ export const Header = () => {
               </div>
 
               <div className="flex items-center gap-4">
-                <SearchBar />
+                <div className="relative z-[9999]">
+                  <SearchBar />
+                </div>
+
 
                 <button
                   onClick={toggleTheme}
