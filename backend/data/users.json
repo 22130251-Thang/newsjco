@@ -166,10 +166,30 @@
     "displayName": "Lô",
     "id": 1004,
     "createdAt": "2025-12-31T05:17:54.287Z",
-    "updatedAt": "2026-01-02T11:20:10.150Z",
+    "updatedAt": "2026-01-02T12:12:19.287Z",
     "bio": "xin chao",
     "birthDate": "2003-04-04",
     "gender": "female",
-    "phone": "0382253049"
+    "phone": "0382253049",
+    "avatar": "/avatars/avatar-1767355939244-161444707.png"
+  },
+  {
+    "username": "thinhdz",
+    "useremail": "thinh@dkdk.com",
+    "password": "$2b$10$NJPwkkS0LQ4997DHPHZhce6Gq.irU4Af6CF9BUSaODfZ2wWdD54u2",
+    "displayName": "Thinh",
+    "id": 1005,
+    "createdAt": "2026-01-02T12:14:04.462Z",
+    "updatedAt": "2026-01-02T12:17:47.634Z",
+    "avatar": "/avatars/avatar-1767356267632-306486622.png"
+  },
+  {
+    "username": "thinh000",
+    "useremail": "thinh@2238.com",
+    "password": "$2b$10$nHaOyjj.UTm1S40lTh0enOHHN5eI9qqjhGifOvjuoYcb41yE3kLdG",
+    "displayName": "Thịnh",
+    "id": 1006,
+    "createdAt": "2026-01-02T12:22:30.966Z",
+    "updatedAt": "2026-01-02T12:22:30.966Z"
   }
 ]

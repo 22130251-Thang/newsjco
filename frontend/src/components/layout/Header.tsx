@@ -23,7 +23,7 @@ export const Header = () => {
       displayName || "User"
     )}&background=cc0000&color=fff&size=32`;
 
-    if (!avatar) return defaultAvatar;
+    if (!avatar || avatar.trim() === "") return defaultAvatar;
     if (avatar.startsWith("http")) return avatar;
     const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
     return `${API_URL}${avatar}`;
@@ -116,6 +116,10 @@ export const Header = () => {
                         src={getAvatarUrl(user.avatar, user.displayName)}
                         alt={user.displayName}
                         className="w-8 h-8 rounded-full object-cover border border-gray-300"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || "User")}&background=cc0000&color=fff&size=32`;
+                        }}
                       />
                       <div className="text-gray-700 dark:text-gray-300">
                         <p className="font-medium">{user.displayName}</p>

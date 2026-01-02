@@ -105,6 +105,22 @@ export class UsersService {
       throw new NotFoundException('Không tìm thấy người dùng');
     }
 
+    // Delete old avatar file if exists
+    if (user.avatar && !user.avatar.startsWith('http')) {
+      const fs = require('fs');
+      const path = require('path');
+      const filename = path.basename(user.avatar);
+      const oldAvatarPath = path.join(process.cwd(), 'data', 'avt_user', filename);
+      if (fs.existsSync(oldAvatarPath)) {
+        try {
+          fs.unlinkSync(oldAvatarPath);
+          console.log(`Deleted old avatar: ${filename}`);
+        } catch (error) {
+          console.error(`Failed to delete old avatar: ${error.message}`);
+        }
+      }
+    }
+
     const updatedUser = this.databaseService.update<User>('users', userId, {
       avatar: avatarUrl,
       updatedAt: new Date().toISOString(),
