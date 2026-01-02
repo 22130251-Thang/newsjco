@@ -133,7 +133,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
               name="displayName"
               value={formData.displayName}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
               placeholder="Nhập tên hiển thị"
               required
             />
@@ -190,7 +190,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
               name="birthDay"
               value={formData.birthDay}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark: border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark: border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
             >
               <option value="">Ngày</option>
               {days.map(day => (
@@ -201,7 +201,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
               name="birthMonth"
               value={formData.birthMonth}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
             >
               <option value="">Tháng</option>
               {months.map(month => (
@@ -212,7 +212,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
               name="birthYear"
               value={formData.birthYear}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus: ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus: ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
             >
               <option value="">Năm</option>
               {years.map(year => (
@@ -232,7 +232,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
               placeholder="example@email.com"
             />
           </div>
@@ -246,7 +246,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
               placeholder="0912345678"
             />
           </div>
@@ -259,7 +259,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
               name="address"
               value={formData.address}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
             >
               <option value="">Chọn tỉnh/thành phố</option>
               {PROVINCES.map(province => (
@@ -278,7 +278,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
             value={formData.bio}
             onChange={handleChange}
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white resize-none"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white resize-none"
             placeholder="Viết vài dòng giới thiệu về bạn..."
           />
         </div>
@@ -287,7 +287,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
           <button
             type="submit"
             disabled={updateLoading}
-            className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+            className="px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 shadow-lg cursor-pointer"
           >
             {updateLoading ? (
               <>
