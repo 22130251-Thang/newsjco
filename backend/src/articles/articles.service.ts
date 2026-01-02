@@ -70,6 +70,7 @@ export class ArticlesService {
     const articles = this.databaseService.findAll<Article>(category);
     return articles.slice(0, 4);
   }
+
   findBySlug(slug: string): Article {
     for (const category of this.categories) {
       const articles = this.databaseService.findAll<Article>(category);
@@ -137,5 +138,165 @@ export class ArticlesService {
 
   findEconomicArticles(): Article[] {
     return this.databaseService.findAll<Article>('kinh-te');
+  }
+
+  private normalizeText(text: string): string {
+    if (!text) return '';
+    return text
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/đ/g, 'd')
+      .replace(/Đ/g, 'D')
+      .trim();
+  }
+
+  private isArticleMatch(article: Article, normalizedQuery: string): boolean {
+    const titleNormalized = this.normalizeText(article.title);
+    const descriptionNormalized = this.normalizeText(article.description);
+    const contentNormalized = this.normalizeText(article.content);
+    const fullContentNormalized = this.normalizeText(article.fullContent);
+
+    return (
+      titleNormalized.includes(normalizedQuery) ||
+      descriptionNormalized.includes(normalizedQuery) ||
+      contentNormalized.includes(normalizedQuery) ||
+      fullContentNormalized.includes(normalizedQuery)
+    );
+  }
+
+  private calculateRelevanceScore(
+    article: Article,
+    normalizedQuery: string,
+  ): number {
+    let score = 0;
+
+    const titleNormalized = this.normalizeText(article.title);
+    const descriptionNormalized = this.normalizeText(article.description);
+
+    if (titleNormalized.includes(normalizedQuery)) {
+      score += 100;
+      if (titleNormalized.startsWith(normalizedQuery)) {
+        score += 50;
+      }
+    }
+
+    if (descriptionNormalized.includes(normalizedQuery)) {
+      score += 50;
+    }
+
+    const contentNormalized = this.normalizeText(article.content);
+    if (contentNormalized.includes(normalizedQuery)) {
+      score += 25;
+    }
+
+    const pubDate = new Date(article.pubDate).getTime();
+    const now = Date.now();
+    const ageInDays = (now - pubDate) / (1000 * 60 * 60 * 24);
+    if (ageInDays < 1) score += 20;
+    else if (ageInDays < 7) score += 10;
+    else if (ageInDays < 30) score += 5;
+
+    return score;
+  }
+
+  search(
+    query: string,
+    page: number = 1,
+    limit: number = 10,
+    category?: string,
+  ): PaginationResult<Article> {
+    if (!query || query.trim().length === 0) {
+      return {
+        data: [],
+        meta: {
+          totalItems: 0,
+          itemCount: 0,
+          itemsPerPage: limit,
+          totalPages: 0,
+          currentPage: page,
+        },
+      };
+    }
+
+    const normalizedQuery = this.normalizeText(query);
+    let allArticles: Article[] = [];
+
+    if (category && this.categories.includes(category)) {
+      allArticles = this.databaseService.findAll<Article>(category);
+    } else {
+      for (const cat of this.categories) {
+        const articles = this.databaseService.findAll<Article>(cat);
+        allArticles = allArticles.concat(articles);
+      }
+    }
+
+    const matchedArticles = allArticles.filter((article) =>
+      this.isArticleMatch(article, normalizedQuery),
+    );
+
+    const sortedArticles = matchedArticles
+      .map((article) => ({
+        article,
+        score: this.calculateRelevanceScore(article, normalizedQuery),
+      }))
+      .sort((a, b) => b.score - a.score)
+      .map((item) => item.article);
+
+    const totalItems = sortedArticles.length;
+    const startIndex = (page - 1) * limit;
+    const endIndex = startIndex + limit;
+    const paginatedArticles = sortedArticles.slice(startIndex, endIndex);
+    const totalPages = Math.ceil(totalItems / limit);
+
+    return {
+      data: paginatedArticles,
+      meta: {
+        totalItems,
+        itemCount: paginatedArticles.length,
+        itemsPerPage: limit,
+        totalPages,
+        currentPage: page,
+      },
+    };
+  }
+
+  searchSuggestions(query: string, limit: number = 5): Article[] {
+    if (!query || query.trim().length < 2) {
+      return [];
+    }
+
+    const normalizedQuery = this.normalizeText(query);
+    let allArticles: Article[] = [];
+
+    for (const category of this.categories) {
+      const articles = this.databaseService.findAll<Article>(category);
+      allArticles = allArticles.concat(articles);
+    }
+
+    const matchedArticles = allArticles
+      .filter((article) => this.isArticleMatch(article, normalizedQuery))
+      .map((article) => ({
+        article,
+        score: this.calculateRelevanceScore(article, normalizedQuery),
+      }))
+      .sort((a, b) => b.score - a.score)
+      .slice(0, limit)
+      .map((item) => item.article);
+
+    return matchedArticles;
+  }
+
+  getTrendingKeywords(): string[] {
+    return [
+      'thời sự',
+      'kinh tế',
+      'thể thao',
+      'giải trí',
+      'công nghệ',
+      'sức khỏe',
+      'giáo dục',
+      'thế giới',
+    ];
   }
 }
