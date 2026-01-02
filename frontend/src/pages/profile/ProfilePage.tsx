@@ -9,7 +9,7 @@ import { UserComments } from "../../components/profile/UserComments";
 import { SubscribedCategories } from "../../components/profile/SubscribedCategories";
 import { Edit, Key, Camera } from "lucide-react";
 import { Modal } from "../../components/ui/Modal";
-import { updateUserAvatar } from "../../lib/store/slices/authSlice";
+import { setUser } from "../../lib/store/slices/authSlice";
 
 export const ProfilePage = () => {
   const dispatch = useAppDispatch();
@@ -65,8 +65,8 @@ export const ProfilePage = () => {
         });
 
         if (response.ok) {
-          const data = await response.json();
-          dispatch(updateUserAvatar(data.avatar));
+          const updatedUser = await response.json();
+          dispatch(setUser(updatedUser));
           setIsAvatarModalOpen(false);
           setAvatarFile(null);
           setAvatarPreview("");

@@ -466,5 +466,41 @@
     "updatedAt": "2026-01-01T07:00:10.030Z",
     "parentId": 38,
     "id": 39
+  },
+  {
+    "articleSlug": "thu-tuong-pham-minh-chinh-dai-hoi-thi-dua-yeu-nuoc-phai-la-noi-hoi-tu-lan-toa-tinh-than-yeu-nuoc-cua-toan-dan-toc",
+    "userId": 1004,
+    "content": "chào",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-02T11:23:56.816Z",
+    "updatedAt": "2026-01-02T11:23:56.816Z",
+    "parentId": null,
+    "id": 40
+  },
+  {
+    "articleSlug": "ngay-512026-xet-xu-55-bi-cao-trong-vu-nhan-hoi-lo-tai-cuc-an-toan-thuc-pham-bo-y-te",
+    "userId": 1004,
+    "content": "abs",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-02T12:00:41.982Z",
+    "updatedAt": "2026-01-02T12:00:41.982Z",
+    "parentId": null,
+    "id": 41
+  },
+  {
+    "articleSlug": "thu-tuong-pham-minh-chinh-dai-hoi-thi-dua-yeu-nuoc-phai-la-noi-hoi-tu-lan-toa-tinh-than-yeu-nuoc-cua-toan-dan-toc",
+    "userId": 1006,
+    "content": "hú",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-02T12:23:35.099Z",
+    "updatedAt": "2026-01-02T12:23:35.099Z",
+    "parentId": null,
+    "id": 42
   }
 ]

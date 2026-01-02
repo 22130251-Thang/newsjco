@@ -67,7 +67,7 @@ export const CommentItem = ({ comment, replies = [], onReply }: CommentItemProps
             className={`border-b border-gray-100 last:border-0 py-4 transition-colors duration-1000 ${hash === `#comment-${comment.id}` ? 'bg-yellow-50/50 -mx-4 px-4 rounded-lg' : ''}`}
         >
             <div className="flex gap-4">
-                <CommentAvatar displayName={comment.user?.displayName} />
+                <CommentAvatar displayName={comment.user?.displayName} avatar={comment.user?.avatar} />
                 <div className="flex-1 min-w-0 overflow-hidden">
                     <CommentHeader
                         user={comment.user}
