@@ -85,6 +85,17 @@ export const Header = () => {
                   <SearchBar />
                 </div>
 
+                <NotificationBell />
+
+                {isAuthenticated && user && (
+                  <Link
+                    to="/bookmarks"
+                    className="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+                    title="Bài viết đã lưu"
+                  >
+                    <Bookmark size={16} />
+                  </Link>
+                )}
 
                 <button
                   onClick={toggleTheme}
@@ -94,18 +105,8 @@ export const Header = () => {
                   {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
                 </button>
 
-                <NotificationBell />
-
                 {isAuthenticated && user ? (
                   <div className="flex items-center gap-3 text-xs border-l border-gray-300 dark:border-gray-600 pl-4">
-                    <Link
-                      to="/bookmarks"
-                      className="flex items-center gap-1 text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
-                      title="Bài viết đã lưu"
-                    >
-                      <Bookmark size={16} />
-                    </Link>
-
                     <Link
                       to="/profile"
                       className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"

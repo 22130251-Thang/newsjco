@@ -193,7 +193,7 @@
     "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
     "categorySlug": "khoa-hoc-cong-nghe",
     "commentId": 31,
-    "isRead": false,
+    "isRead": true,
     "createdAt": "2025-12-31T06:18:55.473Z",
     "id": 18,
     "updatedAt": "2025-12-31T06:18:55.473Z"
@@ -205,7 +205,7 @@
     "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
     "categorySlug": "khoa-hoc-cong-nghe",
     "commentId": 32,
-    "isRead": false,
+    "isRead": true,
     "createdAt": "2025-12-31T06:19:00.393Z",
     "id": 19,
     "updatedAt": "2025-12-31T06:19:00.393Z"
@@ -217,7 +217,7 @@
     "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
     "categorySlug": "khoa-hoc-cong-nghe",
     "commentId": 33,
-    "isRead": false,
+    "isRead": true,
     "createdAt": "2025-12-31T06:19:00.397Z",
     "id": 20,
     "updatedAt": "2025-12-31T06:19:00.397Z"
@@ -229,7 +229,7 @@
     "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
     "categorySlug": "khoa-hoc-cong-nghe",
     "commentId": 34,
-    "isRead": false,
+    "isRead": true,
     "createdAt": "2025-12-31T06:19:00.492Z",
     "id": 21,
     "updatedAt": "2025-12-31T06:19:00.492Z"
@@ -265,7 +265,7 @@
     "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
     "categorySlug": "the-gioi",
     "commentId": 38,
-    "isRead": false,
+    "isRead": true,
     "createdAt": "2026-01-01T07:00:05.242Z",
     "id": 24,
     "updatedAt": "2026-01-01T07:00:05.242Z"

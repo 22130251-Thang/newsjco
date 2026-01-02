@@ -9,7 +9,7 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseService) { }
 
   create(registerRequestDto: RegisterRequestDto) {
     return this.databaseService.create<User>('users', registerRequestDto);
@@ -53,8 +53,10 @@ export class UsersService {
       throw new NotFoundException('Không tìm thấy người dùng');
     }
 
+    const { email, ...restDto } = updateProfileDto;
     const updatedData: Partial<User> = {
-      ...updateProfileDto,
+      ...restDto,
+      ...(email && { useremail: email }),
       updatedAt: new Date().toISOString(),
     };
 
