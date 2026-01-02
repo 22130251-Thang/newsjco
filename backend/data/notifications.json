@@ -293,5 +293,41 @@
     "createdAt": "2026-01-02T12:49:59.378Z",
     "id": 26,
     "updatedAt": "2026-01-02T12:49:59.378Z"
+  },
+  {
+    "userId": 7,
+    "type": "reaction",
+    "message": "Thịnh đã thích bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "the-gioi",
+    "commentId": 1,
+    "isRead": false,
+    "createdAt": "2026-01-02T14:48:06.160Z",
+    "id": 27,
+    "updatedAt": "2026-01-02T14:48:06.160Z"
+  },
+  {
+    "userId": 7,
+    "type": "reaction",
+    "message": "Thịnh đã thích bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "the-gioi",
+    "commentId": 1,
+    "isRead": false,
+    "createdAt": "2026-01-02T14:48:08.561Z",
+    "id": 28,
+    "updatedAt": "2026-01-02T14:48:08.561Z"
+  },
+  {
+    "userId": 7,
+    "type": "reaction",
+    "message": "Thịnh đã không thích bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "the-gioi",
+    "commentId": 2,
+    "isRead": false,
+    "createdAt": "2026-01-02T14:48:10.411Z",
+    "id": 29,
+    "updatedAt": "2026-01-02T14:48:10.411Z"
   }
 ]

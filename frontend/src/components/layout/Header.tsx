@@ -90,7 +90,7 @@ export const Header = () => {
                 {isAuthenticated && user && (
                   <Link
                     to="/bookmarks"
-                    className="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+                    className="p-1.5 rounded hover:bg-red-50 dark:hover:bg-red-900/30 text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors"
                     title="Bài viết đã lưu"
                   >
                     <Bookmark size={16} />
@@ -99,7 +99,7 @@ export const Header = () => {
 
                 <button
                   onClick={toggleTheme}
-                  className="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors cursor-pointer"
+                  className="p-1.5 rounded hover:bg-red-50 dark:hover:bg-red-900/30 text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors cursor-pointer"
                   title="Toggle Dark Mode"
                 >
                   {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}

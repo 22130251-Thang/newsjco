@@ -6,6 +6,7 @@ import articleReducer from "./slices/articleSlice";
 import commentReducer from "./slices/commentSlice";
 import notificationReducer from "./slices/notificationSlice";
 import bookmarkReducer from './slices/bookmarkSlice';
+import viewHistoryReducer from './slices/viewHistorySlice';
 
 // Enable Immer MapSet plugin to support Set and Map in Redux state
 enableMapSet();
@@ -18,6 +19,7 @@ export const store = configureStore({
     comment: commentReducer,
     notification: notificationReducer,
     bookmarks: bookmarkReducer,
+    viewHistory: viewHistoryReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

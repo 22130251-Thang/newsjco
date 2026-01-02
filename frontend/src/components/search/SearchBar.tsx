@@ -90,9 +90,8 @@ export const SearchBar = ({
     <div ref={containerRef} className="relative">
       <form onSubmit={handleSubmit}>
         <div
-          className={`relative flex items-center ${
-            variant === "expanded" ? "w-full" : "w-[200px]"
-          }`}
+          className={`relative flex items-center ${variant === "expanded" ? "w-full" : "w-[200px]"
+            }`}
         >
           <input
             ref={inputRef}
@@ -145,15 +144,31 @@ export const SearchBar = ({
               </p>
               <div className="flex flex-wrap gap-2">
                 {recentSearches.map((term, index) => (
-                  <button
+                  <div
                     key={index}
-                    onClick={() => handleRecentClick(term)}
-                    className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700
-                      text-gray-700 dark:text-gray-300 rounded hover:bg-gray-200
+                    className="flex items-center gap-1 px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700
+                      text-gray-700 dark:text-gray-300 rounded group hover:bg-gray-200
                       dark:hover:bg-gray-600 transition-colors"
                   >
-                    {term}
-                  </button>
+                    <button
+                      onClick={() => handleRecentClick(term)}
+                      className="hover:text-red-600 dark:hover:text-red-400"
+                    >
+                      {term}
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const updated = recentSearches.filter((_, i) => i !== index);
+                        setRecentSearches(updated);
+                        localStorage.setItem("recentSearches", JSON.stringify(updated));
+                      }}
+                      className="p-0.5 text-gray-400 hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-full transition-colors cursor-pointer"
+                      title="Xóa"
+                    >
+                      <X size={12} />
+                    </button>
+                  </div>
                 ))}
               </div>
             </div>
