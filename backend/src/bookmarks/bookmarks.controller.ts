@@ -15,11 +15,11 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 @Controller('bookmarks')
 @UseGuards(JwtAuthGuard)
 export class BookmarksController {
-  constructor(private readonly bookmarksService: BookmarksService) {}
+  constructor(private readonly bookmarksService: BookmarksService) { }
 
   @Get()
   findAll(@Request() req: { user: { userId: number } }) {
-    return this.bookmarksService.findAllByUser(req.user. userId);
+    return this.bookmarksService.findAllByUser(req.user.userId);
   }
 
   @Get('check/:slug')
@@ -29,6 +29,15 @@ export class BookmarksController {
   ) {
     const isBookmarked = this.bookmarksService.isBookmarked(req.user.userId, slug);
     return { isBookmarked };
+  }
+
+  // IMPORTANT: toggle route must be BEFORE :slug route to match correctly
+  @Post('toggle/:slug')
+  toggleBookmark(
+    @Request() req: { user: { userId: number } },
+    @Param('slug') slug: string,
+  ) {
+    return this.bookmarksService.toggleBookmark(req.user.userId, slug);
   }
 
   @Post(':slug')
@@ -47,13 +56,5 @@ export class BookmarksController {
     @Param('slug') slug: string,
   ) {
     return this.bookmarksService.removeBookmark(req.user.userId, slug);
-  }
-
-  @Post('toggle/:slug')
-  toggleBookmark(
-    @Request() req: { user: { userId: number } },
-    @Param('slug') slug: string,
-  ) {
-    return this.bookmarksService.toggleBookmark(req.user.userId, slug);
   }
 }

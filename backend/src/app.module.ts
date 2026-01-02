@@ -12,6 +12,7 @@ import { CommentsModule } from './comments/comments.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { BookmarksModule } from './bookmarks/bookmarks.module';
 import { AiModule } from './ai/ai.module';
+import { ViewHistoryModule } from './view-history/view-history.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { AiModule } from './ai/ai.module';
     NotificationsModule,
     BookmarksModule,
     AiModule,
+    ViewHistoryModule,
   ],
   controllers: [AppController],
   providers: [AppService, DatabaseService],

@@ -7,6 +7,7 @@ import { EditProfileModal } from "../../components/profile/EditProfileModal";
 import { ChangePasswordModal } from "../../components/profile/ChangePasswordModal";
 import { UserComments } from "../../components/profile/UserComments";
 import { SubscribedCategories } from "../../components/profile/SubscribedCategories";
+import { ViewHistory } from "../../components/profile/ViewHistory";
 import { Camera, Heart, Clock, MessageSquare } from "lucide-react";
 import { Modal } from "../../components/ui/Modal";
 import { setUser } from "../../lib/store/slices/authSlice";
@@ -155,26 +156,7 @@ export const ProfilePage = () => {
 
         {/* Tab Content */}
         {activeTab === "categories" && <SubscribedCategories />}
-        {activeTab === "history" && (
-          <div className="mt-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-            <div className="flex items-center gap-3 mb-5 pb-4 border-b border-gray-100 dark:border-gray-700">
-              <div className="p-2 bg-red-100 dark:bg-red-900/30 rounded-lg">
-                <Clock size={20} className="text-red-500" />
-              </div>
-              <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
-                Lịch sử xem
-              </h2>
-            </div>
-            <div className="text-center py-10">
-              <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
-                <Clock className="text-gray-400" size={32} />
-              </div>
-              <p className="text-gray-500 dark:text-gray-400">
-                Chưa có lịch sử xem bài viết
-              </p>
-            </div>
-          </div>
-        )}
+        {activeTab === "history" && <ViewHistory />}
         {activeTab === "comments" && <UserComments comments={mockComments} />}
 
         <EditProfileModal
