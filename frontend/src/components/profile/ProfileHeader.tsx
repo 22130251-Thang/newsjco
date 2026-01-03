@@ -31,7 +31,7 @@ export const ProfileHeader = ({ user, onAvatarClick, onEditClick, onPasswordClic
   };
 
   return (
-    <div className="bg-gradient-to-r from-red-600 to-red-800 dark:from-gray-800 dark:to-gray-900 rounded-t-lg p-6">
+    <div className="bg-gradient-to-r from-red-600 to-red-800 dark:from-red-700 dark:to-red-900 rounded-t-lg p-6">
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
         {/* Avatar + User Info */}
         <div className="flex flex-col sm:flex-row items-center gap-6 flex-1">
@@ -39,7 +39,7 @@ export const ProfileHeader = ({ user, onAvatarClick, onEditClick, onPasswordClic
             <img
               src={getAvatarUrl(user.avatar)}
               alt={user.displayName}
-              className="w-28 h-28 rounded-full border-4 border-white dark:border-gray-700 object-cover shadow-lg"
+              className="w-28 h-28 rounded-full border-4 border-white dark:border-red-300 object-cover shadow-lg"
               onError={(e) => {
                 e.currentTarget.src = defaultAvatar;
               }}
@@ -54,9 +54,9 @@ export const ProfileHeader = ({ user, onAvatarClick, onEditClick, onPasswordClic
 
           <div className="text-center sm:text-left text-white">
             <h1 className="text-2xl font-bold">{user.displayName}</h1>
-            <p className="text-red-100 dark:text-gray-400">@{user.username}</p>
-            <p className="text-red-100 dark:text-gray-400">{user.useremail}</p>
-            <div className="flex items-center justify-center sm:justify-start gap-2 mt-2 text-sm text-red-100 dark:text-gray-400">
+            <p className="text-red-100 dark:text-red-200">@{user.username}</p>
+            <p className="text-red-100 dark:text-red-200">{user.useremail}</p>
+            <div className="flex items-center justify-center sm:justify-start gap-2 mt-2 text-sm text-red-100 dark:text-red-200">
               <Calendar size={14} />
               <span>Tham gia: {formatDate(user.createdAt)}</span>
             </div>

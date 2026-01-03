@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Headphones, Play, Pause, Loader2, X } from "lucide-react";
-import {
-  checkTTSStatus,
-  generateTTS,
-  getTTSStream,
-} from "../../lib/service/tts-service";
+import { useState, useEffect } from "react";
+import { Play, Pause, Volume2, Loader2, RotateCcw } from "lucide-react";
+import { checkTTSStatus, generateTTS, getTTSStream } from "../../lib/service/tts-service";
 
 interface TTSButtonProps {
   slug: string;
@@ -13,19 +9,13 @@ interface TTSButtonProps {
   fullContent?: string;
 }
 
-const TTSButton: React.FC<TTSButtonProps> = ({
-  slug,
-  title,
-  description,
-  fullContent,
-}) => {
-  const [loading, setLoading] = useState(false);
+const TTSButton = ({ slug, title, description, fullContent }: TTSButtonProps) => {
   const [speaking, setSpeaking] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     if (audio) {
@@ -39,28 +29,20 @@ const TTSButton: React.FC<TTSButtonProps> = ({
     setError(null);
     setDuration(0);
     setCurrentTime(0);
-    setExpanded(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
   useEffect(() => {
     if (!audio) return;
 
-    const onTime = () => setCurrentTime(audio.currentTime);
-    const onMeta = () => setDuration(audio.duration || 0);
-    const onEnded = () => {
-      setSpeaking(false);
-      setCurrentTime(0);
-    };
+    const updateTime = () => setCurrentTime(audio.currentTime);
+    const updateDuration = () => setDuration(audio.duration);
 
-    audio.addEventListener("timeupdate", onTime);
-    audio.addEventListener("loadedmetadata", onMeta);
-    audio.addEventListener("ended", onEnded);
+    audio.addEventListener("timeupdate", updateTime);
+    audio.addEventListener("loadedmetadata", updateDuration);
 
     return () => {
-      audio.removeEventListener("timeupdate", onTime);
-      audio.removeEventListener("loadedmetadata", onMeta);
-      audio.removeEventListener("ended", onEnded);
+      audio.removeEventListener("timeupdate", updateTime);
+      audio.removeEventListener("loadedmetadata", updateDuration);
     };
   }, [audio]);
 
@@ -76,52 +58,43 @@ const TTSButton: React.FC<TTSButtonProps> = ({
 
   const cleanText = (html?: string) => {
     if (!html) return "";
-    const div = document.createElement("div");
-    div.innerHTML = html;
-    return div.textContent || div.innerText || "";
+    const temp = document.createElement("div");
+    temp.innerHTML = html;
+    return temp.textContent || temp.innerText || "";
   };
 
-  const fmt = (s: number) => {
-    if (!s || Number.isNaN(s)) return "00:00";
-    const m = Math.floor(s / 60);
-    const r = Math.floor(s % 60);
-    return `${String(m).padStart(2, "0")}:${String(r).padStart(2, "0")}`;
+  const formatTime = (seconds: number) => {
+    if (!seconds || isNaN(seconds)) return "0:00";
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
 
-  const poll = async (taskId: string) => {
-    const max = 240;
-    for (let i = 0; i < max; i++) {
-      const st = await checkTTSStatus(taskId);
-      if (st.status === "ready") return;
-      if (st.status === "error") throw new Error(st.error || "TTS failed");
-      await new Promise((r) => setTimeout(r, 500));
+  const pollTTSStatus = async (taskId: string): Promise<void> => {
+    let attempts = 0;
+    const maxAttempts = 240;
+    const pollInterval = 500;
+
+    while (attempts < maxAttempts) {
+      const status = await checkTTSStatus(taskId);
+      if (status.status === "ready") return;
+      if (status.status === "error") throw new Error(status.error || "TTS failed");
+      await new Promise((resolve) => setTimeout(resolve, pollInterval));
+      attempts++;
     }
     throw new Error("TTS timeout");
   };
 
-  const playPause = async () => {
-    if (!audio) return;
-    try {
-      if (speaking) {
-        audio.pause();
-        setSpeaking(false);
-      } else {
-        await audio.play();
-        setSpeaking(true);
-        setExpanded(true);
-      }
-    } catch {
-      setError("Không thể phát âm thanh.");
+  const handleSpeak = async () => {
+    if (audio && speaking) {
+      audio.pause();
       setSpeaking(false);
+      return;
     }
-  };
-
-  const start = async () => {
-    if (loading) return;
 
     if (audio) {
-      setExpanded(true);
-      await playPause();
+      audio.play();
+      setSpeaking(true);
       return;
     }
 
@@ -135,108 +108,121 @@ const TTSButton: React.FC<TTSButtonProps> = ({
         cleanText(description),
         cleanText(fullContent)
       );
+      await pollTTSStatus(taskId);
 
-      await poll(taskId);
-
-      const a = new Audio(getTTSStream(taskId));
-      a.preload = "metadata";
-      a.onerror = () => setError("Lỗi tải âm thanh");
-
-      setAudio(a);
-      setExpanded(true);
-      setLoading(false);
-
-      try {
-        await a.play();
-        setSpeaking(true);
-      } catch {
+      const audioElement = new Audio(getTTSStream(taskId));
+      audioElement.onplay = () => setSpeaking(true);
+      audioElement.onended = () => {
         setSpeaking(false);
-        setError("Bấm Play để bắt đầu nghe.");
-      }
-    } catch (e) {
+        setCurrentTime(0);
+      };
+      audioElement.onerror = () => {
+        setError("Lỗi phát âm thanh");
+        setSpeaking(false);
+      };
+
+      setAudio(audioElement);
       setLoading(false);
+      await audioElement.play();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Lỗi không xác định");
       setSpeaking(false);
-      setExpanded(false);
-      setError(e instanceof Error ? e.message : "Lỗi không xác định");
+      setLoading(false);
     }
   };
 
-  const onSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!audio) return;
-    const t = Number(e.target.value);
-    audio.currentTime = t;
-    setCurrentTime(t);
-  };
-
-  const close = () => {
+  const handleRestart = () => {
     if (audio) {
-      audio.pause();
       audio.currentTime = 0;
+      audio.play();
+      setSpeaking(true);
     }
-    setSpeaking(false);
-    setExpanded(false);
-    setCurrentTime(0);
   };
 
-  if (!expanded) {
-    return (
-      <div className="flex flex-col gap-1">
-        <button
-          type="button"
-          onClick={start}
-          disabled={loading}
-          className="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition disabled:opacity-60"
-        >
-          {loading ? (
-            <Loader2 size={16} className="animate-spin" />
-          ) : (
-            <Headphones size={16} />
-          )}
-          <span>{loading ? "Đang tạo giọng đọc..." : audio ? "Tiếp tục nghe" : "Nghe bài viết"}</span>
-        </button>
-        {error && <p className="text-xs text-red-500">{error}</p>}
-      </div>
-    );
-  }
+  const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!audio) return;
+    const newTime = parseFloat(e.target.value);
+    audio.currentTime = newTime;
+    setCurrentTime(newTime);
+  };
+
+  const progress = duration ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div className="flex flex-col gap-1 w-full sm:max-w-md">
-      <div className="flex items-center gap-3 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 shadow-sm">
+    <div className="flex flex-col gap-2">
+      <div className="flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-700 rounded-lg px-3 py-2 shadow-sm">
         <button
           type="button"
-          onClick={playPause}
-          className="h-10 w-10 rounded-full bg-red-600 text-white hover:bg-red-700 active:scale-95 transition flex items-center justify-center"
-          aria-label={speaking ? "Tạm dừng" : "Phát"}
+          onClick={handleSpeak}
+          disabled={loading}
+          className="w-8 h-8 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full transition-all cursor-pointer disabled:opacity-50"
         >
-          {speaking ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
+          {loading ? (
+            <Loader2 size={16} className="text-white animate-spin" />
+          ) : speaking ? (
+            <Pause size={16} className="text-white" />
+          ) : (
+            <Play size={16} className="text-white ml-0.5" />
+          )}
         </button>
 
-        <div className="flex-1 min-w-[140px]">
-          <input
-            type="range"
-            min={0}
-            max={duration || 0}
-            value={currentTime}
-            onChange={onSeek}
-            className="w-full accent-red-600"
-          />
-          <div className="flex justify-between text-[11px] text-gray-500 dark:text-gray-400 tabular-nums">
-            <span>{fmt(currentTime)}</span>
-            <span>{fmt(duration)}</span>
+        {audio ? (
+          <>
+            <div className="flex-1 flex items-center gap-2">
+              <span className="text-xs text-white/80 font-medium w-8 text-right tabular-nums">
+                {formatTime(currentTime)}
+              </span>
+              <input
+                type="range"
+                min="0"
+                max={duration || 0}
+                value={currentTime}
+                onChange={handleProgressChange}
+                className="flex-1 h-1.5 bg-white/30 rounded-full cursor-pointer appearance-none
+                  [&::-webkit-slider-thumb]:appearance-none
+                  [&::-webkit-slider-thumb]:w-3
+                  [&::-webkit-slider-thumb]:h-3
+                  [&::-webkit-slider-thumb]:rounded-full
+                  [&::-webkit-slider-thumb]:bg-white
+                  [&::-webkit-slider-thumb]:shadow-md
+                  [&::-webkit-slider-thumb]:cursor-pointer
+                  [&::-moz-range-thumb]:w-3
+                  [&::-moz-range-thumb]:h-3
+                  [&::-moz-range-thumb]:rounded-full
+                  [&::-moz-range-thumb]:bg-white
+                  [&::-moz-range-thumb]:border-0
+                  [&::-moz-range-thumb]:cursor-pointer"
+                style={{
+                  background: `linear-gradient(to right, white ${progress}%, rgba(255,255,255,0.3) ${progress}%)`
+                }}
+              />
+              <span className="text-xs text-white/80 font-medium w-8 tabular-nums">
+                {formatTime(duration)}
+              </span>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleRestart}
+              className="p-1.5 text-white/80 hover:text-white hover:bg-white/20 rounded-full transition-all cursor-pointer"
+              title="Phát lại từ đầu"
+            >
+              <RotateCcw size={14} />
+            </button>
+          </>
+        ) : (
+          <div className="flex items-center gap-2 text-white">
+            <Volume2 size={16} />
+            <span className="text-sm font-medium">
+              {loading ? "Đang tạo giọng đọc..." : "Nghe bài viết"}
+            </span>
           </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={close}
-          className="p-2 rounded-full text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-          aria-label="Đóng"
-        >
-          <X size={16} />
-        </button>
+        )}
       </div>
 
-      {error && <p className="text-xs text-red-500">{error}</p>}
+      {error && (
+        <p className="text-sm text-red-500 dark:text-red-400">{error}</p>
+      )}
     </div>
   );
 };

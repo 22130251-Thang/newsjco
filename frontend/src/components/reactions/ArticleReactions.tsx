@@ -48,15 +48,16 @@ export const ArticleReactions = ({
   const userReaction = reactionData?.userReaction;
 
   const sizeClasses = {
-    sm: { icon: 16, text: "text-xs", padding: "px-2 py-1", gap: "gap-1" },
-    md: { icon: 20, text: "text-sm", padding: "px-3 py-1.5", gap: "gap-1.5" },
-    lg: { icon: 24, text: "text-base", padding: "px-4 py-2", gap: "gap-2" },
+    sm: { icon: 16, text: "text-xs", padding: "px-3 py-1.5", gap: "gap-1.5" },
+    md: { icon: 18, text: "text-sm", padding: "px-4 py-2", gap: "gap-2" },
+    lg: { icon: 22, text: "text-base", padding: "px-5 py-2.5", gap: "gap-2.5" },
   } as const;
 
   const { icon: iconSize, text: textClass, padding, gap } = sizeClasses[size];
 
   return (
-    <div className={`flex items-center ${gap}`}>
+    <div className={`flex items-center gap-3`}>
+      {/* Like Button */}
       <button
         type="button"
         onClick={() => handleReaction("like")}
@@ -64,12 +65,11 @@ export const ArticleReactions = ({
         aria-pressed={userReaction === "like"}
         title={isAuthenticated ? "Thích bài viết" : "Đăng nhập để thích"}
         className={`
-          flex items-center ${gap} ${padding} rounded-full
-          transition-all duration-200 ease-in-out
-          ${
-            userReaction === "like"
-              ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 border-2 border-green-500"
-              : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-2 border-transparent hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-600 dark:hover:text-green-400"
+          flex items-center ${gap} ${padding} rounded-full cursor-pointer
+          border transition-all duration-200 ease-in-out
+          ${userReaction === "like"
+            ? "bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 border-red-500"
+            : "bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:border-red-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20"
           }
           disabled:opacity-50 disabled:cursor-default
         `}
@@ -79,9 +79,10 @@ export const ArticleReactions = ({
         ) : (
           <ThumbsUp size={iconSize} className={userReaction === "like" ? "fill-current" : ""} />
         )}
-        {showCount && <span className={`font-medium ${textClass}`}>{likes}</span>}
+        {showCount && <span className={`font-semibold ${textClass}`}>{likes}</span>}
       </button>
 
+      {/* Dislike Button */}
       <button
         type="button"
         onClick={() => handleReaction("dislike")}
@@ -89,12 +90,11 @@ export const ArticleReactions = ({
         aria-pressed={userReaction === "dislike"}
         title={isAuthenticated ? "Không thích bài viết" : "Đăng nhập để bày tỏ"}
         className={`
-          flex items-center ${gap} ${padding} rounded-full
-          transition-all duration-200 ease-in-out
-          ${
-            userReaction === "dislike"
-              ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 border-2 border-red-500"
-              : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-2 border-transparent hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400"
+          flex items-center ${gap} ${padding} rounded-full cursor-pointer
+          border transition-all duration-200 ease-in-out
+          ${userReaction === "dislike"
+            ? "bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 border-red-500"
+            : "bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:border-red-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20"
           }
           disabled:opacity-50 disabled:cursor-default
         `}
@@ -107,7 +107,7 @@ export const ArticleReactions = ({
             className={userReaction === "dislike" ? "fill-current" : ""}
           />
         )}
-        {showCount && <span className={`font-medium ${textClass}`}>{dislikes}</span>}
+        {showCount && <span className={`font-semibold ${textClass}`}>{dislikes}</span>}
       </button>
     </div>
   );

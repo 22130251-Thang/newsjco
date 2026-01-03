@@ -12,6 +12,8 @@ import {
   ArticleError,
 } from "../../components/news/articledetails";
 import { CommentList } from "../../components/comments/CommentList";
+import { ArticleReactions } from "../../components/reactions/ArticleReactions";
+import { ThumbsUp } from "lucide-react";
 
 export const ArticleDetail = () => {
   const { category, slug } = useParams();
@@ -45,6 +47,19 @@ export const ArticleDetail = () => {
               <ArticleHeader article={article} slug={slug} />
 
               <ArticleContent article={article} />
+
+              {/* Article Reactions - At bottom of article */}
+              {slug && (
+                <div className="mt-8 py-6 border-t border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                      <ThumbsUp size={18} />
+                      <span className="text-sm font-medium">Bài viết này có hữu ích không?</span>
+                    </div>
+                    <ArticleReactions slug={slug} size="md" showCount />
+                  </div>
+                </div>
+              )}
             </article>
 
             {slug && <CommentList slug={slug} />}

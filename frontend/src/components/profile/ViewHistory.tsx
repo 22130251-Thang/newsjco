@@ -136,7 +136,7 @@ export const ViewHistory = () => {
                                 <div className="flex flex-col items-end justify-between">
                                     <button
                                         onClick={() => handleRemove(item.articleSlug)}
-                                        className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-lg opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
+                                        className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-lg transition-all cursor-pointer"
                                         title="Xóa khỏi lịch sử"
                                     >
                                         <Trash2 size={16} />

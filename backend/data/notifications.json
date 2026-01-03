@@ -329,5 +329,17 @@
     "createdAt": "2026-01-02T14:48:10.411Z",
     "id": 29,
     "updatedAt": "2026-01-02T14:48:10.411Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "the-gioi",
+    "commentId": 46,
+    "isRead": true,
+    "createdAt": "2026-01-03T18:27:21.271Z",
+    "id": 30,
+    "updatedAt": "2026-01-03T18:27:21.271Z"
   }
 ]
