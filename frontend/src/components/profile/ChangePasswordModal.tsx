@@ -100,7 +100,7 @@ export const ChangePasswordModal = ({ isOpen, onClose }: ChangePasswordModalProp
         <button
           type="button"
           onClick={() => togglePasswordVisibility(showField)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover: text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 cursor-pointer"
         >
           {showPasswords[showField] ? <EyeOff size={18} /> : <Eye size={18} />}
         </button>

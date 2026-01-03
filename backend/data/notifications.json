@@ -193,7 +193,7 @@
     "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
     "categorySlug": "khoa-hoc-cong-nghe",
     "commentId": 31,
-    "isRead": false,
+    "isRead": true,
     "createdAt": "2025-12-31T06:18:55.473Z",
     "id": 18,
     "updatedAt": "2025-12-31T06:18:55.473Z"
@@ -205,7 +205,7 @@
     "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
     "categorySlug": "khoa-hoc-cong-nghe",
     "commentId": 32,
-    "isRead": false,
+    "isRead": true,
     "createdAt": "2025-12-31T06:19:00.393Z",
     "id": 19,
     "updatedAt": "2025-12-31T06:19:00.393Z"
@@ -217,7 +217,7 @@
     "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
     "categorySlug": "khoa-hoc-cong-nghe",
     "commentId": 33,
-    "isRead": false,
+    "isRead": true,
     "createdAt": "2025-12-31T06:19:00.397Z",
     "id": 20,
     "updatedAt": "2025-12-31T06:19:00.397Z"
@@ -229,7 +229,7 @@
     "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
     "categorySlug": "khoa-hoc-cong-nghe",
     "commentId": 34,
-    "isRead": false,
+    "isRead": true,
     "createdAt": "2025-12-31T06:19:00.492Z",
     "id": 21,
     "updatedAt": "2025-12-31T06:19:00.492Z"
@@ -265,7 +265,7 @@
     "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
     "categorySlug": "the-gioi",
     "commentId": 38,
-    "isRead": false,
+    "isRead": true,
     "createdAt": "2026-01-01T07:00:05.242Z",
     "id": 24,
     "updatedAt": "2026-01-01T07:00:05.242Z"
@@ -281,5 +281,53 @@
     "createdAt": "2026-01-01T07:00:10.032Z",
     "id": 25,
     "updatedAt": "2026-01-01T07:00:10.032Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "the-gioi",
+    "commentId": 44,
+    "isRead": true,
+    "createdAt": "2026-01-02T12:49:59.378Z",
+    "id": 26,
+    "updatedAt": "2026-01-02T12:49:59.378Z"
+  },
+  {
+    "userId": 7,
+    "type": "reaction",
+    "message": "Thịnh đã thích bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "the-gioi",
+    "commentId": 1,
+    "isRead": false,
+    "createdAt": "2026-01-02T14:48:06.160Z",
+    "id": 27,
+    "updatedAt": "2026-01-02T14:48:06.160Z"
+  },
+  {
+    "userId": 7,
+    "type": "reaction",
+    "message": "Thịnh đã thích bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "the-gioi",
+    "commentId": 1,
+    "isRead": false,
+    "createdAt": "2026-01-02T14:48:08.561Z",
+    "id": 28,
+    "updatedAt": "2026-01-02T14:48:08.561Z"
+  },
+  {
+    "userId": 7,
+    "type": "reaction",
+    "message": "Thịnh đã không thích bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "the-gioi",
+    "commentId": 2,
+    "isRead": false,
+    "createdAt": "2026-01-02T14:48:10.411Z",
+    "id": 29,
+    "updatedAt": "2026-01-02T14:48:10.411Z"
   }
 ]

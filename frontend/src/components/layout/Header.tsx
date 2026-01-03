@@ -23,7 +23,7 @@ export const Header = () => {
       displayName || "User"
     )}&background=cc0000&color=fff&size=32`;
 
-    if (!avatar) return defaultAvatar;
+    if (!avatar || avatar.trim() === "") return defaultAvatar;
     if (avatar.startsWith("http")) return avatar;
     const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
     return `${API_URL}${avatar}`;
@@ -85,27 +85,28 @@ export const Header = () => {
                   <SearchBar />
                 </div>
 
+                <NotificationBell />
+
+                {isAuthenticated && user && (
+                  <Link
+                    to="/bookmarks"
+                    className="p-1.5 rounded hover:bg-red-50 dark:hover:bg-red-900/30 text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors"
+                    title="Bài viết đã lưu"
+                  >
+                    <Bookmark size={16} />
+                  </Link>
+                )}
 
                 <button
                   onClick={toggleTheme}
-                  className="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors cursor-pointer"
+                  className="p-1.5 rounded hover:bg-red-50 dark:hover:bg-red-900/30 text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors cursor-pointer"
                   title="Toggle Dark Mode"
                 >
                   {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
                 </button>
 
-                <NotificationBell />
-
                 {isAuthenticated && user ? (
                   <div className="flex items-center gap-3 text-xs border-l border-gray-300 dark:border-gray-600 pl-4">
-                    <Link
-                      to="/bookmarks"
-                      className="flex items-center gap-1 text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
-                      title="Bài viết đã lưu"
-                    >
-                      <Bookmark size={16} />
-                    </Link>
-
                     <Link
                       to="/profile"
                       className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
@@ -115,6 +116,10 @@ export const Header = () => {
                         src={getAvatarUrl(user.avatar, user.displayName)}
                         alt={user.displayName}
                         className="w-8 h-8 rounded-full object-cover border border-gray-300"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || "User")}&background=cc0000&color=fff&size=32`;
+                        }}
                       />
                       <div className="text-gray-700 dark:text-gray-300">
                         <p className="font-medium">{user.displayName}</p>

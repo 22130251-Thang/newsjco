@@ -1,5 +1,8 @@
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import { useArticleDetail } from "../../lib/hooks/useArticleDetail";
+import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
+import { addArticleView } from "../../lib/store/slices/viewHistorySlice";
 import {
   ArticleBreadcrumb,
   ArticleHeader,
@@ -12,11 +15,20 @@ import { CommentList } from "../../components/comments/CommentList";
 
 export const ArticleDetail = () => {
   const { category, slug } = useParams();
+  const dispatch = useAppDispatch();
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
 
   const { article, loading, error, relatedArticles } = useArticleDetail({
     slug,
     category,
   });
+
+  // Track article view when user is authenticated
+  useEffect(() => {
+    if (isAuthenticated && slug && article) {
+      dispatch(addArticleView(slug));
+    }
+  }, [isAuthenticated, slug, article, dispatch]);
 
   if (loading) return <ArticleLoadingSpinner />;
   if (error) return <ArticleError error={error} />;

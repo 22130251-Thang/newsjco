@@ -11,7 +11,7 @@ export const NotificationItem = ({ notification, onClick }: NotificationItemProp
     return (
         <button
             onClick={() => onClick(notification)}
-            className={`w-full px-4 py-3 text-left hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0 ${!notification.isRead ? "bg-indigo-50/50" : ""
+            className={`w-full px-4 py-3 text-left hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0 cursor-pointer ${!notification.isRead ? "bg-indigo-50/50" : ""
                 }`}
         >
             <div className="flex items-start gap-3">

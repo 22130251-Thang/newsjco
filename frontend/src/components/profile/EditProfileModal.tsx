@@ -33,10 +33,11 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
 
   const [formData, setFormData] = useState({
     displayName: "",
+    email: "",
     gender: "" as 'male' | 'female' | 'other' | "",
     birthDay: "",
     birthMonth: "",
-    birthYear:  "",
+    birthYear: "",
     phone: "",
     address: "",
     bio: "",
@@ -45,7 +46,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
   const currentYear = new Date().getFullYear();
-  const years = Array. from({ length: 100 }, (_, i) => currentYear - i);
+  const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
 
   useEffect(() => {
     if (user && isOpen) {
@@ -59,13 +60,14 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
 
       setFormData({
         displayName: user.displayName || "",
+        email: user.useremail || "",
         gender: user.gender || "",
         birthDay,
         birthMonth,
         birthYear,
         phone: user.phone || "",
         address: user.address || "",
-        bio: user. bio || "",
+        bio: user.bio || "",
       });
     }
   }, [user, isOpen]);
@@ -82,13 +84,14 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    let birthDate:  string | undefined;
-    if (formData. birthDay && formData.birthMonth && formData.birthYear) {
-      birthDate = `${formData.birthYear}-${formData.birthMonth. padStart(2, '0')}-${formData.birthDay. padStart(2, '0')}`;
+    let birthDate: string | undefined;
+    if (formData.birthDay && formData.birthMonth && formData.birthYear) {
+      birthDate = `${formData.birthYear}-${formData.birthMonth.padStart(2, '0')}-${formData.birthDay.padStart(2, '0')}`;
     }
 
     dispatch(updateUserProfile({
-      displayName:  formData.displayName,
+      displayName: formData.displayName,
+      email: formData.email || undefined,
       gender: formData.gender || undefined,
       birthDate,
       phone: formData.phone || undefined,
@@ -128,9 +131,9 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
             <input
               type="text"
               name="displayName"
-              value={formData. displayName}
+              value={formData.displayName}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
               placeholder="Nhập tên hiển thị"
               required
             />
@@ -187,7 +190,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
               name="birthDay"
               value={formData.birthDay}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark: border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark: border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
             >
               <option value="">Ngày</option>
               {days.map(day => (
@@ -198,7 +201,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
               name="birthMonth"
               value={formData.birthMonth}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
             >
               <option value="">Tháng</option>
               {months.map(month => (
@@ -209,7 +212,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
               name="birthYear"
               value={formData.birthYear}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus: ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus: ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
             >
               <option value="">Năm</option>
               {years.map(year => (
@@ -226,9 +229,11 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
             </label>
             <input
               type="email"
-              value={user?. useremail || ""}
-              disabled
-              className="w-full px-3 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 cursor-not-allowed"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              placeholder="example@email.com"
             />
           </div>
 
@@ -241,7 +246,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
               placeholder="0912345678"
             />
           </div>
@@ -254,7 +259,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
               name="address"
               value={formData.address}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
             >
               <option value="">Chọn tỉnh/thành phố</option>
               {PROVINCES.map(province => (
@@ -273,7 +278,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
             value={formData.bio}
             onChange={handleChange}
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white resize-none"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white resize-none"
             placeholder="Viết vài dòng giới thiệu về bạn..."
           />
         </div>
@@ -282,7 +287,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
           <button
             type="submit"
             disabled={updateLoading}
-            className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+            className="px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 shadow-lg cursor-pointer"
           >
             {updateLoading ? (
               <>

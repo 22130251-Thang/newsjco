@@ -99,7 +99,7 @@
     "address": "Đà Nẵng",
     "phone": "0908737813",
     "createdAt": "2025-07-20T16:00:00+07:00",
-    "updatedAt": "2026-01-02T03:12:39.756Z",
+    "updatedAt": "2026-01-01T07:14:06.880Z",
     "bio": "hihi",
     "subscribedCategories": [
       "kinh-te"
@@ -161,11 +161,41 @@
   },
   {
     "username": "lo1111",
-    "useremail": "ksdksdj@sjs.com",
+    "useremail": "thinhchimbu@thinh.com",
     "password": "$2b$10$kqbl4UKygEp811r5SqFGwe5.Of6AFlM/HM0.b.OKZ1/5VTPRgVRNa",
     "displayName": "Lô",
     "id": 1004,
     "createdAt": "2025-12-31T05:17:54.287Z",
-    "updatedAt": "2025-12-31T05:17:54.287Z"
+    "updatedAt": "2026-01-02T12:12:19.287Z",
+    "bio": "xin chao",
+    "birthDate": "2003-04-04",
+    "gender": "female",
+    "phone": "0382253049",
+    "avatar": "/avatars/avatar-1767355939244-161444707.png"
+  },
+  {
+    "username": "thinhdz",
+    "useremail": "thinh@dkdk.com",
+    "password": "$2b$10$NJPwkkS0LQ4997DHPHZhce6Gq.irU4Af6CF9BUSaODfZ2wWdD54u2",
+    "displayName": "Thinh",
+    "id": 1005,
+    "createdAt": "2026-01-02T12:14:04.462Z",
+    "updatedAt": "2026-01-02T12:17:47.634Z",
+    "avatar": "/avatars/avatar-1767356267632-306486622.png"
+  },
+  {
+    "username": "thinh000",
+    "useremail": "thinh@2238.com",
+    "password": "$2b$10$nHaOyjj.UTm1S40lTh0enOHHN5eI9qqjhGifOvjuoYcb41yE3kLdG",
+    "displayName": "Thinh DepTrai",
+    "id": 1006,
+    "createdAt": "2026-01-02T12:22:30.966Z",
+    "updatedAt": "2026-01-02T18:32:09.893Z",
+    "subscribedCategories": [
+      "kinh-te"
+    ],
+    "avatar": "/avatars/avatar-1767361224784-103066243.png",
+    "gender": "male",
+    "birthDate": "1995-01-01"
   }
 ]

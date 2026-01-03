@@ -85,7 +85,7 @@ export const NotificationBell = () => {
         <div className="relative" ref={panelRef}>
             <button
                 onClick={handleBellClick}
-                className="relative p-1.5 text-gray-600 hover:text-primary transition-colors cursor-pointer"
+                className="relative p-1.5 text-gray-600 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 dark:hover:text-red-400 rounded transition-colors cursor-pointer"
                 title="Thông báo"
             >
                 <Bell size={18} />

@@ -35,6 +35,7 @@ export interface LoginSuccessResponse {
 
 export interface UpdateProfileRequest {
   displayName?: string;
+  email?: string;
   bio?: string;
   avatar?: string;
   gender?: 'male' | 'female' | 'other';
@@ -49,7 +50,7 @@ export interface ChangePasswordRequest {
   confirmPassword: string;
 }
 
-export interface UserProfile extends Omit<User, 'password'> {}
+export interface UserProfile extends Omit<User, 'password'> { }
 
 export interface SubscribeCategoryRequest {
   categorySlug: string;
