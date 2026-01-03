@@ -187,13 +187,15 @@
     "username": "thinh000",
     "useremail": "thinh@2238.com",
     "password": "$2b$10$nHaOyjj.UTm1S40lTh0enOHHN5eI9qqjhGifOvjuoYcb41yE3kLdG",
-    "displayName": "Thịnh",
+    "displayName": "Thinh DepTrai",
     "id": 1006,
     "createdAt": "2026-01-02T12:22:30.966Z",
-    "updatedAt": "2026-01-02T15:18:33.668Z",
+    "updatedAt": "2026-01-02T18:32:09.893Z",
     "subscribedCategories": [
       "kinh-te"
     ],
-    "avatar": "/avatars/avatar-1767361224784-103066243.png"
+    "avatar": "/avatars/avatar-1767361224784-103066243.png",
+    "gender": "male",
+    "birthDate": "1995-01-01"
   }
 ]

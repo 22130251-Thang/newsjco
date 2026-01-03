@@ -6,6 +6,15 @@ import { CreateCommentDto } from './dto/create-comment.dto';
 export class CommentsController {
   constructor(private readonly commentsService: CommentsService) { }
 
+  // IMPORTANT: This route must be BEFORE ':id' routes
+  @Get('user/:userId')
+  findByUserId(
+    @Param('userId') userId: string,
+    @Query('limit') limit: string = '20',
+  ) {
+    return this.commentsService.findByUserId(+userId, +limit);
+  }
+
   @Post()
   create(@Body() createCommentDto: CreateCommentDto) {
     return this.commentsService.create(createCommentDto);

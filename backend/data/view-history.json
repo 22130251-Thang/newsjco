@@ -48,12 +48,6 @@
     "viewedAt": "2026-01-02T15:41:18.402Z"
   },
   {
-    "id": 7,
-    "userId": 1006,
-    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
-    "viewedAt": "2026-01-02T15:44:59.459Z"
-  },
-  {
     "id": 11,
     "userId": 1006,
     "articleSlug": "tri-benh-hinh-thuc",
@@ -64,5 +58,11 @@
     "userId": 1006,
     "articleSlug": "ngay-512026-xet-xu-55-bi-cao-trong-vu-nhan-hoi-lo-tai-cuc-an-toan-thuc-pham-bo-y-te",
     "viewedAt": "2026-01-02T15:50:44.447Z"
+  },
+  {
+    "id": 7,
+    "userId": 1006,
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "viewedAt": "2026-01-02T18:40:50.210Z"
   }
 ]
