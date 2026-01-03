@@ -260,4 +260,26 @@ export class CommentsService {
   private attachUserToComment(comment: Comment): CommentWithUser {
     return { ...comment, user: this.usersService.findOne(comment.userId) };
   }
+
+  findByUserId(userId: number, limit: number = 20) {
+    const allComments = this.databaseService.findAll<Comment>(COMMENTS_TABLE);
+
+    const userComments = allComments
+      .filter(c => c.userId === userId && c.status === COMMENT_STATUS.APPROVED)
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      .slice(0, limit);
+
+    // Get article titles for each comment
+    return userComments.map(comment => {
+      const article = this.articlesService.findBySlug(comment.articleSlug);
+      return {
+        id: comment.id,
+        content: comment.content,
+        articleSlug: comment.articleSlug,
+        articleTitle: article?.title || comment.articleSlug,
+        categorySlug: article?.category || 'tin-tuc',
+        createdAt: comment.createdAt,
+      };
+    });
+  }
 }

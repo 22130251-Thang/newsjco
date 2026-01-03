@@ -86,24 +86,6 @@ export const ProfilePage = () => {
     }
   };
 
-  const mockComments = [
-    {
-      id: 1,
-      content: "Bài viết rất hay và bổ ích!",
-      articleTitle: "Tin thời sự mới nhất hôm nay",
-      articleSlug: "tin-thoi-su-moi-nhat",
-      categorySlug: "thoi-su",
-      createdAt: new Date(Date.now() - 2 * 3600000).toISOString(),
-    },
-    {
-      id: 2,
-      content: "Cảm ơn tác giả đã chia sẻ thông tin hữu ích này",
-      articleTitle: "Kinh tế Việt Nam năm 2025",
-      articleSlug: "kinh-te-viet-nam-2025",
-      categorySlug: "kinh-te",
-      createdAt: new Date(Date.now() - 24 * 3600000).toISOString(),
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 py-8">
@@ -157,7 +139,7 @@ export const ProfilePage = () => {
         {/* Tab Content */}
         {activeTab === "categories" && <SubscribedCategories />}
         {activeTab === "history" && <ViewHistory />}
-        {activeTab === "comments" && <UserComments comments={mockComments} />}
+        {activeTab === "comments" && <UserComments />}
 
         <EditProfileModal
           isOpen={isEditModalOpen}
