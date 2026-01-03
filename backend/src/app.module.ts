@@ -12,7 +12,9 @@ import { CommentsModule } from './comments/comments.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { BookmarksModule } from './bookmarks/bookmarks.module';
 import { AiModule } from './ai/ai.module';
+import { ViewHistoryModule } from './view-history/view-history.module';
 import { ReactionsModule } from './reactions/reactions.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -27,6 +29,7 @@ import { ReactionsModule } from './reactions/reactions.module';
     NotificationsModule,
     BookmarksModule,
     AiModule,
+    ViewHistoryModule,
     ReactionsModule,
   ],
   controllers: [AppController],
