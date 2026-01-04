@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import { Reaction, ReactionCount, ReactionType } from '../types/reaction.type';
-import { CreateReactionDto } from './dto/create-reaction.dto';
 
 @Injectable()
 export class ReactionsService {
