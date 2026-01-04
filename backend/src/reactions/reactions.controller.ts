@@ -14,16 +14,16 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('reactions')
 export class ReactionsController {
-  constructor(private readonly reactionsService:  ReactionsService) {}
+  constructor(private readonly reactionsService: ReactionsService) {}
 
   @Get('article/:slug')
   getReactionCount(
     @Param('slug') slug: string,
     @Query('userId') userId?: string,
   ) {
-    return this.reactionsService. getReactionCount(
+    return this.reactionsService.getReactionCount(
       slug,
-      userId ?  parseInt(userId) : undefined,
+      userId ? parseInt(userId) : undefined,
     );
   }
 
@@ -34,17 +34,17 @@ export class ReactionsController {
     @Body() toggleReactionDto: ToggleReactionDto,
     @Request() req,
   ) {
-    const userId = req.user. id;
+    const userId = req.user.id;
     const result = this.reactionsService.toggleReaction(
       slug,
       userId,
       toggleReactionDto.type,
     );
 
-    const counts = this.reactionsService. getReactionCount(slug, userId);
+    const counts = this.reactionsService.getReactionCount(slug, userId);
 
     return {
-      ... result,
+      ...result,
       counts,
     };
   }

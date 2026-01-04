@@ -5,7 +5,7 @@ import { DatabaseService } from '../database/database.service';
 
 @Module({
   controllers: [ReactionsController],
-  providers:  [ReactionsService, DatabaseService],
+  providers: [ReactionsService, DatabaseService],
   exports: [ReactionsService],
 })
 export class ReactionsModule {}

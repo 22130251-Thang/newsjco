@@ -71,7 +71,9 @@ export class TtsService {
 
       task.buffer = buffer;
       task.status = 'ready';
-      this.logger.log(`[${taskId}] TTS audio generated successfully, size: ${buffer.length} bytes`);
+      this.logger.log(
+        `[${taskId}] TTS audio generated successfully, size: ${buffer.length} bytes`,
+      );
     } catch (error) {
       const task = this.taskMap.get(taskId);
       if (task) {
@@ -107,7 +109,10 @@ export class TtsService {
     }
 
     if (!task.buffer) {
-      throw new HttpException('Buffer not available', HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new HttpException(
+        'Buffer not available',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
 
     res.setHeader('Content-Type', 'audio/mpeg');
@@ -138,7 +143,8 @@ export class TtsService {
         const gtts = new gTTS(text, 'vi');
         const chunks: Buffer[] = [];
 
-        gtts.stream()
+        gtts
+          .stream()
           .on('data', (chunk: Buffer) => chunks.push(chunk))
           .on('end', () => resolve(Buffer.concat(chunks)))
           .on('error', (error) => reject(error));
