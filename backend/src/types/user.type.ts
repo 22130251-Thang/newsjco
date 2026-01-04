@@ -18,15 +18,8 @@ export interface User extends BaseRecord {
   updatedAt?: string;
 }
 
-/**
- * User type without sensitive fields (password)
- */
 export type SafeUser = Omit<User, 'password'>;
 
-/**
- * Removes sensitive fields from user object
- * Use this instead of manually destructuring password
- */
 export function sanitizeUser(user: User): SafeUser {
   const { password: _password, ...safeUser } = user;
   return safeUser;
