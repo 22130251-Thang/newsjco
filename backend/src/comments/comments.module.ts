@@ -9,9 +9,14 @@ import { AiModule } from 'src/ai/ai.module';
 import { ModerationModule } from 'src/moderation/moderation.module';
 
 @Module({
-  imports: [ArticlesModule, UsersModule, NotificationsModule, AiModule, ModerationModule],
+  imports: [
+    ArticlesModule,
+    UsersModule,
+    NotificationsModule,
+    AiModule,
+    ModerationModule,
+  ],
   controllers: [CommentsController],
   providers: [CommentsService, DatabaseService],
 })
-export class CommentsModule { }
-
+export class CommentsModule {}

@@ -1,147 +1,115 @@
-import { Injectable } from '@nestjs/common';
-import * as fs from 'fs';
-import * as path from 'path';
+import { Injectable, Logger } from '@nestjs/common';
+import { DatabaseService } from '../database/database.service';
+import { ViewHistory } from '../types/view-history.type';
+import { Article } from '../types/article.type';
+import { ARTICLE_CATEGORIES } from '../config/categories';
 
-interface ViewHistoryRecord {
-    id: number;
-    userId: number;
-    articleSlug: string;
-    viewedAt: string;
-}
-
-interface Article {
-    slug: string;
-    title: string;
-    category: string;
-    thumbnail?: string;
-    image?: string;
-}
+const VIEW_HISTORY_TABLE = 'view-history';
 
 @Injectable()
 export class ViewHistoryService {
-    private readonly dataPath = path.join(process.cwd(), 'data', 'view-history.json');
-    private readonly dataDir = path.join(process.cwd(), 'data');
+  private readonly logger = new Logger(ViewHistoryService.name);
 
-    private readData(): ViewHistoryRecord[] {
-        try {
-            if (!fs.existsSync(this.dataPath)) {
-                fs.writeFileSync(this.dataPath, '[]');
-                return [];
+  constructor(private readonly databaseService: DatabaseService) {}
+
+  private findAllArticles(): Article[] {
+    let allArticles: Article[] = [];
+    for (const category of ARTICLE_CATEGORIES) {
+      try {
+        const articles = this.databaseService.findAll<Article>(category);
+        allArticles = allArticles.concat(articles);
+      } catch (error) {
+        this.logger.warn(`Failed to load articles from ${category}`);
+      }
+    }
+    return allArticles;
+  }
+
+  addView(
+    userId: number,
+    articleSlug: string,
+  ): { success: boolean; message: string } {
+    const allHistory =
+      this.databaseService.findAll<ViewHistory>(VIEW_HISTORY_TABLE);
+    const existing = allHistory.find(
+      (r) => r.userId === userId && r.articleSlug === articleSlug,
+    );
+
+    if (existing) {
+      this.databaseService.update<ViewHistory>(
+        VIEW_HISTORY_TABLE,
+        existing.id,
+        {
+          viewedAt: new Date().toISOString(),
+        },
+      );
+    } else {
+      this.databaseService.create<ViewHistory>(VIEW_HISTORY_TABLE, {
+        userId,
+        articleSlug,
+        viewedAt: new Date().toISOString(),
+      } as Omit<ViewHistory, 'id'>);
+    }
+
+    return { success: true, message: 'View recorded' };
+  }
+
+  getHistory(userId: number, limit: number = 20) {
+    const allHistory =
+      this.databaseService.findAll<ViewHistory>(VIEW_HISTORY_TABLE);
+    const articles = this.findAllArticles();
+
+    const userHistory = allHistory
+      .filter((r) => r.userId === userId)
+      .sort(
+        (a, b) =>
+          new Date(b.viewedAt).getTime() - new Date(a.viewedAt).getTime(),
+      )
+      .slice(0, limit);
+
+    return userHistory.map((record) => {
+      const article = articles.find((a) => a.slug === record.articleSlug);
+      return {
+        id: record.id,
+        articleSlug: record.articleSlug,
+        viewedAt: record.viewedAt,
+        article: article
+          ? {
+              title: article.title,
+              category: article.category,
+              thumbnail: article.thumbnail || article.image,
             }
-            const data = fs.readFileSync(this.dataPath, 'utf-8');
-            return JSON.parse(data);
-        } catch {
-            return [];
-        }
+          : null,
+      };
+    });
+  }
+
+  clearHistory(userId: number): { success: boolean; message: string } {
+    const allHistory =
+      this.databaseService.findAll<ViewHistory>(VIEW_HISTORY_TABLE);
+    const userRecords = allHistory.filter((r) => r.userId === userId);
+
+    for (const record of userRecords) {
+      this.databaseService.remove<ViewHistory>(VIEW_HISTORY_TABLE, record.id);
     }
 
-    private writeData(data: ViewHistoryRecord[]): void {
-        fs.writeFileSync(this.dataPath, JSON.stringify(data, null, 2));
+    return { success: true, message: 'History cleared' };
+  }
+
+  removeView(
+    userId: number,
+    articleSlug: string,
+  ): { success: boolean; message: string } {
+    const allHistory =
+      this.databaseService.findAll<ViewHistory>(VIEW_HISTORY_TABLE);
+    const record = allHistory.find(
+      (r) => r.userId === userId && r.articleSlug === articleSlug,
+    );
+
+    if (record) {
+      this.databaseService.remove<ViewHistory>(VIEW_HISTORY_TABLE, record.id);
     }
 
-    private readAllArticles(): Article[] {
-        try {
-            const allArticles: Article[] = [];
-            const files = fs.readdirSync(this.dataDir);
-
-            // Category files to read
-            const categoryFiles = files.filter(f =>
-                f.endsWith('.json') &&
-                !['users.json', 'categories.json', 'comments.json', 'notifications.json',
-                    'bookmarks.json', 'view-history.json', 'comment_reactions.json'].includes(f)
-            );
-
-            for (const file of categoryFiles) {
-                try {
-                    const filePath = path.join(this.dataDir, file);
-                    const data = fs.readFileSync(filePath, 'utf-8');
-                    const parsed = JSON.parse(data);
-
-                    // Handle both array format and object with articles property
-                    const articles = Array.isArray(parsed) ? parsed : (parsed.articles || []);
-                    allArticles.push(...articles);
-                } catch {
-                    // Skip files that can't be parsed
-                }
-            }
-
-            return allArticles;
-        } catch {
-            return [];
-        }
-    }
-
-    private getNextId(data: ViewHistoryRecord[]): number {
-        if (data.length === 0) return 1;
-        return Math.max(...data.map(r => r.id)) + 1;
-    }
-
-    addView(userId: number, articleSlug: string): { success: boolean; message: string } {
-        const data = this.readData();
-
-        // Check if already viewed
-        const existingIndex = data.findIndex(
-            r => r.userId === userId && r.articleSlug === articleSlug
-        );
-
-        if (existingIndex !== -1) {
-            // Update viewedAt time
-            data[existingIndex].viewedAt = new Date().toISOString();
-            // Move to end (most recent)
-            const [item] = data.splice(existingIndex, 1);
-            data.push(item);
-        } else {
-            // Add new record
-            const newRecord: ViewHistoryRecord = {
-                id: this.getNextId(data),
-                userId,
-                articleSlug,
-                viewedAt: new Date().toISOString(),
-            };
-            data.push(newRecord);
-        }
-
-        this.writeData(data);
-        return { success: true, message: 'View recorded' };
-    }
-
-    getHistory(userId: number, limit: number = 20) {
-        const data = this.readData();
-        const articles = this.readAllArticles();
-
-        const userHistory = data
-            .filter(r => r.userId === userId)
-            .sort((a, b) => new Date(b.viewedAt).getTime() - new Date(a.viewedAt).getTime())
-            .slice(0, limit);
-
-        return userHistory.map(record => {
-            const article = articles.find(a => a.slug === record.articleSlug);
-            return {
-                id: record.id,
-                articleSlug: record.articleSlug,
-                viewedAt: record.viewedAt,
-                article: article ? {
-                    title: article.title,
-                    category: article.category,
-                    thumbnail: article.thumbnail || article.image,
-                } : null,
-            };
-        });
-    }
-
-    clearHistory(userId: number): { success: boolean; message: string } {
-        const data = this.readData();
-        const filtered = data.filter(r => r.userId !== userId);
-        this.writeData(filtered);
-        return { success: true, message: 'History cleared' };
-    }
-
-    removeView(userId: number, articleSlug: string): { success: boolean; message: string } {
-        const data = this.readData();
-        const filtered = data.filter(
-            r => !(r.userId === userId && r.articleSlug === articleSlug)
-        );
-        this.writeData(filtered);
-        return { success: true, message: 'View removed' };
-    }
+    return { success: true, message: 'View removed' };
+  }
 }

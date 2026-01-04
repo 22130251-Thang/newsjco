@@ -15,7 +15,7 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 @Controller('bookmarks')
 @UseGuards(JwtAuthGuard)
 export class BookmarksController {
-  constructor(private readonly bookmarksService: BookmarksService) { }
+  constructor(private readonly bookmarksService: BookmarksService) {}
 
   @Get()
   findAll(@Request() req: { user: { userId: number } }) {
@@ -27,7 +27,10 @@ export class BookmarksController {
     @Request() req: { user: { userId: number } },
     @Param('slug') slug: string,
   ) {
-    const isBookmarked = this.bookmarksService.isBookmarked(req.user.userId, slug);
+    const isBookmarked = this.bookmarksService.isBookmarked(
+      req.user.userId,
+      slug,
+    );
     return { isBookmarked };
   }
 

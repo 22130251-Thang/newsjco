@@ -119,10 +119,7 @@ export class UsersController {
     @Request() req: { user: { userId: number } },
     @Param('categorySlug') categorySlug: string,
   ) {
-    return this.usersService.unsubscribeCategory(
-      req.user.userId,
-      categorySlug,
-    );
+    return this.usersService.unsubscribeCategory(req.user.userId, categorySlug);
   }
 
   @UseGuards(JwtAuthGuard)

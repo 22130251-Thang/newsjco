@@ -1,6 +1,6 @@
 export class SearchArticleDto {
   query: string;
-  page?:  number;
+  page?: number;
   limit?: number;
   category?: string;
 }

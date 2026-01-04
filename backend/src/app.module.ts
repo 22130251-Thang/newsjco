@@ -35,4 +35,4 @@ import { ReactionsModule } from './reactions/reactions.module';
   controllers: [AppController],
   providers: [AppService, DatabaseService],
 })
-export class AppModule { }
+export class AppModule {}

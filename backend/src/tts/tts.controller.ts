@@ -15,7 +15,12 @@ export class TtsController {
 
   @Post('generate')
   generateAudio(@Body() body: CreateTtsDto) {
-    return this.ttsService.generateAudioAsync(body.slug, body.title, body.description, body.fullContent);
+    return this.ttsService.generateAudioAsync(
+      body.slug,
+      body.title,
+      body.description,
+      body.fullContent,
+    );
   }
 
   @Get('status/:taskId')
