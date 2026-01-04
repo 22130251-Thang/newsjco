@@ -31,7 +31,7 @@ export class UsersController {
   getProfile(@Request() req: { user: { userId: number; username: string } }) {
     const user = this.usersService.findOne(req.user.userId);
     if (user) {
-      const { password, ...result } = user;
+      const { password: _password, ...result } = user;
       return result;
     }
     return null;

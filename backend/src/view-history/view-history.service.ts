@@ -18,7 +18,7 @@ export class ViewHistoryService {
       try {
         const articles = this.databaseService.findAll<Article>(category);
         allArticles = allArticles.concat(articles);
-      } catch (error) {
+      } catch (_error) {
         this.logger.warn(`Failed to load articles from ${category}`);
       }
     }

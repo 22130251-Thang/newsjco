@@ -9,7 +9,7 @@ import { ARTICLE_CATEGORIES } from '../config/categories';
 export class ArticlesService {
   private readonly logger = new Logger(ArticlesService.name);
 
-  constructor(private readonly databaseService: DatabaseService) { }
+  constructor(private readonly databaseService: DatabaseService) {}
 
   findAll(): Article[] {
     let allArticles: Article[] = [];
@@ -206,7 +206,10 @@ export class ArticlesService {
     const normalizedQuery = this.normalizeText(query);
     let allArticles: Article[] = [];
 
-    if (category && (ARTICLE_CATEGORIES as readonly string[]).includes(category)) {
+    if (
+      category &&
+      (ARTICLE_CATEGORIES as readonly string[]).includes(category)
+    ) {
       allArticles = this.databaseService.findAll<Article>(category);
     } else {
       for (const cat of ARTICLE_CATEGORIES) {

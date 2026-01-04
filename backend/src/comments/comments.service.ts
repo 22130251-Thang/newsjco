@@ -93,7 +93,7 @@ export class CommentsService {
     let aiUser;
     try {
       aiUser = this.usersService.findByUserName('aibot');
-    } catch (e) {
+    } catch (_e) {
       aiUser = null;
     }
     const aiUserId = aiUser ? aiUser.id : 999;
@@ -133,7 +133,7 @@ export class CommentsService {
     }
   }
 
-  async findByArticleSlug(
+  findByArticleSlug(
     slug: string,
     page: number = DEFAULT_PAGE,
     limit: number = DEFAULT_LIMIT,
@@ -179,7 +179,7 @@ export class CommentsService {
     };
   }
 
-  async reactToComment(
+  reactToComment(
     commentId: number,
     userId: number,
     type: ReactionType,

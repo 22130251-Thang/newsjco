@@ -10,6 +10,8 @@ import { DatabaseService } from 'src/database/database.service';
 import { User } from 'src/types/user.type';
 import { RegisterRequestDto } from 'src/auth/dto/registerRequestDto';
 import * as bcrypt from 'bcrypt';
+import * as fs from 'fs';
+import * as path from 'path';
 
 @Injectable()
 export class UsersService {
@@ -82,7 +84,7 @@ export class UsersService {
       updatedData,
     );
     if (updatedUser) {
-      const { password, ...result } = updatedUser;
+      const { password: _password, ...result } = updatedUser;
       return result;
     }
     return null;
@@ -130,8 +132,6 @@ export class UsersService {
 
     // Delete old avatar file if exists
     if (user.avatar && !user.avatar.startsWith('http')) {
-      const fs = require('fs');
-      const path = require('path');
       const filename = path.basename(user.avatar);
       const oldAvatarPath = path.join(
         process.cwd(),
@@ -155,7 +155,7 @@ export class UsersService {
     });
 
     if (updatedUser) {
-      const { password, ...result } = updatedUser;
+      const { password: _password, ...result } = updatedUser;
       return result;
     }
     return null;
@@ -189,7 +189,7 @@ export class UsersService {
     });
 
     if (updatedUser) {
-      const { password, ...result } = updatedUser;
+      const { password: _password, ...result } = updatedUser;
       return {
         message: 'Theo dõi danh mục thành công',
         subscribedCategories: updatedUser.subscribedCategories,
@@ -221,7 +221,7 @@ export class UsersService {
     });
 
     if (updatedUser) {
-      const { password, ...result } = updatedUser;
+      const { password: _password, ...result } = updatedUser;
       return {
         message: 'Hủy theo dõi danh mục thành công',
         subscribedCategories: updatedUser.subscribedCategories,
