@@ -7,7 +7,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { DatabaseService } from 'src/database/database.service';
-import { User } from 'src/types/user.type';
+import { User, sanitizeUser } from 'src/types/user.type';
 import { RegisterRequestDto } from 'src/auth/dto/registerRequestDto';
 import * as bcrypt from 'bcrypt';
 import * as fs from 'fs';
@@ -15,7 +15,7 @@ import * as path from 'path';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseService) { }
 
   create(registerRequestDto: RegisterRequestDto) {
     return this.databaseService.create<User>('users', registerRequestDto);
@@ -84,8 +84,7 @@ export class UsersService {
       updatedData,
     );
     if (updatedUser) {
-      const { password: _password, ...result } = updatedUser;
-      return result;
+      return sanitizeUser(updatedUser);
     }
     return null;
   }
@@ -155,8 +154,7 @@ export class UsersService {
     });
 
     if (updatedUser) {
-      const { password: _password, ...result } = updatedUser;
-      return result;
+      return sanitizeUser(updatedUser);
     }
     return null;
   }
@@ -189,11 +187,10 @@ export class UsersService {
     });
 
     if (updatedUser) {
-      const { password: _password, ...result } = updatedUser;
       return {
         message: 'Theo dõi danh mục thành công',
         subscribedCategories: updatedUser.subscribedCategories,
-        user: result,
+        user: sanitizeUser(updatedUser),
       };
     }
     return null;
@@ -221,11 +218,10 @@ export class UsersService {
     });
 
     if (updatedUser) {
-      const { password: _password, ...result } = updatedUser;
       return {
         message: 'Hủy theo dõi danh mục thành công',
         subscribedCategories: updatedUser.subscribedCategories,
-        user: result,
+        user: sanitizeUser(updatedUser),
       };
     }
     return null;
@@ -255,3 +251,4 @@ export class UsersService {
     return (user.subscribedCategories || []).includes(categorySlug);
   }
 }
+

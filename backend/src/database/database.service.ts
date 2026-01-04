@@ -132,4 +132,17 @@ export class DatabaseService implements OnModuleInit {
     this.logger.log(this.memoryStore.keys());
     return table.find((record) => record[key] === value);
   }
+
+  findAllBy<T extends BaseRecord>(
+    tablename: string,
+    filters: Partial<T>,
+  ): T[] {
+    const table = this.findAll<T>(tablename);
+    return table.filter((record) =>
+      Object.entries(filters).every(
+        ([key, value]) => record[key as keyof T] === value,
+      ),
+    );
+  }
 }
+

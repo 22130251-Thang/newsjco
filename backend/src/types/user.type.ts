@@ -17,3 +17,11 @@ export interface User extends BaseRecord {
   createdAt?: string;
   updatedAt?: string;
 }
+
+export type SafeUser = Omit<User, 'password'>;
+
+export function sanitizeUser(user: User): SafeUser {
+  const { password: _password, ...safeUser } = user;
+  return safeUser;
+}
+
