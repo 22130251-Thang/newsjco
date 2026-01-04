@@ -1,15 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useArticleDetail } from "../../lib/hooks/useArticleDetail";
-import {
-  ArticleBreadcrumb,
-  ArticleHeader,
-  ArticleContent,
-  RelatedArticlesSidebar,
-  ArticleLoadingSpinner,
-  ArticleError,
-} from "../../components/articledetails";
+
 import { CommentList } from "../../components/comments/CommentList";
 import { BookmarkButton } from "../../components/BookmarkButton";
+import { ArticleBreadcrumb, ArticleContent, ArticleError, ArticleHeader, ArticleLoadingSpinner, RelatedArticlesSidebar } from "../../components/news/articledetails";
 
 export const ArticleDetail = () => {
   const { category, slug } = useParams();
