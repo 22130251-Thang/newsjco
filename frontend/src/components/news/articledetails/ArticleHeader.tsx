@@ -1,62 +1,98 @@
 import { Calendar, User, Clock, Share2 } from "lucide-react";
 import type { Article } from "../../../types/article.type";
 import TTSButton from "../../shared/TTSButton";
+import { BookmarkButton } from "../../BookmarkButton";
 
 interface ArticleHeaderProps {
-    article: Article;
+  article: Article;
+  slug?: string;
 }
 
-export const ArticleHeader = ({ article }: ArticleHeaderProps) => (
+export const ArticleHeader = ({ article, slug }: ArticleHeaderProps) => {
+  const handleShare = async () => {
+    const url = window.location.href;
+    const title = article.title;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+        return;
+      } catch {
+        // user cancel -> ignore
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(url);
+      alert("Đã copy link bài viết!");
+    } catch {
+      alert("Không thể chia sẻ/copy link. Bạn thử copy thủ công nhé.");
+    }
+  };
+
+  return (
     <header className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4 font-heading">
-            {article.title}
-        </h1>
+      <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4 font-heading">
+        {article.title}
+      </h1>
 
-        <ArticleMeta article={article} />
+      <ArticleMeta article={article} slug={slug} onShare={handleShare} />
 
-        <div className="mb-4">
-            <TTSButton
-                slug={article.slug}
-                title={article.title}
-                description={article.description}
-                fullContent={article.fullContent || article.content}
-            />
-        </div>
+      <div className="mb-4">
+        <TTSButton
+          slug={article.slug}
+          title={article.title}
+          description={article.description}
+          fullContent={article.fullContent || article.content}
+        />
+      </div>
 
-        {article.description && (
-            <p className="text-lg font-bold text-gray-700 dark:text-gray-300 leading-relaxed italic mb-8 border-l-4 border-red-600 pl-4 py-1">
-                {article.description}
-            </p>
-        )}
+      {article.description && (
+        <p className="text-lg font-bold text-gray-700 dark:text-gray-300 leading-relaxed italic mb-8 border-l-4 border-red-600 pl-4 py-1">
+          {article.description}
+        </p>
+      )}
     </header>
-);
+  );
+};
 
-const ArticleMeta = ({ article }: ArticleHeaderProps) => (
-    <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500 dark:text-gray-400 border-y border-gray-100 dark:border-gray-700 py-4 mb-6">
-        <div className="flex items-center gap-1">
-            <User size={14} className="text-red-500" />
-            <span className="font-bold text-gray-800 dark:text-gray-200 uppercase">
-                {article.author || "Báo Tin Tức"}
-            </span>
-        </div>
-        <div className="flex items-center gap-1">
-            <Calendar size={14} />
-            <span>{new Date(article.pubDate).toLocaleDateString("vi-VN")}</span>
-        </div>
-        <div className="flex items-center gap-1">
-            <Clock size={14} />
-            <span>
-                {new Date(article.pubDate).toLocaleTimeString("vi-VN", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                })}
-            </span>
-        </div>
-        <div className="ml-auto flex items-center gap-3">
-            <button className="p-1.5 transition-colors hover:text-gray-600 dark:hover:text-gray-300">
-                <Share2 size={16} />
-            </button>
-        </div>
+type ArticleMetaProps = {
+  article: Article;
+  slug?: string;
+  onShare: () => void;
+};
+
+const ArticleMeta = ({ article, slug, onShare }: ArticleMetaProps) => (
+  <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500 dark:text-gray-400 border-y border-gray-100 dark:border-gray-700 py-4 mb-6">
+    <div className="flex items-center gap-1">
+      <User size={14} className="text-red-500" />
+      <span className="font-bold text-gray-800 dark:text-gray-200 uppercase">
+        {article.author || "Báo Tin Tức"}
+      </span>
     </div>
+    <div className="flex items-center gap-1">
+      <Calendar size={14} />
+      <span>{new Date(article.pubDate).toLocaleDateString("vi-VN")}</span>
+    </div>
+    <div className="flex items-center gap-1">
+      <Clock size={14} />
+      <span>
+        {new Date(article.pubDate).toLocaleTimeString("vi-VN", {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
+      </span>
+    </div>
+    <div className="ml-auto flex items-center gap-3">
+      {slug && <BookmarkButton slug={slug} size="sm" showText />}
+      <button
+        type="button"
+        onClick={onShare}
+        className="p-1.5 transition-colors hover:text-gray-600 dark:hover:text-gray-300 cursor-pointer"
+        title="Chia sẻ bài viết"
+      >
+        <Share2 size={16} />
+      </button>
+    </div>
+  </div>
 );
-

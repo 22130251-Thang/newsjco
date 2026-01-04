@@ -21,7 +21,7 @@ export const BookmarksPage = () => {
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('vi-VN', {
       day: '2-digit',
-      month:  '2-digit',
+      month: '2-digit',
       year: 'numeric',
     });
   };
@@ -49,10 +49,10 @@ export const BookmarksPage = () => {
       <div className="container-main py-8">
         <div className="flex items-center gap-3 mb-8">
           <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-full">
-            <Bookmark className="w-6 h-6 text-orange-600 dark: text-orange-400" />
+            <Bookmark className="w-6 h-6 text-orange-600 dark:text-orange-400" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark: text-white">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
               Bài viết đã lưu
             </h1>
             <p className="text-gray-500 dark:text-gray-400">
@@ -61,7 +61,7 @@ export const BookmarksPage = () => {
           </div>
         </div>
 
-        {bookmarks. length === 0 ?  (
+        {bookmarks.length === 0 ? (
           <div className="text-center py-16">
             <Bookmark className="w-16 h-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
             <h2 className="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
@@ -110,14 +110,14 @@ export const BookmarksPage = () => {
                     </h3>
                   </Link>
 
-                  {article?. description && (
+                  {article?.description && (
                     <p className="text-gray-600 dark:text-gray-400 text-sm mt-2 line-clamp-2">
                       {article.description}
                     </p>
                   )}
 
                   <div className="flex items-center justify-between mt-3">
-                    <div className="flex items-center gap-1 text-sm text-gray-500 dark: text-gray-400">
+                    <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
                       <Calendar size={14} />
                       <span>Đã lưu {formatDate(bookmark.createdAt)}</span>
                     </div>
@@ -125,7 +125,7 @@ export const BookmarksPage = () => {
                     <button
                       onClick={() => handleRemoveBookmark(bookmark.articleSlug)}
                       disabled={toggleLoading[bookmark.articleSlug]}
-                      className="flex items-center gap-1 px-3 py-1.5 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                      className="flex items-center gap-1 px-3 py-1.5 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors cursor-pointer disabled:cursor-not-allowed"
                     >
                       {toggleLoading[bookmark.articleSlug] ? (
                         <Loader2 size={14} className="animate-spin" />

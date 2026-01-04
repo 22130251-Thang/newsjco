@@ -16,11 +16,7 @@ export class UsersService {
   }
 
   findByUserName(username: string) {
-    const user = this.databaseService.findOneBy<User>(
-      'users',
-      'username',
-      username,
-    );
+    const user = this.databaseService.findOneBy<User>('users', 'username', username);
     if (!user) {
       throw new NotFoundException(`User not found with username ${username}`);
     }
@@ -28,18 +24,10 @@ export class UsersService {
   }
 
   findByUserNameOrEmail(username: string, email: string): User | null {
-    const userByName = this.databaseService.findOneBy<User>(
-      'users',
-      'username',
-      username,
-    );
+    const userByName = this.databaseService.findOneBy<User>('users', 'username', username);
     if (userByName) return userByName;
 
-    const userByEmail = this.databaseService.findOneBy<User>(
-      'users',
-      'useremail',
-      email,
-    );
+    const userByEmail = this.databaseService.findOneBy<User>('users', 'useremail', email);
     return userByEmail || null;
   }
 
@@ -65,8 +53,10 @@ export class UsersService {
       throw new NotFoundException('Không tìm thấy người dùng');
     }
 
+    const { email, ...restDto } = updateProfileDto;
     const updatedData: Partial<User> = {
-      ...updateProfileDto,
+      ...restDto,
+      ...(email && { useremail: email }),
       updatedAt: new Date().toISOString(),
     };
 
@@ -101,7 +91,7 @@ export class UsersService {
 
     const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-    const updatedUser = this.databaseService.update<User>('users', userId, {
+    this.databaseService.update<User>('users', userId, {
       password: hashedPassword,
       updatedAt: new Date().toISOString(),
     });
@@ -115,6 +105,22 @@ export class UsersService {
       throw new NotFoundException('Không tìm thấy người dùng');
     }
 
+    // Delete old avatar file if exists
+    if (user.avatar && !user.avatar.startsWith('http')) {
+      const fs = require('fs');
+      const path = require('path');
+      const filename = path.basename(user.avatar);
+      const oldAvatarPath = path.join(process.cwd(), 'data', 'avt_user', filename);
+      if (fs.existsSync(oldAvatarPath)) {
+        try {
+          fs.unlinkSync(oldAvatarPath);
+          console.log(`Deleted old avatar: ${filename}`);
+        } catch (error) {
+          console.error(`Failed to delete old avatar: ${error.message}`);
+        }
+      }
+    }
+
     const updatedUser = this.databaseService.update<User>('users', userId, {
       avatar: avatarUrl,
       updatedAt: new Date().toISOString(),
@@ -125,5 +131,99 @@ export class UsersService {
       return result;
     }
     return null;
+  }
+
+  getSubscribedCategories(userId: number): string[] {
+    const user = this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('Không tìm thấy người dùng');
+    }
+    return user.subscribedCategories || [];
+  }
+
+  subscribeCategory(userId: number, categorySlug: string) {
+    const user = this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('Không tìm thấy người dùng');
+    }
+
+    const subscribedCategories = user.subscribedCategories || [];
+
+    if (subscribedCategories.includes(categorySlug)) {
+      throw new BadRequestException('Bạn đã theo dõi danh mục này rồi');
+    }
+
+    subscribedCategories.push(categorySlug);
+
+    const updatedUser = this.databaseService.update<User>('users', userId, {
+      subscribedCategories,
+      updatedAt: new Date().toISOString(),
+    });
+
+    if (updatedUser) {
+      const { password, ...result } = updatedUser;
+      return {
+        message: 'Theo dõi danh mục thành công',
+        subscribedCategories: updatedUser.subscribedCategories,
+        user: result,
+      };
+    }
+    return null;
+  }
+
+  unsubscribeCategory(userId: number, categorySlug: string) {
+    const user = this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('Không tìm thấy người dùng');
+    }
+
+    const subscribedCategories = user.subscribedCategories || [];
+
+    if (!subscribedCategories.includes(categorySlug)) {
+      throw new BadRequestException('Bạn chưa theo dõi danh mục này');
+    }
+
+    const updatedCategories = subscribedCategories.filter(
+      (slug) => slug !== categorySlug,
+    );
+
+    const updatedUser = this.databaseService.update<User>('users', userId, {
+      subscribedCategories: updatedCategories,
+      updatedAt: new Date().toISOString(),
+    });
+
+    if (updatedUser) {
+      const { password, ...result } = updatedUser;
+      return {
+        message: 'Hủy theo dõi danh mục thành công',
+        subscribedCategories: updatedUser.subscribedCategories,
+        user: result,
+      };
+    }
+    return null;
+  }
+
+  toggleSubscribeCategory(userId: number, categorySlug: string) {
+    const user = this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('Không tìm thấy người dùng');
+    }
+
+    const subscribedCategories = user.subscribedCategories || [];
+    const isSubscribed = subscribedCategories.includes(categorySlug);
+
+    if (isSubscribed) {
+      return this.unsubscribeCategory(userId, categorySlug);
+    } else {
+      return this.subscribeCategory(userId, categorySlug);
+    }
+  }
+
+  isSubscribed(userId: number, categorySlug: string): boolean {
+    const user = this.findOne(userId);
+    if (!user) {
+      return false;
+    }
+    return (user.subscribedCategories || []).includes(categorySlug);
   }
 }

@@ -5,18 +5,18 @@ import type {
   CheckBookmarkResponse
 } from '../../types/bookmark.type';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 const getAuthHeader = () => {
   const token = localStorage.getItem('token');
-  return token ? { Authorization:  `Bearer ${token}` } : {};
+  return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
 export const getBookmarks = async (): Promise<BookmarkWithArticle[]> => {
   const response = await axios.get(`${API_URL}/bookmarks`, {
     headers: getAuthHeader(),
   });
-  return response. data;
+  return response.data;
 };
 
 export const checkBookmark = async (slug: string): Promise<CheckBookmarkResponse> => {
@@ -32,7 +32,7 @@ export const addBookmark = async (slug: string): Promise<BookmarkWithArticle> =>
     {},
     { headers: getAuthHeader() }
   );
-  return response. data;
+  return response.data;
 };
 
 export const removeBookmark = async (slug: string): Promise<{ message: string }> => {
@@ -46,7 +46,7 @@ export const toggleBookmark = async (slug: string): Promise<ToggleBookmarkRespon
   const response = await axios.post(
     `${API_URL}/bookmarks/toggle/${slug}`,
     {},
-    { headers:  getAuthHeader() }
+    { headers: getAuthHeader() }
   );
   return response.data;
 };

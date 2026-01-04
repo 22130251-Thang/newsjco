@@ -9,6 +9,7 @@ import { CategoryPage } from "./pages/category/CategoryPage";
 import { Login, Signup } from "./pages/authentication";
 import { ProfilePage } from "./pages/profile/ProfilePage";
 import { BookmarksPage } from "./pages/bookmarks/BookmarksPage";
+import { SearchPage } from "./pages/search/SearchPage";
 
 function App() {
   return (
@@ -20,11 +21,11 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/search" element={<SearchPage />} />
               <Route element={<ProtectedRoute />}>
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/bookmarks" element={<BookmarksPage />} />
               </Route>
-
               <Route path="/:category" element={<CategoryPage />} />
               <Route path="/:category/:slug" element={<ArticleDetail />} />
             </Route>

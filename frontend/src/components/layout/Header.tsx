@@ -1,10 +1,11 @@
-import { Rss, Search, Phone, Mail, Smartphone, LogOut, Moon, Sun, Bookmark } from "lucide-react";
+import { Rss, Phone, Mail, Smartphone, LogOut, Moon, Sun, Bookmark } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { CategoriesList } from "../news/CategoriesList";
 import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
 import { logout } from "../../lib/store/slices/authSlice";
 import { useTheme } from "../../context/ThemeContext";
 import { NotificationBell } from "./NotificationBell";
+import { SearchBar } from "../search/SearchBar";
 
 export const Header = () => {
   const dispatch = useAppDispatch();
@@ -17,13 +18,24 @@ export const Header = () => {
     navigate("/");
   };
 
+  const getAvatarUrl = (avatar?: string, displayName?: string) => {
+    const defaultAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+      displayName || "User"
+    )}&background=cc0000&color=fff&size=32`;
+
+    if (!avatar || avatar.trim() === "") return defaultAvatar;
+    if (avatar.startsWith("http")) return avatar;
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+    return `${API_URL}${avatar}`;
+  };
+
   return (
     <>
       <header className="bg-white dark:bg-gray-900">
         <div className="bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <div className="container-main">
             <div className="flex justify-between items-center py-2">
-              <div className="flex items-center gap-4 text-xs text-gray-600 dark: text-gray-400">
+              <div className="flex items-center gap-4 text-xs text-gray-600 dark:text-gray-400">
                 <a
                   href="tel:0914914999"
                   className="flex items-center gap-1 hover:text-primary dark:hover:text-orange-400"
@@ -34,7 +46,7 @@ export const Header = () => {
 
                 <a
                   href="mailto:thuky@baotintuc.vn"
-                  className="flex items-center gap-1 hover: text-primary"
+                  className="flex items-center gap-1 hover:text-primary"
                 >
                   <Mail size={12} />
                   <span>thuky@baotintuc.vn</span>
@@ -69,63 +81,57 @@ export const Header = () => {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Tìm kiếm..."
-                    className="w-[200px] pl-3 pr-8 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:border-primary dark:bg-gray-800 dark:border-gray-600 dark:text-white"
-                  />
-                  <button className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary dark:text-gray-400">
-                    <Search size={14} />
-                  </button>
+                <div className="relative z-[9999]">
+                  <SearchBar />
                 </div>
+
+                <NotificationBell />
+
+                {isAuthenticated && user && (
+                  <Link
+                    to="/bookmarks"
+                    className="p-1.5 rounded hover:bg-red-50 dark:hover:bg-red-900/30 text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors"
+                    title="Bài viết đã lưu"
+                  >
+                    <Bookmark size={16} />
+                  </Link>
+                )}
 
                 <button
                   onClick={toggleTheme}
-                  className="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
+                  className="p-1.5 rounded hover:bg-red-50 dark:hover:bg-red-900/30 text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors cursor-pointer"
                   title="Toggle Dark Mode"
                 >
                   {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
                 </button>
 
-                <NotificationBell />
-
                 {isAuthenticated && user ? (
                   <div className="flex items-center gap-3 text-xs border-l border-gray-300 dark:border-gray-600 pl-4">
-                    <Link
-                      to="/bookmarks"
-                      className="flex items-center gap-1 text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
-                      title="Bài viết đã lưu"
-                    >
-                      <Bookmark size={16} />
-                    </Link>
-
                     <Link
                       to="/profile"
                       className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
                       title="Xem thông tin cá nhân"
                     >
                       <img
-                        src={
-                          user.avatar ||
-                          `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                            user.displayName
-                          )}&background=cc0000&color=fff&size=32`
-                        }
+                        src={getAvatarUrl(user.avatar, user.displayName)}
                         alt={user.displayName}
                         className="w-8 h-8 rounded-full object-cover border border-gray-300"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || "User")}&background=cc0000&color=fff&size=32`;
+                        }}
                       />
                       <div className="text-gray-700 dark:text-gray-300">
                         <p className="font-medium">{user.displayName}</p>
                         <p className="text-gray-500 dark:text-gray-400">
-                          @{user. username}
+                          @{user.username}
                         </p>
                       </div>
                     </Link>
 
                     <button
                       onClick={handleLogout}
-                      className="flex items-center gap-1 text-red-600 hover:text-red-700 ml-2"
+                      className="flex items-center gap-1 text-red-600 hover:text-red-700 ml-2 cursor-pointer"
                       title="Đăng xuất"
                     >
                       <LogOut size={14} />
@@ -164,7 +170,7 @@ export const Header = () => {
               />
             </Link>
 
-            <div className="ml-auto w-[900px] h-[90px] bg-gray-50 dark:bg-gray-800 border border-dashed border-gray-200 dark:border-gray-600 flex items-center justify-center text-xs text-gray-400 dark:text-gray-500">
+            <div className="ml-auto w-[900px] h-[90px] bg-gray-50 dark:bg-gray-800 border border-dashed border-gray-200 dark:border-gray-600 flex items-center justify-center text-xs text-gray-400">
               Quảng cáo
             </div>
           </div>

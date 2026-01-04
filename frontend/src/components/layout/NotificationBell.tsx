@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Bell, CheckCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
@@ -72,7 +72,7 @@ export const NotificationBell = () => {
             await dispatch(markNotificationAsRead(notification.id));
         }
         dispatch(closeNotificationPanel());
-        navigate(`/${notification.categorySlug}/${notification.articleSlug}`);
+        navigate(`/${notification.categorySlug}/${notification.articleSlug}#comment-${notification.commentId}`);
     };
 
     const handleMarkAllAsRead = async () => {
@@ -85,7 +85,7 @@ export const NotificationBell = () => {
         <div className="relative" ref={panelRef}>
             <button
                 onClick={handleBellClick}
-                className="relative p-1.5 text-gray-600 hover:text-primary transition-colors"
+                className="relative p-1.5 text-gray-600 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 dark:hover:text-red-400 rounded transition-colors cursor-pointer"
                 title="Thông báo"
             >
                 <Bell size={18} />
@@ -103,7 +103,7 @@ export const NotificationBell = () => {
                         {unreadCount > 0 && (
                             <button
                                 onClick={handleMarkAllAsRead}
-                                className="flex items-center gap-1 text-xs text-indigo-600 hover:text-indigo-700 font-medium"
+                                className="flex items-center gap-1 text-xs text-indigo-600 hover:text-indigo-700 font-medium cursor-pointer"
                             >
                                 <CheckCheck size={14} />
                                 Đánh dấu tất cả đã đọc

@@ -1,0 +1,140 @@
+[
+  {
+    "id": 2,
+    "userId": 1006,
+    "articleSlug": "phat-huy-nguon-luc-kieu-bao-de-xay-dung-dat-nuoc",
+    "viewedAt": "2026-01-02T15:07:49.898Z"
+  },
+  {
+    "id": 5,
+    "userId": 1006,
+    "articleSlug": "phat-hien-protein-giup-bao-ve-suc-khoe-nao-bo-khi-lao-hoa",
+    "viewedAt": "2026-01-02T15:08:25.950Z"
+  },
+  {
+    "id": 8,
+    "userId": 1006,
+    "articleSlug": "giu-nhip-ngan-sach-tao-nen-tang-cho-giai-doan-phat-trien-moi",
+    "viewedAt": "2026-01-02T15:17:10.392Z"
+  },
+  {
+    "id": 10,
+    "userId": 1006,
+    "articleSlug": "he-thong-quan-ly-va-cap-giay-chung-nhan-xuat-xu-dien-tu-chinh-thuc-van-hanh-tu-trua-2212",
+    "viewedAt": "2026-01-02T15:41:18.402Z"
+  },
+  {
+    "id": 11,
+    "userId": 1006,
+    "articleSlug": "tri-benh-hinh-thuc",
+    "viewedAt": "2026-01-02T15:50:28.705Z"
+  },
+  {
+    "id": 6,
+    "userId": 1006,
+    "articleSlug": "ngay-512026-xet-xu-55-bi-cao-trong-vu-nhan-hoi-lo-tai-cuc-an-toan-thuc-pham-bo-y-te",
+    "viewedAt": "2026-01-02T15:50:44.447Z"
+  },
+  {
+    "id": 12,
+    "userId": 9,
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "viewedAt": "2026-01-03T17:20:05.570Z"
+  },
+  {
+    "id": 13,
+    "userId": 1006,
+    "articleSlug": "cho-giang-sinh-strasbourg-khong-gian-le-hoi-dam-chat-chau-au",
+    "viewedAt": "2026-01-03T17:37:08.382Z"
+  },
+  {
+    "id": 9,
+    "userId": 1006,
+    "articleSlug": "may-bay-air-india-ha-canh-khan-cap-do-dong-co-ngung-hoat-dong",
+    "viewedAt": "2026-01-03T17:37:10.959Z"
+  },
+  {
+    "id": 14,
+    "userId": 1006,
+    "articleSlug": "2",
+    "viewedAt": "2026-01-03T18:09:02.750Z"
+  },
+  {
+    "id": 4,
+    "userId": 1006,
+    "articleSlug": "khanh-thanh-tuong-dai-bac-ho-voi-chien-si-bien-phong",
+    "viewedAt": "2026-01-03T18:09:15.129Z"
+  },
+  {
+    "id": 15,
+    "userId": 1006,
+    "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
+    "viewedAt": "2026-01-03T18:16:56.234Z"
+  },
+  {
+    "id": 17,
+    "userId": 1006,
+    "articleSlug": "1",
+    "viewedAt": "2026-01-03T18:18:30.849Z"
+  },
+  {
+    "id": 18,
+    "userId": 1006,
+    "articleSlug": "dau-venezuela-van-sang-my-bat-chap-cac-vu-bat-giu-tau-dau",
+    "viewedAt": "2026-01-03T18:26:20.129Z"
+  },
+  {
+    "id": 3,
+    "userId": 1006,
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "viewedAt": "2026-01-03T18:26:24.201Z"
+  },
+  {
+    "id": 16,
+    "userId": 1006,
+    "articleSlug": "thu-tuong-pham-minh-chinh-dai-hoi-thi-dua-yeu-nuoc-phai-la-noi-hoi-tu-lan-toa-tinh-than-yeu-nuoc-cua-toan-dan-toc",
+    "viewedAt": "2026-01-03T18:32:07.406Z"
+  },
+  {
+    "id": 1,
+    "userId": 1006,
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "viewedAt": "2026-01-03T18:32:38.417Z"
+  },
+  {
+    "id": 19,
+    "userId": 1006,
+    "articleSlug": "ve-dep-kien-truc-va-tam-linh-tai-chua-xiem-can-di-san-song-cua-nguoi-khmer",
+    "viewedAt": "2026-01-03T18:32:42.644Z"
+  },
+  {
+    "id": 20,
+    "userId": 1006,
+    "articleSlug": "the-thao-viet-nam-tren-hanh-trinh-vuon-toi-nhung-dinh-cao-moi",
+    "viewedAt": "2026-01-03T18:32:49.462Z"
+  },
+  {
+    "id": 21,
+    "userId": 1006,
+    "articleSlug": "tieu-thuong-mong-cho-nhon-bac-ninh-som-duoc-sua-chua-va-hoat-dong-tro-lai",
+    "viewedAt": "2026-01-03T18:32:59.766Z"
+  },
+  {
+    "id": 7,
+    "userId": 1006,
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "viewedAt": "2026-01-03T18:42:22.405Z"
+  },
+  {
+    "id": 23,
+    "userId": 7,
+    "articleSlug": "tieu-thuong-mong-cho-nhon-bac-ninh-som-duoc-sua-chua-va-hoat-dong-tro-lai",
+    "viewedAt": "2026-01-04T07:39:15.667Z"
+  },
+  {
+    "id": 22,
+    "userId": 7,
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "viewedAt": "2026-01-04T07:39:30.867Z"
+  }
+]

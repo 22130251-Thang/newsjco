@@ -1,6 +1,7 @@
 export class UpdateProfileDto {
   displayName?: string;
-  bio?:  string;
+  email?: string;
+  bio?: string;
   avatar?: string;
   gender?: 'male' | 'female' | 'other';
   birthDate?: string;
