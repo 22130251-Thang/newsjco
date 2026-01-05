@@ -10,6 +10,7 @@ import { Login, Signup } from "./pages/authentication";
 import { ProfilePage } from "./pages/profile/ProfilePage";
 import { BookmarksPage } from "./pages/bookmarks/BookmarksPage";
 import { SearchPage } from "./pages/search/SearchPage";
+import { NotFound } from "./pages/error";
 
 function App() {
   return (
@@ -28,13 +29,15 @@ function App() {
               </Route>
               <Route path="/:category" element={<CategoryPage />} />
               <Route path="/:category/:slug" element={<ArticleDetail />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
-            <Route path="*" element={<>Not found</>} />
           </Routes>
+
         </ThemeProvider>
       </AuthProvider>
     </BrowserRouter>
   );
 }
+
 
 export default App;
