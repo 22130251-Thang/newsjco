@@ -33,7 +33,7 @@
     "id": 6,
     "userId": 1006,
     "articleSlug": "ngay-512026-xet-xu-55-bi-cao-trong-vu-nhan-hoi-lo-tai-cuc-an-toan-thuc-pham-bo-y-te",
-    "viewedAt": "2026-01-02T15:50:44.447Z"
+    "viewedAt": "2026-01-04T18:22:14.991Z"
   },
   {
     "id": 12,
@@ -66,12 +66,6 @@
     "viewedAt": "2026-01-03T18:09:15.129Z"
   },
   {
-    "id": 15,
-    "userId": 1006,
-    "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
-    "viewedAt": "2026-01-03T18:16:56.234Z"
-  },
-  {
     "id": 17,
     "userId": 1006,
     "articleSlug": "1",
@@ -84,12 +78,6 @@
     "viewedAt": "2026-01-03T18:26:20.129Z"
   },
   {
-    "id": 3,
-    "userId": 1006,
-    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
-    "viewedAt": "2026-01-03T18:26:24.201Z"
-  },
-  {
     "id": 16,
     "userId": 1006,
     "articleSlug": "thu-tuong-pham-minh-chinh-dai-hoi-thi-dua-yeu-nuoc-phai-la-noi-hoi-tu-lan-toa-tinh-than-yeu-nuoc-cua-toan-dan-toc",
@@ -99,7 +87,7 @@
     "id": 1,
     "userId": 1006,
     "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
-    "viewedAt": "2026-01-03T18:32:38.417Z"
+    "viewedAt": "2026-01-04T18:23:15.639Z"
   },
   {
     "id": 19,
@@ -123,7 +111,7 @@
     "id": 7,
     "userId": 1006,
     "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
-    "viewedAt": "2026-01-03T18:42:22.405Z"
+    "viewedAt": "2026-01-04T18:27:59.267Z"
   },
   {
     "id": 23,
@@ -136,5 +124,39 @@
     "userId": 7,
     "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
     "viewedAt": "2026-01-04T08:01:57.485Z"
+  },
+  {
+    "id": 24,
+    "userId": 1006,
+    "articleSlug": "euroclear-hoan-nghenh-quyet-dinh-cua-eu-khong-su-dung-tai-san-nga-cho-ukraine",
+    "viewedAt": "2026-01-03T19:10:14.910Z"
+  },
+  {
+    "id": 3,
+    "userId": 1006,
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "viewedAt": "2026-01-03T19:10:23.294Z"
+  },
+  {
+    "id": 15,
+    "userId": 1006,
+    "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
+    "viewedAt": "2026-01-03T19:12:01.512Z"
+  },
+  {
+    "userId": 1006,
+    "articleSlug": "tinh-bao-quan-doi-ukraine-tung-video-phong-hoa-tiem-kich-su-30-va-su-27-cua-nga-tri-gia-100-trieu-usd",
+    "viewedAt": "2026-01-04T18:26:51.711Z",
+    "id": 25,
+    "createdAt": "2026-01-04T18:26:51.657Z",
+    "updatedAt": "2026-01-04T18:26:51.657Z"
+  },
+  {
+    "userId": 1006,
+    "articleSlug": "anh-360-do-khan-truong-xu-ly-dut-diem-loat-cong-trinh-sai-phep-bam-dat-quy-hoach-phuong-bo-de",
+    "viewedAt": "2026-01-04T18:28:35.026Z",
+    "id": 26,
+    "createdAt": "2026-01-04T18:28:34.969Z",
+    "updatedAt": "2026-01-04T18:28:34.969Z"
   }
 ]

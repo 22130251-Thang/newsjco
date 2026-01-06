@@ -128,7 +128,7 @@ export const UserComments = () => {
             ))}
           </div>
 
-          {/* Show More / Show Less Button */}
+
           {hasMore && (
             <button
               onClick={() => setShowAll(!showAll)}
