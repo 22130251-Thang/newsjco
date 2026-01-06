@@ -132,9 +132,19 @@
     "viewedAt": "2026-01-04T07:39:15.667Z"
   },
   {
-    "id": 22,
+    "userId": 7,
+    "articleSlug": "anh-360-do-ham-chui-kim-dong-giai-phong-tang-toc-ve-dich",
+    "viewedAt": "2026-01-06T06:01:46.751Z",
+    "id": 24,
+    "createdAt": "2026-01-06T06:01:46.698Z",
+    "updatedAt": "2026-01-06T06:01:46.698Z"
+  },
+  {
     "userId": 7,
     "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
-    "viewedAt": "2026-01-04T08:01:57.485Z"
+    "viewedAt": "2026-01-06T06:01:56.539Z",
+    "id": 25,
+    "createdAt": "2026-01-06T06:01:56.380Z",
+    "updatedAt": "2026-01-06T06:01:56.380Z"
   }
 ]
