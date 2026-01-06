@@ -81,7 +81,7 @@
     "id": 16,
     "userId": 1006,
     "articleSlug": "thu-tuong-pham-minh-chinh-dai-hoi-thi-dua-yeu-nuoc-phai-la-noi-hoi-tu-lan-toa-tinh-than-yeu-nuoc-cua-toan-dan-toc",
-    "viewedAt": "2026-01-03T18:32:07.406Z"
+    "viewedAt": "2026-01-06T18:58:12.372Z"
   },
   {
     "id": 1,
@@ -111,7 +111,7 @@
     "id": 7,
     "userId": 1006,
     "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
-    "viewedAt": "2026-01-04T18:27:59.267Z"
+    "viewedAt": "2026-01-06T18:57:46.621Z"
   },
   {
     "id": 23,
@@ -120,7 +120,14 @@
     "viewedAt": "2026-01-04T07:39:15.667Z"
   },
   {
-    "id": 22,
+    "userId": 7,
+    "articleSlug": "anh-360-do-ham-chui-kim-dong-giai-phong-tang-toc-ve-dich",
+    "viewedAt": "2026-01-06T06:01:46.751Z",
+    "id": 24,
+    "createdAt": "2026-01-06T06:01:46.698Z",
+    "updatedAt": "2026-01-06T06:01:46.698Z"
+  },
+  {
     "userId": 7,
     "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
     "viewedAt": "2026-01-04T08:01:57.485Z"
