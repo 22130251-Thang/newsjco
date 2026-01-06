@@ -105,8 +105,9 @@ export const ProfilePage = () => {
           <button
             onClick={() => setActiveTab("categories")}
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${activeTab === "categories"
-              ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
+              ? "bg-linear-to-r from-red-600 to-red-700 text-white shadow-md"
               : "text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400"
+
               }`}
           >
             <Heart size={18} />
@@ -116,8 +117,9 @@ export const ProfilePage = () => {
           <button
             onClick={() => setActiveTab("history")}
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${activeTab === "history"
-              ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
+              ? "bg-linear-to-r from-red-600 to-red-700 text-white shadow-md"
               : "text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400"
+
               }`}
           >
             <Clock size={18} />
@@ -127,8 +129,9 @@ export const ProfilePage = () => {
           <button
             onClick={() => setActiveTab("comments")}
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${activeTab === "comments"
-              ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
+              ? "bg-linear-to-r from-red-600 to-red-700 text-white shadow-md"
               : "text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400"
+
               }`}
           >
             <MessageSquare size={18} />
@@ -138,7 +141,8 @@ export const ProfilePage = () => {
           <button
             onClick={() => setActiveTab("bookmarks")}
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${activeTab === "bookmarks"
-              ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
+              ? "bg-linear-to-r from-red-600 to-red-700 text-white shadow-md"
+
               : "text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400"
               }`}
           >

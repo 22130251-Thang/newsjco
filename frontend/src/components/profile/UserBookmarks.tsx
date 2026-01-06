@@ -25,22 +25,22 @@ export const UserBookmarks = () => {
 
     return (
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 mt-6">
-            {/* Header */}
             <div className="flex items-center gap-3 mb-5 pb-4 border-b border-gray-100 dark:border-gray-700">
-                <div className="p-2 bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900/30 dark:to-red-900/30 rounded-lg">
+                <div className="p-2 bg-linear-to-br from-red-100 to-red-200 dark:from-red-900/30 dark:to-red-900/30 rounded-lg">
+
                     <Bookmark size={20} className="text-red-600 dark:text-red-400" />
                 </div>
                 <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
                     Bài viết đã lưu
                 </h2>
                 {bookmarks.length > 0 && (
-                    <span className="text-sm text-red-500 dark:text-red-400 bg-gradient-to-r from-red-50 to-red-100/50 dark:from-red-900/20 dark:to-red-900/20 px-3 py-1 rounded-full border border-red-200/50 dark:border-red-700/30">
+                    <span className="text-sm text-red-500 dark:text-red-400 bg-linear-to-r from-red-50 to-red-100/50 dark:from-red-900/20 dark:to-red-900/20 px-3 py-1 rounded-full border border-red-200/50 dark:border-red-700/30">
+
                         {bookmarks.length} bài viết
                     </span>
                 )}
             </div>
 
-            {/* Content */}
             {loading ? (
                 <div className="flex items-center justify-center py-10">
                     <div className="relative">
@@ -55,7 +55,8 @@ export const UserBookmarks = () => {
             ) : bookmarks.length === 0 ? (
                 <div className="text-center py-12">
                     <div className="relative w-20 h-20 mx-auto mb-5">
-                        <div className="absolute inset-0 bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900/20 dark:to-red-900/20 rounded-2xl rotate-6"></div>
+                        <div className="absolute inset-0 bg-linear-to-br from-red-100 to-red-200 dark:from-red-900/20 dark:to-red-900/20 rounded-2xl rotate-6"></div>
+
                         <div className="relative w-full h-full bg-white dark:bg-gray-700 rounded-2xl flex items-center justify-center shadow-lg border border-red-100 dark:border-red-800/30">
                             <Bookmark className="text-red-400 dark:text-red-500" size={32} />
                         </div>
@@ -75,7 +76,8 @@ export const UserBookmarks = () => {
                                 key={bookmark.id}
                                 className="flex gap-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl group border border-gray-100 dark:border-gray-700"
                             >
-                                <div className="flex-shrink-0">
+                                <div className="shrink-0">
+
                                     {bookmark.articleImage ? (
                                         <img
                                             src={bookmark.articleImage}
@@ -87,12 +89,12 @@ export const UserBookmarks = () => {
                                             }}
                                         />
                                     ) : null}
-                                    <div className={`relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg bg-gradient-to-br from-red-100 to-red-200 dark:from-gray-600 dark:to-gray-700 flex items-center justify-center ${bookmark.articleImage ? 'hidden' : ''}`}>
+                                    <div className={`relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg bg-linear-to-br from-red-100 to-red-200 dark:from-gray-600 dark:to-gray-700 flex items-center justify-center ${bookmark.articleImage ? 'hidden' : ''}`}>
+
                                         <Image className="text-red-500 dark:text-gray-500" size={24} />
                                     </div>
                                 </div>
 
-                                {/* Content */}
                                 <div className="flex-1 min-w-0 flex flex-col justify-between">
                                     <Link
                                         to={`/${bookmark.articleCategory}/${bookmark.articleSlug}`}
@@ -113,7 +115,6 @@ export const UserBookmarks = () => {
                                     </div>
                                 </div>
 
-                                {/* Actions */}
                                 <div className="flex flex-col items-end justify-between">
                                     <button
                                         onClick={() => handleRemove(bookmark.articleSlug)}
@@ -139,11 +140,11 @@ export const UserBookmarks = () => {
                         ))}
                     </div>
 
-                    {/* Show More / Show Less Button */}
                     {hasMore && (
                         <button
                             onClick={() => setShowAll(!showAll)}
-                            className="w-full mt-4 py-3 flex items-center justify-center gap-2 text-sm font-medium text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 bg-gradient-to-r from-red-50 to-red-100/50 dark:from-red-900/20 dark:to-red-900/20 hover:from-red-100 hover:to-red-200 dark:hover:from-red-900/30 dark:hover:to-red-900/30 rounded-lg transition-all cursor-pointer border border-red-200/50 dark:border-red-700/30 hover:shadow-md"
+                            className="w-full mt-4 py-3 flex items-center justify-center gap-2 text-sm font-medium text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 bg-linear-to-r from-red-50 to-red-100/50 dark:from-red-900/20 dark:to-red-900/20 hover:from-red-100 hover:to-red-200 dark:hover:from-red-900/30 dark:hover:to-red-900/30 rounded-lg transition-all cursor-pointer border border-red-200/50 dark:border-red-700/30 hover:shadow-md"
+
                         >
                             {showAll ? (
                                 <>

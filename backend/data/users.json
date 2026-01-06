@@ -77,10 +77,13 @@
     "gender": "female",
     "address": "Đắk Nông",
     "createdAt": "2025-05-10T12:00:00+07:00",
-    "updatedAt": "2026-01-04T07:40:05.247Z",
+    "updatedAt": "2026-01-06T06:28:44.907Z",
     "birthDate": "2020-03-02",
     "phone": "dsfsd",
-    "bio": "dsfsdfds"
+    "bio": "dsfsdfds",
+    "subscribedCategories": [
+      "the-gioi"
+    ]
   },
   {
     "username": "Màu",
