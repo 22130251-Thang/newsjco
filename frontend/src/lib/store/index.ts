@@ -20,7 +20,7 @@ export const store = configureStore({
     notification: notificationReducer,
     bookmarks: bookmarkReducer,
     viewHistory: viewHistoryReducer,
-    reactions:  reactionReducer,
+    reactions: reactionReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

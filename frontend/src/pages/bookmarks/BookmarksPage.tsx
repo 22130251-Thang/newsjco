@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Bookmark, Trash2, Calendar, Loader2 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../lib/store/hooks';
 import { fetchBookmarks, toggleArticleBookmark } from '../../lib/store/slices/bookmarkSlice';
+import { formatRelativeTime } from '../../utils/date';
+
 
 export const BookmarksPage = () => {
   const dispatch = useAppDispatch();
@@ -18,13 +20,7 @@ export const BookmarksPage = () => {
     dispatch(toggleArticleBookmark(slug));
   };
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('vi-VN', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-    });
-  };
+
 
   if (loading) {
     return (
@@ -87,7 +83,8 @@ export const BookmarksPage = () => {
                 {/* Thumbnail */}
                 <Link
                   to={`/${bookmark.articleCategory}/${bookmark.articleSlug}`}
-                  className="flex-shrink-0"
+                  className="shrink-0"
+
                 >
                   <img
                     src={bookmark.articleImage || '/placeholder-image.jpg'}
@@ -119,7 +116,7 @@ export const BookmarksPage = () => {
                   <div className="flex items-center justify-between mt-3">
                     <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
                       <Calendar size={14} />
-                      <span>Đã lưu {formatDate(bookmark.createdAt)}</span>
+                      <span>Đã lưu {formatRelativeTime(bookmark.createdAt)}</span>
                     </div>
 
                     <button
