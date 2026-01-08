@@ -184,7 +184,7 @@ export const ProfilePage = () => {
                 <img
                   src={avatarPreview || (user?.avatar?.startsWith('http') ? user.avatar : user?.avatar ? `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}${user.avatar}` : `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || 'User')}&background=cc0000&color=fff&size=128`)}
                   alt="Avatar Preview"
-                  className="w-32 h-32 rounded-full object-cover border-4 border-red-500 shadow-xl"
+                  className="w-40 h-40 rounded-full object-cover border-4 border-red-500 shadow-xl"
                 />
                 {avatarPreview && (
                   <div className="absolute -bottom-2 -right-2 bg-green-500 text-white rounded-full p-1.5 shadow-lg">
@@ -194,7 +194,7 @@ export const ProfilePage = () => {
                   </div>
                 )}
               </div>
-              <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
+              <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
                 {avatarPreview ? "Ảnh mới đã sẵn sàng" : "Ảnh đại diện hiện tại"}
               </p>
             </div>
@@ -210,18 +210,16 @@ export const ProfilePage = () => {
               />
               <label
                 htmlFor="avatar-upload"
-                className="flex flex-col items-center justify-center w-full h-36 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded-full mb-3">
-                    <Camera className="w-6 h-6 text-red-500 dark:text-red-400" />
+                <div className="flex flex-col items-center justify-center py-3">
+                  <div className="p-2 bg-red-100 dark:bg-red-900/30 rounded-full mb-2">
+                    <Camera className="w-5 h-5 text-red-500 dark:text-red-400" />
                   </div>
-                  <p className="mb-1 text-sm text-gray-700 dark:text-gray-300 font-medium">
-                    Nhấn để chọn ảnh
+                  <p className="text-xs text-gray-700 dark:text-gray-300 font-medium">
+                    Nhấn để chọn ảnh <span className="text-gray-400 font-normal">• JPG, PNG, GIF, WEBP (Max 5MB)</span>
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    JPG, PNG, GIF, WEBP (Tối đa 5MB)
-                  </p>
+
                 </div>
               </label>
             </div>

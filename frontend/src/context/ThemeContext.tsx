@@ -31,20 +31,19 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     const html = document.documentElement;
-    console.log('Theme effect triggered:', theme);
 
     if (theme === 'dark') {
       html.classList.add('dark');
       html.style.colorScheme = 'dark';
       document.body.style.backgroundColor = '#111827';
       document.body.style.color = '#e0e0e0';
-      console.log('Dark mode applied');
+
     } else {
       html.classList.remove('dark');
       html.style.colorScheme = 'light';
       document.body.style.backgroundColor = '#f5f5f5';
       document.body.style.color = '#222222';
-      console.log('Light mode applied');
+
     }
     localStorage.setItem('theme', theme);
   }, [theme]);
@@ -54,8 +53,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     setTheme(newTheme);
 
     const html = document.documentElement;
-    console.log('Toggling to:', newTheme);
-    console.log('Before:', html.className);
+
 
     if (newTheme === 'dark') {
       html.classList.add('dark');
@@ -63,7 +61,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       html.classList.remove('dark');
     }
 
-    console.log('After:', html.className);
+
     localStorage.setItem('theme', newTheme);
 
     if (isAuthenticated) {
