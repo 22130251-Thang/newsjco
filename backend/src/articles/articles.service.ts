@@ -1,37 +1,19 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Logger } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { Article } from 'src/types/article.type';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { PaginationResult } from '../types/pagination.type';
+import { ARTICLE_CATEGORIES } from '../config/categories';
 
 @Injectable()
 export class ArticlesService {
-  private readonly categories = [
-    'khoa-hoc-cong-nghe',
-    'doi-song',
-    'giai-tri',
-    'giao-duc',
-    'kinh-doanh',
-    'phap-luat',
-    'suc-khoe',
-    'the-gioi',
-    'the-thao',
-    'thoi-su',
-    'dia-phuong',
-    'kinh-te',
-    'van-hoa',
-    'quan-su',
-    'anh',
-    'infographics',
-    'giai-ma-muon-mat',
-    'tin-moi-nhat',
-  ];
+  private readonly logger = new Logger(ArticlesService.name);
 
   constructor(private readonly databaseService: DatabaseService) {}
 
   findAll(): Article[] {
     let allArticles: Article[] = [];
-    for (const category of this.categories) {
+    for (const category of ARTICLE_CATEGORIES) {
       const articles = this.databaseService.findAll<Article>(category);
       allArticles = allArticles.concat(articles);
     }
@@ -72,7 +54,7 @@ export class ArticlesService {
   }
 
   findBySlug(slug: string): Article {
-    for (const category of this.categories) {
+    for (const category of ARTICLE_CATEGORIES) {
       const articles = this.databaseService.findAll<Article>(category);
       const article = articles.find((a) => a.slug === slug);
       if (article) {
@@ -103,7 +85,7 @@ export class ArticlesService {
 
   findHotNews(): Article[] {
     const hotNews: Article[] = [];
-    for (const category of this.categories) {
+    for (const category of ARTICLE_CATEGORIES) {
       const articles = this.databaseService.findAll<Article>(category);
       if (articles.length > 0) {
         hotNews.push(articles[0]);
@@ -114,7 +96,7 @@ export class ArticlesService {
 
   findHomePageCategories() {
     const result: { category: string; articles: Article[] }[] = [];
-    const categoriesToFetch = this.categories.slice(0, 10);
+    const categoriesToFetch = ARTICLE_CATEGORIES.slice(0, 10);
     for (const category of categoriesToFetch) {
       try {
         const articles = this.databaseService.findAll<Article>(category);
@@ -124,7 +106,9 @@ export class ArticlesService {
             articles: articles.slice(0, 4),
           });
         }
-      } catch (error) {}
+      } catch (error) {
+        this.logger.warn(`Failed to load category ${category}: ${error}`);
+      }
     }
     return result;
   }
@@ -222,10 +206,13 @@ export class ArticlesService {
     const normalizedQuery = this.normalizeText(query);
     let allArticles: Article[] = [];
 
-    if (category && this.categories.includes(category)) {
+    if (
+      category &&
+      (ARTICLE_CATEGORIES as readonly string[]).includes(category)
+    ) {
       allArticles = this.databaseService.findAll<Article>(category);
     } else {
-      for (const cat of this.categories) {
+      for (const cat of ARTICLE_CATEGORIES) {
         const articles = this.databaseService.findAll<Article>(cat);
         allArticles = allArticles.concat(articles);
       }
@@ -269,7 +256,7 @@ export class ArticlesService {
     const normalizedQuery = this.normalizeText(query);
     let allArticles: Article[] = [];
 
-    for (const category of this.categories) {
+    for (const category of ARTICLE_CATEGORIES) {
       const articles = this.databaseService.findAll<Article>(category);
       allArticles = allArticles.concat(articles);
     }

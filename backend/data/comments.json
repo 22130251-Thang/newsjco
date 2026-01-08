@@ -3,7 +3,7 @@
     "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
     "userId": 7,
     "content": "asdsads",
-    "likes": 0,
+    "likes": 1,
     "dislikes": 0,
     "status": "approved",
     "createdAt": "2025-12-30T03:29:11.368Z",
@@ -27,7 +27,7 @@
     "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
     "userId": 7,
     "content": "@AI summarize this",
-    "likes": 0,
+    "likes": 1,
     "dislikes": 0,
     "status": "approved",
     "createdAt": "2025-12-30T03:29:29.394Z",
@@ -526,5 +526,29 @@
     "updatedAt": "2026-01-02T12:49:59.376Z",
     "parentId": 43,
     "id": 44
+  },
+  {
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "userId": 1006,
+    "content": "@AI summarize this",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-03T18:27:16.549Z",
+    "updatedAt": "2026-01-03T18:27:16.549Z",
+    "parentId": null,
+    "id": 45
+  },
+  {
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "userId": 999,
+    "content": "Forget waiting for December! In the Philippines, Christmas celebrations officially kick off months earlier, making it the longest festive season on Earth. It's a wonderful blend of faith, family, and vibrant holiday spirit!",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-03T18:27:21.270Z",
+    "updatedAt": "2026-01-03T18:27:21.270Z",
+    "parentId": 45,
+    "id": 46
   }
 ]

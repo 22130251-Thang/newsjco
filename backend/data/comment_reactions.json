@@ -10,5 +10,21 @@
     "userId": 7,
     "type": "like",
     "id": 2
+  },
+  {
+    "commentId": 3,
+    "userId": 7,
+    "type": "like",
+    "id": 3,
+    "createdAt": "2026-01-04T07:33:59.552Z",
+    "updatedAt": "2026-01-04T07:33:59.552Z"
+  },
+  {
+    "commentId": 1,
+    "userId": 7,
+    "type": "like",
+    "id": 4,
+    "createdAt": "2026-01-04T07:34:48.736Z",
+    "updatedAt": "2026-01-04T07:34:48.736Z"
   }
 ]

@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import { Reaction, ReactionCount, ReactionType } from '../types/reaction.type';
-import { CreateReactionDto } from './dto/create-reaction.dto';
 
 @Injectable()
 export class ReactionsService {
@@ -11,21 +10,24 @@ export class ReactionsService {
 
   toggleReaction(
     articleSlug: string,
-    userId:  number,
+    userId: number,
     type: ReactionType,
   ): { action: 'created' | 'removed' | 'changed'; reaction: Reaction | null } {
-    const reactions = this. databaseService.findAll<Reaction>(this.TABLE_NAME);
+    const reactions = this.databaseService.findAll<Reaction>(this.TABLE_NAME);
 
     const existingIndex = reactions.findIndex(
       (r) => r.articleSlug === articleSlug && r.userId === userId,
     );
 
     if (existingIndex === -1) {
-      const newReaction = this. databaseService.create<Reaction>(this.TABLE_NAME, {
-        articleSlug,
-        userId,
-        type,
-      } as Omit<Reaction, 'id'>);
+      const newReaction = this.databaseService.create<Reaction>(
+        this.TABLE_NAME,
+        {
+          articleSlug,
+          userId,
+          type,
+        } as Omit<Reaction, 'id'>,
+      );
 
       return { action: 'created', reaction: newReaction };
     }
@@ -33,12 +35,15 @@ export class ReactionsService {
     const existingReaction = reactions[existingIndex];
 
     if (existingReaction.type === type) {
-      this.databaseService. remove<Reaction>(this.TABLE_NAME, existingReaction. id);
-      return { action: 'removed', reaction:  null };
+      this.databaseService.remove<Reaction>(
+        this.TABLE_NAME,
+        existingReaction.id,
+      );
+      return { action: 'removed', reaction: null };
     }
 
     const updatedReaction = this.databaseService.update<Reaction>(
-      this. TABLE_NAME,
+      this.TABLE_NAME,
       existingReaction.id,
       { type, updatedAt: new Date().toISOString() },
     );
@@ -46,29 +51,31 @@ export class ReactionsService {
     return { action: 'changed', reaction: updatedReaction };
   }
 
-  getReactionCount(articleSlug: string, userId?:  number): ReactionCount {
-    const reactions = this.databaseService.findAll<Reaction>(this. TABLE_NAME);
+  getReactionCount(articleSlug: string, userId?: number): ReactionCount {
+    const reactions = this.databaseService.findAll<Reaction>(this.TABLE_NAME);
 
     const articleReactions = reactions.filter(
       (r) => r.articleSlug === articleSlug,
     );
 
-    const likes = articleReactions. filter((r) => r.type === 'like').length;
-    const dislikes = articleReactions.filter((r) => r.type === 'dislike').length;
+    const likes = articleReactions.filter((r) => r.type === 'like').length;
+    const dislikes = articleReactions.filter(
+      (r) => r.type === 'dislike',
+    ).length;
 
     let userReaction: ReactionType | null = null;
     if (userId) {
       const userReactionRecord = articleReactions.find(
         (r) => r.userId === userId,
       );
-      userReaction = userReactionRecord?. type || null;
+      userReaction = userReactionRecord?.type || null;
     }
 
     return { likes, dislikes, userReaction };
   }
 
   getUserReaction(articleSlug: string, userId: number): Reaction | null {
-    const reactions = this. databaseService.findAll<Reaction>(this.TABLE_NAME);
+    const reactions = this.databaseService.findAll<Reaction>(this.TABLE_NAME);
     return (
       reactions.find(
         (r) => r.articleSlug === articleSlug && r.userId === userId,

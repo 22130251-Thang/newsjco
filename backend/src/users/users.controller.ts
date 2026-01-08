@@ -21,18 +21,18 @@ import { SubscribeCategoryDto } from './dto/subscribe-category.dto';
 import { RegisterRequestDto } from 'src/auth/dto/registerRequestDto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { multerConfig } from 'src/config/multer.config';
+import { sanitizeUser } from 'src/types/user.type';
 
 @Controller()
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) { }
 
   @UseGuards(JwtAuthGuard)
   @Get('user/profile')
   getProfile(@Request() req: { user: { userId: number; username: string } }) {
     const user = this.usersService.findOne(req.user.userId);
     if (user) {
-      const { password, ...result } = user;
-      return result;
+      return sanitizeUser(user);
     }
     return null;
   }
@@ -119,10 +119,7 @@ export class UsersController {
     @Request() req: { user: { userId: number } },
     @Param('categorySlug') categorySlug: string,
   ) {
-    return this.usersService.unsubscribeCategory(
-      req.user.userId,
-      categorySlug,
-    );
+    return this.usersService.unsubscribeCategory(req.user.userId, categorySlug);
   }
 
   @UseGuards(JwtAuthGuard)

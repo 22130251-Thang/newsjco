@@ -109,7 +109,7 @@ export const UserComments = () => {
                 className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
                 <Link
-                  to={`/${comment.categorySlug}/${comment.articleSlug}`}
+                  to={`/${comment.categorySlug}/${comment.articleSlug}#comment-${comment.id}`}
                   className="group block"
                 >
                   <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-2 mb-3">
@@ -128,7 +128,7 @@ export const UserComments = () => {
             ))}
           </div>
 
-          {/* Show More / Show Less Button */}
+
           {hasMore && (
             <button
               onClick={() => setShowAll(!showAll)}

@@ -8,7 +8,8 @@ import { ChangePasswordModal } from "../../components/profile/ChangePasswordModa
 import { UserComments } from "../../components/profile/UserComments";
 import { SubscribedCategories } from "../../components/profile/SubscribedCategories";
 import { ViewHistory } from "../../components/profile/ViewHistory";
-import { Camera, Heart, Clock, MessageSquare } from "lucide-react";
+import { UserBookmarks } from "../../components/profile/UserBookmarks";
+import { Camera, Heart, Clock, MessageSquare, Bookmark } from "lucide-react";
 import { Modal } from "../../components/ui/Modal";
 import { setUser } from "../../lib/store/slices/authSlice";
 
@@ -23,7 +24,7 @@ export const ProfilePage = () => {
   const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string>("");
-  const [activeTab, setActiveTab] = useState<"categories" | "history" | "comments">("categories");
+  const [activeTab, setActiveTab] = useState<"categories" | "history" | "comments" | "bookmarks">("categories");
 
   if (!isAuthenticated || !user) {
     return <Navigate to="/" replace />;
@@ -104,8 +105,9 @@ export const ProfilePage = () => {
           <button
             onClick={() => setActiveTab("categories")}
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${activeTab === "categories"
-              ? "bg-red-500 text-white shadow-md"
-              : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+              ? "bg-linear-to-r from-red-600 to-red-700 text-white shadow-md"
+              : "text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400"
+
               }`}
           >
             <Heart size={18} />
@@ -115,8 +117,9 @@ export const ProfilePage = () => {
           <button
             onClick={() => setActiveTab("history")}
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${activeTab === "history"
-              ? "bg-red-500 text-white shadow-md"
-              : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+              ? "bg-linear-to-r from-red-600 to-red-700 text-white shadow-md"
+              : "text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400"
+
               }`}
           >
             <Clock size={18} />
@@ -126,13 +129,26 @@ export const ProfilePage = () => {
           <button
             onClick={() => setActiveTab("comments")}
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${activeTab === "comments"
-              ? "bg-red-500 text-white shadow-md"
-              : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+              ? "bg-linear-to-r from-red-600 to-red-700 text-white shadow-md"
+              : "text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400"
+
               }`}
           >
             <MessageSquare size={18} />
-            <span className="hidden sm:inline">Lịch sử bình luận</span>
+            <span className="hidden sm:inline">Bình luận</span>
             <span className="sm:hidden">Bình luận</span>
+          </button>
+          <button
+            onClick={() => setActiveTab("bookmarks")}
+            className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all cursor-pointer ${activeTab === "bookmarks"
+              ? "bg-linear-to-r from-red-600 to-red-700 text-white shadow-md"
+
+              : "text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400"
+              }`}
+          >
+            <Bookmark size={18} />
+            <span className="hidden sm:inline">Đã lưu</span>
+            <span className="sm:hidden">Đã lưu</span>
           </button>
         </div>
 
@@ -140,6 +156,7 @@ export const ProfilePage = () => {
         {activeTab === "categories" && <SubscribedCategories />}
         {activeTab === "history" && <ViewHistory />}
         {activeTab === "comments" && <UserComments />}
+        {activeTab === "bookmarks" && <UserBookmarks />}
 
         <EditProfileModal
           isOpen={isEditModalOpen}

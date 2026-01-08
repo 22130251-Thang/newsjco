@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Clock, Trash2, ExternalLink, Loader2, Image, ChevronDown, ChevronUp } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "../../lib/store/hooks";
 import { fetchViewHistory, removeViewItem, clearHistory } from "../../lib/store/slices/viewHistorySlice";
+import { formatRelativeTime } from "../../utils/date";
+
 
 const ITEMS_PER_PAGE = 5;
 
@@ -15,19 +17,7 @@ export const ViewHistory = () => {
         dispatch(fetchViewHistory(50)); // Fetch more items
     }, [dispatch]);
 
-    const formatDate = (dateString: string) => {
-        const date = new Date(dateString);
-        const now = new Date();
-        const diffMs = now.getTime() - date.getTime();
-        const diffMins = Math.floor(diffMs / 60000);
-        const diffHours = Math.floor(diffMs / 3600000);
-        const diffDays = Math.floor(diffMs / 86400000);
 
-        if (diffMins < 60) return `${diffMins} phút trước`;
-        if (diffHours < 24) return `${diffHours} giờ trước`;
-        if (diffDays < 7) return `${diffDays} ngày trước`;
-        return date.toLocaleDateString("vi-VN");
-    };
 
     const handleRemove = (slug: string) => {
         dispatch(removeViewItem(slug));
@@ -92,7 +82,8 @@ export const ViewHistory = () => {
                                 className="flex gap-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors group"
                             >
                                 {/* Thumbnail */}
-                                <div className="flex-shrink-0">
+                                <div className="shrink-0">
+
                                     {item.article?.thumbnail ? (
                                         <img
                                             src={item.article.thumbnail}
@@ -104,7 +95,8 @@ export const ViewHistory = () => {
                                             }}
                                         />
                                     ) : null}
-                                    <div className={`w-24 h-16 sm:w-32 sm:h-20 rounded-lg bg-gradient-to-br from-red-100 to-red-200 dark:from-gray-600 dark:to-gray-700 flex items-center justify-center ${item.article?.thumbnail ? 'hidden' : ''}`}>
+                                    <div className={`w-24 h-16 sm:w-32 sm:h-20 rounded-lg bg-linear-to-br from-red-100 to-red-200 dark:from-gray-600 dark:to-gray-700 flex items-center justify-center ${item.article?.thumbnail ? 'hidden' : ''}`}>
+
                                         <Image className="text-red-400 dark:text-gray-500" size={24} />
                                     </div>
                                 </div>
@@ -122,7 +114,7 @@ export const ViewHistory = () => {
                                     <div className="flex items-center gap-3 mt-2">
                                         <span className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
                                             <Clock size={12} />
-                                            {formatDate(item.viewedAt)}
+                                            {formatRelativeTime(item.viewedAt)}
                                         </span>
                                         {item.article?.category && (
                                             <span className="text-xs text-red-500 bg-red-50 dark:bg-red-900/20 px-2 py-0.5 rounded">
@@ -136,7 +128,7 @@ export const ViewHistory = () => {
                                 <div className="flex flex-col items-end justify-between">
                                     <button
                                         onClick={() => handleRemove(item.articleSlug)}
-                                        className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-lg opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
+                                        className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-lg transition-all cursor-pointer"
                                         title="Xóa khỏi lịch sử"
                                     >
                                         <Trash2 size={16} />

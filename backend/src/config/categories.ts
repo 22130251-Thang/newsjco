@@ -1,0 +1,26 @@
+export const ARTICLE_CATEGORIES = [
+  'khoa-hoc-cong-nghe',
+  'doi-song',
+  'giai-tri',
+  'giao-duc',
+  'kinh-doanh',
+  'phap-luat',
+  'suc-khoe',
+  'the-gioi',
+  'the-thao',
+  'thoi-su',
+  'dia-phuong',
+  'kinh-te',
+  'van-hoa',
+  'quan-su',
+  'anh',
+  'infographics',
+  'giai-ma-muon-mat',
+  'tin-moi-nhat',
+  'du-lich',
+  'khoa-hoc',
+  'so-hoa',
+  'xe',
+] as const;
+
+export type ArticleCategory = (typeof ARTICLE_CATEGORIES)[number];
