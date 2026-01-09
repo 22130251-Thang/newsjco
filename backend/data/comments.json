@@ -550,5 +550,18 @@
     "updatedAt": "2026-01-03T18:27:21.270Z",
     "parentId": 45,
     "id": 46
+  },
+  {
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "userId": 1006,
+    "content": "12345",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-09T16:36:54.093Z",
+    "updatedAt": "2026-01-09T16:39:41.610Z",
+    "parentId": null,
+    "id": 48,
+    "isEdited": true
   }
 ]

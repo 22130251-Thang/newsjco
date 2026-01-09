@@ -36,7 +36,7 @@ export class CommentsService {
     private readonly aiService: AiService,
     private readonly notificationsGateway: NotificationsGateway,
     private readonly moderationService: ModerationService,
-  ) {}
+  ) { }
 
   async create(createCommentDto: CreateCommentDto): Promise<CommentWithUser> {
     const isAiCommand = createCommentDto.content
@@ -158,8 +158,8 @@ export class CommentsService {
 
     const userReactions = userId
       ? this.databaseService
-          .findAll<CommentReaction>(COMMENT_REACTIONS_TABLE)
-          .filter((r) => r.userId === userId)
+        .findAll<CommentReaction>(COMMENT_REACTIONS_TABLE)
+        .filter((r) => r.userId === userId)
       : [];
 
     const commentsWithUser = allComments.map((comment) => {
@@ -410,4 +410,54 @@ export class CommentsService {
       };
     });
   }
+
+  updateComment(commentId: number, userId: number, content: string): CommentWithUser {
+    const comment = this.databaseService.findById<Comment>(COMMENTS_TABLE, commentId);
+
+    if (!comment) {
+      throw new NotFoundException('Bình luận không tồn tại');
+    }
+
+    if (comment.userId !== userId) {
+      throw new BadRequestException('Bạn không có quyền sửa bình luận này');
+    }
+
+    const updatedComment = this.databaseService.update<Comment>(
+      COMMENTS_TABLE,
+      commentId,
+      {
+        content,
+        updatedAt: new Date().toISOString(),
+        isEdited: true,
+      },
+    );
+
+    return this.attachUserToComment(updatedComment);
+  }
+
+  deleteComment(commentId: number, userId: number): { success: boolean; message: string } {
+    const comment = this.databaseService.findById<Comment>(COMMENTS_TABLE, commentId);
+
+    if (!comment) {
+      throw new NotFoundException('Bình luận không tồn tại');
+    }
+
+    if (comment.userId !== userId) {
+      throw new BadRequestException('Bạn không có quyền xóa bình luận này');
+    }
+
+    // Delete all replies to this comment
+    const allComments = this.databaseService.findAll<Comment>(COMMENTS_TABLE);
+    const repliesToDelete = allComments.filter(c => c.parentId === commentId);
+
+    for (const reply of repliesToDelete) {
+      this.databaseService.remove(COMMENTS_TABLE, reply.id);
+    }
+
+    // Delete the comment itself
+    this.databaseService.remove(COMMENTS_TABLE, commentId);
+
+    return { success: true, message: 'Xóa bình luận thành công' };
+  }
 }
+

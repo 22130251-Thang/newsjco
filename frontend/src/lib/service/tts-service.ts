@@ -24,7 +24,7 @@ export const generateTTS = async (
       fullContent,
     });
 
-    console.log('TTS Response:', response.data);
+
     return response.data.taskId;
   } catch (error) {
     console.error('Failed to generate TTS:', error);

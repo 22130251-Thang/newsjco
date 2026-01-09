@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AuthProvider from "./provider/Auth-Provider";
 import { ThemeProvider } from "./context/ThemeContext";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
+import { ScrollToTop } from "./components/shared/ScrollToTop";
 import { HomePage } from "./pages/homepage/HomePage";
 import { MainLayout } from "./layouts/main-layout";
 import { ArticleDetail } from "./pages/articledetails/ArticleDetail";
@@ -15,6 +16,7 @@ import { NotFound } from "./pages/error";
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <AuthProvider>
         <ThemeProvider>
           <Routes>

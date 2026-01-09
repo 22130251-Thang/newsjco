@@ -203,5 +203,15 @@
     "avatar": "/avatars/avatar-1767361224784-103066243.png",
     "gender": "male",
     "birthDate": "1995-01-01"
+  },
+  {
+    "username": "Kim Lee",
+    "useremail": "kim@gmail.com",
+    "password": "$2b$10$1lTreHNZy31yqNwn/acNUe5C9waY.CU4zDc/p/6zM/JQRjO5d78dS",
+    "displayName": "User102",
+    "id": 1007,
+    "createdAt": "2026-01-08T13:46:41.079Z",
+    "updatedAt": "2026-01-08T13:52:47.965Z",
+    "subscribedCategories": []
   }
 ]

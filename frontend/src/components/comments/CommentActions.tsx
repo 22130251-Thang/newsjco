@@ -1,17 +1,32 @@
-import { ThumbsUp, ThumbsDown, MessageSquare } from "lucide-react";
+import { ThumbsUp, ThumbsDown, MessageSquare, Pencil, Trash2 } from "lucide-react";
 
 interface CommentActionsProps {
     likes: number;
     dislikes: number;
     userReaction?: 'like' | 'dislike' | null;
     isReplying: boolean;
+    isOwner: boolean;
+    isEditing?: boolean;
     onReact: (type: 'like' | 'dislike') => void;
     onReplyClick: () => void;
+    onEditClick?: () => void;
+    onDeleteClick?: () => void;
 }
 
-export const CommentActions = ({ likes, dislikes, userReaction, isReplying, onReact, onReplyClick }: CommentActionsProps) => {
+export const CommentActions = ({
+    likes,
+    dislikes,
+    userReaction,
+    isReplying,
+    isOwner,
+    isEditing,
+    onReact,
+    onReplyClick,
+    onEditClick,
+    onDeleteClick
+}: CommentActionsProps) => {
     return (
-        <div className="mt-3 flex items-center gap-6 text-sm text-gray-500 font-medium">
+        <div className="mt-3 flex items-center gap-4 text-sm text-gray-500 font-medium">
             <button
                 onClick={() => onReact('like')}
                 className={`flex items-center gap-1.5 transition-all group px-2 py-1 rounded-md ${userReaction === 'like' ? 'text-blue-600 bg-blue-50' : 'hover:text-blue-600 hover:bg-blue-50'}`}
@@ -33,6 +48,26 @@ export const CommentActions = ({ likes, dislikes, userReaction, isReplying, onRe
                 <MessageSquare size={16} />
                 <span>Phản hồi</span>
             </button>
+
+            {isOwner && (
+                <>
+                    <button
+                        onClick={onEditClick}
+                        className={`flex items-center gap-1.5 transition-all px-2 py-1 rounded-md hover:bg-blue-50 hover:text-blue-600 ${isEditing ? 'text-blue-600 bg-blue-50' : 'text-gray-500'}`}
+                    >
+                        <Pencil size={14} />
+                        <span>Sửa</span>
+                    </button>
+                    <button
+                        onClick={onDeleteClick}
+                        className="flex items-center gap-1.5 transition-all px-2 py-1 rounded-md hover:bg-red-50 hover:text-red-600 text-gray-500"
+                    >
+                        <Trash2 size={14} />
+                        <span>Xóa</span>
+                    </button>
+                </>
+            )}
         </div>
     );
 };
+

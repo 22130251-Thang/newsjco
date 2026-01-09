@@ -1,9 +1,12 @@
-import { IsString, IsNotEmpty, IsEmail, MinLength } from 'class-validator';
+import { IsString, IsNotEmpty, IsEmail, MinLength, Matches } from 'class-validator';
 
 export class RegisterRequestDto {
   @IsString()
   @IsNotEmpty({ message: 'Tên đăng nhập không được để trống' })
   @MinLength(3, { message: 'Tên đăng nhập phải có ít nhất 3 ký tự' })
+  @Matches(/^[a-zA-Z0-9_]+$/, {
+    message: 'Tên đăng nhập chỉ được chứa chữ cái, số và dấu gạch dưới (không có khoảng trắng)'
+  })
   username: string;
 
   @IsEmail({}, { message: 'Email không hợp lệ' })

@@ -10,6 +10,7 @@ export interface Comment extends BaseRecord {
   createdAt: string;
   updatedAt: string;
   parentId?: number;
+  isEdited?: boolean;
 }
 
 export interface CommentWithUser extends Comment {

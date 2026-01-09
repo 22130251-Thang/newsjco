@@ -141,7 +141,7 @@ export class UsersService {
       if (fs.existsSync(oldAvatarPath)) {
         try {
           fs.unlinkSync(oldAvatarPath);
-          console.log(`Deleted old avatar: ${filename}`);
+          // Old avatar deleted successfully
         } catch (error) {
           console.error(`Failed to delete old avatar: ${error.message}`);
         }

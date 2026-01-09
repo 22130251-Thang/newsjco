@@ -13,6 +13,7 @@ export interface Comment {
     user?: User;
     parentId?: number;
     userReaction?: 'like' | 'dislike' | null;
+    isEdited?: boolean;
 }
 
 export interface CreateCommentRequest {
