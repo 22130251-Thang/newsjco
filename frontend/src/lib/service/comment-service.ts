@@ -34,3 +34,27 @@ export const reactToComment = async (
     });
     return response.data;
 };
+
+export const updateComment = async (
+    commentId: number,
+    userId: number,
+    content: string
+): Promise<Comment> => {
+    const response = await apiClient.patch<Comment>(`comments/${commentId}`, {
+        userId,
+        content
+    });
+    return response.data;
+};
+
+export const deleteComment = async (
+    commentId: number,
+    userId: number
+): Promise<{ success: boolean; message: string }> => {
+    const response = await apiClient.delete<{ success: boolean; message: string }>(
+        `comments/${commentId}`,
+        { data: { userId } }
+    );
+    return response.data;
+};
+

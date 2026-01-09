@@ -1,10 +1,11 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Patch, Delete } from '@nestjs/common';
 import { CommentsService } from './comments.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
+import { UpdateCommentDto } from './dto/update-comment.dto';
 
 @Controller('comments')
 export class CommentsController {
-  constructor(private readonly commentsService: CommentsService) {}
+  constructor(private readonly commentsService: CommentsService) { }
 
   // IMPORTANT: This route must be BEFORE ':id' routes
   @Get('user/:userId')
@@ -54,4 +55,25 @@ export class CommentsController {
       body.categorySlug,
     );
   }
+
+  @Patch(':id')
+  update(
+    @Param('id') id: string,
+    @Body() updateCommentDto: UpdateCommentDto & { userId: number },
+  ) {
+    return this.commentsService.updateComment(
+      +id,
+      updateCommentDto.userId,
+      updateCommentDto.content,
+    );
+  }
+
+  @Delete(':id')
+  remove(
+    @Param('id') id: string,
+    @Body() body: { userId: number },
+  ) {
+    return this.commentsService.deleteComment(+id, body.userId);
+  }
 }
+

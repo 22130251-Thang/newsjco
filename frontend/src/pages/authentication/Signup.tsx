@@ -34,6 +34,18 @@ export const Signup = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Validate username format
+    const usernameRegex = /^[a-zA-Z0-9_]+$/;
+    if (!usernameRegex.test(formData.username)) {
+      setValidationError("Tên người dùng chỉ được chứa chữ cái, số và dấu gạch dưới (không có khoảng trắng)");
+      return;
+    }
+
+    if (formData.username.length < 3) {
+      setValidationError("Tên người dùng phải có ít nhất 3 ký tự");
+      return;
+    }
+
     if (formData.password !== formData.confirmPassword) {
       setValidationError("Mật khẩu không khớp!");
       return;
@@ -111,6 +123,7 @@ export const Signup = () => {
                 value={formData.username}
                 onChange={handleChange}
                 required
+                pattern="[a-zA-Z0-9_]+"
                 className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white"
                 placeholder="Nhập tên người dùng"
               />
