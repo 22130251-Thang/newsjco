@@ -563,5 +563,77 @@
     "parentId": null,
     "id": 48,
     "isEdited": true
+  },
+  {
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "userId": 1006,
+    "content": "@AI summarize this",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-11T14:31:52.650Z",
+    "updatedAt": "2026-01-11T14:31:52.650Z",
+    "parentId": null,
+    "id": 49
+  },
+  {
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "userId": 999,
+    "content": "Philippines truly boasts the world's longest Christmas season! They kick off celebrations months before December, creating a beautiful blend of deep faith, warm family reunions, and vibrant festivities. What an incredible way to celebrate the holidays!",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-11T14:31:59.138Z",
+    "updatedAt": "2026-01-11T14:31:59.138Z",
+    "parentId": 49,
+    "id": 50
+  },
+  {
+    "articleSlug": "thu-tuong-pham-minh-chinh-dai-hoi-thi-dua-yeu-nuoc-phai-la-noi-hoi-tu-lan-toa-tinh-than-yeu-nuoc-cua-toan-dan-toc",
+    "userId": 1006,
+    "content": "@AI summarize this",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-11T14:37:34.960Z",
+    "updatedAt": "2026-01-11T14:37:34.960Z",
+    "parentId": null,
+    "id": 51
+  },
+  {
+    "articleSlug": "thu-tuong-pham-minh-chinh-dai-hoi-thi-dua-yeu-nuoc-phai-la-noi-hoi-tu-lan-toa-tinh-than-yeu-nuoc-cua-toan-dan-toc",
+    "userId": 999,
+    "content": "Prime Minister Phạm Minh Chính is actively preparing for the 11th National Patriotic Emulation Congress, set for December 26-27! He stressed in a recent meeting that this event must be a powerful forum to truly unite and amplify the patriotic spirit of the entire nation.",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-11T14:37:43.038Z",
+    "updatedAt": "2026-01-11T14:37:43.038Z",
+    "parentId": 51,
+    "id": 52
+  },
+  {
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "userId": 1006,
+    "content": "@AI summarize this",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-11T14:39:58.404Z",
+    "updatedAt": "2026-01-11T14:39:58.404Z",
+    "parentId": null,
+    "id": 53
+  },
+  {
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "userId": 999,
+    "content": "Great news for commuters! Provincial Road 70 at the Buou Bridge-Phuc La intersection is implementing a pilot program until late Feb 2026. Trucks over 10 tons will be restricted during morning and afternoon rush hours to hopefully ease the notorious congestion at this complex junction!",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-11T14:40:04.230Z",
+    "updatedAt": "2026-01-11T14:40:04.230Z",
+    "parentId": 53,
+    "id": 54
   }
 ]

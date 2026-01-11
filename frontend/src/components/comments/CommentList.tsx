@@ -34,19 +34,29 @@ export const CommentList = ({ slug }: CommentListProps) => {
             dispatch(clearComments());
             dispatch(fetchCommentsByArticle({ slug, page: 1, limit: COMMENTS_PER_PAGE, userId: user?.id }));
 
-            joinArticleRoom(slug);
-
             const socket = getSocket();
-            if (socket) {
-                socket.on('newComment', (comment) => {
-                    dispatch(addNewComment(comment));
-                });
+
+            const handleNewComment = (comment: any) => {
+                dispatch(addNewComment(comment));
+            };
+
+            const setupSocketListeners = () => {
+                if (socket) {
+                    joinArticleRoom(slug);
+                    socket.on('newComment', handleNewComment);
+                }
+            };
+
+            if (socket?.connected) {
+                setupSocketListeners();
+            } else if (socket) {
+                socket.once('connect', setupSocketListeners);
             }
 
             return () => {
                 leaveArticleRoom(slug);
                 if (socket) {
-                    socket.off('newComment');
+                    socket.off('newComment', handleNewComment);
                 }
                 dispatch(clearComments());
             };

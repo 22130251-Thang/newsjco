@@ -341,5 +341,65 @@
     "createdAt": "2026-01-03T18:27:21.271Z",
     "id": 30,
     "updatedAt": "2026-01-03T18:27:21.271Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
+    "categorySlug": "khoa-hoc-cong-nghe",
+    "commentId": 48,
+    "isRead": true,
+    "createdAt": "2026-01-11T14:24:27.251Z",
+    "id": 31,
+    "updatedAt": "2026-01-11T14:24:27.251Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
+    "categorySlug": "the-gioi",
+    "commentId": 50,
+    "isRead": false,
+    "createdAt": "2026-01-11T14:31:59.139Z",
+    "id": 32,
+    "updatedAt": "2026-01-11T14:31:59.139Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "thu-tuong-pham-minh-chinh-dai-hoi-thi-dua-yeu-nuoc-phai-la-noi-hoi-tu-lan-toa-tinh-than-yeu-nuoc-cua-toan-dan-toc",
+    "categorySlug": "thoi-su",
+    "commentId": 52,
+    "isRead": false,
+    "createdAt": "2026-01-11T14:37:43.040Z",
+    "id": 33,
+    "updatedAt": "2026-01-11T14:37:43.040Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "thu-tuong-pham-minh-chinh-dai-hoi-thi-dua-yeu-nuoc-phai-la-noi-hoi-tu-lan-toa-tinh-than-yeu-nuoc-cua-toan-dan-toc",
+    "categorySlug": "thoi-su",
+    "commentId": 54,
+    "isRead": false,
+    "createdAt": "2026-01-11T14:39:32.561Z",
+    "id": 34,
+    "updatedAt": "2026-01-11T14:39:32.561Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "categorySlug": "anh",
+    "commentId": 54,
+    "isRead": false,
+    "createdAt": "2026-01-11T14:40:04.231Z",
+    "id": 35,
+    "updatedAt": "2026-01-11T14:40:04.231Z"
   }
 ]
