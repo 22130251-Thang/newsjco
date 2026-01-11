@@ -401,5 +401,77 @@
     "createdAt": "2026-01-11T14:40:04.231Z",
     "id": 35,
     "updatedAt": "2026-01-11T14:40:04.231Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "categorySlug": "anh",
+    "commentId": 56,
+    "isRead": false,
+    "createdAt": "2026-01-11T14:45:27.974Z",
+    "id": 36,
+    "updatedAt": "2026-01-11T14:45:27.974Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "categorySlug": "anh",
+    "commentId": 56,
+    "isRead": false,
+    "createdAt": "2026-01-11T14:46:03.544Z",
+    "id": 37,
+    "updatedAt": "2026-01-11T14:46:03.544Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "phat-huy-nguon-luc-kieu-bao-de-xay-dung-dat-nuoc",
+    "categorySlug": "thoi-su",
+    "commentId": 58,
+    "isRead": false,
+    "createdAt": "2026-01-11T14:49:53.619Z",
+    "id": 38,
+    "updatedAt": "2026-01-11T14:49:53.619Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "phat-huy-nguon-luc-kieu-bao-de-xay-dung-dat-nuoc",
+    "categorySlug": "thoi-su",
+    "commentId": 60,
+    "isRead": false,
+    "createdAt": "2026-01-11T14:50:20.256Z",
+    "id": 39,
+    "updatedAt": "2026-01-11T14:50:20.256Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "anh",
+    "commentId": 62,
+    "isRead": false,
+    "createdAt": "2026-01-11T14:52:24.004Z",
+    "id": 40,
+    "updatedAt": "2026-01-11T14:52:24.004Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "anh",
+    "commentId": 64,
+    "isRead": false,
+    "createdAt": "2026-01-11T14:52:59.043Z",
+    "id": 41,
+    "updatedAt": "2026-01-11T14:52:59.043Z"
   }
 ]

@@ -87,6 +87,9 @@ export class CommentsService {
     categorySlug: string,
     articleContent: string,
   ) {
+    // Notify that AI is typing
+    this.notificationsGateway.sendAiTyping(articleSlug, Number(replyToId), true);
+
     const summary = await this.aiService.summarize(articleContent);
     if (!summary) return;
 

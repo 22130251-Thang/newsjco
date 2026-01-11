@@ -39,7 +39,7 @@ export class AiService {
     }
 
     try {
-      const prompt = `Summarize the following article in a concise and engaging way, don't use icon, suitable for a comment section:\n\n${text}`;
+      const prompt = `Tóm tắt bài viết sau đây bằng tiếng Việt một cách ngắn gọn và hấp dẫn, không sử dụng icon, phù hợp cho phần bình luận:\n\n${text}`;
 
       const result = await this.genAI.models.generateContent({
         model: 'gemini-2.5-flash',
