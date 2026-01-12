@@ -24,12 +24,6 @@
     "viewedAt": "2026-01-02T15:41:18.402Z"
   },
   {
-    "id": 11,
-    "userId": 1006,
-    "articleSlug": "tri-benh-hinh-thuc",
-    "viewedAt": "2026-01-11T14:51:56.565Z"
-  },
-  {
     "id": 6,
     "userId": 1006,
     "articleSlug": "ngay-512026-xet-xu-55-bi-cao-trong-vu-nhan-hoi-lo-tai-cuc-an-toan-thuc-pham-bo-y-te",
@@ -81,13 +75,13 @@
     "id": 16,
     "userId": 1006,
     "articleSlug": "thu-tuong-pham-minh-chinh-dai-hoi-thi-dua-yeu-nuoc-phai-la-noi-hoi-tu-lan-toa-tinh-than-yeu-nuoc-cua-toan-dan-toc",
-    "viewedAt": "2026-01-11T14:47:30.369Z"
+    "viewedAt": "2026-01-12T16:08:49.238Z"
   },
   {
     "id": 1,
     "userId": 1006,
     "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
-    "viewedAt": "2026-01-11T14:55:15.795Z"
+    "viewedAt": "2026-01-12T16:17:42.553Z"
   },
   {
     "id": 19,
@@ -111,7 +105,7 @@
     "id": 7,
     "userId": 1006,
     "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
-    "viewedAt": "2026-01-11T14:47:30.202Z"
+    "viewedAt": "2026-01-12T16:08:51.331Z"
   },
   {
     "id": 23,
@@ -142,7 +136,7 @@
     "id": 3,
     "userId": 1006,
     "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
-    "viewedAt": "2026-01-11T14:45:47.263Z"
+    "viewedAt": "2026-01-12T16:07:29.578Z"
   },
   {
     "id": 15,

@@ -12,6 +12,7 @@ import { ProfilePage } from "./pages/profile/ProfilePage";
 import { BookmarksPage } from "./pages/bookmarks/BookmarksPage";
 import { SearchPage } from "./pages/search/SearchPage";
 import { NotFound } from "./pages/error";
+import { NotificationToastContainer } from "./components/notifications/NotificationToastContainer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <ScrollToTop />
       <AuthProvider>
         <ThemeProvider>
+          <NotificationToastContainer />
           <Routes>
             <Route element={<MainLayout />}>
               <Route path="/" element={<HomePage />} />
@@ -43,3 +45,4 @@ function App() {
 
 
 export default App;
+
