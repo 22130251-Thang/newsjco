@@ -1,7 +1,9 @@
-import { Calendar, User, Clock, Share2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Calendar, User, Clock, Share2, Eye } from "lucide-react";
 import type { Article } from "../../../types/article.type";
 import TTSButton from "../../shared/TTSButton";
 import { BookmarkButton } from "../../BookmarkButton";
+import { getViewCount } from "../../../lib/service/view-history-service";
 
 interface ArticleHeaderProps {
   article: Article;
@@ -62,37 +64,56 @@ type ArticleMetaProps = {
   onShare: () => void;
 };
 
-const ArticleMeta = ({ article, slug, onShare }: ArticleMetaProps) => (
-  <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500 dark:text-gray-400 border-y border-gray-100 dark:border-gray-700 py-4 mb-6">
-    <div className="flex items-center gap-1">
-      <User size={14} className="text-red-500" />
-      <span className="font-bold text-gray-800 dark:text-gray-200 uppercase">
-        {article.author || "Báo Tin Tức"}
-      </span>
+const ArticleMeta = ({ article, slug, onShare }: ArticleMetaProps) => {
+  const [viewCount, setViewCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (slug) {
+      getViewCount(slug)
+        .then((data) => setViewCount(data.viewCount))
+        .catch(() => setViewCount(null));
+    }
+  }, [slug]);
+
+  return (
+    <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500 dark:text-gray-400 border-y border-gray-100 dark:border-gray-700 py-4 mb-6">
+      <div className="flex items-center gap-1">
+        <User size={14} className="text-red-500" />
+        <span className="font-bold text-gray-800 dark:text-gray-200 uppercase">
+          {article.author || "Báo Tin Tức"}
+        </span>
+      </div>
+      <div className="flex items-center gap-1">
+        <Calendar size={14} />
+        <span>{new Date(article.pubDate).toLocaleDateString("vi-VN")}</span>
+      </div>
+      <div className="flex items-center gap-1">
+        <Clock size={14} />
+        <span>
+          {new Date(article.pubDate).toLocaleTimeString("vi-VN", {
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </span>
+      </div>
+      {viewCount !== null && (
+        <div className="flex items-center gap-1">
+          <Eye size={14} />
+          <span>{viewCount.toLocaleString("vi-VN")} lượt xem</span>
+        </div>
+      )}
+      <div className="ml-auto flex items-center gap-3">
+        {slug && <BookmarkButton slug={slug} size="sm" showText />}
+        <button
+          type="button"
+          onClick={onShare}
+          className="p-1.5 transition-colors hover:text-gray-600 dark:hover:text-gray-300 cursor-pointer"
+          title="Chia sẻ bài viết"
+        >
+          <Share2 size={16} />
+        </button>
+      </div>
     </div>
-    <div className="flex items-center gap-1">
-      <Calendar size={14} />
-      <span>{new Date(article.pubDate).toLocaleDateString("vi-VN")}</span>
-    </div>
-    <div className="flex items-center gap-1">
-      <Clock size={14} />
-      <span>
-        {new Date(article.pubDate).toLocaleTimeString("vi-VN", {
-          hour: "2-digit",
-          minute: "2-digit",
-        })}
-      </span>
-    </div>
-    <div className="ml-auto flex items-center gap-3">
-      {slug && <BookmarkButton slug={slug} size="sm" showText />}
-      <button
-        type="button"
-        onClick={onShare}
-        className="p-1.5 transition-colors hover:text-gray-600 dark:hover:text-gray-300 cursor-pointer"
-        title="Chia sẻ bài viết"
-      >
-        <Share2 size={16} />
-      </button>
-    </div>
-  </div>
-);
+  );
+};
+

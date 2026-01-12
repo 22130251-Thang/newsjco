@@ -14,8 +14,13 @@ export const useCommentTree = (comments: Comment[]): CommentWithReplies[] => {
         comments.forEach((comment) => {
             const node = commentMap[comment.id];
             if (comment.parentId && commentMap[comment.parentId]) {
+                // Parent exists, add as reply
                 commentMap[comment.parentId].replies.push(node);
             } else if (!comment.parentId) {
+                // Top-level comment
+                roots.push(node);
+            } else {
+                // Orphan reply (parent not in current list) - treat as root for now
                 roots.push(node);
             }
         });
@@ -23,3 +28,4 @@ export const useCommentTree = (comments: Comment[]): CommentWithReplies[] => {
         return roots;
     }, [comments]);
 };
+

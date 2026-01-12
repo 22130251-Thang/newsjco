@@ -12,11 +12,17 @@ import { ViewHistoryService } from './view-history.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('view-history')
-@UseGuards(JwtAuthGuard)
 export class ViewHistoryController {
-  constructor(private readonly viewHistoryService: ViewHistoryService) {}
+  constructor(private readonly viewHistoryService: ViewHistoryService) { }
+
+  // Public endpoint - no auth required
+  @Get('count/:slug')
+  getViewCount(@Param('slug') slug: string) {
+    return this.viewHistoryService.getViewCount(slug);
+  }
 
   @Post(':slug')
+  @UseGuards(JwtAuthGuard)
   addView(
     @Request() req: { user: { userId: number } },
     @Param('slug') slug: string,
@@ -25,6 +31,7 @@ export class ViewHistoryController {
   }
 
   @Get()
+  @UseGuards(JwtAuthGuard)
   getHistory(
     @Request() req: { user: { userId: number } },
     @Query('limit') limit?: string,
@@ -36,11 +43,13 @@ export class ViewHistoryController {
   }
 
   @Delete()
+  @UseGuards(JwtAuthGuard)
   clearHistory(@Request() req: { user: { userId: number } }) {
     return this.viewHistoryService.clearHistory(req.user.userId);
   }
 
   @Delete(':slug')
+  @UseGuards(JwtAuthGuard)
   removeView(
     @Request() req: { user: { userId: number } },
     @Param('slug') slug: string,
@@ -48,3 +57,4 @@ export class ViewHistoryController {
     return this.viewHistoryService.removeView(req.user.userId, slug);
   }
 }
+

@@ -10,7 +10,7 @@ const VIEW_HISTORY_TABLE = 'view-history';
 export class ViewHistoryService {
   private readonly logger = new Logger(ViewHistoryService.name);
 
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseService) { }
 
   private findAllArticles(): Article[] {
     let allArticles: Article[] = [];
@@ -75,10 +75,10 @@ export class ViewHistoryService {
         viewedAt: record.viewedAt,
         article: article
           ? {
-              title: article.title,
-              category: article.category,
-              thumbnail: article.thumbnail || article.image,
-            }
+            title: article.title,
+            category: article.category,
+            thumbnail: article.thumbnail || article.image,
+          }
           : null,
       };
     });
@@ -112,4 +112,15 @@ export class ViewHistoryService {
 
     return { success: true, message: 'View removed' };
   }
+
+  getViewCount(articleSlug: string): { viewCount: number } {
+    const allHistory =
+      this.databaseService.findAll<ViewHistory>(VIEW_HISTORY_TABLE);
+    const viewCount = allHistory.filter(
+      (r) => r.articleSlug === articleSlug,
+    ).length;
+
+    return { viewCount };
+  }
 }
+

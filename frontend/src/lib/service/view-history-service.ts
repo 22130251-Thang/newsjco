@@ -27,3 +27,7 @@ export const removeView = async (slug: string): Promise<ClearHistoryResponse> =>
     return response.data;
 };
 
+export const getViewCount = async (slug: string): Promise<{ viewCount: number }> => {
+    const response = await apiClient.get<{ viewCount: number }>(`view-history/count/${slug}`);
+    return response.data;
+};

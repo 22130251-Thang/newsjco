@@ -26,8 +26,7 @@ export interface NotificationPayload {
   },
 })
 export class NotificationsGateway
-  implements OnGatewayConnection, OnGatewayDisconnect
-{
+  implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
   server: Server;
 
@@ -66,4 +65,10 @@ export class NotificationsGateway
     this.server.to(`article_${slug}`).emit('newComment', comment);
     this.logger.log(`Comment sent to article_${slug}`);
   }
+
+  sendAiTyping(slug: string, parentId: number, isTyping: boolean) {
+    this.server.to(`article_${slug}`).emit('aiTyping', { parentId, isTyping });
+    this.logger.log(`AI typing ${isTyping ? 'started' : 'stopped'} for article_${slug}`);
+  }
 }
+
