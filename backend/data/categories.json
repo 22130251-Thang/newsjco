@@ -4,6 +4,7 @@
     "slug": "tin-moi-nhat",
     "name": "Trang chủ",
     "description": "Tin tức mới nhất, cập nhật liên tục từ Báo Tin Tức",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -12,6 +13,7 @@
     "slug": "thoi-su",
     "name": "Thời sự",
     "description": "Tin tức thời sự trong nước, chính trị và các sự kiện nổi bật",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -20,6 +22,7 @@
     "slug": "the-gioi",
     "name": "Thế giới",
     "description": "Tin tức quốc tế, sự kiện toàn cầu và quan hệ đối ngoại",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -28,6 +31,7 @@
     "slug": "kinh-te",
     "name": "Kinh tế",
     "description": "Tin tức về kinh tế, doanh nghiệp, tài chính và thị trường",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -36,6 +40,7 @@
     "slug": "xa-hoi",
     "name": "Xã hội",
     "description": "Tin tức về đời sống xã hội, cộng đồng và các vấn đề xã hội",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -44,6 +49,7 @@
     "slug": "phap-luat",
     "name": "Pháp luật",
     "description": "Tin tức về pháp luật, tòa án và các vụ án",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -52,6 +58,7 @@
     "slug": "van-hoa",
     "name": "Văn hóa",
     "description": "Tin tức về văn hóa, nghệ thuật và các sự kiện văn hóa",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -60,6 +67,7 @@
     "slug": "giao-duc",
     "name": "Giáo dục",
     "description": "Tin tức về giáo dục, trường học, thi cử và đào tạo",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -68,6 +76,7 @@
     "slug": "the-thao",
     "name": "Thể thao",
     "description": "Tin tức về bóng đá, các môn thể thao và sự kiện thể thao",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -76,6 +85,7 @@
     "slug": "ho-so",
     "name": "Hồ sơ",
     "description": "Hồ sơ, tài liệu và các câu chuyện chuyên sâu",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -84,6 +94,7 @@
     "slug": "quan-su",
     "name": "Quân sự",
     "description": "Tin tức về quân sự, quốc phòng và an ninh",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -92,6 +103,7 @@
     "slug": "khoa-hoc-cong-nghe",
     "name": "Khoa học - Công nghệ",
     "description": "Tin tức về khoa học, công nghệ và đổi mới sáng tạo",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -100,6 +112,7 @@
     "slug": "bien-dao-viet-nam",
     "name": "Biển đảo",
     "description": "Tin tức về biển đảo Việt Nam, chủ quyền lãnh thổ",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -108,6 +121,7 @@
     "slug": "suc-khoe",
     "name": "Y tế",
     "description": "Tin tức về y tế, chăm sóc sức khỏe và lối sống lành mạnh",
+    "parentId": null,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   },
@@ -116,6 +130,520 @@
     "slug": "dia-phuong",
     "name": "Địa phương",
     "description": "Tin tức về các địa phương, tỉnh thành trên cả nước",
+    "parentId": null,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 16,
+    "slug": "thoi-su",
+    "name": "Chính trị",
+    "description": "Tin tức chính trị trong nước",
+    "parentId": 2,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 17,
+    "slug": "thoi-su",
+    "name": "Chính sách",
+    "description": "Tin tức về chính sách nhà nước",
+    "parentId": 2,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 18,
+    "slug": "thoi-su",
+    "name": "Đối ngoại",
+    "description": "Tin tức đối ngoại và quan hệ quốc tế",
+    "parentId": 2,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 19,
+    "slug": "thoi-su",
+    "name": "Nhân sự",
+    "description": "Tin tức về nhân sự cấp cao",
+    "parentId": 2,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 20,
+    "slug": "the-gioi",
+    "name": "Châu Á",
+    "description": "Tin tức từ khu vực Châu Á",
+    "parentId": 3,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 21,
+    "slug": "the-gioi",
+    "name": "Châu Âu",
+    "description": "Tin tức từ khu vực Châu Âu",
+    "parentId": 3,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 22,
+    "slug": "the-gioi",
+    "name": "Châu Mỹ",
+    "description": "Tin tức từ khu vực Châu Mỹ",
+    "parentId": 3,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 23,
+    "slug": "the-gioi",
+    "name": "Trung Đông",
+    "description": "Tin tức từ khu vực Trung Đông",
+    "parentId": 3,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 24,
+    "slug": "the-gioi",
+    "name": "Phân tích",
+    "description": "Phân tích tình hình thế giới",
+    "parentId": 3,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 25,
+    "slug": "kinh-te",
+    "name": "Doanh nghiệp",
+    "description": "Tin tức về doanh nghiệp",
+    "parentId": 4,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 26,
+    "slug": "kinh-te",
+    "name": "Tài chính",
+    "description": "Tin tức về tài chính ngân hàng",
+    "parentId": 4,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 27,
+    "slug": "kinh-te",
+    "name": "Bất động sản",
+    "description": "Tin tức về thị trường bất động sản",
+    "parentId": 4,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 28,
+    "slug": "kinh-te",
+    "name": "Chứng khoán",
+    "description": "Tin tức về thị trường chứng khoán",
+    "parentId": 4,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 29,
+    "slug": "xa-hoi",
+    "name": "Giao thông",
+    "description": "Tin tức về giao thông vận tải",
+    "parentId": 5,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 30,
+    "slug": "xa-hoi",
+    "name": "Môi trường",
+    "description": "Tin tức về môi trường và thiên nhiên",
+    "parentId": 5,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 31,
+    "slug": "xa-hoi",
+    "name": "Đời sống",
+    "description": "Tin tức về đời sống xã hội",
+    "parentId": 5,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 32,
+    "slug": "xa-hoi",
+    "name": "Lao động",
+    "description": "Tin tức về lao động việc làm",
+    "parentId": 5,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 33,
+    "slug": "phap-luat",
+    "name": "Hình sự",
+    "description": "Tin tức về các vụ án hình sự",
+    "parentId": 6,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 34,
+    "slug": "phap-luat",
+    "name": "Dân sự",
+    "description": "Tin tức về các vụ án dân sự",
+    "parentId": 6,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 35,
+    "slug": "phap-luat",
+    "name": "An ninh trật tự",
+    "description": "Tin tức về an ninh trật tự",
+    "parentId": 6,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 36,
+    "slug": "phap-luat",
+    "name": "Bạn đọc",
+    "description": "Tin tức từ bạn đọc gửi về",
+    "parentId": 6,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 37,
+    "slug": "van-hoa",
+    "name": "Giải trí",
+    "description": "Tin tức giải trí showbiz",
+    "parentId": 7,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 38,
+    "slug": "van-hoa",
+    "name": "Điện ảnh",
+    "description": "Tin tức về điện ảnh phim ảnh",
+    "parentId": 7,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 39,
+    "slug": "van-hoa",
+    "name": "Âm nhạc",
+    "description": "Tin tức về âm nhạc",
+    "parentId": 7,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 40,
+    "slug": "van-hoa",
+    "name": "Du lịch",
+    "description": "Tin tức về du lịch và khám phá",
+    "parentId": 7,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 41,
+    "slug": "giao-duc",
+    "name": "Tuyển sinh",
+    "description": "Tin tức về tuyển sinh đại học",
+    "parentId": 8,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 42,
+    "slug": "giao-duc",
+    "name": "Đại học",
+    "description": "Tin tức về giáo dục đại học",
+    "parentId": 8,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 43,
+    "slug": "giao-duc",
+    "name": "Phổ thông",
+    "description": "Tin tức về giáo dục phổ thông",
+    "parentId": 8,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 44,
+    "slug": "giao-duc",
+    "name": "Du học",
+    "description": "Tin tức về du học nước ngoài",
+    "parentId": 8,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 45,
+    "slug": "the-thao",
+    "name": "Bóng đá VN",
+    "description": "Tin tức về bóng đá Việt Nam",
+    "parentId": 9,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 46,
+    "slug": "the-thao",
+    "name": "Bóng đá QT",
+    "description": "Tin tức về bóng đá quốc tế",
+    "parentId": 9,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 47,
+    "slug": "the-thao",
+    "name": "Tennis",
+    "description": "Tin tức về tennis",
+    "parentId": 9,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 48,
+    "slug": "the-thao",
+    "name": "Các môn khác",
+    "description": "Tin tức về các môn thể thao khác",
+    "parentId": 9,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 49,
+    "slug": "ho-so",
+    "name": "Điều tra",
+    "description": "Bài viết điều tra chuyên sâu",
+    "parentId": 10,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 50,
+    "slug": "ho-so",
+    "name": "Phóng sự",
+    "description": "Các bài phóng sự dài kỳ",
+    "parentId": 10,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 51,
+    "slug": "ho-so",
+    "name": "Ký sự",
+    "description": "Các bài ký sự",
+    "parentId": 10,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 52,
+    "slug": "ho-so",
+    "name": "Nhân vật",
+    "description": "Các câu chuyện về nhân vật",
+    "parentId": 10,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 53,
+    "slug": "quan-su",
+    "name": "Quốc phòng",
+    "description": "Tin tức về quốc phòng",
+    "parentId": 11,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 54,
+    "slug": "quan-su",
+    "name": "Vũ khí",
+    "description": "Tin tức về vũ khí quân sự",
+    "parentId": 11,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 55,
+    "slug": "quan-su",
+    "name": "Binh chủng",
+    "description": "Tin tức về các binh chủng",
+    "parentId": 11,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 56,
+    "slug": "quan-su",
+    "name": "Quân sự thế giới",
+    "description": "Tin tức quân sự thế giới",
+    "parentId": 11,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 57,
+    "slug": "khoa-hoc-cong-nghe",
+    "name": "Công nghệ",
+    "description": "Tin tức về công nghệ mới",
+    "parentId": 12,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 58,
+    "slug": "khoa-hoc-cong-nghe",
+    "name": "Khoa học",
+    "description": "Tin tức về khoa học",
+    "parentId": 12,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 59,
+    "slug": "khoa-hoc-cong-nghe",
+    "name": "Số hóa",
+    "description": "Tin tức về chuyển đổi số",
+    "parentId": 12,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 60,
+    "slug": "khoa-hoc-cong-nghe",
+    "name": "Sản phẩm",
+    "description": "Tin tức về sản phẩm công nghệ",
+    "parentId": 12,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 61,
+    "slug": "bien-dao-viet-nam",
+    "name": "Chủ quyền",
+    "description": "Tin tức về chủ quyền biển đảo",
+    "parentId": 13,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 62,
+    "slug": "bien-dao-viet-nam",
+    "name": "Ngư dân",
+    "description": "Tin tức về ngư dân và đánh bắt",
+    "parentId": 13,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 63,
+    "slug": "bien-dao-viet-nam",
+    "name": "Bảo vệ",
+    "description": "Tin tức về bảo vệ biển đảo",
+    "parentId": 13,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 64,
+    "slug": "bien-dao-viet-nam",
+    "name": "Hợp tác",
+    "description": "Tin tức về hợp tác quốc tế biển",
+    "parentId": 13,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 65,
+    "slug": "suc-khoe",
+    "name": "Bệnh viện",
+    "description": "Tin tức về bệnh viện y tế",
+    "parentId": 14,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 66,
+    "slug": "suc-khoe",
+    "name": "Thuốc",
+    "description": "Tin tức về thuốc và dược phẩm",
+    "parentId": 14,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 67,
+    "slug": "suc-khoe",
+    "name": "Dinh dưỡng",
+    "description": "Tin tức về dinh dưỡng sức khỏe",
+    "parentId": 14,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 68,
+    "slug": "suc-khoe",
+    "name": "Phòng bệnh",
+    "description": "Tin tức về phòng chống bệnh tật",
+    "parentId": 14,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 69,
+    "slug": "dia-phuong",
+    "name": "Miền Bắc",
+    "description": "Tin tức từ các tỉnh miền Bắc",
+    "parentId": 15,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 70,
+    "slug": "dia-phuong",
+    "name": "Miền Trung",
+    "description": "Tin tức từ các tỉnh miền Trung",
+    "parentId": 15,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 71,
+    "slug": "dia-phuong",
+    "name": "Miền Nam",
+    "description": "Tin tức từ các tỉnh miền Nam",
+    "parentId": 15,
+    "createdAt": "2025-01-01T00:00:00+07:00",
+    "updatedAt": "2025-12-17T00:00:00+07:00"
+  },
+  {
+    "id": 72,
+    "slug": "dia-phuong",
+    "name": "Tây Nguyên",
+    "description": "Tin tức từ các tỉnh Tây Nguyên",
+    "parentId": 15,
     "createdAt": "2025-01-01T00:00:00+07:00",
     "updatedAt": "2025-12-17T00:00:00+07:00"
   }

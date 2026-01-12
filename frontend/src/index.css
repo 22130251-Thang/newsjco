@@ -248,7 +248,7 @@ html.dark .dark\:text-gray-200 {
 }
 
 .hot-news-label {
-    background: linear-gradient(135deg, #c02424 0%, #a01e1e 100%);
+    background: var(--color-primary);
     color: white;
     padding: 4px 12px;
     font-weight: 700;

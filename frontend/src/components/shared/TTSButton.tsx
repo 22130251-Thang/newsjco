@@ -150,7 +150,7 @@ const TTSButton = ({ slug, title, description, fullContent }: TTSButtonProps) =>
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-700 rounded-lg px-3 py-2 shadow-sm">
+      <div className="flex items-center gap-3 bg-red-600 rounded-lg px-3 py-2 shadow-sm">
         <button
           type="button"
           onClick={handleSpeak}

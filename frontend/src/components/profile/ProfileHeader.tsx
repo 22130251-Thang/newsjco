@@ -31,7 +31,7 @@ export const ProfileHeader = ({ user, onAvatarClick, onEditClick, onPasswordClic
   };
 
   return (
-    <div className="bg-gradient-to-r from-red-600 to-red-800 dark:from-red-700 dark:to-red-900 rounded-t-lg p-6">
+    <div className="bg-red-700 dark:bg-red-800 rounded-t-lg p-6">
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
         {/* Avatar + User Info */}
         <div className="flex flex-col sm:flex-row items-center gap-6 flex-1">

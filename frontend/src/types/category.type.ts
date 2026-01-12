@@ -3,6 +3,8 @@ export interface Category {
   slug: string;
   name: string;
   description: string;
+  parentId: number | null;
   createdAt: Date;
   updatedAt: Date;
+  children?: Category[];
 }
