@@ -92,7 +92,7 @@ export const SubscribedCategories = () => {
             </p>
             <Link
               to="/"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg hover:from-red-700 hover:to-red-800 transition-all shadow-md cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all shadow-md cursor-pointer"
             >
               Khám phá các danh mục
             </Link>

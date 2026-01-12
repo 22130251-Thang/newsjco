@@ -287,7 +287,7 @@ export const EditProfileModal = ({ isOpen, onClose }: EditProfileModalProps) => 
           <button
             type="submit"
             disabled={updateLoading}
-            className="px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 shadow-lg cursor-pointer"
+            className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 shadow-lg cursor-pointer"
           >
             {updateLoading ? (
               <>

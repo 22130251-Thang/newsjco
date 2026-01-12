@@ -30,8 +30,8 @@ export const BackToTop = () => {
             className={`
         fixed bottom-6 right-6 z-50
         w-12 h-12 rounded-full
-        bg-gradient-to-r from-red-600 to-red-700
-        hover:from-red-700 hover:to-red-800
+        bg-red-600
+        hover:bg-red-700
         text-white shadow-lg
         flex items-center justify-center
         transition-all duration-300 ease-in-out

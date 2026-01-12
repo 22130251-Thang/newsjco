@@ -55,7 +55,7 @@ export const UserBookmarks = () => {
             ) : bookmarks.length === 0 ? (
                 <div className="text-center py-12">
                     <div className="relative w-20 h-20 mx-auto mb-5">
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-2xl rotate-6"></div>
+                        <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 rounded-2xl rotate-6"></div>
 
                         <div className="relative w-full h-full bg-white dark:bg-gray-700 rounded-2xl flex items-center justify-center shadow-lg border border-gray-200 dark:border-gray-600">
                             <Bookmark className="text-gray-400 dark:text-gray-500" size={32} />

@@ -130,7 +130,7 @@
   {
     "userId": 7,
     "articleSlug": "mua-giang-sinh-dai-nhat-the-gioi-tai-philippines",
-    "viewedAt": "2026-01-04T08:01:57.485Z"
+    "viewedAt": "2026-01-12T07:25:26.111Z"
   },
   {
     "id": 24,
@@ -181,5 +181,21 @@
     "id": 28,
     "createdAt": "2026-01-08T14:05:39.983Z",
     "updatedAt": "2026-01-08T14:05:39.983Z"
+  },
+  {
+    "userId": 7,
+    "articleSlug": "phat-hien-protein-giup-bao-ve-suc-khoe-nao-bo-khi-lao-hoa",
+    "viewedAt": "2026-01-12T07:27:04.792Z",
+    "id": 29,
+    "createdAt": "2026-01-12T07:27:04.731Z",
+    "updatedAt": "2026-01-12T07:27:04.731Z"
+  },
+  {
+    "userId": 7,
+    "articleSlug": "nhat-ban-that-bai-trong-viec-dua-ve-tinh-dinh-vi-len-quy-dao",
+    "viewedAt": "2026-01-12T07:42:07.940Z",
+    "id": 30,
+    "createdAt": "2026-01-12T07:42:07.928Z",
+    "updatedAt": "2026-01-12T07:42:07.928Z"
   }
 ]
