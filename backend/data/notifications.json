@@ -457,7 +457,7 @@
     "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
     "categorySlug": "anh",
     "commentId": 62,
-    "isRead": false,
+    "isRead": true,
     "createdAt": "2026-01-11T14:52:24.004Z",
     "id": 40,
     "updatedAt": "2026-01-11T14:52:24.004Z"
@@ -473,5 +473,113 @@
     "createdAt": "2026-01-11T14:52:59.043Z",
     "id": 41,
     "updatedAt": "2026-01-11T14:52:59.043Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "categorySlug": "anh",
+    "commentId": 66,
+    "isRead": false,
+    "createdAt": "2026-01-12T16:08:17.079Z",
+    "id": 42,
+    "updatedAt": "2026-01-12T16:08:17.079Z"
+  },
+  {
+    "userId": 999,
+    "type": "reaction",
+    "message": "Thinh DepTrai đã không thích bình luận của bạn",
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "categorySlug": "anh",
+    "commentId": 66,
+    "isRead": false,
+    "createdAt": "2026-01-12T16:08:34.949Z",
+    "id": 43,
+    "updatedAt": "2026-01-12T16:08:34.949Z"
+  },
+  {
+    "userId": 999,
+    "type": "reaction",
+    "message": "Thinh DepTrai đã thích bình luận của bạn",
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "categorySlug": "anh",
+    "commentId": 66,
+    "isRead": false,
+    "createdAt": "2026-01-12T16:08:36.860Z",
+    "id": 44,
+    "updatedAt": "2026-01-12T16:08:36.860Z"
+  },
+  {
+    "userId": 999,
+    "type": "reaction",
+    "message": "Thinh DepTrai đã không thích bình luận của bạn",
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "categorySlug": "anh",
+    "commentId": 66,
+    "isRead": false,
+    "createdAt": "2026-01-12T16:08:37.870Z",
+    "id": 45,
+    "updatedAt": "2026-01-12T16:08:37.870Z"
+  },
+  {
+    "userId": 999,
+    "type": "reaction",
+    "message": "Thinh DepTrai đã thích bình luận của bạn",
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "categorySlug": "anh",
+    "commentId": 66,
+    "isRead": false,
+    "createdAt": "2026-01-12T16:08:38.273Z",
+    "id": 46,
+    "updatedAt": "2026-01-12T16:08:38.273Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "anh",
+    "commentId": 68,
+    "isRead": false,
+    "createdAt": "2026-01-12T16:18:37.149Z",
+    "id": 47,
+    "updatedAt": "2026-01-12T16:18:37.149Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "anh",
+    "commentId": 70,
+    "isRead": false,
+    "createdAt": "2026-01-12T16:19:12.463Z",
+    "id": 48,
+    "updatedAt": "2026-01-12T16:19:12.463Z"
+  },
+  {
+    "userId": 7,
+    "type": "reaction",
+    "message": "Thinh DepTrai đã thích bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "anh",
+    "commentId": 19,
+    "isRead": false,
+    "createdAt": "2026-01-12T16:19:29.419Z",
+    "id": 49,
+    "updatedAt": "2026-01-12T16:19:29.419Z"
+  },
+  {
+    "userId": 1006,
+    "type": "reply",
+    "message": "AI Bot đã trả lời bình luận của bạn",
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "categorySlug": "anh",
+    "commentId": 72,
+    "isRead": false,
+    "createdAt": "2026-01-12T16:20:00.585Z",
+    "id": 50,
+    "updatedAt": "2026-01-12T16:20:00.585Z"
   }
 ]

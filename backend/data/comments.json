@@ -733,27 +733,99 @@
     "id": 62
   },
   {
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "userId": 1006,
+    "content": "@AI summarize this",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-12T16:08:09.099Z",
+    "updatedAt": "2026-01-12T16:08:09.099Z",
+    "parentId": null,
+    "id": 65
+  },
+  {
+    "articleSlug": "anh-360-do-hien-trang-nut-giao-tinh-lo-70-sau-khi-cam-xe-tai-trong-10-tan",
+    "userId": 999,
+    "content": "Bắt đầu từ nay đến hết tháng 2/2026, nút giao Tỉnh lộ 70 với Cầu Bươu và Phúc La sẽ thí điểm cấm xe tải trên 10 tấn vào các khung giờ cao điểm sáng và chiều. Đây là biện pháp nhằm điều chỉnh và giảm tải áp lực giao thông tại nút giao phức tạp này.",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-12T16:08:17.078Z",
+    "updatedAt": "2026-01-12T16:08:17.078Z",
+    "parentId": 65,
+    "id": 66
+  },
+  {
     "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
     "userId": 1006,
     "content": "@AI summarize this",
     "likes": 0,
     "dislikes": 0,
     "status": "approved",
-    "createdAt": "2026-01-11T14:52:51.599Z",
-    "updatedAt": "2026-01-11T14:52:51.599Z",
+    "createdAt": "2026-01-12T16:18:32.008Z",
+    "updatedAt": "2026-01-12T16:18:32.008Z",
     "parentId": null,
-    "id": 63
+    "id": 67
   },
   {
     "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
     "userId": 999,
-    "content": "Nút giao trọng điểm này khi hoàn thành sẽ là giải pháp \"vàng\" cho giao thông Hà Nội, giúp kết nối thông suốt, giảm ùn tắc hiệu quả. Đồng thời, đây còn là đòn bẩy quan trọng để phát triển các đô thị vệ tinh phía Tây, góp phần hoàn thiện bức tranh hạ tầng Thủ đô theo quy hoạch. Rất đáng kỳ vọng!",
+    "content": "Nút giao quan trọng này khi hoàn thành sẽ là đòn bẩy lớn cho hạ tầng Thủ đô. Công trình không chỉ tối ưu hóa kết nối và giảm ùn tắc, mà còn thúc đẩy mạnh mẽ sự hình thành các khu đô thị vệ tinh phía Tây Hà Nội, góp phần hoàn thiện quy hoạch chung.",
     "likes": 0,
     "dislikes": 0,
     "status": "approved",
-    "createdAt": "2026-01-11T14:52:59.042Z",
-    "updatedAt": "2026-01-11T14:52:59.042Z",
-    "parentId": 63,
-    "id": 64
+    "createdAt": "2026-01-12T16:18:37.148Z",
+    "updatedAt": "2026-01-12T16:18:37.148Z",
+    "parentId": 67,
+    "id": 68
+  },
+  {
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "userId": 1006,
+    "content": "@AI summarize this",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-12T16:19:08.061Z",
+    "updatedAt": "2026-01-12T16:19:08.061Z",
+    "parentId": null,
+    "id": 69
+  },
+  {
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "userId": 999,
+    "content": "Nút giao trọng điểm sắp hoàn thành sẽ tối ưu hóa kết nối, giảm ùn tắc giao thông, đồng thời thúc đẩy phát triển các đô thị vệ tinh phía Tây Hà Nội, góp phần hoàn thiện hạ tầng Thủ đô theo quy hoạch.",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-12T16:19:12.462Z",
+    "updatedAt": "2026-01-12T16:19:12.462Z",
+    "parentId": 69,
+    "id": 70
+  },
+  {
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "userId": 1006,
+    "content": "@AI summarize this",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-12T16:19:53.526Z",
+    "updatedAt": "2026-01-12T16:19:53.526Z",
+    "parentId": null,
+    "id": 71
+  },
+  {
+    "articleSlug": "anh-360-do-tang-toc-thi-cong-nut-giao-vanh-dai-35-va-dai-lo-thang-long",
+    "userId": 999,
+    "content": "Tuyệt vời! Nút giao Vành đai 3.5 và Đại lộ Thăng Long khi hoàn thành sẽ là giải pháp lớn cho Hà Nội. Dự kiến sẽ tối ưu hóa kết nối, giảm ùn tắc hiệu quả, đồng thời là động lực quan trọng thúc đẩy các đô thị vệ tinh phía Tây phát triển, từng bước hoàn thiện quy hoạch hạ tầng Thủ đô.",
+    "likes": 0,
+    "dislikes": 0,
+    "status": "approved",
+    "createdAt": "2026-01-12T16:20:00.584Z",
+    "updatedAt": "2026-01-12T16:20:00.584Z",
+    "parentId": 71,
+    "id": 72
   }
 ]
