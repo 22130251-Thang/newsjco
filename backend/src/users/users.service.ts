@@ -129,7 +129,6 @@ export class UsersService {
       throw new NotFoundException('Không tìm thấy người dùng');
     }
 
-    // Delete old avatar file if exists
     if (user.avatar && !user.avatar.startsWith('http')) {
       const filename = path.basename(user.avatar);
       const oldAvatarPath = path.join(
@@ -141,7 +140,6 @@ export class UsersService {
       if (fs.existsSync(oldAvatarPath)) {
         try {
           fs.unlinkSync(oldAvatarPath);
-          // Old avatar deleted successfully
         } catch (error) {
           console.error(`Failed to delete old avatar: ${error.message}`);
         }
@@ -250,5 +248,13 @@ export class UsersService {
     }
     return (user.subscribedCategories || []).includes(categorySlug);
   }
-}
 
+  findAllBySubscription(categorySlug: string): User[] {
+    const users = this.databaseService.findAll<User>('users');
+    return users.filter(
+      (user) =>
+        user.subscribedCategories &&
+        user.subscribedCategories.includes(categorySlug),
+    );
+  }
+}
