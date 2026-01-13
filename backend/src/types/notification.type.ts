@@ -2,11 +2,11 @@ import { BaseRecord } from './baserecord.type';
 
 export interface Notification extends BaseRecord {
   userId: number;
-  type: string;
+  type: 'reply' | 'new_article' | 'system' | string;
   message: string;
   articleSlug: string;
   categorySlug: string;
-  commentId: number;
+  commentId?: number;
   isRead: boolean;
   createdAt: string;
 }
@@ -17,5 +17,5 @@ export interface CreateNotificationDto {
   message: string;
   articleSlug: string;
   categorySlug: string;
-  commentId: number;
+  commentId?: number;
 }

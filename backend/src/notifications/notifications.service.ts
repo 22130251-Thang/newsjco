@@ -25,7 +25,7 @@ export class NotificationsService {
       message: createNotificationDto.message,
       articleSlug: createNotificationDto.articleSlug,
       categorySlug: createNotificationDto.categorySlug,
-      commentId: createNotificationDto.commentId,
+      commentId: createNotificationDto.commentId || 0,
       isRead: false,
       createdAt: new Date().toISOString(),
     };
@@ -41,6 +41,19 @@ export class NotificationsService {
     );
 
     return savedNotification;
+  }
+
+  async notifyNewArticle(userIds: number[], article: any) {
+    userIds.forEach(userId => {
+        this.create({
+            userId,
+            type: 'new_article',
+            message: `Tin mới mục ${article.category}: ${article.title}`,
+            articleSlug: article.slug,
+            categorySlug: article.category,
+            commentId: 0
+        });
+    });
   }
 
   findByUserId(userId: number): Notification[] {

@@ -4,12 +4,18 @@ import { Article } from 'src/types/article.type';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { PaginationResult } from '../types/pagination.type';
 import { ARTICLE_CATEGORIES } from '../config/categories';
+import { NotificationsService } from '../notifications/notifications.service';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class ArticlesService {
   private readonly logger = new Logger(ArticlesService.name);
 
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(
+    private readonly databaseService: DatabaseService,
+    private readonly notificationsService: NotificationsService,
+    private readonly usersService: UsersService,
+  ) {}
 
   findAll(): Article[] {
     let allArticles: Article[] = [];
@@ -66,7 +72,22 @@ export class ArticlesService {
 
   create(createArticleDto: CreateArticleDto): Article {
     const category = createArticleDto.category;
-    return this.databaseService.create<Article>(category, createArticleDto);
+    const newArticle = this.databaseService.create<Article>(category, createArticleDto);
+
+    try {
+        const subscribers = this.usersService.findAllBySubscription(category);
+        if (subscribers.length > 0) {
+            const subscriberIds = subscribers.map(user =>
+                typeof user.id === 'string' ? parseInt(user.id) : user.id
+            );
+            this.notificationsService.notifyNewArticle(subscriberIds, newArticle);
+            this.logger.log(`Sent notifications to ${subscribers.length} subscribers of ${category}`);
+        }
+    } catch (error) {
+        this.logger.error(`Failed to notify subscribers: ${error.message}`);
+    }
+
+    return newArticle;
   }
 
   findTopThreeFeatures(): Article[] {
