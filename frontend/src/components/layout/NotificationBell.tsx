@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { Bell, CheckCheck } from "lucide-react";
+import { Bell, CheckCheck, Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { NotificationItem } from "../notifications/NotificationItem";
 import { useNotifications } from "../../lib/hooks/useNotifications";
@@ -48,7 +48,7 @@ export const NotificationBell = () => {
     if (!notification.isRead) {
       await markAsRead(notification.id);
     }
-
+    
     closePanel();
 
     if (notification.type === "new_article" || notification.type === "system") {
@@ -78,9 +78,8 @@ export const NotificationBell = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 z-50 overflow-hidden origin-top-right transition-all">
-
-          {/* Header của Panel */}
+        <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 z-50 overflow-hidden origin-top-right transition-all animate-in fade-in slide-in-from-top-2 duration-200">
+          
           <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
             <h3 className="font-semibold text-gray-900 dark:text-gray-100">
               Thông báo
@@ -98,8 +97,9 @@ export const NotificationBell = () => {
 
           <div className="max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-600">
             {loading && notifications.length === 0 ? (
-              <div className="py-8 text-center text-gray-400 text-sm">
-                Đang tải thông báo...
+              <div className="flex flex-col items-center justify-center py-8 text-gray-400 text-sm">
+                <Loader2 size={24} className="animate-spin mb-2" />
+                <span>Đang tải thông báo...</span>
               </div>
             ) : notifications.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-10 px-4 text-center">
@@ -120,17 +120,15 @@ export const NotificationBell = () => {
               </div>
             )}
           </div>
-
-          {notifications.length > 0 && (
-             <div className="p-2 border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 text-center">
-                <button
-                  className="text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 font-medium"
-                  onClick={closePanel}
-                >
-                  Đóng
-                </button>
-             </div>
-          )}
+          
+          <div className="p-2 border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 text-center">
+            <button 
+              className="text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 font-medium transition-colors w-full py-1"
+              onClick={closePanel}
+            >
+              Đóng
+            </button>
+          </div>
         </div>
       )}
     </div>
