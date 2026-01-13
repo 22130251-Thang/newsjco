@@ -48,7 +48,7 @@ export const NotificationBell = () => {
     if (!notification.isRead) {
       await markAsRead(notification.id);
     }
-    
+
     closePanel();
 
     if (notification.type === "new_article" || notification.type === "system") {
@@ -78,8 +78,7 @@ export const NotificationBell = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 z-50 overflow-hidden origin-top-right transition-all animate-in fade-in slide-in-from-top-2 duration-200">
-          
+        <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 z-[9999] overflow-hidden origin-top-right transition-all animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
             <h3 className="font-semibold text-gray-900 dark:text-gray-100">
               Thông báo
@@ -120,9 +119,9 @@ export const NotificationBell = () => {
               </div>
             )}
           </div>
-          
+
           <div className="p-2 border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 text-center">
-            <button 
+            <button
               className="text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 font-medium transition-colors w-full py-1"
               onClick={closePanel}
             >
